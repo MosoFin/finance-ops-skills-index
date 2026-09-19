@@ -1,0 +1,78 @@
+name: drift
+
+# A grade is a claim about one version of a file. This job notices when that
+# file changes upstream and asks a human to re-read it. It never re-grades.
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      - name: Check pointers against upstream
+        id: drift
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          python scripts/check_drift.py --write | tee drift.log
+          echo "code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild generated docs
+        run: python scripts/build.py
+
+      # Exit 2 — link rot, an unreadable SKILL.md, or a changed LICENCE.
+      # Nothing to merge; a person has to look.
+      - name: Open an issue on hard failure
+        if: steps.drift.outputs.code == '2'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --title "Drift check failed $(date -u +%F)" \
+            --label "drift,needs-human" \
+            --body "$(printf 'Hard failures in the daily pointer check.\n\n```\n%s\n```\n' "$(grep '^FATAL' drift.log || true)")"
+
+      # Exit 1 — an upstream SKILL.md changed. The entry is now NEEDS-RE-GRADING.
+      # Never auto-merged: the badges below it are stale until someone re-reads it.
+      - name: Open a re-grading pull request
+        if: steps.drift.outputs.code == '1'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: drift/regrade
+          title: "Re-grading required — upstream SKILL.md changed"
+          labels: needs-re-grading
+          commit-message: "chore(drift): mark changed entries NEEDS-RE-GRADING"
+          body: |
+            One or more upstream skills changed. Their grades have expired.
+
+            **Do not merge this as a formality.** For each entry below, open the
+            linked upstream diff, re-read `SKILL.md`, confirm or correct the trust
+            tiers and the inputs/outputs in `sources.yml`, set `status: GRADED`
+            and today's `last_graded`, then run `python scripts/build.py`.
+
+            See [docs/TRUST-TIERS.md](../blob/main/docs/TRUST-TIERS.md#the-re-grading-rule).
+
+      # Exit 0 — only sibling files moved, or nothing at all. Bookkeeping only.
+      - name: Commit bookkeeping
+        if: steps.drift.outputs.code == '0'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sources.yml README.md skills/
+          git diff --staged --quiet || git commit -m "chore(drift): refresh upstream SHAs"
+          git push

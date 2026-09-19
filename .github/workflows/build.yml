@@ -1,0 +1,44 @@
+name: build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      - name: Generated docs are in sync with sources.yml
+        run: |
+          python scripts/build.py
+          git diff --exit-code -- README.md skills/ || {
+            echo "::error::README.md or skills/*/README.md is out of date. Run scripts/build.py and commit."
+            exit 1
+          }
+
+      # Restricted-licence entries are pointers. Vendoring them would redistribute
+      # material this repository has no right to redistribute.
+      - name: No files under a pointer-only entry
+        run: |
+          python - <<'PY'
+          import pathlib, sys, yaml
+          data = yaml.safe_load(open("sources.yml"))
+          bad = []
+          for s in data["skills"]:
+              if s.get("mirror"):
+                  continue
+              d = pathlib.Path("vendor") / s["id"]
+              if d.exists():
+                  bad.append(f"{s['id']}: mirror is false but vendor/{s['id']} exists")
+          if bad:
+              print("\n".join(f"::error::{b}" for b in bad))
+              sys.exit(1)
+          print("pointer-only entries are clean")
+          PY
