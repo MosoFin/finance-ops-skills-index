@@ -47,6 +47,13 @@ Period-over-period variance analysis as a disciplined loop — isolate, drill, h
 - Explain a variance from the account name.
 - Post a correction found during drilling.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `quickbooks` | **live** — Connected today | `oauth3` | n/a |
+| `csv` | **local** — Not a connector — files the user supplies | `none` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

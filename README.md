@@ -185,6 +185,53 @@ Ordered by when you need it, not alphabetically.
 
 ---
 
+## Data reachability
+
+A grade says what a skill does when it runs. This says whether it can run at all.
+A perfectly graded reconciliation skill is inert when its ledger sits behind a
+partner gate, so reachability is stated beside the grade rather than left for the
+reader to discover.
+
+| System | Status | Auth | Settlement data | Vertical |
+|---|---|---|---|---|
+| `quickbooks` | **live** | `oauth3` | n/a | accounting |
+| `shopify` | **live** | `oauth3` | conditional | ecommerce |
+| `stripe` | **live** | `oauth3` | yes | payments |
+| `paypal` | **planned** | `oauth3` | yes | payments |
+| `square` | **planned** | `oauth3` | yes | payments |
+| `xero` | **planned** | `oauth3` | n/a | accounting |
+| `bigcommerce` | **easy** | `oauth3` | yes | ecommerce |
+| `clio` | **easy** | `oauth3` | n/a | professional |
+| `ebay` | **easy** | `oauth3` | yes | ecommerce |
+| `ecwid` | **easy** | `oauth3` | partial | ecommerce |
+| `harvest` | **easy** | `oauth3` | n/a | professional |
+| `jobber` | **easy** | `oauth3` | n/a | fieldservice |
+| `lightspeed-x` | **easy** | `oauth3` | partial | ecommerce |
+| `servicem8` | **easy** | `oauth3` | n/a | fieldservice |
+| `etsy` | **moderate** | `oauth3` | yes | ecommerce |
+| `clover` | **hard** | `oauth3` | none | retail |
+| `housecallpro` | **hard** | `merchant-keys` | n/a | fieldservice |
+| `servicetitan` | **hard** | `merchant-keys` | n/a | fieldservice |
+| `woocommerce` | **hard** | `merchant-keys` | partial | ecommerce |
+| `ncr-voyix` | **gated** | `partner-gated` | partial | retail |
+| `toast` | **gated** | `client-credentials` | n/a | restaurants |
+| `ehr` | **declined** | `partner-gated` | n/a | medical |
+
+Derived from the [Vertical Connector Survey](https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA),
+researched 2026-09-08. Auth models change; several on this list changed within the year before the survey. Re-verify against vendor documentation before relying on a row.
+
+Three facts from that survey shape this index more than any other:
+
+- **Who issues the credential decides everything.** Three-legged OAuth is a
+  connector; merchant-generated keys are a support burden; a partner agreement is
+  business development. Nothing about the API surface changes that ordering.
+- **An API without settlement data cannot close the books.** Reconciliation needs
+  payouts, not just sales.
+- **The processor is the escape hatch — except in field service**, where embedded
+  payments mean the platform API is the only path to the money.
+
+---
+
 ## Publishers
 
 Who stands behind each entry. **First-party** means the organisation that owns the

@@ -47,6 +47,13 @@ Reconciles one bank or credit-card account for one period. Matches statement lin
 - Assert a zero difference. It is computed by the script or it is red.
 - Guess at an unmatched item — 'unknown' is a question, not a classification.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `quickbooks` | **live** — Connected today | `oauth3` | n/a |
+| `csv` | **local** — Not a connector — files the user supplies | `none` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

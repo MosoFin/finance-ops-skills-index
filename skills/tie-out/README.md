@@ -46,6 +46,13 @@ Ties every balance-sheet account to a source — subledger, statement, or schedu
 - Eyeball a difference. Every comparison is scripted.
 - Post a correcting entry.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `quickbooks` | **live** — Connected today | `oauth3` | n/a |
+| `csv` | **local** — Not a connector — files the user supplies | `none` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

@@ -46,6 +46,13 @@ A rolling forecast where actual months are locked and every forecast line names 
 
 - Overwrite an actual month with a forecast.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `quickbooks` | **live** — Connected today | `oauth3` | n/a |
+| `csv` | **local** — Not a connector — files the user supplies | `none` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

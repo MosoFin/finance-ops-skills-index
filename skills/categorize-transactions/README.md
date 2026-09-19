@@ -45,6 +45,13 @@ Clears uncategorized buckets using the client's own COA rules — never guesses.
 
 - Propose a category on vibes when no rule and no history exist.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `quickbooks` | **live** — Connected today | `oauth3` | n/a |
+| `csv` | **local** — Not a connector — files the user supplies | `none` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

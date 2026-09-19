@@ -20,6 +20,12 @@ Spreadsheet creation and manipulation — formulas, charts, data transformations
 > its source line-by-line and assigned trust tiers. Treat the absence of badges
 > as *unknown*, not as *passing*. Inputs and outputs below are unverified.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `excel` | **local** — Not a connector — files the user supplies | `none` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

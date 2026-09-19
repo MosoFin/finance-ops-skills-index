@@ -25,6 +25,20 @@ A new entry may land as `status: UNGRADED` with just `id`, `title`, `origin`, `s
 `summary`, `systems`, `upstream`, and `license`. That is a real contribution — it puts
 the skill on the map and starts the drift clock. Grading can follow.
 
+## Systems and reachability
+
+`systems:` on an entry must name a key in `connectors.yml`, which records whether that
+data can actually be reached — and at what cost. The build fails on an unknown system
+rather than silently rendering a blank row.
+
+Reachability is not a grade and never substitutes for one. A `gated` or `declined`
+system means the grading above it is academic until the access story changes; the entry
+says so on its own page.
+
+`connectors.yml` is derived from the Vertical Connector Survey and carries its research
+date. Auth models change — re-verify a row against vendor documentation before relying
+on it, and update the date when you do.
+
 ## Grading an entry
 
 **Read the skill's own `SKILL.md`. Do not grade from its description, its README, or

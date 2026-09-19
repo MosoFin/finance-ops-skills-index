@@ -20,6 +20,12 @@ Append rows to a sheet without rewriting it — the safe write for logging close
 > its source line-by-line and assigned trust tiers. Treat the absence of badges
 > as *unknown*, not as *passing*. Inputs and outputs below are unverified.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `google-sheets` | **local** — Not a connector — files the user supplies | `oauth3` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

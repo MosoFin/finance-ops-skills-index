@@ -46,6 +46,12 @@ A stateful month-end checklist for one period. Generates tasks from the client's
 - Run another skill.
 - Post an entry.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `any` | **local** — Not a connector — files the user supplies | `none` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

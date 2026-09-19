@@ -14,6 +14,7 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "sources.yml"
+CONNECTORS = ROOT / "connectors.yml"
 def esc(v) -> str:
     """Escape angle brackets so placeholders like <YYYY-MM> survive Markdown."""
     return str(v).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -152,6 +153,28 @@ def skill_page(skill: dict, meta: dict) -> str:
         L += [f"- {esc(n)}" for n in skill["never"]]
         L += [""]
 
+    conn = meta.get("connectors", {})
+    cstat = meta.get("statuses", {})
+    rows = [(sys_, conn.get(sys_, {})) for sys_ in (skill.get("systems") or [])]
+    if rows:
+        L += ["## Data reachability", "", "| System | Status | Auth | Settlement data |", "|---|---|---|---|"]
+        for name, c in rows:
+            st = c.get("status", "unknown")
+            L += [
+                f"| `{name}` | **{st}** — {cstat.get(st, '')} | `{c.get('auth', '—')}` "
+                f"| {c.get('payouts', '—')} |"
+            ]
+        L += [""]
+        blocked = [n for n, c in rows if c.get("status") in {"gated", "declined"}]
+        costly = [n for n, c in rows if c.get("status") == "hard"]
+        if blocked:
+            L += [f"> **Not reachable.** {', '.join(blocked)} — the grading above is academic until that changes.", ""]
+        elif costly:
+            L += [f"> **Reachable at cost.** {', '.join(costly)} needs per-merchant credentials or a plan upgrade.", ""]
+        notes = [f"- `{n}` — {c['note']}" for n, c in rows if c.get("note")]
+        if notes:
+            L += notes + [""]
+
     L += ["## Host compatibility", ""]
     L += ["| " + " | ".join(PLATFORMS) + " |", "|" + "---|" * len(PLATFORMS)]
     L += ["| " + compat_row(skill) + " |", ""]
@@ -177,6 +200,23 @@ def skill_page(skill: dict, meta: dict) -> str:
         "",
     ]
     return "\n".join(L)
+
+
+def connector_rows(conn: dict) -> list[str]:
+    """Reachability table, worst-reachable last so the good news reads first."""
+    order = ["live", "planned", "easy", "moderate", "hard", "gated", "declined", "local"]
+    rows = []
+    for name, c in sorted(
+        conn["connectors"].items(),
+        key=lambda kv: (order.index(kv[1].get("status", "local")), kv[0]),
+    ):
+        if c.get("status") == "local":
+            continue  # files the user supplies are always reachable; not a connector
+        rows.append(
+            f"| `{name}` | **{c['status']}** | `{c.get('auth', '—')}` "
+            f"| {c.get('payouts', '—')} | {c.get('vertical', '—')} |"
+        )
+    return rows
 
 
 def publisher_rows(skills: list) -> list[str]:
@@ -207,7 +247,7 @@ def publisher_rows(skills: list) -> list[str]:
     return rows
 
 
-def index_page(data: dict) -> str:
+def index_page(data: dict, conn_meta: dict) -> str:
     meta = {**data["meta"], "stages": data["stages"]}
     skills = data["skills"]
     graded = [s for s in skills if s["status"] == "GRADED"]
@@ -264,6 +304,33 @@ def index_page(data: dict) -> str:
         L += [""]
 
     L += [
+        "---",
+        "",
+        "## Data reachability",
+        "",
+        "A grade says what a skill does when it runs. This says whether it can run at all.",
+        "A perfectly graded reconciliation skill is inert when its ledger sits behind a",
+        "partner gate, so reachability is stated beside the grade rather than left for the",
+        "reader to discover.",
+        "",
+        "| System | Status | Auth | Settlement data | Vertical |",
+        "|---|---|---|---|---|",
+        *connector_rows(conn_meta),
+        "",
+        f"Derived from the [{conn_meta['meta']['source']}]({conn_meta['meta']['source_url']}),",
+        f"researched {conn_meta['meta']['researched']}. "
+        + " ".join(conn_meta["meta"]["caveat"].split()),
+        "",
+        "Three facts from that survey shape this index more than any other:",
+        "",
+        "- **Who issues the credential decides everything.** Three-legged OAuth is a",
+        "  connector; merchant-generated keys are a support burden; a partner agreement is",
+        "  business development. Nothing about the API surface changes that ordering.",
+        "- **An API without settlement data cannot close the books.** Reconciliation needs",
+        "  payouts, not just sales.",
+        "- **The processor is the escape hatch — except in field service**, where embedded",
+        "  payments mean the platform API is the only path to the money.",
+        "",
         "---",
         "",
         "## Publishers",
@@ -329,14 +396,30 @@ def index_page(data: dict) -> str:
 
 def main() -> int:
     data = yaml.safe_load(SOURCES.read_text())
-    meta = {**data["meta"], "stages": data["stages"]}
+    conn_meta = yaml.safe_load(CONNECTORS.read_text())
+    meta = {
+        **data["meta"],
+        "stages": data["stages"],
+        "connectors": conn_meta["connectors"],
+        "statuses": conn_meta["statuses"],
+    }
+
+    unknown = {
+        sys_
+        for s in data["skills"]
+        for sys_ in (s.get("systems") or [])
+        if sys_ not in conn_meta["connectors"]
+    }
+    if unknown:
+        print(f"systems with no entry in connectors.yml: {sorted(unknown)}", file=sys.stderr)
+        return 1
     ids = [s["id"] for s in data["skills"]]
     if len(ids) != len(set(ids)):
         dupes = {i for i in ids if ids.count(i) > 1}
         print(f"duplicate ids in sources.yml: {sorted(dupes)}", file=sys.stderr)
         return 1
 
-    (ROOT / "README.md").write_text(index_page(data))
+    (ROOT / "README.md").write_text(index_page(data, conn_meta))
     for skill in data["skills"]:
         d = ROOT / "skills" / skill["id"]
         d.mkdir(parents=True, exist_ok=True)

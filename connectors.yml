@@ -1,0 +1,95 @@
+# Data reachability, derived from the Vertical Connector Survey
+# (https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA, researched 2026-09-08).
+#
+# A skill is only as useful as the data it can reach. A perfectly graded
+# reconciliation skill is inert if its ledger sits behind a partner gate, so the
+# index states reachability next to every grade rather than leaving the reader
+# to discover it.
+#
+# `make add` only ever appends to sources.yml, so this file stays separate and safe.
+
+meta:
+  source: "Vertical Connector Survey"
+  source_url: "https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA"
+  researched: "2026-09-08"
+  caveat: >-
+    Auth models change; several on this list changed within the year before the
+    survey. Re-verify against vendor documentation before relying on a row.
+
+# How a merchant's credential is issued — the fact that decides build cost.
+auth_models:
+  oauth3: "Three-legged OAuth — the merchant clicks Approve. A real connector."
+  merchant-keys: "Merchant generates credentials and pastes them to us. Workable, never pleasant."
+  partner-gated: "A signed agreement precedes technical access. Business development, not engineering."
+  client-credentials: "Our app authenticates as itself; access provisioned out-of-band."
+  none: "No public API."
+
+statuses:
+  live: "Connected today"
+  planned: "On the roadmap, architecture already proven"
+  easy: "Self-serve registration, no merchant-side gate"
+  moderate: "Reachable, with a review queue or a merchant plan gate"
+  hard: "Reachable only at material cost — per-merchant keys, plan upgrades, or fees"
+  gated: "Partner agreement required before any technical evaluation"
+  declined: "Deliberately not pursued"
+  local: "Not a connector — files the user supplies"
+
+connectors:
+  # --- Accounting systems of record -----------------------------------------
+  quickbooks:   {status: live,    auth: oauth3, payouts: n/a, vertical: accounting}
+  xero:         {status: planned, auth: oauth3, payouts: n/a, vertical: accounting,
+                 note: "Rotating refresh tokens — needs atomic persistence."}
+
+  # --- Payment processors: the escape hatch for most verticals ---------------
+  stripe:       {status: live,    auth: oauth3, payouts: "yes", vertical: payments}
+  square:       {status: planned, auth: oauth3, payouts: "yes", vertical: payments,
+                 note: "Priority 1. One connector covers restaurants, retail and dry cleaning."}
+  paypal:       {status: planned, auth: oauth3, payouts: "yes", vertical: payments}
+
+  # --- E-commerce ------------------------------------------------------------
+  shopify:      {status: live,    auth: oauth3, payouts: conditional, vertical: ecommerce,
+                 note: "Payout objects populate only for merchants on Shopify Payments."}
+  bigcommerce:  {status: easy,    auth: oauth3, payouts: "yes", vertical: ecommerce,
+                 note: "Priority 2. Cleanest registration in the survey."}
+  ebay:         {status: easy,    auth: oauth3, payouts: "yes", vertical: ecommerce,
+                 note: "Finances API exposes payouts, fees and refunds outright."}
+  ecwid:        {status: easy,    auth: oauth3, payouts: partial, vertical: ecommerce}
+  lightspeed-x: {status: easy,    auth: oauth3, payouts: partial, vertical: ecommerce}
+  woocommerce:  {status: hard,    auth: merchant-keys, payouts: partial, vertical: ecommerce}
+  etsy:         {status: moderate, auth: oauth3, payouts: "yes", vertical: ecommerce,
+                 note: "Two sequential review queues — file the Personal App early."}
+
+  # --- Professional services: quietly the best-behaved vertical --------------
+  clio:         {status: easy,    auth: oauth3, payouts: n/a, vertical: professional,
+                 note: "Priority 3. Two separate APIs — confirm which carries billing."}
+  harvest:      {status: easy,    auth: oauth3, payouts: n/a, vertical: professional}
+
+  # --- Field service: no processor fallback exists ---------------------------
+  jobber:       {status: easy,    auth: oauth3, payouts: n/a, vertical: fieldservice,
+                 note: "Priority 4. GraphQL only."}
+  servicem8:    {status: easy,    auth: oauth3, payouts: n/a, vertical: fieldservice}
+  servicetitan: {status: hard,    auth: merchant-keys, payouts: n/a, vertical: fieldservice}
+  housecallpro: {status: hard,    auth: merchant-keys, payouts: n/a, vertical: fieldservice,
+                 note: "Merchant must be on the MAX plan before connecting."}
+
+  # --- Gated or declined -----------------------------------------------------
+  toast:        {status: gated,   auth: client-credentials, payouts: n/a, vertical: restaurants,
+                 note: "No consent screen and no redirect flow. Business development, not engineering."}
+  clover:       {status: hard,    auth: oauth3, payouts: none, vertical: retail,
+                 note: "One merchantId and one token per location — a five-store chain is five grants."}
+  ncr-voyix:    {status: gated,   auth: partner-gated, payouts: partial, vertical: retail}
+  ehr:          {status: declined, auth: partner-gated, payouts: n/a, vertical: medical,
+                 note: "PHI means a BAA with every practice. Connect the processor and the ledger instead."}
+
+  # --- Not connectors: the user supplies the file ----------------------------
+  csv:           {status: local, auth: none, payouts: n/a, vertical: files}
+  excel:         {status: local, auth: none, payouts: n/a, vertical: files}
+  pdf:           {status: local, auth: none, payouts: n/a, vertical: files}
+  word:          {status: local, auth: none, payouts: n/a, vertical: files}
+  powerpoint:    {status: local, auth: none, payouts: n/a, vertical: files}
+  images:        {status: local, auth: none, payouts: n/a, vertical: files}
+  any:           {status: local, auth: none, payouts: n/a, vertical: files}
+  google-sheets: {status: local, auth: oauth3, payouts: n/a, vertical: workspace}
+  google-drive:  {status: local, auth: oauth3, payouts: n/a, vertical: workspace}
+  gmail:         {status: local, auth: oauth3, payouts: n/a, vertical: workspace,
+                  note: "Recurring CASA assessment was judged not worth it — see the runbook."}

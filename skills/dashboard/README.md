@@ -46,6 +46,13 @@ One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every fig
 - Invent a KPI definition.
 - Ship a figure that failed its tie-check.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `quickbooks` | **live** — Connected today | `oauth3` | n/a |
+| `csv` | **local** — Not a connector — files the user supplies | `none` | n/a |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

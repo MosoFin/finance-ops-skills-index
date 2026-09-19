@@ -20,6 +20,12 @@ Stripe's own skill for payment flows. The merchant-side counterpart to reconcili
 > its source line-by-line and assigned trust tiers. Treat the absence of badges
 > as *unknown*, not as *passing*. Inputs and outputs below are unverified.
 
+## Data reachability
+
+| System | Status | Auth | Settlement data |
+|---|---|---|---|
+| `stripe` | **live** — Connected today | `oauth3` | yes |
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
