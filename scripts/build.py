@@ -175,13 +175,18 @@ def index_page(data: dict) -> str:
     graded = [s for s in skills if s["status"] == "GRADED"]
     stale = [s for s in graded if is_stale(s, meta["regrade_after_days"])]
     regrade = [s for s in skills if s["status"] == "NEEDS-RE-GRADING"]
+    # Derived from the data, never from wall-clock time: generated output must be
+    # byte-identical on any day sources.yml has not changed, or CI's sync check
+    # fails every day after the commit that produced it.
+    checks = [str(s["last_checked"]) for s in skills if s.get("last_checked")]
+    checked = max(checks) if checks else ""
 
     L = [GENERATED, "", f"# {meta['title']}", "", meta["tagline"], ""]
     L += [
         f"**{len(skills)} skills** · **{len(graded)} graded** · "
         f"**{len(skills) - len(graded)} awaiting grading** · "
-        f"**{len(regrade)} need re-grading** · **{len(stale)} stale** · "
-        f"built {dt.date.today().isoformat()}",
+        f"**{len(regrade)} need re-grading** · **{len(stale)} stale**"
+        + (f" · pointers last checked {checked}" if checked else ""),
         "",
         "Every entry is graded for what happens when it is wrong: whether it can write to",
         "your ledger, whether its numbers are computed or asserted, whether it ends in a",
