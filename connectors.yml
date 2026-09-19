@@ -1,22 +1,32 @@
-# Data reachability, derived from the Vertical Connector Survey
-# (https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA, researched 2026-09-08).
+# The consolidated Mosofin connector candidate list.
 #
-# A skill is only as useful as the data it can reach. A perfectly graded
-# reconciliation skill is inert if its ledger sits behind a partner gate, so the
-# index states reachability next to every grade rather than leaving the reader
-# to discover it.
+# Two sources, deliberately kept apart by the `source` field:
+#   runbook — Connector App Registration (verified 2026-09-06). The committed
+#             roadmap: what is live, what is being filed, with connector_key,
+#             entity, token strategy and lead time. Authoritative.
+#   survey  — Vertical Connector Survey (researched 2026-09-08). The evaluated
+#             pool: platforms assessed but not yet committed to.
 #
-# `make add` only ever appends to sources.yml, so this file stays separate and safe.
+# A skill is only as useful as the data it can reach, so every skill page states
+# the reachability of the systems it needs beside its grade.
+#
+# `make add` only ever appends to sources.yml, so this file stays separate.
 
 meta:
-  source: "Vertical Connector Survey"
-  source_url: "https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA"
-  researched: "2026-09-08"
+  sources:
+    runbook:
+      title: "Connector App Registration"
+      url: "https://claude.ai/artifact/QuroGDp5nbNQfGGPJGFYHD"
+      verified: "2026-09-06"
+    survey:
+      title: "Vertical Connector Survey"
+      url: "https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA"
+      verified: "2026-09-08"
   caveat: >-
-    Auth models change; several on this list changed within the year before the
-    survey. Re-verify against vendor documentation before relying on a row.
+    Re-verify before filing — vendors change auth models, and several on this
+    list changed within the year before research.
 
-# How a merchant's credential is issued — the fact that decides build cost.
+# Who issues the credential — the fact that decides build cost.
 auth_models:
   oauth3: "Three-legged OAuth — the merchant clicks Approve. A real connector."
   merchant-keys: "Merchant generates credentials and pastes them to us. Workable, never pleasant."
@@ -26,70 +36,347 @@ auth_models:
 
 statuses:
   live: "Connected today"
-  planned: "On the roadmap, architecture already proven"
-  easy: "Self-serve registration, no merchant-side gate"
-  moderate: "Reachable, with a review queue or a merchant plan gate"
-  hard: "Reachable only at material cost — per-merchant keys, plan upgrades, or fees"
-  gated: "Partner agreement required before any technical evaluation"
+  code-complete: "Built; blocked on credentials or review, not engineering"
+  roadmap: "Committed — registration runbook written"
+  candidate: "Evaluated, not yet committed"
+  costly: "Reachable only at material cost"
+  gated: "Partner agreement required before technical evaluation"
+  not-recommended: "Assessed and advised against"
   declined: "Deliberately not pursued"
-  local: "Not a connector — files the user supplies"
+  local: "Not a connector — files or destinations"
 
+# Family A = one account per grant. Family B = one grant, many entities behind a picker.
 connectors:
-  # --- Accounting systems of record -----------------------------------------
-  quickbooks:   {status: live,    auth: oauth3, payouts: n/a, vertical: accounting}
-  xero:         {status: planned, auth: oauth3, payouts: n/a, vertical: accounting,
-                 note: "Rotating refresh tokens — needs atomic persistence."}
 
-  # --- Payment processors: the escape hatch for most verticals ---------------
-  stripe:       {status: live,    auth: oauth3, payouts: "yes", vertical: payments}
-  square:       {status: planned, auth: oauth3, payouts: "yes", vertical: payments,
-                 note: "Priority 1. One connector covers restaurants, retail and dry cleaning."}
-  paypal:       {status: planned, auth: oauth3, payouts: "yes", vertical: payments}
+  # ===== Live =============================================================
+  quickbooks:
+    status: live
+    family: A
+    source: runbook
+    auth: oauth3
+    vertical: accounting
+    connector_key: quickbooks
+    entity: "Company — realm_id"
+    token: "1 h access / 100 d refresh (REFRESH)"
+    payouts: n/a
+    note: >-
+      realm_id is not globally unique; uniqueness is (tenant, connector_key,
+      external_datasource_id). Every other connector inherits this rule.
+  stripe:
+    status: live
+    family: A
+    source: runbook
+    auth: oauth3
+    vertical: payments
+    connector_key: stripe
+    entity: "Account — acct_…"
+    token: "Never expires (STATIC)"
+    payouts: "yes"
+    note: >-
+      read_only scope needs Stripe approval; currently authorising read_write
+      and never writing. Prod should launch on read_only.
 
-  # --- E-commerce ------------------------------------------------------------
-  shopify:      {status: live,    auth: oauth3, payouts: conditional, vertical: ecommerce,
-                 note: "Payout objects populate only for merchants on Shopify Payments."}
-  bigcommerce:  {status: easy,    auth: oauth3, payouts: "yes", vertical: ecommerce,
-                 note: "Priority 2. Cleanest registration in the survey."}
-  ebay:         {status: easy,    auth: oauth3, payouts: "yes", vertical: ecommerce,
-                 note: "Finances API exposes payouts, fees and refunds outright."}
-  ecwid:        {status: easy,    auth: oauth3, payouts: partial, vertical: ecommerce}
-  lightspeed-x: {status: easy,    auth: oauth3, payouts: partial, vertical: ecommerce}
-  woocommerce:  {status: hard,    auth: merchant-keys, payouts: partial, vertical: ecommerce}
-  etsy:         {status: moderate, auth: oauth3, payouts: "yes", vertical: ecommerce,
-                 note: "Two sequential review queues — file the Personal App early."}
+  # ===== Built, awaiting review ===========================================
+  shopify:
+    status: code-complete
+    family: A
+    source: runbook
+    auth: oauth3
+    vertical: ecommerce
+    connector_key: shopify
+    entity: "Store — shop_domain"
+    token: "Never expires (STATIC)"
+    lead_time: "2–6 weeks review"
+    payouts: conditional
+    note: >-
+      read_all_orders must be requested or the API silently caps order history
+      at 60 days, breaking close and rec. Payout objects populate only for
+      merchants on Shopify Payments. Public distribution is irreversible.
 
-  # --- Professional services: quietly the best-behaved vertical --------------
-  clio:         {status: easy,    auth: oauth3, payouts: n/a, vertical: professional,
-                 note: "Priority 3. Two separate APIs — confirm which carries billing."}
-  harvest:      {status: easy,    auth: oauth3, payouts: n/a, vertical: professional}
+  # ===== Committed roadmap ================================================
+  meta-ads:
+    status: roadmap
+    family: B
+    source: runbook
+    auth: oauth3
+    vertical: advertising
+    connector_key: meta_ads
+    entity: "Ad account — act_<id>"
+    token: "60 d, no refresh token (EXCHANGE)"
+    lead_time: "1–3 weeks, two independent queues"
+    payouts: n/a
+    note: >-
+      Business Verification and App Review are separate queues — file both in
+      week 1. No refresh token: renew at ~50 days and alert on failure, or the
+      customer re-authorises by hand. Needs ads_read at Advanced Access.
+  google-ads:
+    status: roadmap
+    family: B
+    source: runbook
+    auth: oauth3
+    vertical: advertising
+    connector_key: google_ads
+    entity: "Customer — 10-digit customer_id"
+    token: "1 h access; refresh non-expiring once published"
+    lead_time: "Explorer often instant; Basic ~5 days"
+    payouts: n/a
+    note: >-
+      Explorer tier covers production accounts with no review, so this need not
+      block on approval. While the consent screen is in Testing, refresh tokens
+      expire after 7 days — publish before debugging. Separate Cloud projects
+      for dev and prod are Google policy, not preference.
+  square:
+    status: roadmap
+    family: A
+    source: runbook
+    auth: oauth3
+    vertical: payments
+    connector_key: square_payments
+    entity: "Merchant — merchant_id"
+    token: "30 d access; non-expiring refresh (confidential client)"
+    lead_time: "Sandbox instant"
+    payouts: "yes"
+    note: >-
+      Entity is the merchant, never the location — locations are a reporting
+      dimension, or every store burns a quota seat. One connector covers
+      restaurants, retail and dry cleaning. Marketplace listing not required.
+  paypal:
+    status: roadmap
+    family: A
+    source: runbook
+    auth: oauth3
+    vertical: payments
+    connector_key: paypal
+    entity: "Merchant — payer_id"
+    token: "8 h access + refresh (REFRESH)"
+    lead_time: "None — self-serve"
+    payouts: "yes"
+    note: >-
+      Log in with PayPal, not Partner Referrals — the latter creates new seller
+      accounts. Transaction Search must be ticked or the scope is silently
+      absent from the granted token.
+  xero:
+    status: roadmap
+    family: B
+    source: runbook
+    auth: oauth3
+    vertical: accounting
+    connector_key: xero
+    entity: "Organisation — tenantId"
+    token: "30 min access / 60 d refresh, rotating"
+    lead_time: "Self-serve"
+    payouts: n/a
+    note: "Rotating refresh tokens need atomic persistence — a lost write costs the grant."
+  hubspot:
+    status: roadmap
+    family: A
+    source: runbook
+    auth: oauth3
+    vertical: crm
+    connector_key: hubspot
+    entity: "Portal — hub_id"
+    token: "30 min access + refresh (REFRESH)"
+    lead_time: "Self-serve"
+    payouts: n/a
+    note: >-
+      Legacy public app creation was disabled in 2026 — new public apps require
+      the Projects-based platform via the HubSpot CLI. The only connector here
+      needing a CLI workflow rather than a dashboard registration.
+  klaviyo:
+    status: roadmap
+    family: A
+    source: runbook
+    auth: oauth3
+    vertical: marketing
+    connector_key: klaviyo
+    entity: "Klaviyo account"
+    token: "1 h access; refresh non-rotating, dies at 90 d idle"
+    lead_time: "Self-serve; review only to be listed"
+    payouts: n/a
+  amazon-sp:
+    status: roadmap
+    family: A
+    source: runbook
+    auth: oauth3
+    vertical: ecommerce
+    connector_key: amazon_sp
+    entity: "Selling partner / merchant id"
+    token: "LWA access + refresh (REFRESH)"
+    lead_time: "Weeks–months"
+    payouts: "yes"
+    note: "Longest lead time on the roadmap — file first, build while the clock runs."
 
-  # --- Field service: no processor fallback exists ---------------------------
-  jobber:       {status: easy,    auth: oauth3, payouts: n/a, vertical: fieldservice,
-                 note: "Priority 4. GraphQL only."}
-  servicem8:    {status: easy,    auth: oauth3, payouts: n/a, vertical: fieldservice}
-  servicetitan: {status: hard,    auth: merchant-keys, payouts: n/a, vertical: fieldservice}
-  housecallpro: {status: hard,    auth: merchant-keys, payouts: n/a, vertical: fieldservice,
-                 note: "Merchant must be on the MAX plan before connecting."}
+  # ===== Evaluated, not committed =========================================
+  bigcommerce:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: ecommerce
+    payouts: "yes"
+    note: "Survey priority 2 — cleanest registration found; mirrors the Shopify code."
+  ebay:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: ecommerce
+    payouts: "yes"
+    note: "Finances API exposes payouts, fees and refunds outright."
+  ecwid:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: ecommerce
+    payouts: partial
+  lightspeed-x:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: ecommerce
+    payouts: partial
+    note: "Rotating refresh tokens — same atomic-persistence care as Xero."
+  etsy:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: ecommerce
+    payouts: "yes"
+    note: "Two sequential review queues — file the Personal App early."
+  clio:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: professional
+    payouts: n/a
+    note: "Survey priority 3. Two separate APIs — confirm which carries billing."
+  harvest:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: professional
+    payouts: n/a
+  jobber:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: fieldservice
+    payouts: n/a
+    note: >-
+      Survey priority 4. Field service has no processor fallback — embedded
+      payments mean the platform API is the only path to the money. GraphQL only.
+  servicem8:
+    status: candidate
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: fieldservice
+    payouts: n/a
 
-  # --- Gated or declined -----------------------------------------------------
-  toast:        {status: gated,   auth: client-credentials, payouts: n/a, vertical: restaurants,
-                 note: "No consent screen and no redirect flow. Business development, not engineering."}
-  clover:       {status: hard,    auth: oauth3, payouts: none, vertical: retail,
-                 note: "One merchantId and one token per location — a five-store chain is five grants."}
-  ncr-voyix:    {status: gated,   auth: partner-gated, payouts: partial, vertical: retail}
-  ehr:          {status: declined, auth: partner-gated, payouts: n/a, vertical: medical,
-                 note: "PHI means a BAA with every practice. Connect the processor and the ledger instead."}
+  # ===== Reachable only at cost ===========================================
+  woocommerce:
+    status: costly
+    family: A
+    source: runbook
+    auth: merchant-keys
+    vertical: ecommerce
+    entity: "Store URL — no vendor-issued id"
+    token: "ck_… / cs_… (STATIC)"
+    payouts: partial
+    note: "No registration exists and no revocation signal. Per-merchant key entry."
+  servicetitan:
+    status: costly
+    family: A
+    source: survey
+    auth: merchant-keys
+    vertical: fieldservice
+    payouts: n/a
+    note: "The contractor generates the credentials — the WooCommerce pattern again."
+  housecallpro:
+    status: costly
+    family: A
+    source: survey
+    auth: merchant-keys
+    vertical: fieldservice
+    payouts: n/a
+    note: "Merchant must be on the MAX plan ($299+/mo) before connecting."
+  clover:
+    status: costly
+    family: A
+    source: survey
+    auth: oauth3
+    vertical: retail
+    payouts: none
+    note: "One merchantId and one token per location — a five-store chain is five grants."
 
-  # --- Not connectors: the user supplies the file ----------------------------
-  csv:           {status: local, auth: none, payouts: n/a, vertical: files}
-  excel:         {status: local, auth: none, payouts: n/a, vertical: files}
-  pdf:           {status: local, auth: none, payouts: n/a, vertical: files}
-  word:          {status: local, auth: none, payouts: n/a, vertical: files}
-  powerpoint:    {status: local, auth: none, payouts: n/a, vertical: files}
-  images:        {status: local, auth: none, payouts: n/a, vertical: files}
-  any:           {status: local, auth: none, payouts: n/a, vertical: files}
-  google-sheets: {status: local, auth: oauth3, payouts: n/a, vertical: workspace}
-  google-drive:  {status: local, auth: oauth3, payouts: n/a, vertical: workspace}
-  gmail:         {status: local, auth: oauth3, payouts: n/a, vertical: workspace,
-                  note: "Recurring CASA assessment was judged not worth it — see the runbook."}
+  # ===== Gated, advised against, declined =================================
+  toast:
+    status: gated
+    family: none
+    source: survey
+    auth: client-credentials
+    vertical: restaurants
+    payouts: n/a
+    note: "No consent screen and no redirect flow. Business development, not engineering."
+  ncr-voyix:
+    status: gated
+    family: none
+    source: survey
+    auth: partner-gated
+    vertical: retail
+    payouts: partial
+  gmail:
+    status: not-recommended
+    family: none
+    source: runbook
+    auth: oauth3
+    vertical: workspace
+    entity: "Google account"
+    token: "1 h access + refresh"
+    payouts: n/a
+    note: >-
+      Restricted scope triggers a CASA Tier 2 assessment — $540–1,800/yr,
+      re-assessed annually and indefinitely. The obligation does not shrink if
+      the connector proves unpopular.
+  ehr:
+    status: declined
+    family: none
+    source: survey
+    auth: partner-gated
+    vertical: medical
+    payouts: n/a
+    note: >-
+      PHI means a BAA with every practice, plus HIPAA audit logging and breach
+      obligations that outlive the connector. Connect the processor and the
+      ledger instead.
+
+  # ===== Destinations and files ===========================================
+  google-sheets:
+    status: local
+    family: none
+    source: runbook
+    auth: oauth3
+    vertical: destination
+    payouts: n/a
+    note: "Destination. drive.file scope only — non-sensitive, no review. Deferred to roadmap §5.2."
+  excel:
+    status: local
+    family: none
+    source: runbook
+    auth: oauth3
+    vertical: destination
+    payouts: n/a
+    note: "Destination. Graph delegated permissions, not application. Deferred to roadmap §5.2."
+  google-drive: {status: local, family: none, source: runbook, auth: oauth3, vertical: destination, payouts: n/a}
+  csv:         {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
+  pdf:         {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
+  word:        {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
+  powerpoint:  {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
+  images:      {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
+  any:         {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}

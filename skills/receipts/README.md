@@ -24,8 +24,8 @@ Anthropic's own plugin for turning receipts into structured records. The substan
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `pdf` | **local** — Not a connector — files the user supplies | `none` | n/a |
-| `images` | **local** — Not a connector — files the user supplies | `none` | n/a |
+| `pdf` | **local** — Not a connector — files or destinations | `none` | n/a |
+| `images` | **local** — Not a connector — files or destinations | `none` | n/a |
 
 ## Host compatibility
 

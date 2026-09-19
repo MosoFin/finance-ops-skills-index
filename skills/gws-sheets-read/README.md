@@ -24,7 +24,9 @@ Google Sheets: Read values from a spreadsheet.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `google-sheets` | **local** — Not a connector — files the user supplies | `oauth3` | n/a |
+| `google-sheets` | **local** — Not a connector — files or destinations | `oauth3` | n/a |
+
+- `google-sheets` — Destination. drive.file scope only — non-sensitive, no review. Deferred to roadmap §5.2.
 
 ## Host compatibility
 

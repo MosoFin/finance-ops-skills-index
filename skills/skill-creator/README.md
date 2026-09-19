@@ -24,7 +24,7 @@ Guidance for authoring skills — structure, progressive disclosure, bundled res
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `any` | **local** — Not a connector — files the user supplies | `none` | n/a |
+| `any` | **local** — Not a connector — files or destinations | `none` | n/a |
 
 ## Host compatibility
 

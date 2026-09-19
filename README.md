@@ -185,40 +185,116 @@ Ordered by when you need it, not alphabetically.
 
 ---
 
-## Data reachability
+## Connector pipeline
 
 A grade says what a skill does when it runs. This says whether it can run at all.
 A perfectly graded reconciliation skill is inert when its ledger sits behind a
 partner gate, so reachability is stated beside the grade rather than left for the
 reader to discover.
 
-| System | Status | Auth | Settlement data | Vertical |
-|---|---|---|---|---|
-| `quickbooks` | **live** | `oauth3` | n/a | accounting |
-| `shopify` | **live** | `oauth3` | conditional | ecommerce |
-| `stripe` | **live** | `oauth3` | yes | payments |
-| `paypal` | **planned** | `oauth3` | yes | payments |
-| `square` | **planned** | `oauth3` | yes | payments |
-| `xero` | **planned** | `oauth3` | n/a | accounting |
-| `bigcommerce` | **easy** | `oauth3` | yes | ecommerce |
-| `clio` | **easy** | `oauth3` | n/a | professional |
-| `ebay` | **easy** | `oauth3` | yes | ecommerce |
-| `ecwid` | **easy** | `oauth3` | partial | ecommerce |
-| `harvest` | **easy** | `oauth3` | n/a | professional |
-| `jobber` | **easy** | `oauth3` | n/a | fieldservice |
-| `lightspeed-x` | **easy** | `oauth3` | partial | ecommerce |
-| `servicem8` | **easy** | `oauth3` | n/a | fieldservice |
-| `etsy` | **moderate** | `oauth3` | yes | ecommerce |
-| `clover` | **hard** | `oauth3` | none | retail |
-| `housecallpro` | **hard** | `merchant-keys` | n/a | fieldservice |
-| `servicetitan` | **hard** | `merchant-keys` | n/a | fieldservice |
-| `woocommerce` | **hard** | `merchant-keys` | partial | ecommerce |
-| `ncr-voyix` | **gated** | `partner-gated` | partial | retail |
-| `toast` | **gated** | `client-credentials` | n/a | restaurants |
-| `ehr` | **declined** | `partner-gated` | n/a | medical |
+#### live — Connected today
 
-Derived from the [Vertical Connector Survey](https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA),
-researched 2026-09-08. Auth models change; several on this list changed within the year before the survey. Re-verify against vendor documentation before relying on a row.
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `quickbooks`<br><sub>`quickbooks`</sub> | A | `oauth3` | Company — realm_id | 1 h access / 100 d refresh (REFRESH) | n/a | — |
+| `stripe`<br><sub>`stripe`</sub> | A | `oauth3` | Account — acct_… | Never expires (STATIC) | yes | — |
+
+- **`quickbooks`** — realm_id is not globally unique; uniqueness is (tenant, connector_key, external_datasource_id). Every other connector inherits this rule.
+- **`stripe`** — read_only scope needs Stripe approval; currently authorising read_write and never writing. Prod should launch on read_only.
+
+#### code-complete — Built; blocked on credentials or review, not engineering
+
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `shopify`<br><sub>`shopify`</sub> | A | `oauth3` | Store — shop_domain | Never expires (STATIC) | conditional | 2–6 weeks review |
+
+- **`shopify`** — read_all_orders must be requested or the API silently caps order history at 60 days, breaking close and rec. Payout objects populate only for merchants on Shopify Payments. Public distribution is irreversible.
+
+#### roadmap — Committed — registration runbook written
+
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `amazon-sp`<br><sub>`amazon_sp`</sub> | A | `oauth3` | Selling partner / merchant id | LWA access + refresh (REFRESH) | yes | Weeks–months |
+| `google-ads`<br><sub>`google_ads`</sub> | B | `oauth3` | Customer — 10-digit customer_id | 1 h access; refresh non-expiring once published | n/a | Explorer often instant; Basic ~5 days |
+| `hubspot`<br><sub>`hubspot`</sub> | A | `oauth3` | Portal — hub_id | 30 min access + refresh (REFRESH) | n/a | Self-serve |
+| `klaviyo`<br><sub>`klaviyo`</sub> | A | `oauth3` | Klaviyo account | 1 h access; refresh non-rotating, dies at 90 d idle | n/a | Self-serve; review only to be listed |
+| `meta-ads`<br><sub>`meta_ads`</sub> | B | `oauth3` | Ad account — act_&lt;id&gt; | 60 d, no refresh token (EXCHANGE) | n/a | 1–3 weeks, two independent queues |
+| `paypal`<br><sub>`paypal`</sub> | A | `oauth3` | Merchant — payer_id | 8 h access + refresh (REFRESH) | yes | None — self-serve |
+| `square`<br><sub>`square_payments`</sub> | A | `oauth3` | Merchant — merchant_id | 30 d access; non-expiring refresh (confidential client) | yes | Sandbox instant |
+| `xero`<br><sub>`xero`</sub> | B | `oauth3` | Organisation — tenantId | 30 min access / 60 d refresh, rotating | n/a | Self-serve |
+
+- **`amazon-sp`** — Longest lead time on the roadmap — file first, build while the clock runs.
+- **`google-ads`** — Explorer tier covers production accounts with no review, so this need not block on approval. While the consent screen is in Testing, refresh tokens expire after 7 days — publish before debugging. Separate Cloud projects for dev and prod are Google policy, not preference.
+- **`hubspot`** — Legacy public app creation was disabled in 2026 — new public apps require the Projects-based platform via the HubSpot CLI. The only connector here needing a CLI workflow rather than a dashboard registration.
+- **`meta-ads`** — Business Verification and App Review are separate queues — file both in week 1. No refresh token: renew at ~50 days and alert on failure, or the customer re-authorises by hand. Needs ads_read at Advanced Access.
+- **`paypal`** — Log in with PayPal, not Partner Referrals — the latter creates new seller accounts. Transaction Search must be ticked or the scope is silently absent from the granted token.
+- **`square`** — Entity is the merchant, never the location — locations are a reporting dimension, or every store burns a quota seat. One connector covers restaurants, retail and dry cleaning. Marketplace listing not required.
+- **`xero`** — Rotating refresh tokens need atomic persistence — a lost write costs the grant.
+
+#### candidate — Evaluated, not yet committed
+
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `bigcommerce` | A | `oauth3` | — | — | yes | — |
+| `clio` | A | `oauth3` | — | — | n/a | — |
+| `ebay` | A | `oauth3` | — | — | yes | — |
+| `ecwid` | A | `oauth3` | — | — | partial | — |
+| `etsy` | A | `oauth3` | — | — | yes | — |
+| `harvest` | A | `oauth3` | — | — | n/a | — |
+| `jobber` | A | `oauth3` | — | — | n/a | — |
+| `lightspeed-x` | A | `oauth3` | — | — | partial | — |
+| `servicem8` | A | `oauth3` | — | — | n/a | — |
+
+- **`bigcommerce`** — Survey priority 2 — cleanest registration found; mirrors the Shopify code.
+- **`clio`** — Survey priority 3. Two separate APIs — confirm which carries billing.
+- **`ebay`** — Finances API exposes payouts, fees and refunds outright.
+- **`etsy`** — Two sequential review queues — file the Personal App early.
+- **`jobber`** — Survey priority 4. Field service has no processor fallback — embedded payments mean the platform API is the only path to the money. GraphQL only.
+- **`lightspeed-x`** — Rotating refresh tokens — same atomic-persistence care as Xero.
+
+#### costly — Reachable only at material cost
+
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `clover` | A | `oauth3` | — | — | none | — |
+| `housecallpro` | A | `merchant-keys` | — | — | n/a | — |
+| `servicetitan` | A | `merchant-keys` | — | — | n/a | — |
+| `woocommerce` | A | `merchant-keys` | Store URL — no vendor-issued id | ck_… / cs_… (STATIC) | partial | — |
+
+- **`clover`** — One merchantId and one token per location — a five-store chain is five grants.
+- **`housecallpro`** — Merchant must be on the MAX plan ($299+/mo) before connecting.
+- **`servicetitan`** — The contractor generates the credentials — the WooCommerce pattern again.
+- **`woocommerce`** — No registration exists and no revocation signal. Per-merchant key entry.
+
+#### gated — Partner agreement required before technical evaluation
+
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `ncr-voyix` | none | `partner-gated` | — | — | partial | — |
+| `toast` | none | `client-credentials` | — | — | n/a | — |
+
+- **`toast`** — No consent screen and no redirect flow. Business development, not engineering.
+
+#### not-recommended — Assessed and advised against
+
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `gmail` | none | `oauth3` | Google account | 1 h access + refresh | n/a | — |
+
+- **`gmail`** — Restricted scope triggers a CASA Tier 2 assessment — $540–1,800/yr, re-assessed annually and indefinitely. The obligation does not shrink if the connector proves unpopular.
+
+#### declined — Deliberately not pursued
+
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `ehr` | none | `partner-gated` | — | — | n/a | — |
+
+- **`ehr`** — PHI means a BAA with every practice, plus HIPAA audit logging and breach obligations that outlive the connector. Connect the processor and the ledger instead.
+
+Sources: [Connector App Registration](https://claude.ai/artifact/QuroGDp5nbNQfGGPJGFYHD) (verified 2026-09-06) — the committed
+roadmap, with connector keys, entities and token strategies; and
+[Vertical Connector Survey](https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA) (researched 2026-09-08) — the evaluated
+pool. Re-verify before filing — vendors change auth models, and several on this list changed within the year before research.
 
 Three facts from that survey shape this index more than any other:
 

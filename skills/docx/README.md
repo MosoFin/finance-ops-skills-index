@@ -24,7 +24,7 @@ Create, edit, and analyze Word documents with tracked changes and comments — t
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `word` | **local** — Not a connector — files the user supplies | `none` | n/a |
+| `word` | **local** — Not a connector — files or destinations | `none` | n/a |
 
 ## Host compatibility
 

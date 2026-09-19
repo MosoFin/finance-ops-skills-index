@@ -26,6 +26,8 @@ Matches purchase orders, goods receipts, and vendor invoices line by line across
 |---|---|---|---|
 | `quickbooks` | **live** — Connected today | `oauth3` | n/a |
 
+- `quickbooks` — realm_id is not globally unique; uniqueness is (tenant, connector_key, external_datasource_id). Every other connector inherits this rule.
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

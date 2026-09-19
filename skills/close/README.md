@@ -50,7 +50,7 @@ A stateful month-end checklist for one period. Generates tasks from the client's
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `any` | **local** — Not a connector — files the user supplies | `none` | n/a |
+| `any` | **local** — Not a connector — files or destinations | `none` | n/a |
 
 ## Host compatibility
 

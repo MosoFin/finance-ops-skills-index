@@ -26,6 +26,8 @@ Stripe's own skill for payment flows. The merchant-side counterpart to reconcili
 |---|---|---|---|
 | `stripe` | **live** — Connected today | `oauth3` | yes |
 
+- `stripe` — read_only scope needs Stripe approval; currently authorising read_write and never writing. Prod should launch on read_only.
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

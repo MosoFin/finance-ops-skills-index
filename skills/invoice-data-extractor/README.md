@@ -25,7 +25,9 @@ Extracts structured fields from vendor invoice PDFs and images, then validates e
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
 | `quickbooks` | **live** — Connected today | `oauth3` | n/a |
-| `pdf` | **local** — Not a connector — files the user supplies | `none` | n/a |
+| `pdf` | **local** — Not a connector — files or destinations | `none` | n/a |
+
+- `quickbooks` — realm_id is not globally unique; uniqueness is (tenant, connector_key, external_datasource_id). Every other connector inherits this rule.
 
 ## Host compatibility
 

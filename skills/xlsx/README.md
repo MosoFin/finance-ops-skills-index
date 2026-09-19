@@ -24,7 +24,9 @@ Spreadsheet creation and manipulation — formulas, charts, data transformations
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `excel` | **local** — Not a connector — files the user supplies | `none` | n/a |
+| `excel` | **local** — Not a connector — files or destinations | `oauth3` | n/a |
+
+- `excel` — Destination. Graph delegated permissions, not application. Deferred to roadmap §5.2.
 
 ## Host compatibility
 

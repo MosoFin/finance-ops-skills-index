@@ -202,21 +202,44 @@ def skill_page(skill: dict, meta: dict) -> str:
     return "\n".join(L)
 
 
-def connector_rows(conn: dict) -> list[str]:
-    """Reachability table, worst-reachable last so the good news reads first."""
-    order = ["live", "planned", "easy", "moderate", "hard", "gated", "declined", "local"]
-    rows = []
-    for name, c in sorted(
-        conn["connectors"].items(),
-        key=lambda kv: (order.index(kv[1].get("status", "local")), kv[0]),
-    ):
-        if c.get("status") == "local":
-            continue  # files the user supplies are always reachable; not a connector
-        rows.append(
-            f"| `{name}` | **{c['status']}** | `{c.get('auth', '—')}` "
-            f"| {c.get('payouts', '—')} | {c.get('vertical', '—')} |"
-        )
-    return rows
+STATUS_ORDER = [
+    "live", "code-complete", "roadmap", "candidate",
+    "costly", "gated", "not-recommended", "declined", "local",
+]
+
+
+def connector_section(conn: dict) -> list[str]:
+    """The candidate list, grouped by how committed each connector is."""
+    cs, out = conn["statuses"], []
+    by_status: dict[str, list] = {}
+    for name, c in conn["connectors"].items():
+        by_status.setdefault(c.get("status", "candidate"), []).append((name, c))
+
+    for status in STATUS_ORDER:
+        rows = sorted(by_status.get(status, []))
+        if not rows or status == "local":
+            continue
+        out += [
+            f"#### {status} — {cs.get(status, '')}",
+            "",
+            "| Connector | Family | Auth | Entity | Token | Settlement | Lead time |",
+            "|---|---|---|---|---|---|---|",
+        ]
+        for name, c in rows:
+            key = c.get("connector_key")
+            label = f"`{name}`" + (f"<br><sub>`{key}`</sub>" if key else "")
+            out.append(
+                f"| {label} | {c.get('family', '—')} | `{c.get('auth', '—')}` "
+                f"| {esc(c.get('entity', '—'))} | {esc(c.get('token', '—'))} "
+                f"| {c.get('payouts', '—')} | {esc(c.get('lead_time', '—'))} |"
+            )
+        out.append("")
+        notes = [(n, c["note"]) for n, c in rows if c.get("note")]
+        for n, note in notes:
+            out.append(f"- **`{n}`** — {esc(' '.join(note.split()))}")
+        if notes:
+            out.append("")
+    return out
 
 
 def publisher_rows(skills: list) -> list[str]:
@@ -306,20 +329,22 @@ def index_page(data: dict, conn_meta: dict) -> str:
     L += [
         "---",
         "",
-        "## Data reachability",
+        "## Connector pipeline",
         "",
         "A grade says what a skill does when it runs. This says whether it can run at all.",
         "A perfectly graded reconciliation skill is inert when its ledger sits behind a",
         "partner gate, so reachability is stated beside the grade rather than left for the",
         "reader to discover.",
         "",
-        "| System | Status | Auth | Settlement data | Vertical |",
-        "|---|---|---|---|---|",
-        *connector_rows(conn_meta),
-        "",
-        f"Derived from the [{conn_meta['meta']['source']}]({conn_meta['meta']['source_url']}),",
-        f"researched {conn_meta['meta']['researched']}. "
-        + " ".join(conn_meta["meta"]["caveat"].split()),
+        *connector_section(conn_meta),
+        f"Sources: [{conn_meta['meta']['sources']['runbook']['title']}]"
+        f"({conn_meta['meta']['sources']['runbook']['url']}) "
+        f"(verified {conn_meta['meta']['sources']['runbook']['verified']}) — the committed",
+        "roadmap, with connector keys, entities and token strategies; and",
+        f"[{conn_meta['meta']['sources']['survey']['title']}]"
+        f"({conn_meta['meta']['sources']['survey']['url']}) "
+        f"(researched {conn_meta['meta']['sources']['survey']['verified']}) — the evaluated",
+        "pool. " + " ".join(conn_meta["meta"]["caveat"].split()),
         "",
         "Three facts from that survey shape this index more than any other:",
         "",

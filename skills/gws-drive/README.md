@@ -24,7 +24,7 @@ Google's official Drive skill. Relevant wherever the workpaper archive, client s
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `google-drive` | **local** — Not a connector — files the user supplies | `oauth3` | n/a |
+| `google-drive` | **local** — Not a connector — files or destinations | `oauth3` | n/a |
 
 ## Host compatibility
 

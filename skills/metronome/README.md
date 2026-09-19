@@ -26,6 +26,8 @@ Usage-based billing through Stripe's official toolkit. Where revenue is metered 
 |---|---|---|---|
 | `stripe` | **live** — Connected today | `oauth3` | yes |
 
+- `stripe` — read_only scope needs Stripe approval; currently authorising read_write and never writing. Prod should launch on read_only.
+
 ## Host compatibility
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |

@@ -24,7 +24,7 @@ Extract text, tables, and metadata from PDFs; merge and annotate. Relevant where
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `pdf` | **local** — Not a connector — files the user supplies | `none` | n/a |
+| `pdf` | **local** — Not a connector — files or destinations | `none` | n/a |
 
 ## Host compatibility
 

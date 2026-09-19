@@ -24,7 +24,7 @@ Read, generate, and adjust slides and layouts. Pairs with board-pack when report
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `powerpoint` | **local** — Not a connector — files the user supplies | `none` | n/a |
+| `powerpoint` | **local** — Not a connector — files or destinations | `none` | n/a |
 
 ## Host compatibility
 

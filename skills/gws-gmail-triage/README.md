@@ -24,9 +24,9 @@ Google's official Gmail triage skill. Pairs with aging-review, where the collect
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
-| `gmail` | **local** — Not a connector — files the user supplies | `oauth3` | n/a |
+| `gmail` | **not-recommended** — Assessed and advised against | `oauth3` | n/a |
 
-- `gmail` — Recurring CASA assessment was judged not worth it — see the runbook.
+- `gmail` — Restricted scope triggers a CASA Tier 2 assessment — $540–1,800/yr, re-assessed annually and indefinitely. The obligation does not shrink if the connector proves unpopular.
 
 ## Host compatibility
 
