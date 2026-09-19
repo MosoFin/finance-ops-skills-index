@@ -9,6 +9,7 @@ Guidance for authoring skills — structure, progressive disclosure, bundled res
 | | |
 |---|---|
 | Origin | Third party |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
 | Systems | any |
 | Source | [`anthropics/skills/skills/skill-creator`](https://github.com/anthropics/skills/tree/main/skills/skill-creator) |

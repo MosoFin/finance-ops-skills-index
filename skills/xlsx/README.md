@@ -9,6 +9,7 @@ Spreadsheet creation and manipulation — formulas, charts, data transformations
 | | |
 |---|---|
 | Origin | Third party |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | excel |
 | Source | [`anthropics/skills/skills/xlsx`](https://github.com/anthropics/skills/tree/main/skills/xlsx) |

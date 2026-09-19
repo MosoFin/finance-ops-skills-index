@@ -9,6 +9,7 @@ Matches purchase orders, goods receipts, and vendor invoices line by line across
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
 | Systems | quickbooks |
 | Source | [`MosoFin/mosofin-finance-skills/skills/three-way-match`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/three-way-match) |

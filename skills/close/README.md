@@ -9,6 +9,7 @@ A stateful month-end checklist for one period. Generates tasks from the client's
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 1 — Orchestration |
 | Systems | any |
 | Source | `~/.claude/skills/close` (local) |

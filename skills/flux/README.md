@@ -9,6 +9,7 @@ Period-over-period variance analysis as a disciplined loop — isolate, drill, h
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/flux` (local) |

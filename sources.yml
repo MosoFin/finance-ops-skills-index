@@ -24,6 +24,7 @@ skills:
   - id: onboard-client
     title: Onboard Client
     origin: mosofin-workspace
+    authority: first-party
     stage: 0
     summary: >-
       Interviews you about a company and scaffolds the client workspace every other
@@ -60,6 +61,7 @@ skills:
   - id: grill-my-coa
     title: Grill My COA
     origin: mosofin-workspace
+    authority: first-party
     stage: 0
     summary: >-
       Relentless interview about your chart of accounts until every account has one
@@ -90,6 +92,7 @@ skills:
   - id: close
     title: Close
     origin: mosofin-workspace
+    authority: first-party
     stage: 1
     summary: >-
       A stateful month-end checklist for one period. Generates tasks from the client's
@@ -123,6 +126,7 @@ skills:
   - id: categorize-transactions
     title: Categorize Transactions
     origin: mosofin-workspace
+    authority: first-party
     stage: 2
     summary: >-
       Clears uncategorized buckets using the client's own COA rules — never guesses.
@@ -155,6 +159,7 @@ skills:
   - id: bank-rec
     title: Bank Rec
     origin: mosofin-workspace
+    authority: first-party
     stage: 3
     summary: >-
       Reconciles one bank or credit-card account for one period. Matches statement
@@ -189,6 +194,7 @@ skills:
   - id: aging-review
     title: Aging Review
     origin: mosofin-workspace
+    authority: first-party
     stage: 3
     summary: >-
       Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and
@@ -223,6 +229,7 @@ skills:
   - id: accruals
     title: Accruals
     origin: mosofin-workspace
+    authority: first-party
     stage: 4
     summary: >-
       Proposes and reviews accruals, prepaid amortization, and deferrals for a period —
@@ -257,6 +264,7 @@ skills:
   - id: tie-out
     title: Tie-Out
     origin: mosofin-workspace
+    authority: first-party
     stage: 5
     summary: >-
       Ties every balance-sheet account to a source — subledger, statement, or schedule —
@@ -289,6 +297,7 @@ skills:
   - id: je-review
     title: JE Review
     origin: mosofin-workspace
+    authority: first-party
     stage: 5
     summary: >-
       The skeptical second pair of eyes on everything posted this period — round
@@ -320,6 +329,7 @@ skills:
   - id: flux
     title: Flux
     origin: mosofin-workspace
+    authority: first-party
     stage: 5
     summary: >-
       Period-over-period variance analysis as a disciplined loop — isolate, drill,
@@ -354,6 +364,7 @@ skills:
   - id: budget-vs-actuals
     title: Budget vs Actuals
     origin: mosofin-workspace
+    authority: first-party
     stage: 6
     summary: >-
       Builds a BvA table with scripted variance math, separates timing from true
@@ -386,6 +397,7 @@ skills:
   - id: dashboard
     title: Dashboard
     origin: mosofin-workspace
+    authority: first-party
     stage: 6
     summary: >-
       One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every figure
@@ -419,6 +431,7 @@ skills:
   - id: board-pack
     title: Board Pack
     origin: mosofin-workspace
+    authority: first-party
     stage: 6
     summary: >-
       Assembles the period's existing close artifacts into a board or management pack.
@@ -454,6 +467,7 @@ skills:
   - id: explain-to-client
     title: Explain To Client
     origin: mosofin-workspace
+    authority: first-party
     stage: 6
     summary: >-
       Translates a result, statement, or decision into plain language pitched at the
@@ -485,6 +499,7 @@ skills:
   - id: cash-flow
     title: Cash Flow
     origin: mosofin-workspace
+    authority: first-party
     stage: 7
     summary: >-
       A 13-week cash projection built from open A/R and A/P, recurring items mined from
@@ -519,6 +534,7 @@ skills:
   - id: forecast
     title: Forecast
     origin: mosofin-workspace
+    authority: first-party
     stage: 7
     summary: >-
       A rolling forecast where actual months are locked and every forecast line names
@@ -558,6 +574,7 @@ skills:
   - id: month-end-close-checklist
     title: Month-End Close Checklist
     origin: mosofin-published
+    authority: first-party
     stage: 1
     summary: >-
       Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the
@@ -576,6 +593,7 @@ skills:
   - id: bank-reconciliation
     title: Bank Reconciliation
     origin: mosofin-published
+    authority: first-party
     stage: 3
     summary: >-
       Reconciles a cash GL to bank statements for a period. Builds the complete book
@@ -593,6 +611,7 @@ skills:
   - id: ar-aging-and-collections
     title: A/R Aging and Collections
     origin: mosofin-published
+    authority: first-party
     stage: 3
     summary: >-
       Pulls live A/R, builds and reconciles an aging, prioritizes collections,
@@ -610,6 +629,7 @@ skills:
   - id: gl-coding-assistant
     title: GL Coding Assistant
     origin: mosofin-published
+    authority: first-party
     stage: 2
     summary: >-
       Assigns GL accounts, expense categories, and tax codes against the real chart of
@@ -627,6 +647,7 @@ skills:
   - id: journal-entry-builder
     title: Journal Entry Builder
     origin: mosofin-published
+    authority: first-party
     stage: 4
     summary: >-
       Constructs, formats, and validates journal entries against the real chart of
@@ -644,6 +665,7 @@ skills:
   - id: financial-statement-builder
     title: Financial Statement Builder
     origin: mosofin-published
+    authority: first-party
     stage: 6
     summary: >-
       Builds Balance Sheet, Income Statement, and Statement of Cash Flows with
@@ -661,6 +683,7 @@ skills:
   - id: duplicate-invoice-detection
     title: Duplicate Invoice Detection
     origin: mosofin-published
+    authority: first-party
     stage: 5
     summary: >-
       Ten detection rules for duplicate and fraudulent AP invoices run against live
@@ -678,6 +701,7 @@ skills:
   - id: three-way-match
     title: Three-Way Match
     origin: mosofin-published
+    authority: first-party
     stage: 5
     summary: >-
       Matches purchase orders, goods receipts, and vendor invoices line by line across
@@ -695,6 +719,7 @@ skills:
   - id: invoice-data-extractor
     title: Invoice Data Extractor
     origin: mosofin-published
+    authority: first-party
     stage: 2
     summary: >-
       Extracts structured fields from vendor invoice PDFs and images, then validates
@@ -712,6 +737,7 @@ skills:
   - id: expense-report-processor
     title: Expense Report Processor
     origin: mosofin-published
+    authority: first-party
     stage: 2
     summary: >-
       Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others —
@@ -735,6 +761,7 @@ skills:
   - id: xlsx
     title: xlsx
     origin: third-party
+    authority: first-party
     stage: 6
     summary: >-
       Spreadsheet creation and manipulation — formulas, charts, data transformations.
@@ -752,6 +779,7 @@ skills:
   - id: pdf
     title: pdf
     origin: third-party
+    authority: first-party
     stage: 2
     summary: >-
       Extract text, tables, and metadata from PDFs; merge and annotate. Relevant
@@ -769,6 +797,7 @@ skills:
   - id: docx
     title: docx
     origin: third-party
+    authority: first-party
     stage: 6
     summary: >-
       Create, edit, and analyze Word documents with tracked changes and comments —
@@ -786,6 +815,7 @@ skills:
   - id: pptx
     title: pptx
     origin: third-party
+    authority: first-party
     stage: 6
     summary: >-
       Read, generate, and adjust slides and layouts. Pairs with board-pack when
@@ -803,6 +833,7 @@ skills:
   - id: skill-creator
     title: skill-creator
     origin: third-party
+    authority: first-party
     stage: 0
     summary: >-
       Guidance for authoring skills — structure, progressive disclosure, bundled
@@ -817,3 +848,145 @@ skills:
     upstream_sha: b9e19e6f4477
     last_checked: 2026-09-19
     license_hash: sha256:bc6b3af2f331cbc7
+
+  # ---------------------------------------------------------------------------
+  # First-party skills from other vendors — published by the organisation that
+  # owns the product, the same standing as anthropics/skills. All permissively
+  # licensed, so these MAY be vendored; kept as pointers until there is a reason.
+  # ---------------------------------------------------------------------------
+
+  - id: receipts
+    title: Receipts
+    origin: third-party
+    authority: first-party
+    stage: 2
+    summary: >-
+      Anthropic's own plugin for turning receipts into structured records. The
+      substantiation end of expense work, upstream of coding and posting.
+    tiers: []
+    systems: [pdf, images]
+    upstream: {repo: "anthropics/claude-plugins-official", path: "plugins/receipts/skills/receipts", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:5b2f407ff4063972
+    upstream_sha: 2476d52abc96
+    last_checked: 2026-09-19
+  - id: gws-sheets
+    title: Google Sheets (gws-sheets)
+    origin: third-party
+    authority: first-party
+    stage: 6
+    summary: >-
+      Google's official Workspace CLI skill for Sheets. Where most schedules,
+      tie-out workpapers and hand-built budgets actually live.
+    tiers: []
+    systems: [google-sheets]
+    upstream: {repo: "googleworkspace/cli", path: "skills/gws-sheets", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:e0db8bb632b3425b
+    upstream_sha: 705fb0ecac6f
+    last_checked: 2026-09-19
+  - id: gws-sheets-append
+    title: Google Sheets append (gws-sheets-append)
+    origin: third-party
+    authority: first-party
+    stage: 6
+    summary: >-
+      Append rows to a sheet without rewriting it — the safe write for logging
+      close artifacts, categorization decisions, or a running schedule.
+    tiers: []
+    systems: [google-sheets]
+    upstream: {repo: "googleworkspace/cli", path: "skills/gws-sheets-append", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:ef337f5249f50ef0
+    upstream_sha: a3768d0e82ad
+    last_checked: 2026-09-19
+  - id: gws-drive
+    title: Google Drive (gws-drive)
+    origin: third-party
+    authority: first-party
+    stage: 0
+    summary: >-
+      Google's official Drive skill. Relevant wherever the workpaper archive,
+      client statements and PBC documents live outside the ledger.
+    tiers: []
+    systems: [google-drive]
+    upstream: {repo: "googleworkspace/cli", path: "skills/gws-drive", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:d37fad56bb9547d2
+    upstream_sha: 705fb0ecac6f
+    last_checked: 2026-09-19
+  - id: gws-gmail-triage
+    title: Gmail triage (gws-gmail-triage)
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      Google's official Gmail triage skill. Pairs with aging-review, where the
+      collections follow-up and the client's reply both arrive by mail.
+    tiers: []
+    systems: [gmail]
+    upstream: {repo: "googleworkspace/cli", path: "skills/gws-gmail-triage", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:48b0512b3ffa718a
+    upstream_sha: 705fb0ecac6f
+    last_checked: 2026-09-19
+  - id: stripe-pay
+    title: Stripe Pay
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      Stripe's own skill for payment flows. The merchant-side counterpart to
+      reconciling Stripe settlements and fees against the ledger.
+    tiers: []
+    systems: [stripe]
+    upstream: {repo: "stripe/ai", path: "providers/claude/plugin/skills/stripe-pay", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:2a085814fdb5f8a4
+    upstream_sha: 9dde68ae5ef3
+    last_checked: 2026-09-19
+  - id: metronome
+    title: Metronome billing
+    origin: third-party
+    authority: first-party
+    stage: 7
+    summary: >-
+      Usage-based billing through Stripe's official toolkit. Where revenue is
+      metered rather than invoiced, this is upstream of every revenue number.
+    tiers: []
+    systems: [stripe]
+    upstream: {repo: "stripe/ai", path: "providers/claude/plugin/skills/metronome", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:62220ba4b5d261bc
+    upstream_sha: 82d5d332c2ef
+    last_checked: 2026-09-19
+  - id: gws-sheets-read
+    title: gws-sheets-read
+    origin: third-party
+    authority: first-party
+    stage: 6
+    summary: >-
+      Google Sheets: Read values from a spreadsheet.
+    tiers: []
+    systems: [google-sheets]
+    upstream: {repo: "googleworkspace/cli", path: "skills/gws-sheets-read", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:2308eab564907f4d
+    upstream_sha: 705fb0ecac6f
+    last_checked: 2026-09-19

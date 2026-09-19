@@ -9,6 +9,7 @@ Clears uncategorized buckets using the client's own COA rules — never guesses.
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/categorize-transactions` (local) |

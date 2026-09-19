@@ -9,6 +9,7 @@ Relentless interview about your chart of accounts until every account has one cl
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/grill-my-coa` (local) |

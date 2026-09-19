@@ -9,6 +9,7 @@ Extracts structured fields from vendor invoice PDFs and images, then validates e
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | quickbooks, pdf |
 | Source | [`MosoFin/mosofin-finance-skills/skills/invoice-data-extractor`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/invoice-data-extractor) |

@@ -9,6 +9,7 @@ Proposes and reviews accruals, prepaid amortization, and deferrals for a period 
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/accruals` (local) |

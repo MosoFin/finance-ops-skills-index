@@ -9,6 +9,7 @@ Assembles the period's existing close artifacts into a board or management pack.
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/board-pack` (local) |

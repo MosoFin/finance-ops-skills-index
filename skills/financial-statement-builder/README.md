@@ -9,6 +9,7 @@ Builds Balance Sheet, Income Statement, and Statement of Cash Flows with compara
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | quickbooks |
 | Source | [`MosoFin/mosofin-finance-skills/skills/financial-statement-builder`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder) |

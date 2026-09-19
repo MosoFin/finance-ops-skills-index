@@ -9,6 +9,7 @@ Builds a BvA table with scripted variance math, separates timing from true varia
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/budget-vs-actuals` (local) |

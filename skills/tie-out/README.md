@@ -9,6 +9,7 @@ Ties every balance-sheet account to a source — subledger, statement, or schedu
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/tie-out` (local) |

@@ -4,7 +4,7 @@
 
 A graded, continuously-verified index of agent skills for accounting and finance.
 
-**31 skills** · **16 graded** · **15 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-19
+**39 skills** · **16 graded** · **23 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-19
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -36,6 +36,9 @@ Ordered by when you need it, not alphabetically.
 - **[Onboard Client](skills/onboard-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   Interviews you about a company and scaffolds the client workspace every other finance skill reads — profile, glossary, chart-of-accounts rulebook, close calendar, materiality thresholds, report preferences.
+- **[Google Drive (gws-drive)](skills/gws-drive/README.md)** — Third party  
+  `UNGRADED`  
+  Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
 - **[skill-creator](skills/skill-creator/README.md)** — Third party  
   `UNGRADED`  
   Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
@@ -70,6 +73,9 @@ Ordered by when you need it, not alphabetically.
 - **[pdf](skills/pdf/README.md)** — Third party  
   `UNGRADED`  
   Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
+- **[Receipts](skills/receipts/README.md)** — Third party  
+  `UNGRADED`  
+  Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
 
 ### 3 · Reconcile
 
@@ -87,6 +93,12 @@ Ordered by when you need it, not alphabetically.
 - **[Bank Reconciliation](skills/bank-reconciliation/README.md)** — Mosofin published  
   `UNGRADED`  
   Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
+- **[Gmail triage (gws-gmail-triage)](skills/gws-gmail-triage/README.md)** — Third party  
+  `UNGRADED`  
+  Google's official Gmail triage skill. Pairs with aging-review, where the collections follow-up and the client's reply both arrive by mail.
+- **[Stripe Pay](skills/stripe-pay/README.md)** — Third party  
+  `UNGRADED`  
+  Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
 
 ### 4 · Adjust
 
@@ -141,6 +153,15 @@ Ordered by when you need it, not alphabetically.
 - **[Financial Statement Builder](skills/financial-statement-builder/README.md)** — Mosofin published  
   `UNGRADED`  
   Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
+- **[Google Sheets (gws-sheets)](skills/gws-sheets/README.md)** — Third party  
+  `UNGRADED`  
+  Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers and hand-built budgets actually live.
+- **[Google Sheets append (gws-sheets-append)](skills/gws-sheets-append/README.md)** — Third party  
+  `UNGRADED`  
+  Append rows to a sheet without rewriting it — the safe write for logging close artifacts, categorization decisions, or a running schedule.
+- **[gws-sheets-read](skills/gws-sheets-read/README.md)** — Third party  
+  `UNGRADED`  
+  Google Sheets: Read values from a spreadsheet.
 - **[pptx](skills/pptx/README.md)** — Third party  
   `UNGRADED`  
   Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
@@ -158,6 +179,31 @@ Ordered by when you need it, not alphabetically.
 - **[Forecast](skills/forecast/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   A rolling forecast where actual months are locked and every forecast line names its driver — run-rate, growth, contract, seasonal, or manual with a stated reason. Assumption changes are logged as decision records.
+- **[Metronome billing](skills/metronome/README.md)** — Third party  
+  `UNGRADED`  
+  Usage-based billing through Stripe's official toolkit. Where revenue is metered rather than invoiced, this is upstream of every revenue number.
+
+---
+
+## Publishers
+
+Who stands behind each entry. **First-party** means the organisation that owns the
+product published the skill itself — the standing `anthropics/skills` has for Claude.
+It is a statement about provenance, not about quality, and it is never a substitute
+for a grade.
+
+| Publisher | Entries | Authority | Licence | Vendorable |
+|---|---|---|---|---|
+| Mosofin (local workspace) | 16 | first-party | `proprietary-mosofin` | no — restricted |
+| [`MosoFin/mosofin-finance-skills`](https://github.com/MosoFin/mosofin-finance-skills) | 10 | first-party | `agpl-3.0` | no — copyleft |
+| [`anthropics/skills`](https://github.com/anthropics/skills) | 5 | first-party | `proprietary-anthropic` | no — restricted |
+| [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 5 | first-party | `apache-2.0` | yes |
+| [`stripe/ai`](https://github.com/stripe/ai) | 2 | first-party | `mit` | yes |
+| [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) | 1 | first-party | `apache-2.0` | yes |
+
+No accounting or bookkeeping vendor — Intuit, Xero, Plaid, Ramp, Brex, Square,
+PayPal — publishes first-party agent skills at the time of writing. The finance
+vertical has no official publisher yet. That is the gap this index exists to fill.
 
 ---
 
@@ -172,9 +218,15 @@ skills/<id>/README.md    generated — purpose, inputs, outputs, limits
 ```
 
 ```bash
-python3 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
-./.venv/bin/python scripts/build.py
+make setup                                    # once
+make add URL=<github url of a skill> STAGE=6  # add an entry, baseline it, rebuild
+make drift                                    # re-check every pointer
+make build                                    # regenerate the docs
 ```
+
+`make add` reads the upstream `SKILL.md` frontmatter and the repository licence,
+writes a correctly-shaped `UNGRADED` entry, records its drift baseline, and rebuilds.
+It never assigns a trust tier — that is the one step a person has to do.
 
 ## Licensing and why nothing is vendored
 

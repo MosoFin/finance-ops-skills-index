@@ -9,6 +9,7 @@ Assigns GL accounts, expense categories, and tax codes against the real chart of
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | quickbooks |
 | Source | [`MosoFin/mosofin-finance-skills/skills/gl-coding-assistant`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant) |

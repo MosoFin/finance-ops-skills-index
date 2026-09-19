@@ -9,6 +9,7 @@ Constructs, formats, and validates journal entries against the real chart of acc
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
 | Systems | quickbooks |
 | Source | [`MosoFin/mosofin-finance-skills/skills/journal-entry-builder`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder) |

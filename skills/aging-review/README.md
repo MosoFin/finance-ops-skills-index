@@ -9,6 +9,7 @@ Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and cr
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/aging-review` (local) |

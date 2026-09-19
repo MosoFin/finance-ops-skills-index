@@ -9,6 +9,7 @@ A rolling forecast where actual months are locked and every forecast line names 
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 7 — Forward-looking |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/forecast` (local) |

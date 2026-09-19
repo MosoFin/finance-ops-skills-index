@@ -9,6 +9,7 @@ Interviews you about a company and scaffolds the client workspace every other fi
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/onboard-client` (local) |

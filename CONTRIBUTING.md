@@ -4,16 +4,22 @@ The list is cheap. The grade is the product. Most of this document is about grad
 
 ## Adding an entry
 
-1. Add a block to `sources.yml`. Never create or edit a file under `skills/` — those
-   are generated.
-2. Run the build and the drift check:
+```bash
+make setup                                                   # once
+make add URL=https://github.com/owner/repo/tree/main/skills/x STAGE=3 AUTHORITY=first-party
+```
 
-   ```bash
-   ./.venv/bin/python scripts/build.py
-   GITHUB_TOKEN=$(gh auth token) ./.venv/bin/python scripts/check_drift.py --write
-   ```
-3. Commit `sources.yml` together with the regenerated files. CI rejects a pull request
-   where they disagree.
+That reads the upstream `SKILL.md` frontmatter and the repository licence, appends a
+correctly-shaped entry to `sources.yml`, records its drift baseline, and regenerates
+the docs. Commit `sources.yml` together with the rebuilt files — CI rejects a pull
+request where they disagree.
+
+Never create or edit a file under `skills/`; they are generated.
+
+`STAGE` is 0-7 (see `stages` in `sources.yml`) — roughly, when in the close you reach
+for it. `AUTHORITY` is `first-party` when the organisation that owns the product
+published the skill itself, `notable` for a widely-used author who is not the product
+owner, `community` otherwise. Provenance is not quality, and neither is a grade.
 
 A new entry may land as `status: UNGRADED` with just `id`, `title`, `origin`, `stage`,
 `summary`, `systems`, `upstream`, and `license`. That is a real contribution — it puts

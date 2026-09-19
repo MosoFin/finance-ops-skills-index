@@ -9,6 +9,7 @@ One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every fig
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/dashboard` (local) |

@@ -9,6 +9,7 @@ Pulls live A/R, builds and reconciles an aging, prioritizes collections, calcula
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | quickbooks |
 | Source | [`MosoFin/mosofin-finance-skills/skills/ar-aging-and-collections`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections) |

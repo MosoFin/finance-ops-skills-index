@@ -9,6 +9,7 @@ Create, edit, and analyze Word documents with tracked changes and comments — t
 | | |
 |---|---|
 | Origin | Third party |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | word |
 | Source | [`anthropics/skills/skills/docx`](https://github.com/anthropics/skills/tree/main/skills/docx) |

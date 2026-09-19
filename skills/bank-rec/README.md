@@ -9,6 +9,7 @@ Reconciles one bank or credit-card account for one period. Matches statement lin
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | quickbooks, csv |
 | Source | `~/.claude/skills/bank-rec` (local) |
