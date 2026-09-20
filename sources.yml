@@ -589,7 +589,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:2fec514402ed928d
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: bank-reconciliation
     title: Bank Reconciliation
     origin: mosofin-published
@@ -607,7 +607,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:31a56e737c65229c
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: ar-aging-and-collections
     title: A/R Aging and Collections
     origin: mosofin-published
@@ -625,7 +625,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:c381b58714db19ba
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: gl-coding-assistant
     title: GL Coding Assistant
     origin: mosofin-published
@@ -643,7 +643,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:b0709543fe75304e
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: journal-entry-builder
     title: Journal Entry Builder
     origin: mosofin-published
@@ -661,7 +661,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:2e205addcb3b2e1a
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: financial-statement-builder
     title: Financial Statement Builder
     origin: mosofin-published
@@ -679,7 +679,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:0edd578122d3c364
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: duplicate-invoice-detection
     title: Duplicate Invoice Detection
     origin: mosofin-published
@@ -697,7 +697,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:5594c83387a77ab5
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: three-way-match
     title: Three-Way Match
     origin: mosofin-published
@@ -715,7 +715,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:2a4e014df4600db4
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: invoice-data-extractor
     title: Invoice Data Extractor
     origin: mosofin-published
@@ -733,7 +733,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:2e056d89c2ac2261
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: expense-report-processor
     title: Expense Report Processor
     origin: mosofin-published
@@ -757,7 +757,7 @@ skills:
   # ---------------------------------------------------------------------------
     skill_md_hash: sha256:d6c63a0d1e2b9d3f
     upstream_sha: ac12d064e857
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: xlsx
     title: xlsx
     origin: third-party
@@ -774,7 +774,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:6712b39718fe8150
     upstream_sha: fa0fa64bdc96
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
     license_hash: sha256:79f6d8f5b427252f
   - id: pdf
     title: pdf
@@ -792,7 +792,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:9f78b8359fbd4943
     upstream_sha: 1ed29a03dc85
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
     license_hash: sha256:79f6d8f5b427252f
   - id: docx
     title: docx
@@ -810,7 +810,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:8017469ea95fb7d2
     upstream_sha: fa0fa64bdc96
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
     license_hash: sha256:79f6d8f5b427252f
   - id: pptx
     title: pptx
@@ -828,7 +828,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:a7ff03e2c85b636f
     upstream_sha: fa0fa64bdc96
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
     license_hash: sha256:79f6d8f5b427252f
   - id: skill-creator
     title: skill-creator
@@ -846,7 +846,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:dcd4803e61e913e6
     upstream_sha: b9e19e6f4477
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
     license_hash: sha256:bc6b3af2f331cbc7
 
   # ---------------------------------------------------------------------------
@@ -871,7 +871,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:5b2f407ff4063972
     upstream_sha: 2476d52abc96
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: gws-sheets
     title: Google Sheets (gws-sheets)
     origin: third-party
@@ -888,7 +888,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:e0db8bb632b3425b
     upstream_sha: 705fb0ecac6f
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: gws-sheets-append
     title: Google Sheets append (gws-sheets-append)
     origin: third-party
@@ -905,7 +905,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:ef337f5249f50ef0
     upstream_sha: a3768d0e82ad
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: gws-drive
     title: Google Drive (gws-drive)
     origin: third-party
@@ -922,7 +922,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:d37fad56bb9547d2
     upstream_sha: 705fb0ecac6f
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: gws-gmail-triage
     title: Gmail triage (gws-gmail-triage)
     origin: third-party
@@ -939,7 +939,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:48b0512b3ffa718a
     upstream_sha: 705fb0ecac6f
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: stripe-pay
     title: Stripe Pay
     origin: third-party
@@ -956,7 +956,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:2a085814fdb5f8a4
     upstream_sha: 9dde68ae5ef3
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: metronome
     title: Metronome billing
     origin: third-party
@@ -973,7 +973,7 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:62220ba4b5d261bc
     upstream_sha: 82d5d332c2ef
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20
   - id: gws-sheets-read
     title: gws-sheets-read
     origin: third-party
@@ -989,4 +989,4 @@ skills:
     status: UNGRADED
     skill_md_hash: sha256:2308eab564907f4d
     upstream_sha: 705fb0ecac6f
-    last_checked: 2026-09-19
+    last_checked: 2026-09-20

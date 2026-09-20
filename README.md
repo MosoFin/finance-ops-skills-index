@@ -4,7 +4,7 @@
 
 A graded, continuously-verified index of agent skills for accounting and finance.
 
-**39 skills** · **16 graded** · **23 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-19
+**39 skills** · **16 graded** · **23 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
