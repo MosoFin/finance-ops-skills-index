@@ -5,16 +5,39 @@ authority: first-party
 stage: 2
 summary: Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations
   for the full account picture.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: States it outright. Any write that follows a lookup is gated by hs-bulk-operations.
+  EVIDENCE-GATED: Schemas drift, so properties are read from the live schema rather than a
+    hardcoded table.
 systems:
 - hubspot
+inputs:
+- name: identifier
+  required: true
+  source: record ID, email, domain or name fragment
+  fallback: none
+- name: live property schema
+  required: true
+  source: hubspot properties list --type <type>
+  fallback: none — do not hardcode
+outputs:
+- name: records and associations
+  type: JSONL
+  dest: stdout — the full account picture across associated objects
+never:
+- Write. Any write belongs to the gated flow in hs-bulk-operations.
+- Hardcode a property table across portals.
 upstream:
   repo: HubSpot/agent-cli-skills
   path: crm-lookup
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:579bd26b13828ebc
 upstream_sha: 5b773165f0c8
 last_checked: 2026-09-20

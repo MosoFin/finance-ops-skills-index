@@ -5,16 +5,41 @@ authority: first-party
 stage: 6
 summary: Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers
   and hand-built budgets actually live.
-tiers: []
+tiers:
+- WRITES-DIRECT
+tier_notes:
+  WRITES-DIRECT: Exposes the full Sheets v4 surface including create and batchUpdate, and
+    states no confirmation requirement at this level — unlike its own +append helper, which
+    does. Graded on what it says, not on what a careful operator would do.
 systems:
 - google-sheets
+inputs:
+- name: resource and method
+  required: true
+  source: gws sheets --help, then gws schema sheets.<resource>.<method>
+  fallback: none — inspect the method before calling it
+- name: --params / --json
+  required: true
+  source: built from the schema output
+  fallback: none
+outputs:
+- name: API response
+  type: JSON
+  dest: stdout
+- name: spreadsheet changes
+  type: write
+  dest: create, batchUpdate and values writes all reachable from here
+never:
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade
+  covers this file only; the safety rules it defers to are unreviewed.
 upstream:
   repo: googleworkspace/cli
   path: skills/gws-sheets
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:e0db8bb632b3425b
 upstream_sha: 705fb0ecac6f
 last_checked: 2026-09-20

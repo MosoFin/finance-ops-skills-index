@@ -29,7 +29,7 @@ Drive itself. See google-sheets for the rest.
 
 **0 · Setup**
 
-- [Google Drive (gws-drive)](../../skills/gws-drive/README.md) — `UNGRADED`
+- [Google Drive (gws-drive)](../../skills/gws-drive/README.md) — `GRADED` `WRITES-DIRECT`
 
 ---
 

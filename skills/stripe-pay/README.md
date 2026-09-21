@@ -2,7 +2,7 @@
 
 # Stripe Pay
 
-`UNGRADED`
+`GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
 
@@ -15,10 +15,35 @@ Stripe's own skill for payment flows. The merchant-side counterpart to reconcili
 | Source | [`stripe/ai/providers/claude/plugin/skills/stripe-pay`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-pay) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`MOVES-MONEY`** — `stripe pay` transfers funds from the authenticated Stripe business to another. This is the only entry in the index that moves real money, and the reason the badge exists.
+- **`HUMAN-APPROVAL`** — The exact command must be shown and confirmed before running, `--agent` or `--json` used first so the transfer can be reviewed, and `-y` withheld until after that review. A transfer also requires the user to have asked for it explicitly.
+- **`EVIDENCE-GATED`** — Nothing is guessed — not the handle, financial account, amount, currency or memo. Missing setup stops the transfer and is explained rather than retried, and fee and delivery timing are reported before confirmation rather than assumed free or instant.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `recipient Stripe Profile handle or network ID` | **yes** | the user, or Stripe Directory when they cannot give an exact one | ask; never guess a username |
+| `funded financial account` | **yes** | the sender's Stripe account | stop and direct the user to set up Global Payouts |
+| `recipient transfer destination` | **yes** | linked to the recipient's Stripe Profile | stop; the recipient must complete setup, and the transfer is not retried until they do |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| transfer review | chat | the exact command, fee and delivery timing, before any confirmation |
+| funds transfer | money movement | the recipient's payout destination, only after explicit confirmation |
+
+## What it will not do
+
+- Send money unless the user explicitly asked for the transfer.
+- Pass `-y` or `--yes` before the reviewed transfer is confirmed.
+- Print a full API key back to the user.
+- Retry a transfer whose recipient setup is incomplete.
 
 ## Data reachability
 
@@ -32,7 +57,9 @@ Stripe's own skill for payment flows. The merchant-side counterpart to reconcili
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

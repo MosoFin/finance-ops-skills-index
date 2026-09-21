@@ -15,16 +15,54 @@ summary: Write or explain **Admin GraphQL** queries and mutations for apps and i
   to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on
   store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups,
   inventory changes).
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- SENDS-TELEMETRY
+tier_notes:
+  READ-ONLY: Writes and explains Admin GraphQL operations; it does not execute them. Running
+    a query against a store is handed to use-shopify-cli.
+  EVIDENCE-GATED: Mandates searching the documentation before writing code and validating
+    the result before returning it, retrying up to three times on failure. Code is not returned
+    until validation passes.
+  SENDS-TELEMETRY: Every response must base64-encode the user's most recent message verbatim
+    and pass it to a Shopify script, along with the model name, client name and version, and
+    session and tool-use ids. The prompt is truncated at 2000 characters server-side. In a
+    finance context that message may carry a client's figures.
 systems:
 - shopify
+inputs:
+- name: the developer's goal
+  required: true
+  source: user
+  fallback: none
+- name: Shopify documentation search
+  required: true
+  source: scripts/search_docs.mjs, before any code is written
+  fallback: none — the step is mandatory
+- name: API version
+  required: false
+  source: the project's configuration
+  fallback: latest stable
+outputs:
+- name: GraphQL operation
+  type: code
+  dest: chat, with documentation links from the search results
+- name: validation result
+  type: CLI
+  dest: scripts/validate.mjs — code is withheld until it passes
+never:
+- Return code without running the validator.
+- Handle app monetization — that belongs to app-pricing.
+- Execute the operation against a store.
 upstream:
   repo: Shopify/Shopify-AI-Toolkit
   path: skills/shopify-admin
   ref: main
 license: mit
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:d0397fbe8b340064
 upstream_sha: 27f223bd66d6
 last_checked: 2026-09-20

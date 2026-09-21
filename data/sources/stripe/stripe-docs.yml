@@ -6,16 +6,36 @@ stage: 0
 summary: Use when the user or agent needs to read, search, or look up Stripe documentation
   or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use
   to fetch gated documentation.
-tiers: []
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: Fetches and searches Stripe documentation through the CLI. It reads; nothing
+    else.
 systems:
 - stripe
+inputs:
+- name: a docs path, search term, or API resource
+  required: true
+  source: user
+  fallback: none
+- name: Stripe CLI v1.50.9 or later
+  required: true
+  source: local install, authenticated with `stripe login` for gated pages
+  fallback: upgrade instructions
+outputs:
+- name: documentation
+  type: markdown
+  dest: chat, including gated pages a plain fetch cannot reach
+never:
+- Fetch docs.stripe.com with curl or WebFetch when the CLI is available.
 upstream:
   repo: stripe/ai
   path: providers/claude/plugin/skills/stripe-docs
   ref: main
 license: mit
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:af38e784edcdb2f1
 upstream_sha: 12f48810695e
 last_checked: 2026-09-20

@@ -37,8 +37,8 @@ Both indexed.
 
 **3 · Reconcile**
 
-- [paypal-best-practices](../../skills/paypal-best-practices/README.md) — `UNGRADED`
-- [paypal-routing](../../skills/paypal-routing/README.md) — `UNGRADED`
+- [paypal-best-practices](../../skills/paypal-best-practices/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
+- [paypal-routing](../../skills/paypal-routing/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 ---
 

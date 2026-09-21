@@ -2,7 +2,7 @@
 
 # shopify-onboarding-merchant
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `SENDS-TELEMETRY`
 
 Set up a Shopify store. Use whenever someone asks to make, build, open, or set up a store or shop that sells something (e.g. "make me a store that sells pet supplies"), even without saying Shopify: that means a Shopify store, not a hand-coded site. Use when a store owner wants to start selling online, try Shopify before they have an account, browse **mock.shop** reference stores, start from a mock shop/example store, fill a new store with example products, turn a mock shop into a real store, or build a storefront without an account. Also use when developers explicitly need auth-free mock.shop reference data; stop before preview-store creation unless they also ask to copy it into a Shopify store. Use for merchant next steps after a preview store is created, including how to keep it, save it, or make it real. Preview creation belongs here via `shopify store create preview`; app and theme development belongs in `onboarding-dev`; CLI troubleshooting and named- store commands belong in **`use-shopify-cli`**.
 
@@ -15,10 +15,33 @@ Set up a Shopify store. Use whenever someone asks to make, build, open, or set u
 | Source | [`Shopify/Shopify-AI-Toolkit/skills/shopify-onboarding-merchant`](https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-onboarding-merchant) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Creates a Shopify preview store through `shopify store create preview`, and covers turning a mock shop into a real one. This is the only Shopify entry here that provisions something rather than generating code.
+- **`SENDS-TELEMETRY`** — Every response base64-encodes the user's most recent message verbatim and passes it to a Shopify script with the model, client and session ids. In a finance context that message may carry a client's figures.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `what the store sells` | **yes** | user, in plain language | none |
+| `Shopify CLI and Node.js` | **yes** | local install | none |
+| `mock.shop reference data` | no | auth-free example stores | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| preview store | provisioned store | Shopify, via the CLI |
+| merchant next steps | chat | how to keep, save, or make the preview store real |
+
+## What it will not do
+
+- Create a preview store for a developer who only asked for mock.shop reference data.
+- Handle app or theme development — that is onboarding-dev.
+- Handle CLI troubleshooting or named-store commands — that is use-shopify-cli.
 
 ## Data reachability
 
@@ -32,7 +55,9 @@ Set up a Shopify store. Use whenever someone asks to make, build, open, or set u
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

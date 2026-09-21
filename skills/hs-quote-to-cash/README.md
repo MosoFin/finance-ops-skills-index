@@ -2,7 +2,7 @@
 
 # quote-to-cash
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Build the product catalog, assemble quotes (line items + associations to deals), and track invoices and subscriptions through to revenue.
 
@@ -15,10 +15,35 @@ Build the product catalog, assemble quotes (line items + associations to deals),
 | Source | [`HubSpot/agent-cli-skills/quote-to-cash`](https://github.com/HubSpot/agent-cli-skills/tree/main/quote-to-cash) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Creates products, line items and quotes, and reads invoices and subscriptions through to revenue.
+- **`EVIDENCE-GATED`** — Every enum value is verified against the live schema before being written, rather than assumed.
+- **`HUMAN-APPROVAL`** — Destructive operations are gated by the dry-run, digest and confirm flow in hs-bulk-operations, which this skill requires reading first. That dependency is indexed here.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `product and pricing detail` | **yes** | user, or JSONL for a catalogue import | none |
+| `live enum values` | **yes** | hubspot properties get --type &lt;type&gt; --name &lt;property&gt; | none — do not assume an enum |
+| `invoice and subscription scopes` | no | a token carrying invoices-read and subscriptions-read | 403; those objects are unreadable without the scope |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| products and line items | CRM write | HubSpot, associated to deals |
+| quotes | CRM write | always DRAFT when created from the CLI |
+| revenue view | chat | outstanding invoices, active subscriptions |
+
+## What it will not do
+
+- Hardcode a property table.
+- Write an enum value without verifying it first.
+- Imply a CLI-created quote is anything but a draft — approval routing, share links, PDF generation and invoice creation need the HubSpot UI.
 
 ## Data reachability
 
@@ -32,7 +57,9 @@ Build the product catalog, assemble quotes (line items + associations to deals),
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

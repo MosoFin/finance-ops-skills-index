@@ -5,16 +5,45 @@ authority: first-party
 stage: 6
 summary: Append rows to a sheet without rewriting it — the safe write for logging close artifacts,
   categorization decisions, or a running schedule.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: Appends rows to a spreadsheet. Append only — it does not overwrite existing
+    cells, which makes it the safer write for logging a close artifact or a decision trail.
+  HUMAN-APPROVAL: Carries an explicit caution that this is a write command and must be confirmed
+    before executing.
 systems:
 - google-sheets
+inputs:
+- name: --spreadsheet
+  required: true
+  source: spreadsheet ID
+  fallback: none
+- name: --values or --json-values
+  required: false
+  source: a single row, or a JSON array of rows
+  fallback: none
+- name: --range
+  required: false
+  source: A1 notation to pick a tab
+  fallback: A1, meaning the first sheet
+outputs:
+- name: appended rows
+  type: spreadsheet write
+  dest: the target tab, after the last populated row
+never:
+- Execute without confirming — the skill states this itself.
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade
+  covers this file only; the safety rules it defers to are unreviewed.
 upstream:
   repo: googleworkspace/cli
   path: skills/gws-sheets-append
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:ef337f5249f50ef0
 upstream_sha: a3768d0e82ad
 last_checked: 2026-09-20

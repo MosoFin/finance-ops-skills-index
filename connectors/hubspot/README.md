@@ -37,22 +37,22 @@ Seven are revenue operations. The rest are CRM workflow and support.
 
 **2 · Data hygiene**
 
-- [bulk-operations](../../skills/hs-bulk-operations/README.md) — `UNGRADED`
-- [crm-data-quality](../../skills/hs-crm-data-quality/README.md) — `UNGRADED`
-- [crm-lookup](../../skills/hs-crm-lookup/README.md) — `UNGRADED`
+- [bulk-operations](../../skills/hs-bulk-operations/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `AUDIT-TRAIL`
+- [crm-data-quality](../../skills/hs-crm-data-quality/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
+- [crm-lookup](../../skills/hs-crm-lookup/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 **3 · Reconcile**
 
-- [deal-management](../../skills/hs-deal-management/README.md) — `UNGRADED`
-- [quote-to-cash](../../skills/hs-quote-to-cash/README.md) — `UNGRADED`
+- [deal-management](../../skills/hs-deal-management/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
+- [quote-to-cash](../../skills/hs-quote-to-cash/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 **6 · Report**
 
-- [sales-reporting](../../skills/hs-sales-reporting/README.md) — `UNGRADED`
+- [sales-reporting](../../skills/hs-sales-reporting/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 **7 · Forward-looking**
 
-- [customer-retention](../../skills/hs-customer-retention/README.md) — `UNGRADED`
+- [customer-retention](../../skills/hs-customer-retention/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 ---
 

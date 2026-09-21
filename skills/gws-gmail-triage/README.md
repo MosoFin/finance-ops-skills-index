@@ -2,7 +2,7 @@
 
 # Gmail triage (gws-gmail-triage)
 
-`UNGRADED`
+`GRADED` `READ-ONLY`
 
 Google's official Gmail triage skill. Pairs with aging-review, where the collections follow-up and the client's reply both arrive by mail.
 
@@ -15,10 +15,29 @@ Google's official Gmail triage skill. Pairs with aging-review, where the collect
 | Source | [`googleworkspace/cli/skills/gws-gmail-triage`](https://github.com/googleworkspace/cli/tree/main/skills/gws-gmail-triage) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — States it plainly — never modifies the mailbox. It lists unread mail; it does not label, archive or reply.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `--query` | no | Gmail search syntax | is:unread |
+| `--max` | no | user | 20 |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| inbox summary | table or JSON | sender, subject, date, optionally labels |
+
+## What it will not do
+
+- Modify the mailbox.
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade covers this file only; the safety rules it defers to are unreviewed.
 
 ## Data reachability
 
@@ -32,7 +51,9 @@ Google's official Gmail triage skill. Pairs with aging-review, where the collect
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

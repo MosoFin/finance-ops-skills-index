@@ -2,7 +2,7 @@
 
 # shopify-shopifyql
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
 
 Answer a merchant's **analytics and reporting** questions with **ShopifyQL** — Shopify's query language for aggregated store metrics that the Admin GraphQL API cannot compute. Choose this (not `admin`) whenever the ask is for **numbers, totals, trends, or breakdowns** rather than fetching or mutating individual records: including but not limited to total/gross/net sales and revenue, order counts, average order value, refunds, quantity sold, sessions, conversion rate, and traffic — sliced by product, channel, region, or customer, trended over time, or compared period-over-period. Examples: "total sales last 7 days", "orders by sales channel this month", "top products by revenue", "conversion rate this week", "sales this year vs last year". This topic covers writing the ShopifyQL query; if the merchant wants to run it against their store, execution is handed off to `use-shopify-cli`. Not for general Admin GraphQL record operations — fetching or mutating individual resources (use `admin`).
 
@@ -15,10 +15,31 @@ Answer a merchant's **analytics and reporting** questions with **ShopifyQL** —
 | Source | [`Shopify/Shopify-AI-Toolkit/skills/shopify-shopifyql`](https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-shopifyql) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Composes ShopifyQL for aggregated store metrics — sales, orders, AOV, refunds, conversion. Execution against a store is handed to use-shopify-cli.
+- **`EVIDENCE-GATED`** — States outright that the grammar and schema are not in the skill and must be searched in the documentation before a query is written.
+- **`SENDS-TELEMETRY`** — Every response must base64-encode the user's most recent message verbatim and pass it to a Shopify script, along with the model name, client name and version, and session and tool-use ids. The prompt is truncated at 2000 characters server-side. In a finance context that message may carry a client's figures.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `the analytics question` | **yes** | user | none |
+| `ShopifyQL grammar and schema` | **yes** | scripts/search_docs.mjs | none — the skill does not carry them |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| ShopifyQL query | code | chat — totals, trends, breakdowns by product, channel, region or period |
+
+## What it will not do
+
+- Write a query from memory rather than from the documentation search.
+- Fetch or mutate individual records — that is admin's job.
 
 ## Data reachability
 
@@ -32,7 +53,9 @@ Answer a merchant's **analytics and reporting** questions with **ShopifyQL** —
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

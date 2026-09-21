@@ -2,7 +2,7 @@
 
 # bulk-operations
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `AUDIT-TRAIL`
 
 Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, pagination, dry-run/digest/confirm for destructive ops, and `hubspot history` for recovery. Every other skill builds on this one.
 
@@ -15,10 +15,35 @@ Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, paginati
 | Source | [`HubSpot/agent-cli-skills/bulk-operations`](https://github.com/HubSpot/agent-cli-skills/tree/main/bulk-operations) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — This is the foundation every other HubSpot skill builds on — the JSONL pipe through which creates, updates, upserts, deletes, merges and association writes all flow.
+- **`HUMAN-APPROVAL`** — It is where the dry-run, digest and confirm escalation for destructive operations is defined. The other HubSpot entries inherit their gating from here, which is why their grades depend on this file.
+- **`AUDIT-TRAIL`** — `hubspot history` provides a recovery path after a bulk write.
+- **`EVIDENCE-GATED`** — Instructs that `--help` is authoritative and that where this file contradicts it, `--help` wins and the user is told.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `object types in this portal` | **yes** | hubspot objects types, run once per session | none |
+| `JSONL on stdin` | **yes** | a read reshaped by jq into a write payload | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| per-line results | JSONL | one result per input line, in input order, each ok true or false with its error |
+| dry-run digest | chat | what would change, before anything does |
+| history | CLI | recovery after a bulk write |
+
+## What it will not do
+
+- Spawn one CLI process per record — batch reads are native.
+- Run a destructive operation without the dry-run and confirm escalation.
+- Trust this file over `hubspot --help`.
 
 ## Data reachability
 
@@ -32,7 +57,9 @@ Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, paginati
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no workspace |
+
+Requires from the host: a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

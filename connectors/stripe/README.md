@@ -36,17 +36,17 @@ The repo ships the same 10 skills under six provider directories; 10 unique. Fiv
 
 **0 · Setup**
 
-- [stripe-docs](../../skills/stripe-docs/README.md) — `UNGRADED`
+- [stripe-docs](../../skills/stripe-docs/README.md) — `GRADED` `READ-ONLY`
 
 **3 · Reconcile**
 
 - [connect-recommend](../../skills/stripe-connect-recommend/README.md) — `UNGRADED`
 - [connect-required-verification-information](../../skills/stripe-connect-verification/README.md) — `UNGRADED`
-- [Stripe Pay](../../skills/stripe-pay/README.md) — `UNGRADED`
+- [Stripe Pay](../../skills/stripe-pay/README.md) — `GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 **7 · Forward-looking**
 
-- [Metronome billing](../../skills/metronome/README.md) — `UNGRADED`
+- [Metronome billing](../../skills/metronome/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 ---
 

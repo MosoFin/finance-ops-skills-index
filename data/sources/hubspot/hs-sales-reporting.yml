@@ -5,16 +5,53 @@ authority: first-party
 stage: 6
 summary: Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week,
   open pipeline by stage/owner, and closed- won vs closed-lost over a period.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: Briefings, pipeline snapshots and win/loss analysis. Reads only.
+  EVIDENCE-GATED: 'Carries the correctness rule that matters most for reporting: search and
+    list cap at 100 rows, and a result of exactly 100 is almost always truncated, so it must
+    be paginated before aggregating. It also warns that every CRM value returns as a string
+    — amounts must be converted before arithmetic and booleans compared as strings — which
+    is exactly how a silently wrong total gets produced.'
 systems:
 - hubspot
+inputs:
+- name: deal records
+  required: true
+  source: hubspot objects search --type deals
+  fallback: none
+- name: pipeline stage map
+  required: true
+  source: hubspot pipelines stages — stage IDs are portal-specific
+  fallback: none; never hardcode
+- name: owner list
+  required: false
+  source: hubspot owners list, to resolve numeric owner IDs to names
+  fallback: report the ID
+outputs:
+- name: daily briefing
+  type: chat
+  dest: deals closing in the next seven days, recent movement
+- name: pipeline snapshot
+  type: chat
+  dest: open pipeline by stage and owner
+- name: win/loss analysis
+  type: chat
+  dest: closed-won against closed-lost over a period
+never:
+- Aggregate a result of exactly 100 rows without paginating first.
+- Do arithmetic on a property value without converting it from string.
+- Hardcode portal-specific stage IDs.
 upstream:
   repo: HubSpot/agent-cli-skills
   path: sales-reporting
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:f842a04872f7307f
 upstream_sha: 5b773165f0c8
 last_checked: 2026-09-20

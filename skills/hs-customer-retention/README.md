@@ -2,7 +2,7 @@
 
 # customer-retention
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Identify inactive/at-risk customers via CRM filters and create follow-up tasks at scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
 
@@ -15,10 +15,32 @@ Identify inactive/at-risk customers via CRM filters and create follow-up tasks a
 | Source | [`HubSpot/agent-cli-skills/customer-retention`](https://github.com/HubSpot/agent-cli-skills/tree/main/customer-retention) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Creates follow-up tasks at scale against at-risk accounts.
+- **`EVIDENCE-GATED`** — Schema is portal-specific, so every churn-signal property is verified before it is filtered on.
+- **`HUMAN-APPROVAL`** — Destructive operations are gated by the dry-run, digest and confirm flow in hs-bulk-operations, which this skill requires reading first. That dependency is indexed here.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `churn-signal properties` | **yes** | notes_last_contacted, hs_last_sales_activity_date, hs_subscription_status — each verified first | none |
+| `subscriptions scope` | no | a private-app token with subscriptions-read | 403; subscription health is unavailable |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| at-risk list | JSONL | customers with no outreach or no sales activity in the window, and never-contacted accounts |
+| follow-up tasks | CRM write | created in bulk; activity specifics defer to sales-execution |
+
+## What it will not do
+
+- Filter on a property without verifying it exists in this portal.
+- Create tasks in bulk without the dry-run and confirm flow.
 
 ## Data reachability
 
@@ -32,7 +54,9 @@ Identify inactive/at-risk customers via CRM filters and create follow-up tasks a
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

@@ -2,7 +2,7 @@
 
 # stripe-docs
 
-`UNGRADED`
+`GRADED` `READ-ONLY`
 
 Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
 
@@ -15,10 +15,28 @@ Use when the user or agent needs to read, search, or look up Stripe documentatio
 | Source | [`stripe/ai/providers/claude/plugin/skills/stripe-docs`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Fetches and searches Stripe documentation through the CLI. It reads; nothing else.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `a docs path, search term, or API resource` | **yes** | user | none |
+| `Stripe CLI v1.50.9 or later` | **yes** | local install, authenticated with `stripe login` for gated pages | upgrade instructions |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| documentation | markdown | chat, including gated pages a plain fetch cannot reach |
+
+## What it will not do
+
+- Fetch docs.stripe.com with curl or WebFetch when the CLI is available.
 
 ## Data reachability
 
@@ -32,7 +50,9 @@ Use when the user or agent needs to read, search, or look up Stripe documentatio
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

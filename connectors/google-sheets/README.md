@@ -33,9 +33,9 @@ Sheets read, append and Drive. The other ninety cover Workspace surfaces outside
 
 **6 · Report**
 
-- [Google Sheets (gws-sheets)](../../skills/gws-sheets/README.md) — `UNGRADED`
-- [Google Sheets append (gws-sheets-append)](../../skills/gws-sheets-append/README.md) — `UNGRADED`
-- [gws-sheets-read](../../skills/gws-sheets-read/README.md) — `UNGRADED`
+- [Google Sheets (gws-sheets)](../../skills/gws-sheets/README.md) — `GRADED` `WRITES-DIRECT`
+- [Google Sheets append (gws-sheets-append)](../../skills/gws-sheets-append/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`
+- [gws-sheets-read](../../skills/gws-sheets-read/README.md) — `GRADED` `READ-ONLY`
 
 ---
 

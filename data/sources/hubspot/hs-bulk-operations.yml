@@ -6,16 +6,54 @@ stage: 2
 summary: Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, pagination,
   dry-run/digest/confirm for destructive ops, and `hubspot history` for recovery. Every other
   skill builds on this one.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+- AUDIT-TRAIL
+tier_notes:
+  PROPOSES-WRITES: This is the foundation every other HubSpot skill builds on — the JSONL
+    pipe through which creates, updates, upserts, deletes, merges and association writes all
+    flow.
+  HUMAN-APPROVAL: It is where the dry-run, digest and confirm escalation for destructive operations
+    is defined. The other HubSpot entries inherit their gating from here, which is why their
+    grades depend on this file.
+  AUDIT-TRAIL: '`hubspot history` provides a recovery path after a bulk write.'
+  EVIDENCE-GATED: Instructs that `--help` is authoritative and that where this file contradicts
+    it, `--help` wins and the user is told.
 systems:
 - hubspot
+inputs:
+- name: object types in this portal
+  required: true
+  source: hubspot objects types, run once per session
+  fallback: none
+- name: JSONL on stdin
+  required: true
+  source: a read reshaped by jq into a write payload
+  fallback: none
+outputs:
+- name: per-line results
+  type: JSONL
+  dest: one result per input line, in input order, each ok true or false with its error
+- name: dry-run digest
+  type: chat
+  dest: what would change, before anything does
+- name: history
+  type: CLI
+  dest: recovery after a bulk write
+never:
+- Spawn one CLI process per record — batch reads are native.
+- Run a destructive operation without the dry-run and confirm escalation.
+- Trust this file over `hubspot --help`.
 upstream:
   repo: HubSpot/agent-cli-skills
   path: bulk-operations
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:02cc417abc0ab9b4
 upstream_sha: ed4123453010
 last_checked: 2026-09-20

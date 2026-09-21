@@ -2,7 +2,7 @@
 
 # Metronome billing
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 Usage-based billing through Stripe's official toolkit. Where revenue is metered rather than invoiced, this is upstream of every revenue number.
 
@@ -15,10 +15,33 @@ Usage-based billing through Stripe's official toolkit. Where revenue is metered 
 | Source | [`stripe/ai/providers/claude/plugin/skills/metronome`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/metronome) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Integration guidance for usage-based billing. It advises on API design; it issues no calls itself.
+- **`EVIDENCE-GATED`** — States that endpoint paths, request shapes and units are misremembered easily, and requires reading the linked documentation page before naming any endpoint, field or amount.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `the integration question` | **yes** | user | none |
+| `Metronome documentation` | **yes** | docs.metronome.com, fetched as Markdown | the llms.txt index |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| integration guidance | chat | routed by task — ingestion, contracts, invoicing, commits, Stripe sync |
+| code | chat | written against the documentation page, not from memory |
+
+## What it will not do
+
+- Name an endpoint or field without reading its documentation page first.
+- Recommend legacy Plans or deprecated Amendments for new work.
+- Hardcode pricing in contracts rather than rate cards.
+- Reconcile payments against the Metronome invoice total — it is pre-tax; use the Stripe total.
 
 ## Data reachability
 
@@ -32,7 +55,9 @@ Usage-based billing through Stripe's official toolkit. Where revenue is metered 
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

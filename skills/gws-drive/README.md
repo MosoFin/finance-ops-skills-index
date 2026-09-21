@@ -2,7 +2,7 @@
 
 # Google Drive (gws-drive)
 
-`UNGRADED`
+`GRADED` `WRITES-DIRECT`
 
 Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
 
@@ -15,10 +15,29 @@ Google's official Drive skill. Relevant wherever the workpaper archive, client s
 | Source | [`googleworkspace/cli/skills/gws-drive`](https://github.com/googleworkspace/cli/tree/main/skills/gws-drive) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`WRITES-DIRECT`** — Manages files, folders and shared drives across the Drive v3 surface, with no confirmation rule stated in this file. Deletion and permission changes are reachable from it.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `resource and method` | **yes** | gws drive --help, then gws schema | none |
+| `gws binary` | **yes** | local install, authenticated | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| API response | JSON | stdout |
+| Drive changes | write | files, folders, shared drives and their permissions |
+
+## What it will not do
+
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade covers this file only; the safety rules it defers to are unreviewed.
 
 ## Data reachability
 
@@ -30,7 +49,9 @@ Google's official Drive skill. Relevant wherever the workpaper archive, client s
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

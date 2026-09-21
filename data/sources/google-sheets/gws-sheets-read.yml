@@ -4,16 +4,42 @@ origin: third-party
 authority: first-party
 stage: 6
 summary: 'Google Sheets: Read values from a spreadsheet.'
-tiers: []
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: States it plainly — never modifies the spreadsheet. A thin wrapper over one CLI
+    verb.
 systems:
 - google-sheets
+inputs:
+- name: --spreadsheet
+  required: true
+  source: spreadsheet ID
+  fallback: none
+- name: --range
+  required: true
+  source: A1 notation, e.g. Sheet1!A1:D10
+  fallback: none
+- name: gws binary
+  required: true
+  source: local install, authenticated
+  fallback: none
+outputs:
+- name: cell values
+  type: table or JSON
+  dest: stdout
+never:
+- Modify the spreadsheet.
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade
+  covers this file only; the safety rules it defers to are unreviewed.
 upstream:
   repo: googleworkspace/cli
   path: skills/gws-sheets-read
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:2308eab564907f4d
 upstream_sha: 705fb0ecac6f
 last_checked: 2026-09-20

@@ -2,7 +2,7 @@
 
 # Google Sheets append (gws-sheets-append)
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`
 
 Append rows to a sheet without rewriting it — the safe write for logging close artifacts, categorization decisions, or a running schedule.
 
@@ -15,10 +15,31 @@ Append rows to a sheet without rewriting it — the safe write for logging close
 | Source | [`googleworkspace/cli/skills/gws-sheets-append`](https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-append) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Appends rows to a spreadsheet. Append only — it does not overwrite existing cells, which makes it the safer write for logging a close artifact or a decision trail.
+- **`HUMAN-APPROVAL`** — Carries an explicit caution that this is a write command and must be confirmed before executing.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `--spreadsheet` | **yes** | spreadsheet ID | none |
+| `--values or --json-values` | no | a single row, or a JSON array of rows | none |
+| `--range` | no | A1 notation to pick a tab | A1, meaning the first sheet |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| appended rows | spreadsheet write | the target tab, after the last populated row |
+
+## What it will not do
+
+- Execute without confirming — the skill states this itself.
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade covers this file only; the safety rules it defers to are unreviewed.
 
 ## Data reachability
 
@@ -32,7 +53,9 @@ Append rows to a sheet without rewriting it — the safe write for logging close
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

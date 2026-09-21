@@ -4,7 +4,7 @@
 
 A graded, continuously-verified index of agent skills for accounting and finance.
 
-**66 skills** · **26 graded** · **40 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
+**66 skills** · **48 graded** · **18 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -33,24 +33,24 @@ Ordered by when you need it, not alphabetically.
 - **[Grill My COA](skills/grill-my-coa/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `POLICY-CAPTURING`  
   Relentless interview about your chart of accounts until every account has one clear purpose and every recurring transaction has exactly one home. Queries the ledger instead of asking whenever the ledger can answer.
+- **[Google Drive (gws-drive)](skills/gws-drive/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT`  
+  Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
 - **[Onboard Client](skills/onboard-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   Interviews you about a company and scaffolds the client workspace every other finance skill reads — profile, glossary, chart-of-accounts rulebook, close calendar, materiality thresholds, report preferences.
 - **[setup](skills/qb-setup/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
-- **[Google Drive (gws-drive)](skills/gws-drive/README.md)** — Third party  
-  `UNGRADED`  
-  Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
 - **[shopify-onboarding-merchant](skills/shopify-onboarding-merchant/README.md)** — Third party  
-  `UNGRADED`  
+  `GRADED` `PROPOSES-WRITES` `SENDS-TELEMETRY`  
   Set up a Shopify store. Use whenever someone asks to make, build, open, or set up a store or shop that sells something (e.g. "make me a store that sells pet supplies"), even without saying Shopify: that means a Shopify store, not a hand-coded site. Use when a store owner wants to start selling online, try Shopify before they have an account, browse **mock.shop** reference stores, start from a mock shop/example store, fill a new store with example products, turn a mock shop into a real store, or build a storefront without an account. Also use when developers explicitly need auth-free mock.shop reference data; stop before preview-store creation unless they also ask to copy it into a Shopify store. Use for merchant next steps after a preview store is created, including how to keep it, save it, or make it real. Preview creation belongs here via `shopify store create preview`; app and theme development belongs in `onboarding-dev`; CLI troubleshooting and named- store commands belong in **`use-shopify-cli`**.
+- **[stripe-docs](skills/stripe-docs/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
 - **[skill-creator](skills/skill-creator/README.md)** — Third party  
   `UNGRADED`  
   Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
-- **[stripe-docs](skills/stripe-docs/README.md)** — Third party  
-  `UNGRADED`  
-  Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
 
 ### 1 · Orchestration
 
@@ -70,24 +70,27 @@ Ordered by when you need it, not alphabetically.
 - **[Categorize Transactions](skills/categorize-transactions/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `EVIDENCE-GATED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `DETERMINISTIC-MATH` `POLICY-CAPTURING`  
   Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
+- **[bulk-operations](skills/hs-bulk-operations/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `AUDIT-TRAIL`  
+  Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, pagination, dry-run/digest/confirm for destructive ops, and `hubspot history` for recovery. Every other skill builds on this one.
+- **[crm-data-quality](skills/hs-crm-data-quality/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Find incomplete records, normalize field values in bulk, dedupe with `hubspot objects merge`, and audit custom properties. Builds on `bulk- operations` for JSONL piping and dry-run/digest/confirm.
+- **[crm-lookup](skills/hs-crm-lookup/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations for the full account picture.
 - **[email-to-estimate-invoice](skills/qb-email-to-estimate-invoice/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
+- **[shopify-admin](skills/shopify-admin/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
+  Write or explain **Admin GraphQL** queries and mutations for apps and integrations that extend the Shopify admin. Use when the user wants to **understand, design, or generate** the operation itself—even before deciding how to run it. Do **not** choose `admin` first for **app monetization**—charging merchants for the app itself via app pricing plans, paid app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the user is maintaining an existing Manual Pricing integration or explicitly needs an Admin Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans, subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups, inventory changes).
 - **[Expense Report Processor](skills/expense-report-processor/README.md)** — Mosofin published  
   `UNGRADED`  
   Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — codes against the real chart of accounts, matches claims against already-posted transactions, and checks reimbursement and card-clearing balances.
 - **[GL Coding Assistant](skills/gl-coding-assistant/README.md)** — Mosofin published  
   `UNGRADED`  
   Assigns GL accounts, expense categories, and tax codes against the real chart of accounts, grounding every suggestion in how this entity has actually coded the same vendor before. Outputs confidence ratings, reasoning, evidence.
-- **[bulk-operations](skills/hs-bulk-operations/README.md)** — Third party  
-  `UNGRADED`  
-  Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, pagination, dry-run/digest/confirm for destructive ops, and `hubspot history` for recovery. Every other skill builds on this one.
-- **[crm-data-quality](skills/hs-crm-data-quality/README.md)** — Third party  
-  `UNGRADED`  
-  Find incomplete records, normalize field values in bulk, dedupe with `hubspot objects merge`, and audit custom properties. Builds on `bulk- operations` for JSONL piping and dry-run/digest/confirm.
-- **[crm-lookup](skills/hs-crm-lookup/README.md)** — Third party  
-  `UNGRADED`  
-  Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations for the full account picture.
 - **[Invoice Data Extractor](skills/invoice-data-extractor/README.md)** — Mosofin published  
   `UNGRADED`  
   Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
@@ -97,9 +100,6 @@ Ordered by when you need it, not alphabetically.
 - **[Receipts](skills/receipts/README.md)** — Third party  
   `UNGRADED`  
   Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
-- **[shopify-admin](skills/shopify-admin/README.md)** — Third party  
-  `UNGRADED`  
-  Write or explain **Admin GraphQL** queries and mutations for apps and integrations that extend the Shopify admin. Use when the user wants to **understand, design, or generate** the operation itself—even before deciding how to run it. Do **not** choose `admin` first for **app monetization**—charging merchants for the app itself via app pricing plans, paid app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the user is maintaining an existing Manual Pricing integration or explicitly needs an Admin Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans, subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups, inventory changes).
 
 ### 3 · Reconcile
 
@@ -111,45 +111,45 @@ Ordered by when you need it, not alphabetically.
 - **[Bank Rec](skills/bank-rec/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Reconciles one bank or credit-card account for one period. Matches statement lines against ledger transactions with a deterministic script; the script's leftovers are the work list. Done means the difference is zero, computed.
+- **[Gmail triage (gws-gmail-triage)](skills/gws-gmail-triage/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Google's official Gmail triage skill. Pairs with aging-review, where the collections follow-up and the client's reply both arrive by mail.
+- **[deal-management](skills/hs-deal-management/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs into deals with associations, advance/reassign in bulk, hunt stalled deals, and close.
+- **[quote-to-cash](skills/hs-quote-to-cash/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Build the product catalog, assemble quotes (line items + associations to deals), and track invoices and subscriptions through to revenue.
+- **[paypal-best-practices](skills/paypal-best-practices/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  PayPal integration guidance, code examples, and best practices. Use for checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane, payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal architecture decision or code generation question.
+- **[paypal-routing](skills/paypal-routing/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes PayPal developer questions to the right command or reference file.
 - **[chase-overdue-invoices](skills/qb-chase-overdue-invoices/README.md)** — Third party  
   `GRADED` `SENDS-EXTERNALLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
+- **[shopify-customer](skills/shopify-customer/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY` `PII-MINIMISING`  
+  Write and validate GraphQL operations for developers integrating Shopify's Customer Account API. Generates code for Customer Account API integrations.
+- **[shopify-payments-apps](skills/shopify-payments-apps/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
+  The Payments Apps API enables payment providers to integrate their payment solutions with Shopify's checkout.
+- **[Stripe Pay](skills/stripe-pay/README.md)** — Third party  
+  `GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
 - **[A/R Aging and Collections](skills/ar-aging-and-collections/README.md)** — Mosofin published  
   `UNGRADED`  
   Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
 - **[Bank Reconciliation](skills/bank-reconciliation/README.md)** — Mosofin published  
   `UNGRADED`  
   Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
-- **[Gmail triage (gws-gmail-triage)](skills/gws-gmail-triage/README.md)** — Third party  
-  `UNGRADED`  
-  Google's official Gmail triage skill. Pairs with aging-review, where the collections follow-up and the client's reply both arrive by mail.
-- **[deal-management](skills/hs-deal-management/README.md)** — Third party  
-  `UNGRADED`  
-  Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs into deals with associations, advance/reassign in bulk, hunt stalled deals, and close.
-- **[quote-to-cash](skills/hs-quote-to-cash/README.md)** — Third party  
-  `UNGRADED`  
-  Build the product catalog, assemble quotes (line items + associations to deals), and track invoices and subscriptions through to revenue.
-- **[paypal-best-practices](skills/paypal-best-practices/README.md)** — Third party  
-  `UNGRADED`  
-  PayPal integration guidance, code examples, and best practices. Use for checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane, payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal architecture decision or code generation question.
-- **[paypal-routing](skills/paypal-routing/README.md)** — Third party  
-  `UNGRADED`  
-  PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes PayPal developer questions to the right command or reference file.
-- **[shopify-customer](skills/shopify-customer/README.md)** — Third party  
-  `UNGRADED`  
-  Write and validate GraphQL operations for developers integrating Shopify's Customer Account API. Generates code for Customer Account API integrations.
-- **[shopify-payments-apps](skills/shopify-payments-apps/README.md)** — Third party  
-  `UNGRADED`  
-  The Payments Apps API enables payment providers to integrate their payment solutions with Shopify's checkout.
 - **[connect-recommend](skills/stripe-connect-recommend/README.md)** — Third party  
   `UNGRADED`  
   Use this skill when the user asks about Stripe Connect configuration, charge patterns, Dashboard access, or how to get started with Connect, is building a marketplace, platform, multi-vendor store, gig platform, or subscription platform, needs to pay out sellers, vendors, or providers, mentions split payments, revenue sharing, multi-party payments, or similar payment distribution concepts, provides a company URL or business description for a recommendation, builds SaaS that routes money between parties (for example, POS, booking, invoicing — not operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers, and vendors, mentions connected account Dashboard or responsibility configurations, or asks about payment flows, white-label payments, or embedded payments.
 - **[connect-required-verification-information](skills/stripe-connect-verification/README.md)** — Third party  
   `UNGRADED`  
   Use this skill when the user asks what information a Stripe Connect connected account must provide for verification, onboarding, KYC, or account requirements; when they need to compare requirements between connected-account setups; or when they ask which verification fields, documents, or business details are required for a particular platform country, account country, business type, dashboard, service agreement, or capability.
-- **[Stripe Pay](skills/stripe-pay/README.md)** — Third party  
-  `UNGRADED`  
-  Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
 
 ### 4 · Adjust
 
@@ -210,36 +210,36 @@ Ordered by when you need it, not alphabetically.
 - **[Explain To Client](skills/explain-to-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `DETERMINISTIC-MATH` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND`  
   Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
+- **[Google Sheets (gws-sheets)](skills/gws-sheets/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT`  
+  Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers and hand-built budgets actually live.
+- **[Google Sheets append (gws-sheets-append)](skills/gws-sheets-append/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Append rows to a sheet without rewriting it — the safe write for logging close artifacts, categorization decisions, or a running schedule.
+- **[gws-sheets-read](skills/gws-sheets-read/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Google Sheets: Read values from a spreadsheet.
+- **[sales-reporting](skills/hs-sales-reporting/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.
 - **[business-health-check](skills/qb-business-health-check/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `INJECTION-AWARE` `PROVENANCE-STAMPED` `HUMAN-APPROVAL`  
   synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
 - **[industry-benchmark](skills/qb-industry-benchmark/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `PROVENANCE-STAMPED`  
   benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
+- **[shopify-shopifyql](skills/shopify-shopifyql/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
+  Answer a merchant's **analytics and reporting** questions with **ShopifyQL** — Shopify's query language for aggregated store metrics that the Admin GraphQL API cannot compute. Choose this (not `admin`) whenever the ask is for **numbers, totals, trends, or breakdowns** rather than fetching or mutating individual records: including but not limited to total/gross/net sales and revenue, order counts, average order value, refunds, quantity sold, sessions, conversion rate, and traffic — sliced by product, channel, region, or customer, trended over time, or compared period-over-period. Examples: "total sales last 7 days", "orders by sales channel this month", "top products by revenue", "conversion rate this week", "sales this year vs last year". This topic covers writing the ShopifyQL query; if the merchant wants to run it against their store, execution is handed off to `use-shopify-cli`. Not for general Admin GraphQL record operations — fetching or mutating individual resources (use `admin`).
 - **[docx](skills/docx/README.md)** — Third party  
   `UNGRADED`  
   Create, edit, and analyze Word documents with tracked changes and comments — the format most review notes and engagement letters still travel in.
 - **[Financial Statement Builder](skills/financial-statement-builder/README.md)** — Mosofin published  
   `UNGRADED`  
   Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
-- **[Google Sheets (gws-sheets)](skills/gws-sheets/README.md)** — Third party  
-  `UNGRADED`  
-  Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers and hand-built budgets actually live.
-- **[Google Sheets append (gws-sheets-append)](skills/gws-sheets-append/README.md)** — Third party  
-  `UNGRADED`  
-  Append rows to a sheet without rewriting it — the safe write for logging close artifacts, categorization decisions, or a running schedule.
-- **[gws-sheets-read](skills/gws-sheets-read/README.md)** — Third party  
-  `UNGRADED`  
-  Google Sheets: Read values from a spreadsheet.
-- **[sales-reporting](skills/hs-sales-reporting/README.md)** — Third party  
-  `UNGRADED`  
-  Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.
 - **[pptx](skills/pptx/README.md)** — Third party  
   `UNGRADED`  
   Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
-- **[shopify-shopifyql](skills/shopify-shopifyql/README.md)** — Third party  
-  `UNGRADED`  
-  Answer a merchant's **analytics and reporting** questions with **ShopifyQL** — Shopify's query language for aggregated store metrics that the Admin GraphQL API cannot compute. Choose this (not `admin`) whenever the ask is for **numbers, totals, trends, or breakdowns** rather than fetching or mutating individual records: including but not limited to total/gross/net sales and revenue, order counts, average order value, refunds, quantity sold, sessions, conversion rate, and traffic — sliced by product, channel, region, or customer, trended over time, or compared period-over-period. Examples: "total sales last 7 days", "orders by sales channel this month", "top products by revenue", "conversion rate this week", "sales this year vs last year". This topic covers writing the ShopifyQL query; if the merchant wants to run it against their store, execution is handed off to `use-shopify-cli`. Not for general Admin GraphQL record operations — fetching or mutating individual resources (use `admin`).
 - **[xlsx](skills/xlsx/README.md)** — Third party  
   `UNGRADED`  
   Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
@@ -254,15 +254,15 @@ Ordered by when you need it, not alphabetically.
 - **[Forecast](skills/forecast/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   A rolling forecast where actual months are locked and every forecast line names its driver — run-rate, growth, contract, seasonal, or manual with a stated reason. Assumption changes are logged as decision records.
+- **[customer-retention](skills/hs-customer-retention/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Identify inactive/at-risk customers via CRM filters and create follow-up tasks at scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
+- **[Metronome billing](skills/metronome/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Usage-based billing through Stripe's official toolkit. Where revenue is metered rather than invoiced, this is upstream of every revenue number.
 - **[lending](skills/qb-lending/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL`  
   QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credit, Intuit Business Credit Card (issued by WebBank), and the QuickBooks Business Loan Marketplace. Use to explain how these products work (eligibility, rates, fees, terms), compare or choose between them, estimate loan payments (weekly/monthly payment, total interest, total repayment), and answer questions about the signed-in user's own QuickBooks Capital loans and lines of credit (balance, APR, repayment schedule, payoff, available credit), plus what similar businesses have borrowed. Use proactively when a funding need surfaces from payroll, cash-flow, or invoicing work to check for a drawable line of credit and, with consent, peer offers. Read-only guidance only: never makes payments, draws, or loan changes, and never gives a loan offer, rate, credit limit, or approval decision. Not for loan application status or non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer loans).
-- **[customer-retention](skills/hs-customer-retention/README.md)** — Third party  
-  `UNGRADED`  
-  Identify inactive/at-risk customers via CRM filters and create follow-up tasks at scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
-- **[Metronome billing](skills/metronome/README.md)** — Third party  
-  `UNGRADED`  
-  Usage-based billing through Stripe's official toolkit. Where revenue is metered rather than invoiced, this is upstream of every revenue number.
 
 ---
 

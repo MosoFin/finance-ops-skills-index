@@ -5,16 +5,55 @@ authority: first-party
 stage: 3
 summary: Stripe's own skill for payment flows. The merchant-side counterpart to reconciling
   Stripe settlements and fees against the ledger.
-tiers: []
+tiers:
+- MOVES-MONEY
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  MOVES-MONEY: '`stripe pay` transfers funds from the authenticated Stripe business to another.
+    This is the only entry in the index that moves real money, and the reason the badge exists.'
+  HUMAN-APPROVAL: The exact command must be shown and confirmed before running, `--agent`
+    or `--json` used first so the transfer can be reviewed, and `-y` withheld until after
+    that review. A transfer also requires the user to have asked for it explicitly.
+  EVIDENCE-GATED: Nothing is guessed — not the handle, financial account, amount, currency
+    or memo. Missing setup stops the transfer and is explained rather than retried, and fee
+    and delivery timing are reported before confirmation rather than assumed free or instant.
 systems:
 - stripe
+inputs:
+- name: recipient Stripe Profile handle or network ID
+  required: true
+  source: the user, or Stripe Directory when they cannot give an exact one
+  fallback: ask; never guess a username
+- name: funded financial account
+  required: true
+  source: the sender's Stripe account
+  fallback: stop and direct the user to set up Global Payouts
+- name: recipient transfer destination
+  required: true
+  source: linked to the recipient's Stripe Profile
+  fallback: stop; the recipient must complete setup, and the transfer is not retried until
+    they do
+outputs:
+- name: transfer review
+  type: chat
+  dest: the exact command, fee and delivery timing, before any confirmation
+- name: funds transfer
+  type: money movement
+  dest: the recipient's payout destination, only after explicit confirmation
+never:
+- Send money unless the user explicitly asked for the transfer.
+- Pass `-y` or `--yes` before the reviewed transfer is confirmed.
+- Print a full API key back to the user.
+- Retry a transfer whose recipient setup is incomplete.
 upstream:
   repo: stripe/ai
   path: providers/claude/plugin/skills/stripe-pay
   ref: main
 license: mit
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:2a085814fdb5f8a4
 upstream_sha: 9dde68ae5ef3
 last_checked: 2026-09-20

@@ -2,7 +2,7 @@
 
 # crm-data-quality
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Find incomplete records, normalize field values in bulk, dedupe with `hubspot objects merge`, and audit custom properties. Builds on `bulk- operations` for JSONL piping and dry-run/digest/confirm.
 
@@ -15,10 +15,34 @@ Find incomplete records, normalize field values in bulk, dedupe with `hubspot ob
 | Source | [`HubSpot/agent-cli-skills/crm-data-quality`](https://github.com/HubSpot/agent-cli-skills/tree/main/crm-data-quality) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Bulk-normalises field values and merges duplicate records. A merge is not reversible, which makes the gating below load-bearing rather than ceremonial.
+- **`HUMAN-APPROVAL`** — Always dry-run first; Destructive operations are gated by the dry-run, digest and confirm flow in hs-bulk-operations, which this skill requires reading first. That dependency is indexed here.
+- **`EVIDENCE-GATED`** — Property names are listed from the live schema rather than guessed.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `live property schema` | **yes** | hubspot properties list --type &lt;type&gt; | none — do not guess |
+| `records to clean` | **yes** | hubspot objects search with HAS_PROPERTY / NOT_HAS_PROPERTY filters | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| normalised records | CRM write | HubSpot, after a dry run |
+| merged duplicates | CRM write | hubspot objects merge — irreversible |
+| property audit | chat | incomplete records and unused custom properties |
+
+## What it will not do
+
+- Merge without a dry run.
+- Guess a property name.
+- Skip the pagination loop above 100 results.
 
 ## Data reachability
 
@@ -32,7 +56,9 @@ Find incomplete records, normalize field values in bulk, dedupe with `hubspot ob
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

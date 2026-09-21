@@ -37,20 +37,20 @@ Five touch merchant data, payments or reporting. The other seventeen build Shopi
 
 **0 · Setup**
 
-- [shopify-onboarding-merchant](../../skills/shopify-onboarding-merchant/README.md) — `UNGRADED`
+- [shopify-onboarding-merchant](../../skills/shopify-onboarding-merchant/README.md) — `GRADED` `PROPOSES-WRITES` `SENDS-TELEMETRY`
 
 **2 · Data hygiene**
 
-- [shopify-admin](../../skills/shopify-admin/README.md) — `UNGRADED`
+- [shopify-admin](../../skills/shopify-admin/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
 
 **3 · Reconcile**
 
-- [shopify-customer](../../skills/shopify-customer/README.md) — `UNGRADED`
-- [shopify-payments-apps](../../skills/shopify-payments-apps/README.md) — `UNGRADED`
+- [shopify-customer](../../skills/shopify-customer/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY` `PII-MINIMISING`
+- [shopify-payments-apps](../../skills/shopify-payments-apps/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
 
 **6 · Report**
 
-- [shopify-shopifyql](../../skills/shopify-shopifyql/README.md) — `UNGRADED`
+- [shopify-shopifyql](../../skills/shopify-shopifyql/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
 
 ---
 

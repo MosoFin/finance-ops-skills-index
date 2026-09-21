@@ -2,7 +2,7 @@
 
 # paypal-best-practices
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 PayPal integration guidance, code examples, and best practices. Use for checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane, payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal architecture decision or code generation question.
 
@@ -15,10 +15,36 @@ PayPal integration guidance, code examples, and best practices. Use for checkout
 | Source | [`paypal/AI-Toolkit/skills/paypal-best-practices`](https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-best-practices) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Architecture and code guidance. Live operations are explicitly handed to the PayPal MCP server rather than performed here.
+- **`EVIDENCE-GATED`** — Requires reading the matching reference file before answering, and asks which SDK version is in use rather than assuming. Where three Fastlane variants exist it refuses to generate code until the user picks one.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `integration intent` | **yes** | user | routed through a table of intents to a reference file |
+| `SDK version` | **yes** | detected from the project's script tag and API shape | v6 for a new project; ask when unclear |
+| `project environment files` | no | `.env`, `.env.sample` in root and server/client directories | ask how the client ID is configured before flagging anything missing |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| integration guidance and code | chat | against the correct SDK version |
+| environment check | chat | flags missing or empty credentials after the generated code |
+| pre-delivery validation | checklist | thirteen checks including no hardcoded credentials, sandbox URLs, webhook signature verification |
+
+## What it will not do
+
+- Hardcode credentials in generated code.
+- Mix the three Fastlane variants.
+- Recommend NVP/SOAP, v1/payments, Hosted Fields or Adaptive Payments.
+- Create orders client-side.
+- Execute API calls the MCP tools should handle.
 
 ## Data reachability
 
@@ -32,7 +58,9 @@ PayPal integration guidance, code examples, and best practices. Use for checkout
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

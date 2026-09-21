@@ -2,7 +2,7 @@
 
 # crm-lookup
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations for the full account picture.
 
@@ -15,10 +15,30 @@ Find a specific CRM record by ID, email, domain, or name fragment, and traverse 
 | Source | [`HubSpot/agent-cli-skills/crm-lookup`](https://github.com/HubSpot/agent-cli-skills/tree/main/crm-lookup) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — States it outright. Any write that follows a lookup is gated by hs-bulk-operations.
+- **`EVIDENCE-GATED`** — Schemas drift, so properties are read from the live schema rather than a hardcoded table.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `identifier` | **yes** | record ID, email, domain or name fragment | none |
+| `live property schema` | **yes** | hubspot properties list --type &lt;type&gt; | none — do not hardcode |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| records and associations | JSONL | stdout — the full account picture across associated objects |
+
+## What it will not do
+
+- Write. Any write belongs to the gated flow in hs-bulk-operations.
+- Hardcode a property table across portals.
 
 ## Data reachability
 
@@ -32,7 +52,9 @@ Find a specific CRM record by ID, email, domain, or name fragment, and traverse 
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

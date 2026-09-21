@@ -35,7 +35,7 @@ Triage only — this connector is not recommended anyway.
 
 **3 · Reconcile**
 
-- [Gmail triage (gws-gmail-triage)](../../skills/gws-gmail-triage/README.md) — `UNGRADED`
+- [Gmail triage (gws-gmail-triage)](../../skills/gws-gmail-triage/README.md) — `GRADED` `READ-ONLY`
 
 ---
 

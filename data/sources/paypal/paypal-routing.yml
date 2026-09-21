@@ -6,16 +6,45 @@ stage: 3
 summary: PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo,
   SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes
   PayPal developer questions to the right command or reference file.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: A routing table. It dispatches to commands and reference files and performs no
+    operation itself; it is not user-invocable.
+  EVIDENCE-GATED: Requires generating code strictly from the fetched language snippet rather
+    than falling back on training knowledge, and states that reference files override what
+    the model already believes.
 systems:
 - paypal
+inputs:
+- name: developer intent
+  required: true
+  source: user
+  fallback: none
+- name: language
+  required: false
+  source: detected from the codebase, extensions or imports
+  fallback: ask
+- name: RulesHub snippets
+  required: false
+  source: raw.githubusercontent.com/paypal/ruleshub
+  fallback: the reference file alone
+outputs:
+- name: route
+  type: chat
+  dest: a slash command, or the paypal-best-practices skill plus a named reference file
+never:
+- Fall back to training knowledge for implementation patterns when a snippet was fetched.
+- Load both Fastlane variants — the v5 and v6 component APIs differ.
 upstream:
   repo: paypal/AI-Toolkit
   path: skills/paypal-routing
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:3c99aba0118d4733
 upstream_sha: c93cbfe5b0b1
 last_checked: 2026-09-20

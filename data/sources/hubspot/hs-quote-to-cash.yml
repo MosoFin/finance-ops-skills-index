@@ -5,16 +5,56 @@ authority: first-party
 stage: 3
 summary: Build the product catalog, assemble quotes (line items + associations to deals),
   and track invoices and subscriptions through to revenue.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  PROPOSES-WRITES: Creates products, line items and quotes, and reads invoices and subscriptions
+    through to revenue.
+  EVIDENCE-GATED: Every enum value is verified against the live schema before being written,
+    rather than assumed.
+  HUMAN-APPROVAL: Destructive operations are gated by the dry-run, digest and confirm flow
+    in hs-bulk-operations, which this skill requires reading first. That dependency is indexed
+    here.
 systems:
 - hubspot
+inputs:
+- name: product and pricing detail
+  required: true
+  source: user, or JSONL for a catalogue import
+  fallback: none
+- name: live enum values
+  required: true
+  source: hubspot properties get --type <type> --name <property>
+  fallback: none — do not assume an enum
+- name: invoice and subscription scopes
+  required: false
+  source: a token carrying invoices-read and subscriptions-read
+  fallback: 403; those objects are unreadable without the scope
+outputs:
+- name: products and line items
+  type: CRM write
+  dest: HubSpot, associated to deals
+- name: quotes
+  type: CRM write
+  dest: always DRAFT when created from the CLI
+- name: revenue view
+  type: chat
+  dest: outstanding invoices, active subscriptions
+never:
+- Hardcode a property table.
+- Write an enum value without verifying it first.
+- Imply a CLI-created quote is anything but a draft — approval routing, share links, PDF generation
+  and invoice creation need the HubSpot UI.
 upstream:
   repo: HubSpot/agent-cli-skills
   path: quote-to-cash
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:96d3ead568ea7602
 upstream_sha: 5b773165f0c8
 last_checked: 2026-09-20

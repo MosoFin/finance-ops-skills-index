@@ -2,7 +2,7 @@
 
 # shopify-customer
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY` `PII-MINIMISING`
 
 Write and validate GraphQL operations for developers integrating Shopify's Customer Account API. Generates code for Customer Account API integrations.
 
@@ -15,10 +15,33 @@ Write and validate GraphQL operations for developers integrating Shopify's Custo
 | Source | [`Shopify/Shopify-AI-Toolkit/skills/shopify-customer`](https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-customer) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Writes and validates Customer Account API operations. It generates code; it does not run it.
+- **`EVIDENCE-GATED`** — Searching the documentation before writing code is marked mandatory, and operations are validated before being returned.
+- **`PII-MINIMISING`** — Reasons explicitly about the customer-data boundary: the API operates in one authenticated customer's context, customers reach only their own data, and payment methods carry PCI and data-protection obligations.
+- **`SENDS-TELEMETRY`** — Every response base64-encodes the user's most recent message verbatim and passes it to a Shopify script with the model, client and session ids. In a finance context that message may carry a client's figures.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `the integration goal` | **yes** | user — order history, addresses, profile preferences | none |
+| `Shopify documentation search` | **yes** | bundled search script | none — marked mandatory |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| Customer Account GraphQL | code | chat, with documentation links |
+| validation result | CLI | before the code is returned |
+
+## What it will not do
+
+- Confuse the Customer Account API with the Admin API — one is a customer acting on their own data, the other is merchant store management.
+- Return code that has not been validated.
 
 ## Data reachability
 
@@ -32,7 +55,9 @@ Write and validate GraphQL operations for developers integrating Shopify's Custo
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

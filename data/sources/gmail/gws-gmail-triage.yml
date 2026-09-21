@@ -5,16 +5,38 @@ authority: first-party
 stage: 3
 summary: Google's official Gmail triage skill. Pairs with aging-review, where the collections
   follow-up and the client's reply both arrive by mail.
-tiers: []
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: States it plainly — never modifies the mailbox. It lists unread mail; it does
+    not label, archive or reply.
 systems:
 - gmail
+inputs:
+- name: --query
+  required: false
+  source: Gmail search syntax
+  fallback: is:unread
+- name: --max
+  required: false
+  source: user
+  fallback: '20'
+outputs:
+- name: inbox summary
+  type: table or JSON
+  dest: sender, subject, date, optionally labels
+never:
+- Modify the mailbox.
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade
+  covers this file only; the safety rules it defers to are unreviewed.
 upstream:
   repo: googleworkspace/cli
   path: skills/gws-gmail-triage
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:48b0512b3ffa718a
 upstream_sha: 705fb0ecac6f
 last_checked: 2026-09-20

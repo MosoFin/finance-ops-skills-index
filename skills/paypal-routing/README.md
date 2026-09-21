@@ -2,7 +2,7 @@
 
 # paypal-routing
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes PayPal developer questions to the right command or reference file.
 
@@ -15,10 +15,31 @@ PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Ve
 | Source | [`paypal/AI-Toolkit/skills/paypal-routing`](https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-routing) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — A routing table. It dispatches to commands and reference files and performs no operation itself; it is not user-invocable.
+- **`EVIDENCE-GATED`** — Requires generating code strictly from the fetched language snippet rather than falling back on training knowledge, and states that reference files override what the model already believes.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `developer intent` | **yes** | user | none |
+| `language` | no | detected from the codebase, extensions or imports | ask |
+| `RulesHub snippets` | no | raw.githubusercontent.com/paypal/ruleshub | the reference file alone |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| route | chat | a slash command, or the paypal-best-practices skill plus a named reference file |
+
+## What it will not do
+
+- Fall back to training knowledge for implementation patterns when a snippet was fetched.
+- Load both Fastlane variants — the v5 and v6 component APIs differ.
 
 ## Data reachability
 
@@ -32,7 +53,9 @@ PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Ve
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

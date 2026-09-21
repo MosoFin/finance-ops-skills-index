@@ -5,16 +5,46 @@ authority: first-party
 stage: 7
 summary: Usage-based billing through Stripe's official toolkit. Where revenue is metered rather
   than invoiced, this is upstream of every revenue number.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: Integration guidance for usage-based billing. It advises on API design; it issues
+    no calls itself.
+  EVIDENCE-GATED: States that endpoint paths, request shapes and units are misremembered easily,
+    and requires reading the linked documentation page before naming any endpoint, field or
+    amount.
 systems:
 - stripe
+inputs:
+- name: the integration question
+  required: true
+  source: user
+  fallback: none
+- name: Metronome documentation
+  required: true
+  source: docs.metronome.com, fetched as Markdown
+  fallback: the llms.txt index
+outputs:
+- name: integration guidance
+  type: chat
+  dest: routed by task — ingestion, contracts, invoicing, commits, Stripe sync
+- name: code
+  type: chat
+  dest: written against the documentation page, not from memory
+never:
+- Name an endpoint or field without reading its documentation page first.
+- Recommend legacy Plans or deprecated Amendments for new work.
+- Hardcode pricing in contracts rather than rate cards.
+- Reconcile payments against the Metronome invoice total — it is pre-tax; use the Stripe total.
 upstream:
   repo: stripe/ai
   path: providers/claude/plugin/skills/metronome
   ref: main
 license: mit
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:62220ba4b5d261bc
 upstream_sha: 82d5d332c2ef
 last_checked: 2026-09-20

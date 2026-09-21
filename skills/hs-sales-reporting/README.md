@@ -2,7 +2,7 @@
 
 # sales-reporting
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.
 
@@ -15,10 +15,34 @@ Daily briefings, pipeline snapshots, and win/loss analysis from the terminal —
 | Source | [`HubSpot/agent-cli-skills/sales-reporting`](https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Briefings, pipeline snapshots and win/loss analysis. Reads only.
+- **`EVIDENCE-GATED`** — Carries the correctness rule that matters most for reporting: search and list cap at 100 rows, and a result of exactly 100 is almost always truncated, so it must be paginated before aggregating. It also warns that every CRM value returns as a string — amounts must be converted before arithmetic and booleans compared as strings — which is exactly how a silently wrong total gets produced.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `deal records` | **yes** | hubspot objects search --type deals | none |
+| `pipeline stage map` | **yes** | hubspot pipelines stages — stage IDs are portal-specific | none; never hardcode |
+| `owner list` | no | hubspot owners list, to resolve numeric owner IDs to names | report the ID |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| daily briefing | chat | deals closing in the next seven days, recent movement |
+| pipeline snapshot | chat | open pipeline by stage and owner |
+| win/loss analysis | chat | closed-won against closed-lost over a period |
+
+## What it will not do
+
+- Aggregate a result of exactly 100 rows without paginating first.
+- Do arithmetic on a property value without converting it from string.
+- Hardcode portal-specific stage IDs.
 
 ## Data reachability
 
@@ -32,7 +56,9 @@ Daily briefings, pipeline snapshots, and win/loss analysis from the terminal —
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

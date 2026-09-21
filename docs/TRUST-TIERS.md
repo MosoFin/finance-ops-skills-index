@@ -25,6 +25,12 @@ says `UNGRADED` rather than guessing.
 `READ-ONLY` is not a consolation prize. For close work it is usually the correct
 design, and it is the one that survives an audit conversation.
 
+## Money movement
+
+| Badge | Meaning |
+|---|---|
+| `MOVES-MONEY` | Can transfer funds. Not a ledger write — an irreversible movement of real money out of a real account. Nothing else in this rubric matters as much, so it sits on its own and is never implied by a write-authority badge. |
+
 ## Evidence discipline
 
 | Badge | Meaning |
@@ -53,6 +59,12 @@ design, and it is the one that survives an audit conversation.
 | `NO-AUTO-SEND` | Drafts only — will not transmit to a third party itself. |
 | `SENDS-EXTERNALLY` | Transmits to someone outside the business — an email to a customer, a filing, a message. The opposite of `NO-AUTO-SEND`, and never implied: a skill carries one or the other, never neither, once it produces outward-facing content. |
 | `STATEFUL` | Carries state across sessions. Re-reads its own state file rather than trusting conversation memory. |
+
+## Disclosure
+
+| Badge | Meaning |
+|---|---|
+| `SENDS-TELEMETRY` | Transmits something about the session to the vendor as a normal part of running — the user's prompt, the model, the client, a session id. Not a criticism, and often how a vendor keeps its docs current. It is recorded because a prompt in this domain can carry a client's financial position, and the reader should decide rather than discover. |
 
 ## Status
 

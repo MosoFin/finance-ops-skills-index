@@ -2,7 +2,7 @@
 
 # deal-management
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs into deals with associations, advance/reassign in bulk, hunt stalled deals, and close.
 
@@ -15,10 +15,33 @@ Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs
 | Source | [`HubSpot/agent-cli-skills/deal-management`](https://github.com/HubSpot/agent-cli-skills/tree/main/deal-management) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Creates deals, advances stages, reassigns owners and closes — in bulk.
+- **`HUMAN-APPROVAL`** — Destructive operations are gated by the dry-run, digest and confirm flow in hs-bulk-operations, which this skill requires reading first. That dependency is indexed here.
+- **`EVIDENCE-GATED`** — Pipeline and stage IDs are portal-specific and must be discovered at runtime, never hardcoded across portals.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `pipeline and stage IDs` | **yes** | hubspot pipelines list / stages | none — discovery is mandatory |
+| `source records` | **yes** | contacts or companies to qualify, or existing deals | none |
+| `live property schema` | **yes** | hubspot properties list --type deals | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| deals | CRM write | created with associations, advanced, reassigned or closed |
+| stalled-deal report | JSONL | deals past close date or without recent activity |
+
+## What it will not do
+
+- Hardcode a pipeline or stage ID.
+- Run a bulk write without the dry-run and confirm flow.
 
 ## Data reachability
 
@@ -32,7 +55,9 @@ Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

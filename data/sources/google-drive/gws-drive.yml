@@ -5,16 +5,41 @@ authority: first-party
 stage: 0
 summary: Google's official Drive skill. Relevant wherever the workpaper archive, client statements
   and PBC documents live outside the ledger.
-tiers: []
+tiers:
+- WRITES-DIRECT
+tier_notes:
+  WRITES-DIRECT: Manages files, folders and shared drives across the Drive v3 surface, with
+    no confirmation rule stated in this file. Deletion and permission changes are reachable
+    from it.
 systems:
 - google-drive
+inputs:
+- name: resource and method
+  required: true
+  source: gws drive --help, then gws schema
+  fallback: none
+- name: gws binary
+  required: true
+  source: local install, authenticated
+  fallback: none
+outputs:
+- name: API response
+  type: JSON
+  dest: stdout
+- name: Drive changes
+  type: write
+  dest: files, folders, shared drives and their permissions
+never:
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade
+  covers this file only; the safety rules it defers to are unreviewed.
 upstream:
   repo: googleworkspace/cli
   path: skills/gws-drive
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:d37fad56bb9547d2
 upstream_sha: 705fb0ecac6f
 last_checked: 2026-09-20

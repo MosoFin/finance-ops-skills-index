@@ -2,7 +2,7 @@
 
 # gws-sheets-read
 
-`UNGRADED`
+`GRADED` `READ-ONLY`
 
 Google Sheets: Read values from a spreadsheet.
 
@@ -15,10 +15,30 @@ Google Sheets: Read values from a spreadsheet.
 | Source | [`googleworkspace/cli/skills/gws-sheets-read`](https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-read) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — States it plainly — never modifies the spreadsheet. A thin wrapper over one CLI verb.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `--spreadsheet` | **yes** | spreadsheet ID | none |
+| `--range` | **yes** | A1 notation, e.g. Sheet1!A1:D10 | none |
+| `gws binary` | **yes** | local install, authenticated | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| cell values | table or JSON | stdout |
+
+## What it will not do
+
+- Modify the spreadsheet.
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade covers this file only; the safety rules it defers to are unreviewed.
 
 ## Data reachability
 
@@ -32,7 +52,9 @@ Google Sheets: Read values from a spreadsheet.
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

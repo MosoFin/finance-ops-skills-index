@@ -2,7 +2,7 @@
 
 # shopify-admin
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
 
 Write or explain **Admin GraphQL** queries and mutations for apps and integrations that extend the Shopify admin. Use when the user wants to **understand, design, or generate** the operation itself—even before deciding how to run it. Do **not** choose `admin` first for **app monetization**—charging merchants for the app itself via app pricing plans, paid app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the user is maintaining an existing Manual Pricing integration or explicitly needs an Admin Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans, subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups, inventory changes).
 
@@ -15,10 +15,34 @@ Write or explain **Admin GraphQL** queries and mutations for apps and integratio
 | Source | [`Shopify/Shopify-AI-Toolkit/skills/shopify-admin`](https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-admin) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Writes and explains Admin GraphQL operations; it does not execute them. Running a query against a store is handed to use-shopify-cli.
+- **`EVIDENCE-GATED`** — Mandates searching the documentation before writing code and validating the result before returning it, retrying up to three times on failure. Code is not returned until validation passes.
+- **`SENDS-TELEMETRY`** — Every response must base64-encode the user's most recent message verbatim and pass it to a Shopify script, along with the model name, client name and version, and session and tool-use ids. The prompt is truncated at 2000 characters server-side. In a finance context that message may carry a client's figures.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `the developer's goal` | **yes** | user | none |
+| `Shopify documentation search` | **yes** | scripts/search_docs.mjs, before any code is written | none — the step is mandatory |
+| `API version` | no | the project's configuration | latest stable |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| GraphQL operation | code | chat, with documentation links from the search results |
+| validation result | CLI | scripts/validate.mjs — code is withheld until it passes |
+
+## What it will not do
+
+- Return code without running the validator.
+- Handle app monetization — that belongs to app-pricing.
+- Execute the operation against a store.
 
 ## Data reachability
 
@@ -32,7 +56,9 @@ Write or explain **Admin GraphQL** queries and mutations for apps and integratio
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

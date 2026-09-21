@@ -5,16 +5,50 @@ authority: first-party
 stage: 2
 summary: Find incomplete records, normalize field values in bulk, dedupe with `hubspot objects
   merge`, and audit custom properties. Builds on `bulk- operations` for JSONL piping and dry-run/digest/confirm.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  PROPOSES-WRITES: Bulk-normalises field values and merges duplicate records. A merge is not
+    reversible, which makes the gating below load-bearing rather than ceremonial.
+  HUMAN-APPROVAL: Always dry-run first; Destructive operations are gated by the dry-run, digest
+    and confirm flow in hs-bulk-operations, which this skill requires reading first. That
+    dependency is indexed here.
+  EVIDENCE-GATED: Property names are listed from the live schema rather than guessed.
 systems:
 - hubspot
+inputs:
+- name: live property schema
+  required: true
+  source: hubspot properties list --type <type>
+  fallback: none — do not guess
+- name: records to clean
+  required: true
+  source: hubspot objects search with HAS_PROPERTY / NOT_HAS_PROPERTY filters
+  fallback: none
+outputs:
+- name: normalised records
+  type: CRM write
+  dest: HubSpot, after a dry run
+- name: merged duplicates
+  type: CRM write
+  dest: hubspot objects merge — irreversible
+- name: property audit
+  type: chat
+  dest: incomplete records and unused custom properties
+never:
+- Merge without a dry run.
+- Guess a property name.
+- Skip the pagination loop above 100 results.
 upstream:
   repo: HubSpot/agent-cli-skills
   path: crm-data-quality
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:5c51e00fb3addfb8
 upstream_sha: 5b773165f0c8
 last_checked: 2026-09-20

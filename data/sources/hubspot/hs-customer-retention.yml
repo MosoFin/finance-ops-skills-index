@@ -5,16 +5,48 @@ authority: first-party
 stage: 7
 summary: Identify inactive/at-risk customers via CRM filters and create follow-up tasks at
   scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  PROPOSES-WRITES: Creates follow-up tasks at scale against at-risk accounts.
+  EVIDENCE-GATED: Schema is portal-specific, so every churn-signal property is verified before
+    it is filtered on.
+  HUMAN-APPROVAL: Destructive operations are gated by the dry-run, digest and confirm flow
+    in hs-bulk-operations, which this skill requires reading first. That dependency is indexed
+    here.
 systems:
 - hubspot
+inputs:
+- name: churn-signal properties
+  required: true
+  source: notes_last_contacted, hs_last_sales_activity_date, hs_subscription_status — each
+    verified first
+  fallback: none
+- name: subscriptions scope
+  required: false
+  source: a private-app token with subscriptions-read
+  fallback: 403; subscription health is unavailable
+outputs:
+- name: at-risk list
+  type: JSONL
+  dest: customers with no outreach or no sales activity in the window, and never-contacted
+    accounts
+- name: follow-up tasks
+  type: CRM write
+  dest: created in bulk; activity specifics defer to sales-execution
+never:
+- Filter on a property without verifying it exists in this portal.
+- Create tasks in bulk without the dry-run and confirm flow.
 upstream:
   repo: HubSpot/agent-cli-skills
   path: customer-retention
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:9965f44f3042b8c0
 upstream_sha: 5b773165f0c8
 last_checked: 2026-09-20

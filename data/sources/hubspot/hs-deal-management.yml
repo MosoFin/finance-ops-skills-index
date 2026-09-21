@@ -5,16 +5,50 @@ authority: first-party
 stage: 3
 summary: Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs into
   deals with associations, advance/reassign in bulk, hunt stalled deals, and close.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  PROPOSES-WRITES: Creates deals, advances stages, reassigns owners and closes — in bulk.
+  HUMAN-APPROVAL: Destructive operations are gated by the dry-run, digest and confirm flow
+    in hs-bulk-operations, which this skill requires reading first. That dependency is indexed
+    here.
+  EVIDENCE-GATED: Pipeline and stage IDs are portal-specific and must be discovered at runtime,
+    never hardcoded across portals.
 systems:
 - hubspot
+inputs:
+- name: pipeline and stage IDs
+  required: true
+  source: hubspot pipelines list / stages
+  fallback: none — discovery is mandatory
+- name: source records
+  required: true
+  source: contacts or companies to qualify, or existing deals
+  fallback: none
+- name: live property schema
+  required: true
+  source: hubspot properties list --type deals
+  fallback: none
+outputs:
+- name: deals
+  type: CRM write
+  dest: created with associations, advanced, reassigned or closed
+- name: stalled-deal report
+  type: JSONL
+  dest: deals past close date or without recent activity
+never:
+- Hardcode a pipeline or stage ID.
+- Run a bulk write without the dry-run and confirm flow.
 upstream:
   repo: HubSpot/agent-cli-skills
   path: deal-management
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:de039e2299446039
 upstream_sha: 5b773165f0c8
 last_checked: 2026-09-20

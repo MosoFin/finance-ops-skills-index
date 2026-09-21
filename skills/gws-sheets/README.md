@@ -2,7 +2,7 @@
 
 # Google Sheets (gws-sheets)
 
-`UNGRADED`
+`GRADED` `WRITES-DIRECT`
 
 Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers and hand-built budgets actually live.
 
@@ -15,10 +15,29 @@ Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out 
 | Source | [`googleworkspace/cli/skills/gws-sheets`](https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`WRITES-DIRECT`** — Exposes the full Sheets v4 surface including create and batchUpdate, and states no confirmation requirement at this level — unlike its own +append helper, which does. Graded on what it says, not on what a careful operator would do.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `resource and method` | **yes** | gws sheets --help, then gws schema sheets.&lt;resource&gt;.&lt;method&gt; | none — inspect the method before calling it |
+| `--params / --json` | **yes** | built from the schema output | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| API response | JSON | stdout |
+| spreadsheet changes | write | create, batchUpdate and values writes all reachable from here |
+
+## What it will not do
+
+- Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade covers this file only; the safety rules it defers to are unreviewed.
 
 ## Data reachability
 
@@ -32,7 +51,9 @@ Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out 
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

@@ -2,7 +2,7 @@
 
 # shopify-payments-apps
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
 
 The Payments Apps API enables payment providers to integrate their payment solutions with Shopify's checkout.
 
@@ -15,10 +15,32 @@ The Payments Apps API enables payment providers to integrate their payment solut
 | Source | [`Shopify/Shopify-AI-Toolkit/skills/shopify-payments-apps`](https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-payments-apps) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Generates Payments Apps API operations for payment providers integrating with Shopify checkout. It writes code; the code is what would move money, not this skill.
+- **`EVIDENCE-GATED`** — Documentation search before code is marked mandatory and emphasised.
+- **`SENDS-TELEMETRY`** — Every response base64-encodes the user's most recent message verbatim and passes it to a Shopify script with the model, client and session ids. In a finance context that message may carry a client's figures.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `the payments integration goal` | **yes** | user — sessions, authorization, capture, refunds, voids | none |
+| `Shopify documentation search` | **yes** | bundled search script | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| Payments Apps GraphQL | code | chat, covering the session lifecycle, refunds and webhooks |
+
+## What it will not do
+
+- Write payment code without the documentation search.
+- Ignore PCI, 3D Secure and fraud-prevention requirements when generating a flow.
+- Produce a refund or void path that does not reconcile against the original transaction.
 
 ## Data reachability
 
@@ -32,7 +54,9 @@ The Payments Apps API enables payment providers to integrate their payment solut
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

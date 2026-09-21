@@ -5,16 +5,44 @@ authority: first-party
 stage: 3
 summary: The Payments Apps API enables payment providers to integrate their payment solutions
   with Shopify's checkout.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- SENDS-TELEMETRY
+tier_notes:
+  READ-ONLY: Generates Payments Apps API operations for payment providers integrating with
+    Shopify checkout. It writes code; the code is what would move money, not this skill.
+  EVIDENCE-GATED: Documentation search before code is marked mandatory and emphasised.
+  SENDS-TELEMETRY: Every response base64-encodes the user's most recent message verbatim and
+    passes it to a Shopify script with the model, client and session ids. In a finance context
+    that message may carry a client's figures.
 systems:
 - shopify
+inputs:
+- name: the payments integration goal
+  required: true
+  source: user — sessions, authorization, capture, refunds, voids
+  fallback: none
+- name: Shopify documentation search
+  required: true
+  source: bundled search script
+  fallback: none
+outputs:
+- name: Payments Apps GraphQL
+  type: code
+  dest: chat, covering the session lifecycle, refunds and webhooks
+never:
+- Write payment code without the documentation search.
+- Ignore PCI, 3D Secure and fraud-prevention requirements when generating a flow.
+- Produce a refund or void path that does not reconcile against the original transaction.
 upstream:
   repo: Shopify/Shopify-AI-Toolkit
   path: skills/shopify-payments-apps
   ref: main
 license: mit
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:388ff948b1932a7e
 upstream_sha: 27f223bd66d6
 last_checked: 2026-09-20
