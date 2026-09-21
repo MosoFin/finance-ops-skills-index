@@ -2,6 +2,13 @@ name: drift
 
 # A grade is a claim about one version of a file. This job notices when that
 # file changes upstream and asks a human to re-read it. It never re-grades.
+#
+# Exit codes from scripts/check_drift.py are load-bearing:
+#   0  nothing to do, or bookkeeping only
+#   1  an upstream SKILL.md changed — a human must re-grade
+#   2  an error (link rot, changed licence, rate limit, network)
+# They must stay distinct: this workflow once read a rate-limit abort as drift
+# and tried to open a re-grading pull request for it.
 
 on:
   schedule:
@@ -10,7 +17,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
   issues: write
 
 jobs:
@@ -23,20 +29,27 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
 
+      # The log goes to the runner's temp dir, not the working tree — a stray
+      # drift.log in the repo gets picked up and committed by the next step.
       - name: Check pointers against upstream
         id: drift
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set +e
-          python scripts/check_drift.py --write | tee drift.log
+          python scripts/check_drift.py --write 2>&1 | tee "$RUNNER_TEMP/drift.log"
           echo "code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
 
       - name: Rebuild generated docs
         run: python scripts/build.py
 
-      # Exit 2 — link rot, an unreadable SKILL.md, or a changed LICENCE.
-      # Nothing to merge; a person has to look.
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # Exit 2 — link rot, an unreadable SKILL.md, a changed LICENCE, or a
+      # failure to reach GitHub. Nothing to merge; a person has to look.
       - name: Open an issue on hard failure
         if: steps.drift.outputs.code == '2'
         env:
@@ -44,35 +57,33 @@ jobs:
         run: |
           gh issue create \
             --title "Drift check failed $(date -u +%F)" \
-            --label "drift,needs-human" \
-            --body "$(printf 'Hard failures in the daily pointer check.\n\n```\n%s\n```\n' "$(grep '^FATAL' drift.log || true)")"
+            --label "drift" \
+            --body "$(printf 'The daily pointer check exited 2.\n\n```\n%s\n```\n' \
+                      "$(grep -E '^(FATAL|REGRADE)' "$RUNNER_TEMP/drift.log" || tail -20 "$RUNNER_TEMP/drift.log")")"
 
-      # Exit 1 — an upstream SKILL.md changed. The entry is now NEEDS-RE-GRADING.
-      # Never auto-merged: the badges below it are stale until someone re-reads it.
-      - name: Open a re-grading pull request
+      # Exit 1 — an upstream SKILL.md changed, so those entries are now
+      # NEEDS-RE-GRADING. This organisation forbids Actions from opening pull
+      # requests, so the branch is pushed and an issue asks for the PR.
+      - name: Push a re-grading branch and open an issue
         if: steps.drift.outputs.code == '1'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          branch: drift/regrade
-          title: "Re-grading required — upstream SKILL.md changed"
-          labels: needs-re-grading
-          commit-message: "chore(drift): mark changed entries NEEDS-RE-GRADING"
-          body: |
-            One or more upstream skills changed. Their grades have expired.
-
-            **Do not merge this as a formality.** For each entry below, open the
-            linked upstream diff, re-read `SKILL.md`, confirm or correct the trust
-            tiers and the inputs/outputs in `sources.yml`, set `status: GRADED`
-            and today's `last_graded`, then run `python scripts/build.py`.
-
-            See [docs/TRUST-TIERS.md](../blob/main/docs/TRUST-TIERS.md#the-re-grading-rule).
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="drift/regrade-$(date -u +%Y%m%d)"
+          git checkout -b "$BRANCH"
+          git add data/ README.md skills/ connectors/ docs/CONNECTOR-TRACKER.md
+          git commit -m "chore(drift): mark changed entries NEEDS-RE-GRADING"
+          git push -f origin "$BRANCH"
+          gh issue create \
+            --title "Re-grading required — upstream SKILL.md changed" \
+            --label "needs-re-grading" \
+            --body "$(printf 'Branch \`%s\` marks the affected entries NEEDS-RE-GRADING.\n\n```\n%s\n```\n\n**Do not merge this as a formality.** For each entry, open the upstream diff, re-read `SKILL.md`, confirm or correct the trust tiers and the inputs/outputs in its `data/sources/<system>/<id>.yml`, set `status: GRADED` with today `last_graded`, then run `make build`.\n\nSee docs/TRUST-TIERS.md, section "The re-grading rule".\n' \
+                      "$BRANCH" "$(grep '^REGRADE' "$RUNNER_TEMP/drift.log" || true)")"
 
       # Exit 0 — only sibling files moved, or nothing at all. Bookkeeping only.
       - name: Commit bookkeeping
         if: steps.drift.outputs.code == '0'
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sources.yml README.md skills/
+          git add data/ README.md skills/ connectors/ docs/CONNECTOR-TRACKER.md
           git diff --staged --quiet || git commit -m "chore(drift): refresh upstream SHAs"
           git push

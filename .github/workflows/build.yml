@@ -29,9 +29,10 @@ jobs:
         run: |
           python - <<'PY'
           import pathlib, sys, yaml
-          data = yaml.safe_load(open("sources.yml"))
+          skills = [yaml.safe_load(f.read_text())
+                    for f in sorted(pathlib.Path("data/sources").glob("*/*.yml"))]
           bad = []
-          for s in data["skills"]:
+          for s in skills:
               if s.get("mirror"):
                   continue
               d = pathlib.Path("vendor") / s["id"]

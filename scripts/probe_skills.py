@@ -29,6 +29,17 @@ from concurrent.futures import ThreadPoolExecutor
 
 import yaml
 
+class Fatal(Exception):
+    """An error, as opposed to a finding.
+
+    Exit 1 means "upstream content changed, a human must re-grade". A bare
+    SystemExit(message) also exits 1, so an error here used to be
+    indistinguishable from a finding — the drift workflow read a rate-limit
+    abort as drift and tried to open a re-grading pull request for it.
+    Errors now exit 2.
+    """
+
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONNECTORS = ROOT / "connectors.yml"
 HINT = re.compile(
@@ -57,7 +68,7 @@ def api(url: str):
             return json.load(h)
     except urllib.error.HTTPError as e:
         if e.code in (403, 429):
-            raise SystemExit("GitHub rate limit. export GITHUB_TOKEN=$(gh auth token)") from e
+            raise Fatal("GitHub rate limit. export GITHUB_TOKEN=$(gh auth token)") from e
         return e.code
     except Exception:
         return None
@@ -140,5 +151,13 @@ def main() -> int:
     return 1 if new else 0
 
 
+def _run() -> int:
+    try:
+        return main()
+    except Fatal as e:
+        print(f"FATAL   {e}", file=sys.stderr)
+        return 2
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(_run())
