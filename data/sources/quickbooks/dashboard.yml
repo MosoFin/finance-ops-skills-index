@@ -1,0 +1,66 @@
+id: dashboard
+title: Dashboard
+origin: mosofin-workspace
+authority: first-party
+stage: 6
+summary: One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every figure traces
+  to a source and no figure is computed by the model. Tufte-style restraint, inline SVG charts,
+  provenance footer per panel.
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  PROVENANCE-STAMPED: Every panel notes source and as-of date; unclosed-period numbers are
+    marked preliminary; build date stamped prominently.
+  TIE-CHECKED: Headline figures must tie to statement totals before the file is written. Red
+    figures get a visible flag or the panel is dropped.
+  DETERMINISTIC-MATH: The model writes the layout, never the numbers.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ledger.pnl-by-month
+  required: true
+  source: integration manifest
+  fallback: P&L by month export
+- name: ledger.balance-sheet
+  required: false
+  source: integration manifest
+  fallback: omit balance panels
+- name: ar.aging
+  required: false
+  source: integration manifest
+  fallback: omit the receivables panel
+- name: accounts.balances-as-of
+  required: false
+  source: integration manifest
+  fallback: cash from the balance sheet date
+- name: REPORT-PREFS.md
+  required: true
+  source: client workspace — which dashboard, KPI list, comparison basis, rounding
+  fallback: ask once
+- name: CONTEXT.md
+  required: true
+  source: client workspace — KPI definitions
+  fallback: ask and capture there; never invent a metric definition
+outputs:
+- name: <name>.html
+  type: self-contained HTML
+  dest: dashboards/ in the client workspace — inline CSS, inline SVG, no external deps, prints
+    well
+- name: change note
+  type: chat
+  dest: on refresh, a computed diff of headline figures since the last build
+never:
+- Invent a KPI definition.
+- Ship a figure that failed its tie-check.
+upstream:
+  local: ~/.claude/skills/dashboard
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

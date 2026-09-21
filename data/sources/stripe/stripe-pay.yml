@@ -1,0 +1,20 @@
+id: stripe-pay
+title: Stripe Pay
+origin: third-party
+authority: first-party
+stage: 3
+summary: Stripe's own skill for payment flows. The merchant-side counterpart to reconciling
+  Stripe settlements and fees against the ledger.
+tiers: []
+systems:
+- stripe
+upstream:
+  repo: stripe/ai
+  path: providers/claude/plugin/skills/stripe-pay
+  ref: main
+license: mit
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:2a085814fdb5f8a4
+upstream_sha: 9dde68ae5ef3
+last_checked: 2026-09-20

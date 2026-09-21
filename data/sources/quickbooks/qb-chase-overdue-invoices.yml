@@ -1,0 +1,24 @@
+id: qb-chase-overdue-invoices
+title: chase-overdue-invoices
+origin: third-party
+authority: first-party
+stage: 3
+summary: Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill
+  when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice",
+  "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for
+  invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices",
+  "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be
+  loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/chase-overdue-invoices
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:1f57d78c39b05bb2
+upstream_sha: 6db49c4f8ed3
+last_checked: 2026-09-20

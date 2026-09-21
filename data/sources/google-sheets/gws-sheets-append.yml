@@ -1,0 +1,20 @@
+id: gws-sheets-append
+title: Google Sheets append (gws-sheets-append)
+origin: third-party
+authority: first-party
+stage: 6
+summary: Append rows to a sheet without rewriting it — the safe write for logging close artifacts,
+  categorization decisions, or a running schedule.
+tiers: []
+systems:
+- google-sheets
+upstream:
+  repo: googleworkspace/cli
+  path: skills/gws-sheets-append
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:ef337f5249f50ef0
+upstream_sha: a3768d0e82ad
+last_checked: 2026-09-20

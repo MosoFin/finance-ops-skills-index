@@ -1,0 +1,21 @@
+id: hs-bulk-operations
+title: bulk-operations
+origin: third-party
+authority: first-party
+stage: 2
+summary: Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, pagination,
+  dry-run/digest/confirm for destructive ops, and `hubspot history` for recovery. Every other
+  skill builds on this one.
+tiers: []
+systems:
+- hubspot
+upstream:
+  repo: HubSpot/agent-cli-skills
+  path: bulk-operations
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:02cc417abc0ab9b4
+upstream_sha: ed4123453010
+last_checked: 2026-09-20

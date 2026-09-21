@@ -1,0 +1,20 @@
+id: shopify-payments-apps
+title: shopify-payments-apps
+origin: third-party
+authority: first-party
+stage: 3
+summary: The Payments Apps API enables payment providers to integrate their payment solutions
+  with Shopify's checkout.
+tiers: []
+systems:
+- shopify
+upstream:
+  repo: Shopify/Shopify-AI-Toolkit
+  path: skills/shopify-payments-apps
+  ref: main
+license: mit
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:388ff948b1932a7e
+upstream_sha: 27f223bd66d6
+last_checked: 2026-09-20

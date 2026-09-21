@@ -1,0 +1,21 @@
+id: financial-statement-builder
+title: Financial Statement Builder
+origin: mosofin-published
+authority: first-party
+stage: 6
+summary: Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives
+  from the live trial balance, reclassifies into framework presentation, and proves seven
+  cross-statement tie-outs.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: MosoFin/mosofin-finance-skills
+  path: skills/financial-statement-builder
+  ref: main
+license: agpl-3.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:0edd578122d3c364
+upstream_sha: ac12d064e857
+last_checked: 2026-09-20

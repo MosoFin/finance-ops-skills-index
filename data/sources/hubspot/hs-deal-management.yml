@@ -1,0 +1,20 @@
+id: hs-deal-management
+title: deal-management
+origin: third-party
+authority: first-party
+stage: 3
+summary: Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs into
+  deals with associations, advance/reassign in bulk, hunt stalled deals, and close.
+tiers: []
+systems:
+- hubspot
+upstream:
+  repo: HubSpot/agent-cli-skills
+  path: deal-management
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:de039e2299446039
+upstream_sha: 5b773165f0c8
+last_checked: 2026-09-20

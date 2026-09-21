@@ -1,0 +1,21 @@
+id: receipts
+title: Receipts
+origin: third-party
+authority: first-party
+stage: 2
+summary: Anthropic's own plugin for turning receipts into structured records. The substantiation
+  end of expense work, upstream of coding and posting.
+tiers: []
+systems:
+- pdf
+- images
+upstream:
+  repo: anthropics/claude-plugins-official
+  path: plugins/receipts/skills/receipts
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:5b2f407ff4063972
+upstream_sha: 2476d52abc96
+last_checked: 2026-09-20

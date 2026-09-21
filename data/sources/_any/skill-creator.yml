@@ -1,0 +1,21 @@
+id: skill-creator
+title: skill-creator
+origin: third-party
+authority: first-party
+stage: 0
+summary: Guidance for authoring skills — structure, progressive disclosure, bundled resources.
+  Listed because contributors to this index need it.
+tiers: []
+systems:
+- any
+upstream:
+  repo: anthropics/skills
+  path: skills/skill-creator
+  ref: main
+license: proprietary-anthropic
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:dcd4803e61e913e6
+upstream_sha: b9e19e6f4477
+last_checked: 2026-09-20
+license_hash: sha256:bc6b3af2f331cbc7

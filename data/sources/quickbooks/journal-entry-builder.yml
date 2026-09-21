@@ -1,0 +1,21 @@
+id: journal-entry-builder
+title: Journal Entry Builder
+origin: mosofin-published
+authority: first-party
+stage: 4
+summary: Constructs, formats, and validates journal entries against the real chart of accounts
+  — checks accounts exist, signs match account types, the period is open, and no prior accrual
+  already covers the item. Mosofin never posts.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: MosoFin/mosofin-finance-skills
+  path: skills/journal-entry-builder
+  ref: main
+license: agpl-3.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:2e205addcb3b2e1a
+upstream_sha: ac12d064e857
+last_checked: 2026-09-20

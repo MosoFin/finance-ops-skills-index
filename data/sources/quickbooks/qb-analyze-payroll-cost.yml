@@ -1,0 +1,26 @@
+id: qb-analyze-payroll-cost
+title: analyze-payroll-cost
+origin: third-party
+authority: first-party
+stage: 5
+summary: Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item
+  drivers, and practical payroll cost-control ideas using connected payroll run, employee,
+  payslip, paycheck, and company context data. Use when the user asks why payroll expense
+  increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll
+  spend, how current payroll compares with a prior period, or whether overtime, headcount,
+  pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements,
+  bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use
+  available payroll tools and do not invent payroll facts.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/analyze-payroll-cost
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:fff521688da6d362
+upstream_sha: 6db49c4f8ed3
+last_checked: 2026-09-20

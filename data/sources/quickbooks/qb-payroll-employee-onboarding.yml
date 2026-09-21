@@ -1,0 +1,26 @@
+id: qb-payroll-employee-onboarding
+title: payroll-employee-onboarding
+origin: third-party
+authority: first-party
+stage: 4
+summary: Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding
+  source files such as offer letters and employee rosters. Use when the user wants to add
+  a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire
+  before creation, assign an existing payroll work location, set initial contract/base pay
+  during onboarding, or review payroll-readiness gaps. Requires confirmation before write
+  actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee
+  pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions,
+  time off, or compliance advice.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/payroll-employee-onboarding
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:1de324182880658b
+upstream_sha: 6db49c4f8ed3
+last_checked: 2026-09-20

@@ -1,0 +1,63 @@
+id: categorize-transactions
+title: Categorize Transactions
+origin: mosofin-workspace
+authority: first-party
+stage: 2
+summary: Clears uncategorized buckets using the client's own COA rules — never guesses. Every
+  proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized
+  is the correct outcome.
+tiers:
+- PROPOSES-WRITES
+- EVIDENCE-GATED
+- HUMAN-APPROVAL
+- MATERIALITY-AWARE
+- DETERMINISTIC-MATH
+- POLICY-CAPTURING
+tier_notes:
+  PROPOSES-WRITES: Applies categorizations only after batch confirmation; without the write
+    capability it emits a CSV for manual import.
+  EVIDENCE-GATED: Stops entirely if no COA.md exists — categorizing without rules is guessing.
+  DETERMINISTIC-MATH: Counts and totals computed by awk/python3 over the CSV, never mental
+    math.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: transactions.list-uncategorized
+  required: true
+  source: integration manifest
+  fallback: CSV export of uncategorized transactions
+- name: COA.md
+  required: true
+  source: client workspace
+  fallback: none — stops and suggests /onboard-client
+- name: accounts.list-chart
+  required: false
+  source: integration manifest
+  fallback: rely on COA.md alone
+- name: MATERIALITY.md
+  required: false
+  source: client workspace
+  fallback: no uncategorized-at-close threshold applied
+outputs:
+- name: applied categorizations
+  type: ledger writes
+  dest: accounting system — confirmed batches only, then re-queried to verify the bucket shrank
+    by exactly the applied count
+- name: categorization-<period>.csv
+  type: csv
+  dest: client workspace — txn id, date, payee, amount, target account (when no write capability)
+- name: new rules
+  type: markdown
+  dest: COA.md — written inline as overrides reveal them, not batched
+- name: tie-check
+  type: chat
+  dest: count + total categorized by account; count + total still uncategorized vs threshold
+never:
+- Propose a category on vibes when no rule and no history exist.
+upstream:
+  local: ~/.claude/skills/categorize-transactions
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

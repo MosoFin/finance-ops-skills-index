@@ -1,0 +1,55 @@
+id: grill-my-coa
+title: Grill My COA
+origin: mosofin-workspace
+authority: first-party
+stage: 0
+summary: Relentless interview about your chart of accounts until every account has one clear
+  purpose and every recurring transaction has exactly one home. Queries the ledger instead
+  of asking whenever the ledger can answer.
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- HUMAN-APPROVAL
+- POLICY-CAPTURING
+tier_notes:
+  EVIDENCE-GATED: Surfaces where posted reality contradicts stated account purpose, rather
+    than accepting the stated purpose.
+  READ-ONLY: Chart edits happen in the accounting system, by you. This session produces the
+    rulebook and an edit list.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: accounts.list-chart
+  required: false
+  source: integration manifest
+  fallback: chart of accounts export
+- name: ledger.gl-detail
+  required: false
+  source: integration manifest
+  fallback: your answers alone — flags that reality-checks were skipped
+- name: COA.md / CONTEXT.md
+  required: false
+  source: client workspace
+  fallback: created as you go
+outputs:
+- name: COA.md
+  type: markdown (updated inline, not batched)
+  dest: client workspace — purpose line, rule, `_Not_:` warning per account
+- name: CONTEXT.md
+  type: markdown
+  dest: client workspace — new or sharpened terms
+- name: chart edit list
+  type: list
+  dest: chat — renames, merges, deactivations for you to apply
+- name: decision records
+  type: markdown (ADR)
+  dest: docs/decisions/ — for hard-to-reverse structural changes
+never:
+- Rename, merge, or deactivate accounts in the accounting system.
+upstream:
+  local: ~/.claude/skills/grill-my-coa
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

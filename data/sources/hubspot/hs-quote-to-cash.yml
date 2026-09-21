@@ -1,0 +1,20 @@
+id: hs-quote-to-cash
+title: quote-to-cash
+origin: third-party
+authority: first-party
+stage: 3
+summary: Build the product catalog, assemble quotes (line items + associations to deals),
+  and track invoices and subscriptions through to revenue.
+tiers: []
+systems:
+- hubspot
+upstream:
+  repo: HubSpot/agent-cli-skills
+  path: quote-to-cash
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:96d3ead568ea7602
+upstream_sha: 5b773165f0c8
+last_checked: 2026-09-20

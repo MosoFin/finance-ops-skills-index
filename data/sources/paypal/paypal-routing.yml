@@ -1,0 +1,21 @@
+id: paypal-routing
+title: paypal-routing
+origin: third-party
+authority: first-party
+stage: 3
+summary: PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo,
+  SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes
+  PayPal developer questions to the right command or reference file.
+tiers: []
+systems:
+- paypal
+upstream:
+  repo: paypal/AI-Toolkit
+  path: skills/paypal-routing
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:3c99aba0118d4733
+upstream_sha: c93cbfe5b0b1
+last_checked: 2026-09-20

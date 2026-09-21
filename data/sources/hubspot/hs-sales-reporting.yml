@@ -1,0 +1,20 @@
+id: hs-sales-reporting
+title: sales-reporting
+origin: third-party
+authority: first-party
+stage: 6
+summary: Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week,
+  open pipeline by stage/owner, and closed- won vs closed-lost over a period.
+tiers: []
+systems:
+- hubspot
+upstream:
+  repo: HubSpot/agent-cli-skills
+  path: sales-reporting
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:f842a04872f7307f
+upstream_sha: 5b773165f0c8
+last_checked: 2026-09-20

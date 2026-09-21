@@ -1,0 +1,22 @@
+id: qb-setup
+title: setup
+origin: third-party
+authority: first-party
+stage: 0
+summary: Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools
+  are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks
+  plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a
+  QuickBooks connection error.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/setup
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:03711cad3c3fb8f9
+upstream_sha: 21067205c10c
+last_checked: 2026-09-20

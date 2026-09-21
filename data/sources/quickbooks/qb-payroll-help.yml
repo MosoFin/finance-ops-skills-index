@@ -1,0 +1,26 @@
+id: qb-payroll-help
+title: payroll-help
+origin: third-party
+authority: first-party
+stage: 4
+summary: Answer read-only QuickBooks Payroll lookup and setup questions using connected company
+  payroll data. Use for employee roster or lookup, company payroll setup, last payroll run,
+  payslips or paycheck details, pay types, deductions/contributions, and time-off policies.
+  Do not use for payroll cost-driver, spend-reduction, or cost-change analysis; use analyze-payroll-cost
+  when the question asks why payroll cost changed or how to reduce it, including questions
+  involving benefits, employer taxes/SUI, overtime, headcount, pay rates, or pay items. Use
+  only available payroll tools; do not provide unsupported procedural, tax, filing, payment,
+  legal, or compliance guidance.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/payroll-help
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:a5f2bd5e101a3c67
+upstream_sha: 6db49c4f8ed3
+last_checked: 2026-09-20

@@ -1,0 +1,21 @@
+id: bank-reconciliation
+title: Bank Reconciliation
+origin: mosofin-published
+authority: first-party
+stage: 3
+summary: Reconciles a cash GL to bank statements for a period. Builds the complete book side
+  from live ledger data and prepares the bridge, while stating plainly that the statement
+  sits outside any accounting datasource and must be supplied.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: MosoFin/mosofin-finance-skills
+  path: skills/bank-reconciliation
+  ref: main
+license: agpl-3.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:31a56e737c65229c
+upstream_sha: ac12d064e857
+last_checked: 2026-09-20

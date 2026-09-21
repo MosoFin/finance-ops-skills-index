@@ -1,0 +1,64 @@
+id: tie-out
+title: Tie-Out
+origin: mosofin-workspace
+authority: first-party
+stage: 5
+summary: 'Ties every balance-sheet account to a source — subledger, statement, or schedule
+  — and produces a green/red schedule. The close''s backbone: red until tied.'
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- MATERIALITY-AWARE
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  TIE-CHECKED: Cross-foots assets = liabilities + equity first; stops if that fails. Then
+    one computed comparison per account.
+  READ-ONLY: Corrections become JE drafts and a pointer to /accruals — never posted from here.
+  MATERIALITY-AWARE: Red rows above materiality keep the close task red; accepted exceptions
+    need a recorded why.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ledger.balance-sheet
+  required: true
+  source: integration manifest
+  fallback: balance sheet export as of period end
+- name: ar.aging
+  required: false
+  source: integration manifest
+  fallback: A/R aging export
+- name: ap.aging
+  required: false
+  source: integration manifest
+  fallback: A/P aging export
+- name: ledger.gl-detail
+  required: false
+  source: integration manifest
+  fallback: ask for detail on accounts needing composition analysis
+- name: prior close artifacts
+  required: false
+  source: closes/<YYYY-MM>/ — bank-rec proofs, amortization schedules
+  fallback: redo the work
+outputs:
+- name: tie-out.md
+  type: markdown table
+  dest: 'closes/<YYYY-MM>/ — one row per account: balance, source, difference, status, evidence
+    link'
+- name: headline
+  type: chat
+  dest: N green, M red, K accepted
+- name: correction drafts
+  type: JE drafts
+  dest: chat — with likely cause and recommended fix per red account
+never:
+- Eyeball a difference. Every comparison is scripted.
+- Post a correcting entry.
+upstream:
+  local: ~/.claude/skills/tie-out
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

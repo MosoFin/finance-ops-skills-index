@@ -1,0 +1,23 @@
+id: qb-business-health-check
+title: business-health-check
+origin: third-party
+authority: first-party
+stage: 6
+summary: synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks
+  app reports. Use when the user asks broad questions such as "how's my business doing?",
+  "give me the big picture", "what should I be worried about?", "summarize my financials",
+  "anything unusual this month?", or wants one conversational view of profit and loss, cash
+  flow, balance sheet, receivables aging, and sales performance without opening separate reports.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/business-health-check
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:6812bfc72086e284
+upstream_sha: c8daa17a64d4
+last_checked: 2026-09-20

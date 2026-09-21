@@ -1,0 +1,20 @@
+id: hs-crm-lookup
+title: crm-lookup
+origin: third-party
+authority: first-party
+stage: 2
+summary: Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations
+  for the full account picture.
+tiers: []
+systems:
+- hubspot
+upstream:
+  repo: HubSpot/agent-cli-skills
+  path: crm-lookup
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:579bd26b13828ebc
+upstream_sha: 5b773165f0c8
+last_checked: 2026-09-20

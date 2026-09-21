@@ -1,0 +1,70 @@
+id: forecast
+title: Forecast
+origin: mosofin-workspace
+authority: first-party
+stage: 7
+summary: A rolling forecast where actual months are locked and every forecast line names its
+  driver — run-rate, growth, contract, seasonal, or manual with a stated reason. Assumption
+  changes are logged as decision records.
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- EVIDENCE-GATED
+- HUMAN-APPROVAL
+- POLICY-CAPTURING
+- AUDIT-TRAIL
+tier_notes:
+  TIE-CHECKED: Actual columns tie to the P&L export, and every forecast cell traces to a driver
+    in FORECAST.md — no orphan numbers.
+  EVIDENCE-GATED: Never forecasts a month that has actuals; says so plainly if the latest
+    month isn't closed.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ledger.pnl-by-month
+  required: true
+  source: integration manifest
+  fallback: P&L by month export
+- name: ar.open-invoices
+  required: false
+  source: integration manifest
+  fallback: skip booked-revenue grounding
+- name: ledger.gl-detail
+  required: false
+  source: integration manifest
+  fallback: ask about run-rate anomalies
+- name: forecast.csv + FORECAST.md
+  required: false
+  source: client workspace
+  fallback: created on first run
+- name: REPORT-PREFS.md
+  required: false
+  source: client workspace
+  fallback: ask once
+outputs:
+- name: forecast.csv
+  type: csv
+  dest: client workspace — account × month, actuals locked, forecast computed
+- name: FORECAST.md
+  type: markdown
+  dest: client workspace — the driver behind every line
+- name: change diff
+  type: chat
+  dest: what moved since the last forecast and why
+- name: headline
+  type: chat
+  dest: full-year landing vs budget and vs last forecast, with the three changes that moved
+    it most
+- name: decision records
+  type: markdown (ADR)
+  dest: docs/decisions/ — for hard-to-reverse assumption changes
+never:
+- Overwrite an actual month with a forecast.
+upstream:
+  local: ~/.claude/skills/forecast
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

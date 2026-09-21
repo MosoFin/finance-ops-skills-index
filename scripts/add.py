@@ -25,7 +25,9 @@ import urllib.request
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SOURCES = ROOT / "sources.yml"
+DATA = ROOT / "data"
+FILE_FORMATS = {"csv", "pdf", "word", "powerpoint", "images", "any", "excel"}
+AGNOSTIC = "_any"
 SPDX = {
     "Apache-2.0": "apache-2.0", "MIT": "mit", "AGPL-3.0": "agpl-3.0",
     "GPL-3.0": "gpl-3.0", "BSD-3-Clause": "bsd-3-clause", "MPL-2.0": "mpl-2.0",
@@ -63,7 +65,7 @@ def frontmatter(text: str) -> dict:
         return {}
 
 
-def wrap(text: str, indent: str = "      ") -> str:
+def wrap(text: str, indent: str = "  ") -> str:
     one = " ".join(str(text).split())
     return "\n".join(textwrap.wrap(one, width=78, initial_indent=indent, subsequent_indent=indent))
 
@@ -85,9 +87,10 @@ def main() -> int:
         raise SystemExit("need a URL of the form https://github.com/<owner>/<repo>/tree/<ref>/<path>")
     repo, ref, path = m.group("repo"), m.group("ref"), m.group("path").rstrip("/")
 
-    data = yaml.safe_load(SOURCES.read_text())
-    if args.stage not in data["stages"]:
-        raise SystemExit(f"stage must be one of {sorted(data['stages'])}")
+    meta = yaml.safe_load((DATA / "meta.yml").read_text())
+    existing = {f.stem for f in (DATA / "sources").glob("*/*.yml")}
+    if args.stage not in meta["stages"]:
+        raise SystemExit(f"stage must be one of {sorted(meta['stages'])}")
 
     skill_md = get(f"https://raw.githubusercontent.com/{repo}/{ref}/{path}/SKILL.md", raw=True)
     if skill_md is None:
@@ -95,7 +98,7 @@ def main() -> int:
     fm = frontmatter(skill_md)
 
     sid = args.id or fm.get("name") or path.rsplit("/", 1)[-1]
-    if any(s["id"] == sid for s in data["skills"]):
+    if sid in existing:
         raise SystemExit(f"id '{sid}' already exists in sources.yml — pass --id to disambiguate")
 
     meta = get(f"https://api.github.com/repos/{repo}") or {}
@@ -108,24 +111,32 @@ def main() -> int:
     summary = fm.get("description") or meta.get("description") or "TODO: one-line summary."
     systems = "[" + ", ".join(x.strip() for x in args.systems.split(",")) + "]"
 
-    block = (
-        f"\n  - id: {sid}\n"
-        f"    title: {fm.get('name', sid)}\n"
-        f"    origin: {args.origin}\n"
-        f"    authority: {args.authority}\n"
-        f"    stage: {args.stage}\n"
-        f"    summary: >-\n{wrap(summary)}\n"
-        f"    tiers: []\n"
-        f"    systems: {systems}\n"
-        f'    upstream: {{repo: "{repo}", path: "{path}", ref: "{ref}"}}\n'
-        f"    license: {lic}\n"
-        f"    mirror: false\n"
-        f"    status: UNGRADED\n"
-    )
-    SOURCES.write_text(SOURCES.read_text().rstrip("\n") + "\n" + block)
-    yaml.safe_load(SOURCES.read_text())  # fail loudly rather than commit broken YAML
+    systems_list = [x.strip() for x in args.systems.split(",")]
+    real = [x for x in systems_list if x not in FILE_FORMATS]
+    src = real[0] if real else AGNOSTIC
 
-    print(f"added {sid}  ({repo}/{path}@{ref}, licence {lic}, UNGRADED)")
+    block = (
+        f"id: {sid}\n"
+        f"title: {fm.get('name', sid)}\n"
+        f"origin: {args.origin}\n"
+        f"authority: {args.authority}\n"
+        f"stage: {args.stage}\n"
+        f"summary: >-\n{wrap(summary, '  ')}\n"
+        f"tiers: []\n"
+        f"systems: [{', '.join(systems_list)}]\n"
+        f'upstream: {{repo: "{repo}", path: "{path}", ref: "{ref}"}}\n'
+        f"license: {lic}\n"
+        f"mirror: false\n"
+        f"status: UNGRADED\n"
+    )
+
+    dest = DATA / "sources" / src
+    dest.mkdir(parents=True, exist_ok=True)
+    out = dest / f"{sid}.yml"
+    out.write_text(block)
+    yaml.safe_load(out.read_text())  # fail loudly rather than commit broken YAML
+
+    print(f"added {sid} -> {out.relative_to(ROOT)}  (licence {lic}, UNGRADED)")
     if args.no_refresh:
         return 0
     for cmd in (["scripts/check_drift.py", "--write"], ["scripts/build.py"]):

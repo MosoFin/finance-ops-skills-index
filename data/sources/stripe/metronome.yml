@@ -1,0 +1,20 @@
+id: metronome
+title: Metronome billing
+origin: third-party
+authority: first-party
+stage: 7
+summary: Usage-based billing through Stripe's official toolkit. Where revenue is metered rather
+  than invoiced, this is upstream of every revenue number.
+tiers: []
+systems:
+- stripe
+upstream:
+  repo: stripe/ai
+  path: providers/claude/plugin/skills/metronome
+  ref: main
+license: mit
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:62220ba4b5d261bc
+upstream_sha: 82d5d332c2ef
+last_checked: 2026-09-20

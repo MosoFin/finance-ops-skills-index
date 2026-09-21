@@ -1,0 +1,27 @@
+id: stripe-connect-recommend
+title: connect-recommend
+origin: third-party
+authority: first-party
+stage: 3
+summary: Use this skill when the user asks about Stripe Connect configuration, charge patterns,
+  Dashboard access, or how to get started with Connect, is building a marketplace, platform,
+  multi-vendor store, gig platform, or subscription platform, needs to pay out sellers, vendors,
+  or providers, mentions split payments, revenue sharing, multi-party payments, or similar
+  payment distribution concepts, provides a company URL or business description for a recommendation,
+  builds SaaS that routes money between parties (for example, POS, booking, invoicing — not
+  operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers,
+  and vendors, mentions connected account Dashboard or responsibility configurations, or asks
+  about payment flows, white-label payments, or embedded payments.
+tiers: []
+systems:
+- stripe
+upstream:
+  repo: stripe/ai
+  path: providers/claude/plugin/skills/connect-recommend
+  ref: main
+license: mit
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:111c6972f1673080
+upstream_sha: 82d5d332c2ef
+last_checked: 2026-09-20

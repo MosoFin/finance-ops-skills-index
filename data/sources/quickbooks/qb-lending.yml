@@ -1,0 +1,30 @@
+id: qb-lending
+title: lending
+origin: third-party
+authority: first-party
+stage: 7
+summary: 'QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credit,
+  Intuit Business Credit Card (issued by WebBank), and the QuickBooks Business Loan Marketplace.
+  Use to explain how these products work (eligibility, rates, fees, terms), compare or choose
+  between them, estimate loan payments (weekly/monthly payment, total interest, total repayment),
+  and answer questions about the signed-in user''s own QuickBooks Capital loans and lines
+  of credit (balance, APR, repayment schedule, payoff, available credit), plus what similar
+  businesses have borrowed. Use proactively when a funding need surfaces from payroll, cash-flow,
+  or invoicing work to check for a drawable line of credit and, with consent, peer offers.
+  Read-only guidance only: never makes payments, draws, or loan changes, and never gives a
+  loan offer, rate, credit limit, or approval decision. Not for loan application status or
+  non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer
+  loans).'
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/lending
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:c2e057c1891d72bb
+upstream_sha: bb30cbdf7b5b
+last_checked: 2026-09-20

@@ -1,0 +1,21 @@
+id: ar-aging-and-collections
+title: A/R Aging and Collections
+origin: mosofin-published
+authority: first-party
+stage: 3
+summary: Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates
+  receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs,
+  invoice creation, or sending.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: MosoFin/mosofin-finance-skills
+  path: skills/ar-aging-and-collections
+  ref: main
+license: agpl-3.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:c381b58714db19ba
+upstream_sha: ac12d064e857
+last_checked: 2026-09-20

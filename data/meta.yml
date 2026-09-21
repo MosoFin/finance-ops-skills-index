@@ -1,0 +1,33 @@
+# Index-wide settings and the close-calendar stages.
+# Skills live in data/sources/<system>/<id>.yml — one folder per data source.
+
+meta:
+  title: Mosofin Skills Index
+  tagline: A graded, continuously-verified index of agent skills for accounting and finance.
+  regrade_after_days: 180
+  tiers_doc: docs/TRUST-TIERS.md
+stages:
+  0:
+    name: Setup
+    note: Once per client, before any close
+  1:
+    name: Orchestration
+    note: Tracks the period, runs nothing itself
+  2:
+    name: Data hygiene
+    note: Before the books can be trusted
+  3:
+    name: Reconcile
+    note: Tie the books to the outside world
+  4:
+    name: Adjust
+    note: Move amounts into the period they belong to
+  5:
+    name: Review
+    note: The skeptical second pass
+  6:
+    name: Report
+    note: Make the close legible to someone else
+  7:
+    name: Forward-looking
+    note: After the period is shut

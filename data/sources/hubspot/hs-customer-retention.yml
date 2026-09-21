@@ -1,0 +1,20 @@
+id: hs-customer-retention
+title: customer-retention
+origin: third-party
+authority: first-party
+stage: 7
+summary: Identify inactive/at-risk customers via CRM filters and create follow-up tasks at
+  scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
+tiers: []
+systems:
+- hubspot
+upstream:
+  repo: HubSpot/agent-cli-skills
+  path: customer-retention
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:9965f44f3042b8c0
+upstream_sha: 5b773165f0c8
+last_checked: 2026-09-20

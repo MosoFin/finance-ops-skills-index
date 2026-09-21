@@ -1,0 +1,20 @@
+id: hs-crm-data-quality
+title: crm-data-quality
+origin: third-party
+authority: first-party
+stage: 2
+summary: Find incomplete records, normalize field values in bulk, dedupe with `hubspot objects
+  merge`, and audit custom properties. Builds on `bulk- operations` for JSONL piping and dry-run/digest/confirm.
+tiers: []
+systems:
+- hubspot
+upstream:
+  repo: HubSpot/agent-cli-skills
+  path: crm-data-quality
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:5c51e00fb3addfb8
+upstream_sha: 5b773165f0c8
+last_checked: 2026-09-20

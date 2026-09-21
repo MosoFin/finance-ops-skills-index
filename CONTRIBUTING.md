@@ -9,13 +9,20 @@ make setup                                                   # once
 make add URL=https://github.com/owner/repo/tree/main/skills/x STAGE=3 AUTHORITY=first-party
 ```
 
-That reads the upstream `SKILL.md` frontmatter and the repository licence, appends a
-correctly-shaped entry to `sources.yml`, records its drift baseline, and regenerates
-the docs. Commit `sources.yml` together with the rebuilt files — CI rejects a pull
-request where they disagree.
+That reads the upstream `SKILL.md` frontmatter and the repository licence, writes a
+correctly-shaped entry to `data/sources/<system>/<id>.yml`, records its drift baseline,
+and regenerates the docs. Commit the new file together with the rebuilt output — CI
+rejects a pull request where they disagree.
+
+**Skills are stored under the data source they read.** `SYSTEMS` decides the folder:
+the first entry that is a real system rather than a file format. A skill that reads no
+connected system — one that works from artifacts or files alone — lives in
+`data/sources/_any/`. The build refuses to run if a file sits in the wrong folder.
 
 Never create or edit a file under `skills/` or `connectors/`; both are generated, as is
-`docs/CONNECTOR-TRACKER.md`. Connector pages come from `connectors.yml`.
+`docs/CONNECTOR-TRACKER.md`. Connector pages come from `connectors.yml`, which stays a
+single file: it is read as a set, and its `statuses` and `auth_models` are shared
+vocabulary that would be duplicated 37 times if split.
 
 `STAGE` is 0-7 (see `stages` in `sources.yml`) — roughly, when in the close you reach
 for it. `AUTHORITY` is `first-party` when the organisation that owns the product

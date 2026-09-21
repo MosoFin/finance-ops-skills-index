@@ -1,0 +1,70 @@
+id: board-pack
+title: Board Pack
+origin: mosofin-workspace
+authority: first-party
+stage: 6
+summary: Assembles the period's existing close artifacts into a board or management pack.
+  Synthesis, not creation — missing artifacts are listed as gaps with the skill that produces
+  each, never improvised around.
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- TIE-CHECKED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- CLIENT-FACING
+- NO-AUTO-SEND
+tier_notes:
+  EVIDENCE-GATED: Missing artifacts are gaps, not prompts to improvise. A pack built on an
+    unclosed period carries a visible draft warning.
+  NO-AUTO-SEND: This output goes to outsiders. You send it.
+  TIE-CHECKED: Scripted spot-check that statement totals match the close's tied numbers before
+    assembly.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ledger.pnl-by-month
+  required: true
+  source: integration manifest
+  fallback: P&L export
+- name: ledger.balance-sheet
+  required: true
+  source: integration manifest
+  fallback: balance sheet export
+- name: REPORT-PREFS.md
+  required: true
+  source: client workspace — sections, audience, comparison basis, rounding, KPI list, format
+  fallback: ask once
+- name: close artifacts
+  required: false
+  source: closes/<YYYY-MM>/ — flux commentary, BvA, tie-out schedule, cash projection
+  fallback: listed as gaps with the producing skill named
+- name: PROFILE.md
+  required: false
+  source: client workspace — audience sophistication
+  fallback: ask once
+outputs:
+- name: board pack
+  type: self-contained HTML (print-ready) or markdown
+  dest: client workspace
+- name: deck.json + .pptx
+  type: PowerPoint
+  dest: closes/<YYYY-MM>/deck.json — via the mosofin-pptx plugin when REPORT-PREFS.md asks
+    for slides; figures fed through adapters, never retyped
+- name: gap list
+  type: chat
+  dest: missing artifacts and the skill that produces each
+- name: NOT TIED TO CLOSE stamps
+  type: on-slide marker
+  dest: any figure whose tie-out row is red or unverifiable
+never:
+- Distribute the pack.
+- Invent a forward-looking statement — those are yours.
+- Retype a number into the deck.
+upstream:
+  local: ~/.claude/skills/board-pack
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

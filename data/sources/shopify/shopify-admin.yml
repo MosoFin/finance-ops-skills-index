@@ -1,0 +1,30 @@
+id: shopify-admin
+title: shopify-admin
+origin: third-party
+authority: first-party
+stage: 2
+summary: Write or explain **Admin GraphQL** queries and mutations for apps and integrations
+  that extend the Shopify admin. Use when the user wants to **understand, design, or generate**
+  the operation itself—even before deciding how to run it. Do **not** choose `admin` first
+  for **app monetization**—charging merchants for the app itself via app pricing plans, paid
+  app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the
+  user is maintaining an existing Manual Pricing integration or explicitly needs an Admin
+  Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans,
+  subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or
+  extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first
+  to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on
+  store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups,
+  inventory changes).
+tiers: []
+systems:
+- shopify
+upstream:
+  repo: Shopify/Shopify-AI-Toolkit
+  path: skills/shopify-admin
+  ref: main
+license: mit
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:d0397fbe8b340064
+upstream_sha: 27f223bd66d6
+last_checked: 2026-09-20

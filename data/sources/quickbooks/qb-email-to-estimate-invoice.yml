@@ -1,0 +1,24 @@
+id: qb-email-to-estimate-invoice
+title: email-to-estimate-invoice
+origin: third-party
+authority: first-party
+stage: 2
+summary: Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice.
+  Use when the user asks to "create an invoice from my email thread", "draft an estimate based
+  on what I quoted this customer over email", "bill this customer for the work we discussed
+  and send it to them", "turn this email into an invoice", "make an estimate from this thread",
+  or wants to go from an email conversation to a QuickBooks sales document without re-keying
+  line items.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/email-to-estimate-invoice
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:b246cf48095e1acf
+upstream_sha: 6db49c4f8ed3
+last_checked: 2026-09-20

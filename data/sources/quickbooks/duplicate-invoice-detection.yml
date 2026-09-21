@@ -1,0 +1,21 @@
+id: duplicate-invoice-detection
+title: Duplicate Invoice Detection
+origin: mosofin-published
+authority: first-party
+stage: 5
+summary: Ten detection rules for duplicate and fraudulent AP invoices run against live bills,
+  payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run
+  because Mosofin deliberately does not expose vendor bank details.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: MosoFin/mosofin-finance-skills
+  path: skills/duplicate-invoice-detection
+  ref: main
+license: agpl-3.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:5594c83387a77ab5
+upstream_sha: ac12d064e857
+last_checked: 2026-09-20

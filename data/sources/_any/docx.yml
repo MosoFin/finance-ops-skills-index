@@ -1,0 +1,21 @@
+id: docx
+title: docx
+origin: third-party
+authority: first-party
+stage: 6
+summary: Create, edit, and analyze Word documents with tracked changes and comments — the
+  format most review notes and engagement letters still travel in.
+tiers: []
+systems:
+- word
+upstream:
+  repo: anthropics/skills
+  path: skills/docx
+  ref: main
+license: proprietary-anthropic
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:8017469ea95fb7d2
+upstream_sha: fa0fa64bdc96
+last_checked: 2026-09-20
+license_hash: sha256:79f6d8f5b427252f

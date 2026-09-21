@@ -1,0 +1,67 @@
+id: budget-vs-actuals
+title: Budget vs Actuals
+origin: mosofin-workspace
+authority: first-party
+stage: 6
+summary: Builds a BvA table with scripted variance math, separates timing from true variance,
+  and drafts commentary with the full-year implication computed rather than estimated.
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- EVIDENCE-GATED
+- MATERIALITY-AWARE
+- HUMAN-APPROVAL
+- POLICY-CAPTURING
+- AUDIT-TRAIL
+tier_notes:
+  TIE-CHECKED: The actuals column must tie to the P&L total for the period, computed. Red
+    until tied.
+  DETERMINISTIC-MATH: scripts/bva.py joins on account and computes variance, %, and favorable/unfavorable
+    by account type. No cell is recomputed by the model.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ledger.pnl-by-month
+  required: true
+  source: integration manifest
+  fallback: P&L export for the period(s)
+- name: budget
+  required: true
+  source: CSV with the same account rows — no live capability yet (`budget.*` reserved)
+  fallback: none; account-name mapping recorded once in REPORT-PREFS.md
+- name: ledger.gl-detail
+  required: false
+  source: integration manifest
+  fallback: ask about variances that can't be drilled
+- name: REPORT-PREFS.md
+  required: false
+  source: client workspace — period, audience, rounding
+  fallback: ask once
+- name: MATERIALITY.md
+  required: false
+  source: client workspace — flux thresholds
+  fallback: ask once
+outputs:
+- name: BvA table
+  type: markdown/csv
+  dest: closes/<YYYY-MM>/ — period and cumulative columns for YTD
+- name: commentary
+  type: markdown
+  dest: closes/<YYYY-MM>/ — over / under / timing / so-what, with run-rate × remaining months
+    computed
+- name: account mapping
+  type: markdown
+  dest: REPORT-PREFS.md — recorded once when budget names differ from ledger names
+- name: decision records
+  type: markdown (ADR)
+  dest: docs/decisions/ — offered for recurring assumption changes
+never:
+- Recompute a cell the script produced.
+upstream:
+  local: ~/.claude/skills/budget-vs-actuals
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

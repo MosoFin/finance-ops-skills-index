@@ -1,0 +1,67 @@
+id: bank-rec
+title: Bank Rec
+origin: mosofin-workspace
+authority: first-party
+stage: 3
+summary: Reconciles one bank or credit-card account for one period. Matches statement lines
+  against ledger transactions with a deterministic script; the script's leftovers are the
+  work list. Done means the difference is zero, computed.
+tiers:
+- PROPOSES-WRITES
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  DETERMINISTIC-MATH: scripts/match.py does exact-amount, one-to-one matching within a date
+    window. No matching by hand.
+  TIE-CHECKED: Red until statement closing − ledger balance − outstanding items ± unposted
+    adjustments = zero.
+  PROPOSES-WRITES: Posts adjustments only via ledger.create-journal-entry after confirmation;
+    otherwise emits drafts.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: banking.fetch-statement
+  required: true
+  source: integration manifest
+  fallback: statement CSV for the account and period
+- name: transactions.list-by-account
+  required: true
+  source: integration manifest
+  fallback: transaction detail export, same account and period
+- name: ledger.create-journal-entry
+  required: false
+  source: integration manifest
+  fallback: adjustment drafts for manual entry
+- name: COA.md
+  required: false
+  source: client workspace
+  fallback: ask for the category on proposed entries
+- name: CLOSE-CALENDAR.md
+  required: false
+  source: client workspace
+  fallback: you pick the account order
+outputs:
+- name: reconciliation proof
+  type: markdown
+  dest: closes/<YYYY-MM>/ — balances, matched count and total, each exception and its resolution
+- name: exception work list
+  type: chat
+  dest: classified timing / missing-from-books / missing-from-bank / error / unknown
+- name: adjustment entries
+  type: journal entries or drafts
+  dest: accounting system after confirmation, else draft file
+- name: stale-item flags
+  type: chat
+  dest: uncleared >90 days, flagged for voiding
+never:
+- Assert a zero difference. It is computed by the script or it is red.
+- Guess at an unmatched item — 'unknown' is a question, not a classification.
+upstream:
+  local: ~/.claude/skills/bank-rec
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

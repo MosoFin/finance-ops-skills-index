@@ -1,0 +1,71 @@
+id: onboard-client
+title: Onboard Client
+origin: mosofin-workspace
+authority: first-party
+stage: 0
+summary: Interviews you about a company and scaffolds the client workspace every other finance
+  skill reads — profile, glossary, chart-of-accounts rulebook, close calendar, materiality
+  thresholds, report preferences.
+tiers:
+- READ-ONLY
+- HUMAN-APPROVAL
+- POLICY-CAPTURING
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: Reads company profile and chart of accounts; writes only local workspace files.
+  HUMAN-APPROVAL: Shows drafts of every file and waits for edits before writing.
+  POLICY-CAPTURING: Accounting-policy decisions become ADR-format records in docs/decisions/.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: company.profile
+  required: false
+  source: integration manifest
+  fallback: ask the user
+- name: accounts.list-chart
+  required: false
+  source: integration manifest
+  fallback: chart of accounts export; else build from interview alone
+- name: workspace mode
+  required: true
+  source: '`## Finance skills` block in CLAUDE.md / AGENTS.md'
+  fallback: ask — single-business vs multi-client
+- name: your answers
+  required: true
+  source: interview, one question at a time
+  fallback: none — this skill is the interview
+outputs:
+- name: PROFILE.md
+  type: markdown
+  dest: client workspace root or clients/<name>/
+- name: CONTEXT.md
+  type: markdown
+  dest: client workspace — the per-client finance glossary
+- name: COA.md
+  type: markdown
+  dest: client workspace — account purposes and categorization rules
+- name: CLOSE-CALENDAR.md
+  type: markdown
+  dest: client workspace
+- name: MATERIALITY.md
+  type: markdown
+  dest: client workspace
+- name: REPORT-PREFS.md
+  type: markdown
+  dest: client workspace
+- name: decision records
+  type: markdown (ADR)
+  dest: docs/decisions/ — created lazily
+- name: CLIENTS.md
+  type: markdown
+  dest: workspace root, multi-client mode only
+never:
+- Change the chart of accounts in the accounting system — it produces the rulebook, you apply
+  edits.
+upstream:
+  local: ~/.claude/skills/onboard-client
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

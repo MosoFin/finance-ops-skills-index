@@ -1,0 +1,20 @@
+id: gws-drive
+title: Google Drive (gws-drive)
+origin: third-party
+authority: first-party
+stage: 0
+summary: Google's official Drive skill. Relevant wherever the workpaper archive, client statements
+  and PBC documents live outside the ledger.
+tiers: []
+systems:
+- google-drive
+upstream:
+  repo: googleworkspace/cli
+  path: skills/gws-drive
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:d37fad56bb9547d2
+upstream_sha: 705fb0ecac6f
+last_checked: 2026-09-20

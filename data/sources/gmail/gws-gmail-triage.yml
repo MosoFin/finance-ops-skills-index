@@ -1,0 +1,20 @@
+id: gws-gmail-triage
+title: Gmail triage (gws-gmail-triage)
+origin: third-party
+authority: first-party
+stage: 3
+summary: Google's official Gmail triage skill. Pairs with aging-review, where the collections
+  follow-up and the client's reply both arrive by mail.
+tiers: []
+systems:
+- gmail
+upstream:
+  repo: googleworkspace/cli
+  path: skills/gws-gmail-triage
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:48b0512b3ffa718a
+upstream_sha: 705fb0ecac6f
+last_checked: 2026-09-20

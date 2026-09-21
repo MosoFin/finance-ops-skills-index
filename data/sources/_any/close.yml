@@ -1,0 +1,61 @@
+id: close
+title: Close
+origin: mosofin-workspace
+authority: first-party
+stage: 1
+summary: A stateful month-end checklist for one period. Generates tasks from the client's
+  close calendar, tracks status across sessions, and names the skill that fits the next open
+  task. Tracks and suggests — it runs nothing and posts nothing.
+tiers:
+- READ-ONLY
+- STATEFUL
+- AUDIT-TRAIL
+- HUMAN-APPROVAL
+- TIE-CHECKED
+tier_notes:
+  STATEFUL: Re-reads CHECKLIST.md fresh each session; if conversation and checklist disagree,
+    the checklist wins.
+  TIE-CHECKED: A task with a tie-check is only done when that check was green — 'ran it' is
+    not 'tied'.
+  HUMAN-APPROVAL: Never invokes another skill. You pick and run every step.
+systems:
+- any
+inputs:
+- name: period
+  required: true
+  source: argument (YYYY-MM)
+  fallback: most recent unclosed month
+- name: CLOSE-CALENDAR.md
+  required: true
+  source: client workspace
+  fallback: none — stops and suggests /onboard-client
+- name: closes/<YYYY-MM>/CHECKLIST.md
+  required: false
+  source: close workspace
+  fallback: generated on first run
+- name: evidence artifacts
+  required: false
+  source: closes/<YYYY-MM>/ — rec proofs, tie-out schedules, flux commentary
+  fallback: you report task status verbally
+outputs:
+- name: CHECKLIST.md
+  type: markdown
+  dest: closes/<YYYY-MM>/ — tasks, status, due dates, evidence links
+- name: status report
+  type: chat
+  dest: done / in progress / blocked, with dates relative to today
+- name: next-move shortlist
+  type: chat
+  dest: open tasks whose dependencies are met, each named to a skill
+- name: close summary
+  type: markdown
+  dest: adjustments posted, items carried forward, accepted exceptions with a why
+never:
+- Run another skill.
+- Post an entry.
+upstream:
+  local: ~/.claude/skills/close
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

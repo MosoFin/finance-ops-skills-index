@@ -1,0 +1,73 @@
+id: accruals
+title: Accruals
+origin: mosofin-workspace
+authority: first-party
+stage: 4
+summary: Proposes and reviews accruals, prepaid amortization, and deferrals for a period —
+  recurring accruals, reversals due, missing accruals from open bills, schedule releases.
+  Accrual basis only; stops on cash basis.
+tiers:
+- PROPOSES-WRITES
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- HUMAN-APPROVAL
+- MATERIALITY-AWARE
+- POLICY-CAPTURING
+- AUDIT-TRAIL
+tier_notes:
+  MATERIALITY-AWARE: Below the accruals threshold, book-when-paid is the documented policy
+    — stated as policy, not silence.
+  TIE-CHECKED: Every entry balances; prepaid and deferral schedules must roll (opening + additions
+    − releases = closing) against account balances.
+  DETERMINISTIC-MATH: Amounts show their arithmetic source — contract ÷ term, prior actuals
+    — scripted beyond a single division.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ledger.gl-detail
+  required: true
+  source: integration manifest
+  fallback: GL detail export, this and prior period
+- name: ap.open-bills
+  required: false
+  source: integration manifest
+  fallback: ask whether known unbilled expenses exist
+- name: accounts.balances-as-of
+  required: false
+  source: integration manifest
+  fallback: ask for prepaid / deferral balances
+- name: ledger.create-journal-entry
+  required: false
+  source: integration manifest
+  fallback: formatted JE drafts for manual entry
+- name: PROFILE.md
+  required: true
+  source: client workspace — accounting method
+  fallback: ask; cash basis means this skill does not apply
+- name: MATERIALITY.md
+  required: false
+  source: client workspace — accruals threshold
+  fallback: ask once
+- name: docs/decisions/
+  required: false
+  source: client workspace — revenue recognition policy
+  fallback: offers to record one when a recurring judgment has none
+outputs:
+- name: posted entries
+  type: journal entries
+  dest: accounting system — confirmed batches only
+- name: JE draft file
+  type: markdown/csv
+  dest: closes/<YYYY-MM>/ — date, memo, lines, reversal instruction
+- name: roll-forward proof
+  type: chat + artifact
+  dest: booked / drafted / skipped-below-materiality, plus any schedule that does not roll
+never:
+- Invent an amount when the basis is missing — ask instead.
+upstream:
+  local: ~/.claude/skills/accruals
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

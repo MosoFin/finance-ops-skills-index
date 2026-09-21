@@ -1,0 +1,72 @@
+id: cash-flow
+title: Cash Flow
+origin: mosofin-workspace
+authority: first-party
+stage: 7
+summary: A 13-week cash projection built from open A/R and A/P, recurring items mined from
+  history, and bank balances — opening balance tied to the bank before a single week is projected.
+  Every projected line carries its basis.
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- PROVENANCE-STAMPED
+- MATERIALITY-AWARE
+- HUMAN-APPROVAL
+tier_notes:
+  TIE-CHECKED: Starts red until the opening balance is tied to the bank or you accept the
+    gap.
+  PROVENANCE-STAMPED: 'Each line carries invoice #, bill #, ''recurring — last 3 occurrences'',
+    or ''user-stated''. Projections go stale weekly and say so.'
+  DETERMINISTIC-MATH: The week × category grid is scripted, and re-run after each what-if
+    so effects are computed, not estimated.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ar.open-invoices
+  required: true
+  source: integration manifest
+  fallback: open invoices export
+- name: ap.open-bills
+  required: true
+  source: integration manifest
+  fallback: open bills export
+- name: accounts.balances-as-of
+  required: true
+  source: integration manifest
+  fallback: current bank balances
+- name: banking.feed-transactions
+  required: false
+  source: integration manifest
+  fallback: opening balance from ledger only
+- name: ledger.gl-detail
+  required: false
+  source: integration manifest
+  fallback: ask for recurring items instead of mining 3 months of history
+- name: MATERIALITY.md
+  required: false
+  source: client workspace — cash buffer
+  fallback: ask once and record it
+- name: committed but unbooked
+  required: false
+  source: you — planned hires, annual renewals, distributions
+  fallback: asked once
+outputs:
+- name: 13-week grid
+  type: table
+  dest: client workspace — opening, inflows, outflows, net, closing per week
+- name: pinch-point flags
+  type: chat
+  dest: weeks where closing cash dips below the buffer, with a recommendation each
+- name: headline
+  type: chat
+  dest: weeks of runway, the tightest week, the assumption that matters most
+never:
+- Project from an untied opening balance without flagging it.
+upstream:
+  local: ~/.claude/skills/cash-flow
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

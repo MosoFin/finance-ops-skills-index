@@ -1,0 +1,20 @@
+id: gws-sheets
+title: Google Sheets (gws-sheets)
+origin: third-party
+authority: first-party
+stage: 6
+summary: Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers
+  and hand-built budgets actually live.
+tiers: []
+systems:
+- google-sheets
+upstream:
+  repo: googleworkspace/cli
+  path: skills/gws-sheets
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:e0db8bb632b3425b
+upstream_sha: 705fb0ecac6f
+last_checked: 2026-09-20

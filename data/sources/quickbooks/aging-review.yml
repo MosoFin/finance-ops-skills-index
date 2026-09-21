@@ -1,0 +1,69 @@
+id: aging-review
+title: Aging Review
+origin: mosofin-workspace
+authority: first-party
+stage: 3
+summary: Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and credit-balance
+  items, then drafts collections notes and a proposed payment run. Cross-foots the aging to
+  the ledger before any of it is believed.
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- HUMAN-APPROVAL
+- CLIENT-FACING
+- NO-AUTO-SEND
+- AUDIT-TRAIL
+tier_notes:
+  TIE-CHECKED: Bucket totals must sum to the report total and tie to the balance-sheet A/R
+    or A/P balance. Red until tied.
+  NO-AUTO-SEND: Collections notes are drafts. You send them.
+  READ-ONLY: Items needing accounting action are noted for /accruals or /je-review — suggested,
+    never invoked.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ar.aging
+  required: true
+  source: integration manifest
+  fallback: A/R aging summary export
+- name: ap.aging
+  required: true
+  source: integration manifest
+  fallback: A/P aging summary export
+- name: ar.open-invoices
+  required: false
+  source: integration manifest
+  fallback: work from the aging summary only
+- name: ap.open-bills
+  required: false
+  source: integration manifest
+  fallback: work from the aging summary only
+- name: PROFILE.md / CONTEXT.md
+  required: false
+  source: client workspace — terms, related-party watch-outs
+  fallback: ask once
+- name: REPORT-PREFS.md
+  required: false
+  source: client workspace — voice for draft notes
+  fallback: ask once
+outputs:
+- name: collections notes
+  type: draft text
+  dest: chat — one per overdue customer, in the client's voice
+- name: proposed payment run
+  type: list
+  dest: chat — due now / due soon / hold-and-why, for your approval
+- name: flag summary
+  type: markdown
+  dest: closes/<YYYY-MM>/ — flagged vs clean by bucket, plus aging-to-ledger tie status
+never:
+- Send a collections note.
+- Guess at a dispute or a counterparty relationship.
+upstream:
+  local: ~/.claude/skills/aging-review
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

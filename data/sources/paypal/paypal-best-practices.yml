@@ -1,0 +1,23 @@
+id: paypal-best-practices
+title: paypal-best-practices
+origin: third-party
+authority: first-party
+stage: 3
+summary: PayPal integration guidance, code examples, and best practices. Use for checkout,
+  card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks,
+  APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane,
+  payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce,
+  or any PayPal architecture decision or code generation question.
+tiers: []
+systems:
+- paypal
+upstream:
+  repo: paypal/AI-Toolkit
+  path: skills/paypal-best-practices
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:09dc881c8ee7d471
+upstream_sha: a9c0586fe495
+last_checked: 2026-09-20

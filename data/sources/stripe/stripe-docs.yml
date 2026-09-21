@@ -1,0 +1,21 @@
+id: stripe-docs
+title: stripe-docs
+origin: third-party
+authority: first-party
+stage: 0
+summary: Use when the user or agent needs to read, search, or look up Stripe documentation
+  or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use
+  to fetch gated documentation.
+tiers: []
+systems:
+- stripe
+upstream:
+  repo: stripe/ai
+  path: providers/claude/plugin/skills/stripe-docs
+  ref: main
+license: mit
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:af38e784edcdb2f1
+upstream_sha: 12f48810695e
+last_checked: 2026-09-20

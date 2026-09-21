@@ -1,0 +1,21 @@
+id: pptx
+title: pptx
+origin: third-party
+authority: first-party
+stage: 6
+summary: Read, generate, and adjust slides and layouts. Pairs with board-pack when report
+  preferences call for a deck rather than a document.
+tiers: []
+systems:
+- powerpoint
+upstream:
+  repo: anthropics/skills
+  path: skills/pptx
+  ref: main
+license: proprietary-anthropic
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:a7ff03e2c85b636f
+upstream_sha: fa0fa64bdc96
+last_checked: 2026-09-20
+license_hash: sha256:79f6d8f5b427252f

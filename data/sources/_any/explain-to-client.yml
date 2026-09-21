@@ -1,0 +1,59 @@
+id: explain-to-client
+title: Explain To Client
+origin: mosofin-workspace
+authority: first-party
+stage: 6
+summary: Translates a result, statement, or decision into plain language pitched at the client's
+  sophistication level, in the client's own vocabulary. Translation, not simplification —
+  accurate at every level.
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- DETERMINISTIC-MATH
+- HUMAN-APPROVAL
+- CLIENT-FACING
+- NO-AUTO-SEND
+tier_notes:
+  EVIDENCE-GATED: '*Explained* vs *attributed* vs *estimated* survive translation — ''about'',
+    ''we believe'', ''confirmed'' are load-bearing.'
+  DETERMINISTIC-MATH: Figures are quoted from the artifact or pull; any derived figure is
+    computed, not estimated.
+  NO-AUTO-SEND: Drafts only. Never sends anything to a client.
+systems:
+- any
+inputs:
+- name: the thing to explain
+  required: true
+  source: conversation, a close artifact in closes/<YYYY-MM>/, or a statement you point at
+  fallback: none
+- name: PROFILE.md — Audience section
+  required: true
+  source: client workspace
+  fallback: ask once, suggest recording it
+- name: CONTEXT.md
+  required: true
+  source: client workspace — the client's own words
+  fallback: generic terms, and a flagged glossary gap
+- name: REPORT-PREFS.md
+  required: false
+  source: client workspace — rounding, conventions
+  fallback: ask once
+outputs:
+- name: draft note / email / talking points
+  type: text
+  dest: chat, in your voice
+- name: comprehension check
+  type: questions
+  dest: chat — neutral questions with same-length answer options, for explanations the client
+    will act on
+- name: glossary gap
+  type: suggestion
+  dest: CONTEXT.md, offered when the explanation needs a term the glossary lacks
+never:
+- Send anything to a client.
+upstream:
+  local: ~/.claude/skills/explain-to-client
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

@@ -1,0 +1,24 @@
+id: qb-set-base-pay
+title: set-base-pay
+origin: third-party
+authority: first-party
+stage: 4
+summary: Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Payroll.
+  Use when the user asks to see current pay, give a raise (absolute, increment, or percentage),
+  reduce or adjust pay, switch between salary and hourly, change pay frequency, or update
+  weekly contracted time for one or more named employees. Reads the current contract first,
+  requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee,
+  qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: intuit/quickbooks-claude-plugin
+  path: skills/set-base-pay
+  ref: main
+license: apache-2.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:7beb7d6f2a0a36db
+upstream_sha: 6db49c4f8ed3
+last_checked: 2026-09-20

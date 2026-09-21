@@ -6,7 +6,7 @@ PY   := $(VENV)/bin/python
 
 help:
 	@echo "make setup              create .venv and install dependencies"
-	@echo "make build              regenerate README.md and skills/*/README.md"
+	@echo "make build              regenerate README.md, skill and connector pages"
 	@echo "make drift              check every pointer against upstream, update baselines"
 	@echo "make probe              re-probe vendor orgs for officially published skills"
 	@echo "make add URL=... STAGE=n [AUTHORITY=first-party] [SYSTEMS=a,b]"

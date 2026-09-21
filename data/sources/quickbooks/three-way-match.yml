@@ -1,0 +1,21 @@
+id: three-way-match
+title: Three-Way Match
+origin: mosofin-published
+authority: first-party
+stage: 5
+summary: Matches purchase orders, goods receipts, and vendor invoices line by line across
+  the full population where the workspace holds POs and item receipts. Proposes only — pays
+  nothing, releases nothing.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: MosoFin/mosofin-finance-skills
+  path: skills/three-way-match
+  ref: main
+license: agpl-3.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:2a4e014df4600db4
+upstream_sha: ac12d064e857
+last_checked: 2026-09-20

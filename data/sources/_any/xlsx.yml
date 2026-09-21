@@ -1,0 +1,21 @@
+id: xlsx
+title: xlsx
+origin: third-party
+authority: first-party
+stage: 6
+summary: Spreadsheet creation and manipulation — formulas, charts, data transformations. The
+  usual last mile when a close artifact has to leave as a workbook.
+tiers: []
+systems:
+- excel
+upstream:
+  repo: anthropics/skills
+  path: skills/xlsx
+  ref: main
+license: proprietary-anthropic
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:6712b39718fe8150
+upstream_sha: fa0fa64bdc96
+last_checked: 2026-09-20
+license_hash: sha256:79f6d8f5b427252f

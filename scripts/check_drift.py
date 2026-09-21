@@ -27,7 +27,9 @@ import urllib.request
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SOURCES = ROOT / "sources.yml"
+DATA = ROOT / "data"
+FILE_FORMATS = {"csv", "pdf", "word", "powerpoint", "images", "any", "excel"}
+AGNOSTIC = "_any"
 API = "https://api.github.com"
 RAW = "https://raw.githubusercontent.com"
 PERMISSIVE = {"mit", "apache-2.0", "bsd-3-clause", "bsd-2-clause", "isc", "cc0-1.0"}
@@ -74,20 +76,19 @@ def license_hash(repo: str, path: str, ref: str) -> str | None:
     return "sha256:" + hashlib.sha256(r).hexdigest()[:16]
 
 
-def set_field(text: str, skill_id: str, key: str, value: str) -> str:
-    """Rewrite one scalar field inside one skill block, preserving all formatting."""
-    start = re.search(rf"^  - id: {re.escape(skill_id)}\s*$", text, re.M)
-    if not start:
-        return text
-    nxt = re.search(r"^  - id: ", text[start.end():], re.M)
-    end = start.end() + (nxt.start() if nxt else len(text) - start.end())
-    block = text[start.end():end]
-    line = f"    {key}: {value}\n"
-    if re.search(rf"^    {re.escape(key)}:.*$", block, re.M):
-        block = re.sub(rf"^    {re.escape(key)}:.*$", line.rstrip("\n"), block, count=1, flags=re.M)
-    else:
-        block = block.rstrip("\n") + "\n" + line
-    return text[:start.end()] + block + text[end:]
+def skill_files() -> list[pathlib.Path]:
+    return sorted((DATA / "sources").glob("*/*.yml"))
+
+
+def save(path: pathlib.Path, skill: dict) -> None:
+    """Rewrite one skill file.
+
+    These files carry no comments — they are generated from a single mapping —
+    so a plain dump is lossless. This replaces the previous approach of locating
+    a skill's block inside one large file by scanning for the next `- id:`,
+    which broke whenever an entry did not match the expected shape.
+    """
+    path.write_text(yaml.safe_dump(skill, sort_keys=False, allow_unicode=True, width=88))
 
 
 def main() -> int:
@@ -95,16 +96,17 @@ def main() -> int:
     ap.add_argument("--write", action="store_true", help="update sources.yml in place")
     args = ap.parse_args()
 
-    data = yaml.safe_load(SOURCES.read_text())
-    text = SOURCES.read_text()
+    meta = yaml.safe_load((DATA / "meta.yml").read_text())
+    loaded = [(f, yaml.safe_load(f.read_text())) for f in skill_files()]
     today = dt.date.today().isoformat()
-    regrade_after = data["meta"]["regrade_after_days"]
+    regrade_after = meta["meta"]["regrade_after_days"]
+    dirty: dict[pathlib.Path, dict] = {}
 
     changed: list[str] = []
     notices: list[str] = []
     fatal: list[str] = []
 
-    for s in data["skills"]:
+    for path, s in loaded:
         up = s.get("upstream") or {}
         sid = s["id"]
 
@@ -162,22 +164,25 @@ def main() -> int:
                     f"https://github.com/{repo}/commits/{ref}/{path}"
                 )
             if args.write:
-                text = set_field(text, sid, "skill_md_hash", bh)
+                s["skill_md_hash"] = bh
                 if s.get("status") == "GRADED":
-                    text = set_field(text, sid, "status", "NEEDS-RE-GRADING")
+                    s["status"] = "NEEDS-RE-GRADING"
+                dirty[path] = s
         elif s.get("upstream_sha") != sha[:12]:
             notices.append(f"{sid}: sibling files changed, SKILL.md identical — grade stands")
 
         if args.write:
-            text = set_field(text, sid, "upstream_sha", sha[:12])
-            text = set_field(text, sid, "last_checked", today)
+            s["upstream_sha"] = sha[:12]
+            s["last_checked"] = today
             if lh:
-                text = set_field(text, sid, "license_hash", lh)
+                s["license_hash"] = lh
+            dirty[path] = s
 
-    if args.write:
-        SOURCES.write_text(text)
-        yaml.safe_load(SOURCES.read_text())  # fail loudly if the rewrite broke YAML
-        print("sources.yml updated")
+    if args.write and dirty:
+        for path, skill in dirty.items():
+            save(path, skill)
+            yaml.safe_load(path.read_text())  # fail loudly rather than commit broken YAML
+        print(f"{len(dirty)} skill file(s) updated")
 
     for line in fatal:
         print(f"FATAL   {line}")

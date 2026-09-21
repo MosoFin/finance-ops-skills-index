@@ -1,0 +1,69 @@
+id: flux
+title: Flux
+origin: mosofin-workspace
+authority: first-party
+stage: 5
+summary: Period-over-period variance analysis as a disciplined loop — isolate, drill, hypothesise,
+  verify, explain. Commentary is earned from transactions, never invented from account names.
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- EVIDENCE-GATED
+- MATERIALITY-AWARE
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  EVIDENCE-GATED: Labels each line *explained* (evidence) vs *attributed* (your word). Partial
+    explanations say what remains unexplained.
+  TIE-CHECKED: Explained + unexplained must equal the total period delta, line by line and
+    in total.
+  DETERMINISTIC-MATH: scripts/flux.py computes deltas and percentages and filters by the materiality
+    thresholds.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ledger.pnl-by-month
+  required: true
+  source: integration manifest
+  fallback: P&L by month export covering both periods
+- name: ledger.balance-sheet
+  required: false
+  source: integration manifest
+  fallback: P&L flux only
+- name: ledger.gl-detail
+  required: false
+  source: integration manifest
+  fallback: ask about variances that can't be drilled
+- name: MATERIALITY.md
+  required: true
+  source: client workspace — flux thresholds
+  fallback: ask once
+- name: REPORT-PREFS.md
+  required: false
+  source: client workspace — comparison basis, voice, rounding
+  fallback: ask once
+- name: docs/decisions/
+  required: false
+  source: client workspace
+  fallback: a policy change may look like a variance
+outputs:
+- name: flux commentary
+  type: markdown
+  dest: 'closes/<YYYY-MM>/ — per line: what moved, why, whether it recurs'
+- name: variance proof
+  type: chat + artifact
+  dest: explained + unexplained = total delta, computed
+- name: misclassification flags
+  type: chat
+  dest: suggested corrections, not posted
+never:
+- Explain a variance from the account name.
+- Post a correction found during drilling.
+upstream:
+  local: ~/.claude/skills/flux
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

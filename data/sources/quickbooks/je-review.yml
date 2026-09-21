@@ -1,0 +1,62 @@
+id: je-review
+title: JE Review
+origin: mosofin-workspace
+authority: first-party
+stage: 5
+summary: The skeptical second pair of eyes on everything posted this period — round numbers,
+  unusual account pairings, entries above materiality without support, broken reversal patterns,
+  back-dated postings, related-party entries.
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- MATERIALITY-AWARE
+- HUMAN-APPROVAL
+- POLICY-CAPTURING
+- AUDIT-TRAIL
+tier_notes:
+  TIE-CHECKED: Cross-foots debits = credits per entry and in aggregate first; an unbalanced
+    export stops the review.
+  READ-ONLY: Drafts correcting entries on request; never posts from here.
+systems:
+- quickbooks
+- csv
+inputs:
+- name: ledger.gl-detail
+  required: true
+  source: integration manifest
+  fallback: GL detail / journal report export for the period
+- name: MATERIALITY.md
+  required: false
+  source: client workspace
+  fallback: ask once
+- name: COA.md
+  required: false
+  source: client workspace — pairing warnings
+  fallback: flag pairings with no precedent in the ledger
+- name: PROFILE.md
+  required: false
+  source: client workspace — related-party watch-outs
+  fallback: skip the same-preparer sensitivity scan
+outputs:
+- name: flagged entries
+  type: chat
+  dest: one at a time, ordered by amount, with the flag and a read of what it is probably
+    doing
+- name: review summary
+  type: markdown
+  dest: closes/<YYYY-MM>/ — reviewed, flagged by category, resolved vs outstanding
+- name: correcting entry drafts
+  type: JE drafts
+  dest: chat, on request
+- name: decision records
+  type: markdown (ADR)
+  dest: docs/decisions/ — when a resolution reveals a policy
+never:
+- Post a correcting entry.
+upstream:
+  local: ~/.claude/skills/je-review
+license: proprietary-mosofin
+mirror: false
+last_graded: '2026-09-18'
+status: GRADED

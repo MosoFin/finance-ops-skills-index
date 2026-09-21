@@ -1,0 +1,21 @@
+id: month-end-close-checklist
+title: Month-End Close Checklist
+origin: mosofin-published
+authority: first-party
+stage: 1
+summary: Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the checklist
+  from the entity's actual chart of accounts, pre-populates the status of every task that
+  leaves ledger evidence, and runs a final tie-out including inter-period continuity.
+tiers: []
+systems:
+- quickbooks
+upstream:
+  repo: MosoFin/mosofin-finance-skills
+  path: skills/month-end-close-checklist
+  ref: main
+license: agpl-3.0
+mirror: false
+status: UNGRADED
+skill_md_hash: sha256:2fec514402ed928d
+upstream_sha: ac12d064e857
+last_checked: 2026-09-20
