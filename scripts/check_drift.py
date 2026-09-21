@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Compare every upstream pointer in sources.yml against its source repository.
+"""Compare every upstream pointer against its source repository.
 
 A grade is a claim about one version of a file. When upstream changes that file,
 the claim expires. This script detects that and nothing else — it never re-grades,
 and it never rewrites a summary or a badge.
 
     ./.venv/bin/python scripts/check_drift.py            report only
-    ./.venv/bin/python scripts/check_drift.py --write    update sources.yml in place
+    ./.venv/bin/python scripts/check_drift.py --write    update the skill files in place
 
 Exit codes: 0 nothing to do · 1 human attention required · 2 hard error.
 Set GITHUB_TOKEN to lift the anonymous API rate limit.
@@ -136,7 +136,7 @@ def save(path: pathlib.Path, skill: dict) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--write", action="store_true", help="update sources.yml in place")
+    ap.add_argument("--write", action="store_true", help="update the skill files in place")
     args = ap.parse_args()
 
     meta = yaml.safe_load((DATA / "meta.yml").read_text())
@@ -175,11 +175,6 @@ def main() -> int:
 
         repo, path, ref = up["repo"], up["path"], up.get("ref", "main")
         sha = latest_sha(repo, path, ref)
-        if sha in (403, 429):
-            raise Fatal("GitHub rate limit reached. Set GITHUB_TOKEN and re-run — "
-                "sources.yml was not modified.\n"
-                "  export GITHUB_TOKEN=$(gh auth token)"
-            )
         if sha == 404 or sha is None:
             fatal.append(f"{sid}: LINK ROT — {repo}/{path} not found on {ref}")
             continue

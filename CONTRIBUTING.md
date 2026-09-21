@@ -24,7 +24,7 @@ Never create or edit a file under `skills/` or `connectors/`; both are generated
 single file: it is read as a set, and its `statuses` and `auth_models` are shared
 vocabulary that would be duplicated 37 times if split.
 
-`STAGE` is 0-7 (see `stages` in `sources.yml`) — roughly, when in the close you reach
+`STAGE` is 0-7 (see `stages` in `data/meta.yml`) — roughly, when in the close you reach
 for it. `AUTHORITY` is `first-party` when the organisation that owns the product
 published the skill itself, `notable` for a widely-used author who is not the product
 owner, `community` otherwise. Provenance is not quality, and neither is a grade.

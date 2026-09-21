@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Regenerate README.md and skills/<id>/README.md from sources.yml.
+"""Regenerate every published page from data/ and connectors.yml.
 
-Everything this writes is derived. Edit sources.yml, then run:
+Everything this writes is derived. Edit the data files, then run:
     ./.venv/bin/python scripts/build.py
 """
 from __future__ import annotations
@@ -476,7 +476,7 @@ def index_page(data: dict, conn_meta: dict) -> str:
     stale = [s for s in graded if is_stale(s, meta["regrade_after_days"])]
     regrade = [s for s in skills if s["status"] == "NEEDS-RE-GRADING"]
     # Derived from the data, never from wall-clock time: generated output must be
-    # byte-identical on any day sources.yml has not changed, or CI's sync check
+    # byte-identical on any day the data files have not changed, or CI's sync check
     # fails every day after the commit that produced it.
     checks = [str(s["last_checked"]) for s in skills if s.get("last_checked")]
     checked = max(checks) if checks else ""
@@ -651,7 +651,7 @@ def main() -> int:
     ids = [s["id"] for s in data["skills"]]
     if len(ids) != len(set(ids)):
         dupes = {i for i in ids if ids.count(i) > 1}
-        print(f"duplicate ids in sources.yml: {sorted(dupes)}", file=sys.stderr)
+        print(f"duplicate skill ids: {sorted(dupes)}", file=sys.stderr)
         return 1
 
     (ROOT / "README.md").write_text(index_page(data, conn_meta))

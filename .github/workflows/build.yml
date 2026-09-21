@@ -15,11 +15,11 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
 
-      - name: Generated docs are in sync with sources.yml
+      - name: Generated docs are in sync with the data files
         run: |
           python scripts/build.py
           git diff --exit-code -- README.md skills/ connectors/ docs/CONNECTOR-TRACKER.md || {
-            echo "::error::README.md or skills/*/README.md is out of date. Run scripts/build.py and commit."
+            echo "::error::Generated pages are out of date. Run make build and commit."
             exit 1
           }
 

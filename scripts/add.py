@@ -6,7 +6,8 @@
         --stage 6 --authority first-party
 
 Reads the upstream SKILL.md frontmatter and the repository licence, appends a
-well-formed UNGRADED entry to sources.yml, and records the drift baseline. It
+well-formed UNGRADED entry under the data source it reads, and records the drift
+baseline. It
 never assigns a trust tier — grading is a person's job (see CONTRIBUTING.md).
 """
 from __future__ import annotations
@@ -73,7 +74,7 @@ def wrap(text: str, indent: str = "  ") -> str:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("url", help="GitHub URL of the skill directory (…/tree/<ref>/<path>)")
-    ap.add_argument("--stage", type=int, required=True, help="0-7, see sources.yml")
+    ap.add_argument("--stage", type=int, required=True, help="0-7, see data/meta.yml")
     ap.add_argument("--authority", default="community", choices=["first-party", "notable", "community"])
     ap.add_argument("--origin", default="third-party")
     ap.add_argument("--id", help="override the entry id (default: directory name)")
@@ -99,7 +100,7 @@ def main() -> int:
 
     sid = args.id or fm.get("name") or path.rsplit("/", 1)[-1]
     if sid in existing:
-        raise SystemExit(f"id '{sid}' already exists in sources.yml — pass --id to disambiguate")
+        raise SystemExit(f"id '{sid}' already exists — pass --id to disambiguate")
 
     meta = get(f"https://api.github.com/repos/{repo}") or {}
     spdx = (meta.get("license") or {}).get("spdx_id") or ""
