@@ -3,33 +3,48 @@
 # Connector Tracker
 
 For every connector on the roadmap: who owns it on GitHub, whether they publish
-agent skills of their own, and how many of those this index carries.
+agent skills of their own, and how many this index carries.
 
-**30 connectors tracked** · **11 publish skills** · **19 publish none** · **10 with skills not yet indexed**
+**30 connectors tracked** · **9 vendor skill repositories** · **230 skills published** · **34 finance-relevant** · **19 vendors publish none**
 
-Probed with `make probe`. A vendor publishing nothing today is a fact with a date
-on it, not a permanent state — re-probe before relying on a zero.
+*Published* is everything in the repo. *Relevant* is what belongs in a finance
+index — most vendor skills teach you to build on their platform, which is a
+different job. The difference is triage, not backlog; the notes say what was left
+out and why.
+
+Refresh with `make probe`. A vendor publishing nothing today is a fact with a date
+on it, not a permanent state.
 
 ## Vendors that publish agent skills
 
-| Connector | Status | Skills repo | Published | Indexed | Licence | Checked |
+| Repository | Serves | Published | Relevant | Indexed | Licence | Checked |
 |---|---|---|---|---|---|---|
-| `quickbooks` | live | [`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) | 10 | 10 | `apache-2.0` | 2026-09-20 |
-| `stripe` | live | [`stripe/ai`](https://github.com/stripe/ai) | 60 | 2 | `mit` | 2026-09-20 |
-| `shopify` | code-complete | [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | 22 | 1 | `mit` | 2026-09-20 |
-| `amazon-sp` | roadmap | [`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs) | 9 | 0 | `mit-0` | 2026-09-20 |
-| `hubspot` | roadmap | [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) | 15 | 1 | `apache-2.0` | 2026-09-20 |
-| `paypal` | roadmap | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | 2 | 1 | `apache-2.0` | 2026-09-20 |
-| `woocommerce` | costly | [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | 2 | 0 | `unclear` | 2026-09-20 |
-| `gmail` | not-recommended | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 95 | 5 | `apache-2.0` | 2026-09-20 |
-| `excel` | local | [`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit) | 15 | 0 | `mit` | 2026-09-20 |
-| `google-drive` | local | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 95 | 5 | `apache-2.0` | 2026-09-20 |
-| `google-sheets` | local | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 95 | 5 | `apache-2.0` | 2026-09-20 |
+| [`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) | `quickbooks` | 10 | 10 | 10 | `apache-2.0` | 2026-09-20 |
+| [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) | `hubspot` | 15 | 7 | 7 | `apache-2.0` | 2026-09-20 |
+| [`stripe/ai`](https://github.com/stripe/ai) | `stripe` | 60 | 5 | 5 | `mit` | 2026-09-20 |
+| [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | `shopify` | 22 | 5 | 5 | `mit` | 2026-09-20 |
+| [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | `gmail`, `google-drive`, `google-sheets` | 95 | 5 | 5 | `apache-2.0` | 2026-09-20 |
+| [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | `paypal` | 2 | 2 | 2 | `apache-2.0` | 2026-09-20 |
+| [`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs) | `amazon-sp` | 9 | 0 | 0 | `mit-0` | 2026-09-20 |
+| [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | `woocommerce` | 2 | 0 | 0 | `unclear` | 2026-09-20 |
+| [`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit) | `excel` | 15 | 0 | 0 | `mit` | 2026-09-20 |
+
+- **[`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills)** — Seven are revenue operations. The rest are CRM workflow and support.
+- **[`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit)** — The repo's .github/skills are Microsoft's internal development process — vibe-coding, governance remediation. Nothing to do with Excel.
+- **[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit)** — Five touch merchant data, payments or reporting. The other seventeen build Shopify apps — Polaris, Hydrogen, Liquid, Functions, CLI.
+- **[`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs)** — The nine are Amazon Ads API migration guides — a different product from SP-API, and developer tooling rather than bookkeeping.
+- **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
+- **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Triage only — this connector is not recommended anyway.
+- **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Drive itself. See google-sheets for the rest.
+- **[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin)** — All ten are bookkeeping skills — the only vendor set that is.
+- **[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit)** — Both indexed.
+- **[`stripe/ai`](https://github.com/stripe/ai)** — The repo ships the same 10 skills under six provider directories; 10 unique. Five are payments or Connect. The rest build Stripe apps.
+- **[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)** — Both are the repository's own automation, including a stale-PR audit. Licence is unrecognised.
 
 ## Vendors that publish none
 
-Org exists and was probed; no `SKILL.md` found in any repo whose name suggests
-agents, skills, MCP, a toolkit, a plugin, a CLI or an SDK.
+Org exists and was probed; no `SKILL.md` in any repo whose name suggests agents,
+skills, MCP, a toolkit, a plugin, a CLI or an SDK.
 
 | Connector | Status | GitHub org | Checked |
 |---|---|---|---|
@@ -53,22 +68,9 @@ agents, skills, MCP, a toolkit, a plugin, a CLI or an SDK.
 | `ncr-voyix` | gated | *no public org at the obvious name* | 2026-09-20 |
 | `toast` | gated | [`toasttab`](https://github.com/toasttab) | 2026-09-20 |
 
-## Published but not indexed
+## Relevant but not yet indexed
 
-Skills their owner ships that this index does not yet carry. Each is a
-candidate for `make add`, subject to being finance-relevant — a vendor's
-developer-tooling skills usually are not.
-
-- **`stripe`** — 58 of 60 unindexed in [`stripe/ai`](https://github.com/stripe/ai)
-- **`shopify`** — 21 of 22 unindexed in [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit)
-- **`amazon-sp`** — 9 of 9 unindexed in [`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs)
-- **`hubspot`** — 14 of 15 unindexed in [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills)
-- **`paypal`** — 1 of 2 unindexed in [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit)
-- **`woocommerce`** — 2 of 2 unindexed in [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)
-- **`gmail`** — 90 of 95 unindexed in [`googleworkspace/cli`](https://github.com/googleworkspace/cli)
-- **`excel`** — 15 of 15 unindexed in [`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit)
-- **`google-drive`** — 90 of 95 unindexed in [`googleworkspace/cli`](https://github.com/googleworkspace/cli)
-- **`google-sheets`** — 90 of 95 unindexed in [`googleworkspace/cli`](https://github.com/googleworkspace/cli)
+Nothing outstanding. Every finance-relevant vendor skill found is indexed.
 
 ---
 

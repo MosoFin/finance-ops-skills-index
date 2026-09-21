@@ -1300,3 +1300,292 @@ skills:
     skill_md_hash: sha256:09dc881c8ee7d471
     upstream_sha: a9c0586fe495
     last_checked: 2026-09-20
+
+  - id: stripe-connect-recommend
+    title: connect-recommend
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      Use this skill when the user asks about Stripe Connect configuration,
+      charge patterns, Dashboard access, or how to get started with Connect,
+      is building a marketplace, platform, multi-vendor store, gig platform,
+      or subscription platform, needs to pay out sellers, vendors, or
+      providers, mentions split payments, revenue sharing, multi-party
+      payments, or similar payment distribution concepts, provides a company
+      URL or business description for a recommendation, builds SaaS that
+      routes money between parties (for example, POS, booking, invoicing — not
+      operational SaaS without payment routing), asks about onboarding or KYC
+      for merchants, sellers, and vendors, mentions connected account
+      Dashboard or responsibility configurations, or asks about payment flows,
+      white-label payments, or embedded payments.
+    tiers: []
+    systems: [stripe]
+    upstream: {repo: "stripe/ai", path: "providers/claude/plugin/skills/connect-recommend", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:111c6972f1673080
+    upstream_sha: 82d5d332c2ef
+    last_checked: 2026-09-20
+  - id: stripe-connect-verification
+    title: connect-required-verification-information
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      Use this skill when the user asks what information a Stripe Connect
+      connected account must provide for verification, onboarding, KYC, or
+      account requirements; when they need to compare requirements between
+      connected-account setups; or when they ask which verification fields,
+      documents, or business details are required for a particular platform
+      country, account country, business type, dashboard, service agreement,
+      or capability.
+    tiers: []
+    systems: [stripe]
+    upstream: {repo: "stripe/ai", path: "providers/claude/plugin/skills/connect-required-verification-information", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:9945d4ad0c46fbe4
+    upstream_sha: 38d8933bffbd
+    last_checked: 2026-09-20
+  - id: stripe-docs
+    title: stripe-docs
+    origin: third-party
+    authority: first-party
+    stage: 0
+    summary: >-
+      Use when the user or agent needs to read, search, or look up Stripe
+      documentation or API reference. Prefer this over curl or WebFetch for
+      any docs.stripe.com content. Use to fetch gated documentation.
+    tiers: []
+    systems: [stripe]
+    upstream: {repo: "stripe/ai", path: "providers/claude/plugin/skills/stripe-docs", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:af38e784edcdb2f1
+    upstream_sha: 12f48810695e
+    last_checked: 2026-09-20
+  - id: hs-sales-reporting
+    title: sales-reporting
+    origin: third-party
+    authority: first-party
+    stage: 6
+    summary: >-
+      Daily briefings, pipeline snapshots, and win/loss analysis from the
+      terminal — closing-this-week, open pipeline by stage/owner, and closed-
+      won vs closed-lost over a period.
+    tiers: []
+    systems: [hubspot]
+    upstream: {repo: "HubSpot/agent-cli-skills", path: "sales-reporting", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:f842a04872f7307f
+    upstream_sha: 5b773165f0c8
+    last_checked: 2026-09-20
+  - id: hs-deal-management
+    title: deal-management
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      Run the full deal lifecycle from CLI — discover pipelines/stages,
+      qualify MQLs into deals with associations, advance/reassign in bulk,
+      hunt stalled deals, and close.
+    tiers: []
+    systems: [hubspot]
+    upstream: {repo: "HubSpot/agent-cli-skills", path: "deal-management", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:de039e2299446039
+    upstream_sha: 5b773165f0c8
+    last_checked: 2026-09-20
+  - id: hs-crm-lookup
+    title: crm-lookup
+    origin: third-party
+    authority: first-party
+    stage: 2
+    summary: >-
+      Find a specific CRM record by ID, email, domain, or name fragment, and
+      traverse associations for the full account picture.
+    tiers: []
+    systems: [hubspot]
+    upstream: {repo: "HubSpot/agent-cli-skills", path: "crm-lookup", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:579bd26b13828ebc
+    upstream_sha: 5b773165f0c8
+    last_checked: 2026-09-20
+  - id: hs-crm-data-quality
+    title: crm-data-quality
+    origin: third-party
+    authority: first-party
+    stage: 2
+    summary: >-
+      Find incomplete records, normalize field values in bulk, dedupe with
+      `hubspot objects merge`, and audit custom properties. Builds on `bulk-
+      operations` for JSONL piping and dry-run/digest/confirm.
+    tiers: []
+    systems: [hubspot]
+    upstream: {repo: "HubSpot/agent-cli-skills", path: "crm-data-quality", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:5c51e00fb3addfb8
+    upstream_sha: 5b773165f0c8
+    last_checked: 2026-09-20
+  - id: hs-customer-retention
+    title: customer-retention
+    origin: third-party
+    authority: first-party
+    stage: 7
+    summary: >-
+      Identify inactive/at-risk customers via CRM filters and create follow-up
+      tasks at scale. Builds on `bulk-operations`; defers activity-creation
+      specifics to `sales-execution`.
+    tiers: []
+    systems: [hubspot]
+    upstream: {repo: "HubSpot/agent-cli-skills", path: "customer-retention", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:9965f44f3042b8c0
+    upstream_sha: 5b773165f0c8
+    last_checked: 2026-09-20
+  - id: hs-bulk-operations
+    title: bulk-operations
+    origin: third-party
+    authority: first-party
+    stage: 2
+    summary: >-
+      Foundation patterns for the `hubspot` CLI — JSONL piping, batch read,
+      pagination, dry-run/digest/confirm for destructive ops, and `hubspot
+      history` for recovery. Every other skill builds on this one.
+    tiers: []
+    systems: [hubspot]
+    upstream: {repo: "HubSpot/agent-cli-skills", path: "bulk-operations", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:02cc417abc0ab9b4
+    upstream_sha: ed4123453010
+    last_checked: 2026-09-20
+  - id: shopify-shopifyql
+    title: shopify-shopifyql
+    origin: third-party
+    authority: first-party
+    stage: 6
+    summary: >-
+      Answer a merchant's **analytics and reporting** questions with
+      **ShopifyQL** — Shopify's query language for aggregated store metrics
+      that the Admin GraphQL API cannot compute. Choose this (not `admin`)
+      whenever the ask is for **numbers, totals, trends, or breakdowns**
+      rather than fetching or mutating individual records: including but not
+      limited to total/gross/net sales and revenue, order counts, average
+      order value, refunds, quantity sold, sessions, conversion rate, and
+      traffic — sliced by product, channel, region, or customer, trended over
+      time, or compared period-over-period. Examples: "total sales last 7
+      days", "orders by sales channel this month", "top products by revenue",
+      "conversion rate this week", "sales this year vs last year". This topic
+      covers writing the ShopifyQL query; if the merchant wants to run it
+      against their store, execution is handed off to `use-shopify-cli`. Not
+      for general Admin GraphQL record operations — fetching or mutating
+      individual resources (use `admin`).
+    tiers: []
+    systems: [shopify]
+    upstream: {repo: "Shopify/Shopify-AI-Toolkit", path: "skills/shopify-shopifyql", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:d4709a32b3a03a55
+    upstream_sha: 27f223bd66d6
+    last_checked: 2026-09-20
+  - id: shopify-payments-apps
+    title: shopify-payments-apps
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      The Payments Apps API enables payment providers to integrate their
+      payment solutions with Shopify's checkout.
+    tiers: []
+    systems: [shopify]
+    upstream: {repo: "Shopify/Shopify-AI-Toolkit", path: "skills/shopify-payments-apps", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:388ff948b1932a7e
+    upstream_sha: 27f223bd66d6
+    last_checked: 2026-09-20
+  - id: shopify-customer
+    title: shopify-customer
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      Write and validate GraphQL operations for developers integrating
+      Shopify's Customer Account API. Generates code for Customer Account API
+      integrations.
+    tiers: []
+    systems: [shopify]
+    upstream: {repo: "Shopify/Shopify-AI-Toolkit", path: "skills/shopify-customer", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:feaf16998d971eee
+    upstream_sha: 27f223bd66d6
+    last_checked: 2026-09-20
+  - id: shopify-onboarding-merchant
+    title: shopify-onboarding-merchant
+    origin: third-party
+    authority: first-party
+    stage: 0
+    summary: >-
+      Set up a Shopify store. Use whenever someone asks to make, build, open,
+      or set up a store or shop that sells something (e.g. "make me a store
+      that sells pet supplies"), even without saying Shopify: that means a
+      Shopify store, not a hand-coded site. Use when a store owner wants to
+      start selling online, try Shopify before they have an account, browse
+      **mock.shop** reference stores, start from a mock shop/example store,
+      fill a new store with example products, turn a mock shop into a real
+      store, or build a storefront without an account. Also use when
+      developers explicitly need auth-free mock.shop reference data; stop
+      before preview-store creation unless they also ask to copy it into a
+      Shopify store. Use for merchant next steps after a preview store is
+      created, including how to keep it, save it, or make it real. Preview
+      creation belongs here via `shopify store create preview`; app and theme
+      development belongs in `onboarding-dev`; CLI troubleshooting and named-
+      store commands belong in **`use-shopify-cli`**.
+    tiers: []
+    systems: [shopify]
+    upstream: {repo: "Shopify/Shopify-AI-Toolkit", path: "skills/shopify-onboarding-merchant", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:d125ff7ec09c2d69
+    upstream_sha: 27f223bd66d6
+    last_checked: 2026-09-20
+  - id: paypal-routing
+    title: paypal-routing
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      PayPal payments, subscriptions, checkout, invoices, disputes, webhooks,
+      BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web,
+      accelerated guest checkout. Routes PayPal developer questions to the
+      right command or reference file.
+    tiers: []
+    systems: [paypal]
+    upstream: {repo: "paypal/AI-Toolkit", path: "skills/paypal-routing", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:3c99aba0118d4733
+    upstream_sha: c93cbfe5b0b1
+    last_checked: 2026-09-20

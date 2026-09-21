@@ -271,53 +271,73 @@ def publisher_rows(skills: list) -> list[str]:
 
 
 def tracker_page(conn: dict) -> str:
-    """Vendor-by-vendor: does this connector's owner publish agent skills?"""
-    cs = conn["statuses"]
-    rows = sorted(
-        ((n, c) for n, c in conn["connectors"].items() if c.get("github_org")),
-        key=lambda kv: (STATUS_ORDER.index(kv[1].get("status", "candidate")), kv[0]),
-    )
-    pub = [(n, c) for n, c in rows if c.get("skills_repo") not in (None, "none")]
+    """Vendor by vendor: does this connector's owner publish agent skills?
+
+    Grouped by repository, not by connector — three Workspace connectors share
+    one repo, and counting it three times would overstate both the total and
+    the gap.
+    """
+    rows = [(n, c) for n, c in conn["connectors"].items() if c.get("github_org")]
+    repos: dict[str, dict] = {}
+    for n, c in rows:
+        r = c.get("skills_repo")
+        if r in (None, "none"):
+            continue
+        g = repos.setdefault(r, {"connectors": [], "c": c})
+        g["connectors"].append(n)
     none_yet = [(n, c) for n, c in rows if c.get("skills_repo") in (None, "none")]
-    gap = [(n, c) for n, c in pub if c.get("skills_indexed", 0) < c.get("skills_published", 0)]
+
+    def relevant(g):
+        return sum(conn["connectors"][n].get("skills_relevant", 0) for n in g["connectors"])
+
+    published = sum(g["c"].get("skills_published", 0) for g in repos.values())
+    rel_total = sum(relevant(g) for g in repos.values())
+    gap = {r: g for r, g in repos.items() if relevant(g) > g["c"].get("skills_indexed", 0)}
 
     L = [GENERATED, "", "# Connector Tracker", "",
          "For every connector on the roadmap: who owns it on GitHub, whether they publish",
-         "agent skills of their own, and how many of those this index carries.", "",
-         f"**{len(rows)} connectors tracked** · **{len(pub)} publish skills** · "
-         f"**{len(none_yet)} publish none** · **{len(gap)} with skills not yet indexed**", "",
-         "Probed with `make probe`. A vendor publishing nothing today is a fact with a date",
-         "on it, not a permanent state — re-probe before relying on a zero.", "",
+         "agent skills of their own, and how many this index carries.", "",
+         f"**{len(rows)} connectors tracked** · **{len(repos)} vendor skill repositories** · "
+         f"**{published} skills published** · **{rel_total} finance-relevant** · "
+         f"**{len(none_yet)} vendors publish none**", "",
+         "*Published* is everything in the repo. *Relevant* is what belongs in a finance",
+         "index — most vendor skills teach you to build on their platform, which is a",
+         "different job. The difference is triage, not backlog; the notes say what was left",
+         "out and why.", "",
+         "Refresh with `make probe`. A vendor publishing nothing today is a fact with a date",
+         "on it, not a permanent state.", "",
          "## Vendors that publish agent skills", "",
-         "| Connector | Status | Skills repo | Published | Indexed | Licence | Checked |",
+         "| Repository | Serves | Published | Relevant | Indexed | Licence | Checked |",
          "|---|---|---|---|---|---|---|"]
-    for n, c in pub:
-        r = c["skills_repo"]
+    for r, g in sorted(repos.items(), key=lambda kv: -relevant(kv[1])):
+        c = g["c"]
         L.append(
-            f"| `{n}` | {c.get('status')} | [`{r}`](https://github.com/{r}) "
-            f"| {c.get('skills_published', 0)} | {c.get('skills_indexed', 0)} "
+            f"| [`{r}`](https://github.com/{r}) | {', '.join(f'`{x}`' for x in sorted(g['connectors']))} "
+            f"| {c.get('skills_published', 0)} | {relevant(g)} | {c.get('skills_indexed', 0)} "
             f"| `{c.get('skills_license', '?')}` | {c.get('skills_checked', '—')} |"
         )
+    L += [""]
+    for r, g in sorted(repos.items()):
+        notes = {conn["connectors"][n].get("skills_note") for n in g["connectors"]}
+        for note in filter(None, notes):
+            L.append(f"- **[`{r}`](https://github.com/{r})** — {esc(' '.join(note.split()))}")
     L += ["", "## Vendors that publish none", "",
-          "Org exists and was probed; no `SKILL.md` found in any repo whose name suggests",
-          "agents, skills, MCP, a toolkit, a plugin, a CLI or an SDK.", "",
+          "Org exists and was probed; no `SKILL.md` in any repo whose name suggests agents,",
+          "skills, MCP, a toolkit, a plugin, a CLI or an SDK.", "",
           "| Connector | Status | GitHub org | Checked |", "|---|---|---|---|"]
-    for n, c in none_yet:
+    for n, c in sorted(none_yet, key=lambda kv: (STATUS_ORDER.index(kv[1].get("status", "candidate")), kv[0])):
         org = c["github_org"]
-        link = f"[`{org}`](https://github.com/{org})" if org != "none-found" else "*no public org at the obvious name*"
+        link = (f"[`{org}`](https://github.com/{org})" if org != "none-found"
+                else "*no public org at the obvious name*")
         L.append(f"| `{n}` | {c.get('status')} | {link} | {c.get('skills_checked', '—')} |")
 
+    L += ["", "## Relevant but not yet indexed", ""]
     if gap:
-        L += ["", "## Published but not indexed", "",
-              "Skills their owner ships that this index does not yet carry. Each is a",
-              "candidate for `make add`, subject to being finance-relevant — a vendor's",
-              "developer-tooling skills usually are not.", ""]
-        for n, c in gap:
-            r = c["skills_repo"]
-            L.append(
-                f"- **`{n}`** — {c['skills_published'] - c.get('skills_indexed', 0)} of "
-                f"{c['skills_published']} unindexed in [`{r}`](https://github.com/{r})"
-            )
+        for r, g in sorted(gap.items()):
+            L.append(f"- **[`{r}`](https://github.com/{r})** — "
+                     f"{relevant(g) - g['c'].get('skills_indexed', 0)} still to add")
+    else:
+        L.append("Nothing outstanding. Every finance-relevant vendor skill found is indexed.")
     L += ["", "---", "", "[← back to the index](../README.md)", ""]
     return "\n".join(L)
 

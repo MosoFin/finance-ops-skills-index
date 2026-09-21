@@ -66,8 +66,11 @@ connectors:
     skills_repo: intuit/quickbooks-claude-plugin
     skills_published: 10
     skills_license: apache-2.0
-    skills_indexed: 10
     skills_checked: "2026-09-20"
+    skills_relevant: 10
+    skills_indexed: 10
+    skills_note: >-
+      All ten are bookkeeping skills — the only vendor set that is.
   stripe:
     status: live
     family: A
@@ -85,8 +88,11 @@ connectors:
     skills_repo: stripe/ai
     skills_published: 60
     skills_license: mit
-    skills_indexed: 2
     skills_checked: "2026-09-20"
+    skills_relevant: 5
+    skills_indexed: 5
+    skills_note: >-
+      The repo ships the same 10 skills under six provider directories; 10 unique. Five are payments or Connect. The rest build Stripe apps.
 
   # ===== Built, awaiting review ===========================================
   shopify:
@@ -108,8 +114,11 @@ connectors:
     skills_repo: Shopify/Shopify-AI-Toolkit
     skills_published: 22
     skills_license: mit
-    skills_indexed: 1
     skills_checked: "2026-09-20"
+    skills_relevant: 5
+    skills_indexed: 5
+    skills_note: >-
+      Five touch merchant data, payments or reporting. The other seventeen build Shopify apps — Polaris, Hydrogen, Liquid, Functions, CLI.
 
   # ===== Committed roadmap ================================================
   meta-ads:
@@ -192,8 +201,11 @@ connectors:
     skills_repo: paypal/AI-Toolkit
     skills_published: 2
     skills_license: apache-2.0
-    skills_indexed: 1
     skills_checked: "2026-09-20"
+    skills_relevant: 2
+    skills_indexed: 2
+    skills_note: >-
+      Both indexed.
   xero:
     status: roadmap
     family: B
@@ -230,8 +242,11 @@ connectors:
     skills_repo: HubSpot/agent-cli-skills
     skills_published: 15
     skills_license: apache-2.0
-    skills_indexed: 1
     skills_checked: "2026-09-20"
+    skills_relevant: 7
+    skills_indexed: 7
+    skills_note: >-
+      Seven are revenue operations. The rest are CRM workflow and support.
   klaviyo:
     status: roadmap
     family: A
@@ -264,8 +279,11 @@ connectors:
     skills_repo: amzn/ads-advanced-tools-docs
     skills_published: 9
     skills_license: mit-0
-    skills_indexed: 0
     skills_checked: "2026-09-20"
+    skills_relevant: 0
+    skills_indexed: 0
+    skills_note: >-
+      The nine are Amazon Ads API migration guides — a different product from SP-API, and developer tooling rather than bookkeeping.
 
   # ===== Evaluated, not committed =========================================
   bigcommerce:
@@ -400,8 +418,11 @@ connectors:
     skills_repo: woocommerce/agent-skills
     skills_published: 2
     skills_license: unclear
-    skills_indexed: 0
     skills_checked: "2026-09-20"
+    skills_relevant: 0
+    skills_indexed: 0
+    skills_note: >-
+      Both are the repository's own automation, including a stale-PR audit. Licence is unrecognised.
   servicetitan:
     status: costly
     family: A
@@ -485,8 +506,11 @@ connectors:
     skills_repo: googleworkspace/cli
     skills_published: 95
     skills_license: apache-2.0
-    skills_indexed: 5
     skills_checked: "2026-09-20"
+    skills_relevant: 1
+    skills_indexed: 5
+    skills_note: >-
+      Triage only — this connector is not recommended anyway.
   ehr:
     status: declined
     family: none
@@ -512,8 +536,11 @@ connectors:
     skills_repo: googleworkspace/cli
     skills_published: 95
     skills_license: apache-2.0
-    skills_indexed: 5
     skills_checked: "2026-09-20"
+    skills_relevant: 3
+    skills_indexed: 5
+    skills_note: >-
+      Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
   excel:
     status: local
     family: none
@@ -526,8 +553,11 @@ connectors:
     skills_repo: OfficeDev/microsoft-365-agents-toolkit
     skills_published: 15
     skills_license: mit
-    skills_indexed: 0
     skills_checked: "2026-09-20"
+    skills_relevant: 0
+    skills_indexed: 0
+    skills_note: >-
+      The repo's .github/skills are Microsoft's internal development process — vibe-coding, governance remediation. Nothing to do with Excel.
   google-drive:
     status: local
     family: none
@@ -539,8 +569,11 @@ connectors:
     skills_repo: googleworkspace/cli
     skills_published: 95
     skills_license: apache-2.0
-    skills_indexed: 5
     skills_checked: "2026-09-20"
+    skills_relevant: 1
+    skills_indexed: 5
+    skills_note: >-
+      Drive itself. See google-sheets for the rest.
   csv:         {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
   pdf:         {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
   word:        {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
