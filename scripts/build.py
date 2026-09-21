@@ -415,7 +415,11 @@ def tracker_page(conn: dict) -> str:
         )
     L += [""]
     for r, g in sorted(repos.items()):
-        notes = {conn["connectors"][n].get("skills_note") for n in g["connectors"]}
+        # dict.fromkeys, not a set: set iteration order varies with PYTHONHASHSEED,
+        # which makes generated output differ between runs and breaks the CI sync check.
+        notes = dict.fromkeys(
+            conn["connectors"][n].get("skills_note") for n in sorted(g["connectors"])
+        )
         for note in filter(None, notes):
             L.append(f"- **[`{r}`](https://github.com/{r})** — {esc(' '.join(note.split()))}")
     L += ["", "## Vendors that publish none", "",
