@@ -62,6 +62,12 @@ connectors:
     note: >-
       realm_id is not globally unique; uniqueness is (tenant, connector_key,
       external_datasource_id). Every other connector inherits this rule.
+    github_org: intuit
+    skills_repo: intuit/quickbooks-claude-plugin
+    skills_published: 10
+    skills_license: apache-2.0
+    skills_indexed: 10
+    skills_checked: "2026-09-20"
   stripe:
     status: live
     family: A
@@ -75,6 +81,12 @@ connectors:
     note: >-
       read_only scope needs Stripe approval; currently authorising read_write
       and never writing. Prod should launch on read_only.
+    github_org: stripe
+    skills_repo: stripe/ai
+    skills_published: 60
+    skills_license: mit
+    skills_indexed: 2
+    skills_checked: "2026-09-20"
 
   # ===== Built, awaiting review ===========================================
   shopify:
@@ -92,6 +104,12 @@ connectors:
       read_all_orders must be requested or the API silently caps order history
       at 60 days, breaking close and rec. Payout objects populate only for
       merchants on Shopify Payments. Public distribution is irreversible.
+    github_org: Shopify
+    skills_repo: Shopify/Shopify-AI-Toolkit
+    skills_published: 22
+    skills_license: mit
+    skills_indexed: 1
+    skills_checked: "2026-09-20"
 
   # ===== Committed roadmap ================================================
   meta-ads:
@@ -109,6 +127,11 @@ connectors:
       Business Verification and App Review are separate queues — file both in
       week 1. No refresh token: renew at ~50 days and alert on failure, or the
       customer re-authorises by hand. Needs ads_read at Advanced Access.
+    github_org: facebook
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   google-ads:
     status: roadmap
     family: B
@@ -125,6 +148,11 @@ connectors:
       block on approval. While the consent screen is in Testing, refresh tokens
       expire after 7 days — publish before debugging. Separate Cloud projects
       for dev and prod are Google policy, not preference.
+    github_org: googleads
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   square:
     status: roadmap
     family: A
@@ -140,6 +168,11 @@ connectors:
       Entity is the merchant, never the location — locations are a reporting
       dimension, or every store burns a quota seat. One connector covers
       restaurants, retail and dry cleaning. Marketplace listing not required.
+    github_org: square
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   paypal:
     status: roadmap
     family: A
@@ -155,6 +188,12 @@ connectors:
       Log in with PayPal, not Partner Referrals — the latter creates new seller
       accounts. Transaction Search must be ticked or the scope is silently
       absent from the granted token.
+    github_org: paypal
+    skills_repo: paypal/AI-Toolkit
+    skills_published: 2
+    skills_license: apache-2.0
+    skills_indexed: 1
+    skills_checked: "2026-09-20"
   xero:
     status: roadmap
     family: B
@@ -167,6 +206,11 @@ connectors:
     lead_time: "Self-serve"
     payouts: n/a
     note: "Rotating refresh tokens need atomic persistence — a lost write costs the grant."
+    github_org: XeroAPI
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   hubspot:
     status: roadmap
     family: A
@@ -182,6 +226,12 @@ connectors:
       Legacy public app creation was disabled in 2026 — new public apps require
       the Projects-based platform via the HubSpot CLI. The only connector here
       needing a CLI workflow rather than a dashboard registration.
+    github_org: HubSpot
+    skills_repo: HubSpot/agent-cli-skills
+    skills_published: 15
+    skills_license: apache-2.0
+    skills_indexed: 1
+    skills_checked: "2026-09-20"
   klaviyo:
     status: roadmap
     family: A
@@ -193,6 +243,11 @@ connectors:
     token: "1 h access; refresh non-rotating, dies at 90 d idle"
     lead_time: "Self-serve; review only to be listed"
     payouts: n/a
+    github_org: klaviyo
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   amazon-sp:
     status: roadmap
     family: A
@@ -205,6 +260,12 @@ connectors:
     lead_time: "Weeks–months"
     payouts: "yes"
     note: "Longest lead time on the roadmap — file first, build while the clock runs."
+    github_org: amzn
+    skills_repo: amzn/ads-advanced-tools-docs
+    skills_published: 9
+    skills_license: mit-0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
 
   # ===== Evaluated, not committed =========================================
   bigcommerce:
@@ -215,6 +276,11 @@ connectors:
     vertical: ecommerce
     payouts: "yes"
     note: "Survey priority 2 — cleanest registration found; mirrors the Shopify code."
+    github_org: bigcommerce
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   ebay:
     status: candidate
     family: A
@@ -223,6 +289,11 @@ connectors:
     vertical: ecommerce
     payouts: "yes"
     note: "Finances API exposes payouts, fees and refunds outright."
+    github_org: eBay
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   ecwid:
     status: candidate
     family: A
@@ -230,6 +301,11 @@ connectors:
     auth: oauth3
     vertical: ecommerce
     payouts: partial
+    github_org: Ecwid
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   lightspeed-x:
     status: candidate
     family: A
@@ -238,6 +314,11 @@ connectors:
     vertical: ecommerce
     payouts: partial
     note: "Rotating refresh tokens — same atomic-persistence care as Xero."
+    github_org: lightspeedhq
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   etsy:
     status: candidate
     family: A
@@ -246,6 +327,11 @@ connectors:
     vertical: ecommerce
     payouts: "yes"
     note: "Two sequential review queues — file the Personal App early."
+    github_org: etsy
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   clio:
     status: candidate
     family: A
@@ -254,6 +340,11 @@ connectors:
     vertical: professional
     payouts: n/a
     note: "Survey priority 3. Two separate APIs — confirm which carries billing."
+    github_org: clio
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   harvest:
     status: candidate
     family: A
@@ -261,6 +352,11 @@ connectors:
     auth: oauth3
     vertical: professional
     payouts: n/a
+    github_org: harvesthq
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   jobber:
     status: candidate
     family: A
@@ -271,6 +367,11 @@ connectors:
     note: >-
       Survey priority 4. Field service has no processor fallback — embedded
       payments mean the platform API is the only path to the money. GraphQL only.
+    github_org: GetJobber
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   servicem8:
     status: candidate
     family: A
@@ -278,6 +379,11 @@ connectors:
     auth: oauth3
     vertical: fieldservice
     payouts: n/a
+    github_org: ServiceM8
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
 
   # ===== Reachable only at cost ===========================================
   woocommerce:
@@ -290,6 +396,12 @@ connectors:
     token: "ck_… / cs_… (STATIC)"
     payouts: partial
     note: "No registration exists and no revocation signal. Per-merchant key entry."
+    github_org: woocommerce
+    skills_repo: woocommerce/agent-skills
+    skills_published: 2
+    skills_license: unclear
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   servicetitan:
     status: costly
     family: A
@@ -298,6 +410,11 @@ connectors:
     vertical: fieldservice
     payouts: n/a
     note: "The contractor generates the credentials — the WooCommerce pattern again."
+    github_org: servicetitan
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   housecallpro:
     status: costly
     family: A
@@ -306,6 +423,11 @@ connectors:
     vertical: fieldservice
     payouts: n/a
     note: "Merchant must be on the MAX plan ($299+/mo) before connecting."
+    github_org: none-found
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   clover:
     status: costly
     family: A
@@ -314,6 +436,11 @@ connectors:
     vertical: retail
     payouts: none
     note: "One merchantId and one token per location — a five-store chain is five grants."
+    github_org: clover
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
 
   # ===== Gated, advised against, declined =================================
   toast:
@@ -324,6 +451,11 @@ connectors:
     vertical: restaurants
     payouts: n/a
     note: "No consent screen and no redirect flow. Business development, not engineering."
+    github_org: toasttab
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   ncr-voyix:
     status: gated
     family: none
@@ -331,6 +463,11 @@ connectors:
     auth: partner-gated
     vertical: retail
     payouts: partial
+    github_org: none-found
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
   gmail:
     status: not-recommended
     family: none
@@ -344,6 +481,12 @@ connectors:
       Restricted scope triggers a CASA Tier 2 assessment — $540–1,800/yr,
       re-assessed annually and indefinitely. The obligation does not shrink if
       the connector proves unpopular.
+    github_org: googleworkspace
+    skills_repo: googleworkspace/cli
+    skills_published: 95
+    skills_license: apache-2.0
+    skills_indexed: 5
+    skills_checked: "2026-09-20"
   ehr:
     status: declined
     family: none
@@ -365,6 +508,12 @@ connectors:
     vertical: destination
     payouts: n/a
     note: "Destination. drive.file scope only — non-sensitive, no review. Deferred to roadmap §5.2."
+    github_org: googleworkspace
+    skills_repo: googleworkspace/cli
+    skills_published: 95
+    skills_license: apache-2.0
+    skills_indexed: 5
+    skills_checked: "2026-09-20"
   excel:
     status: local
     family: none
@@ -373,7 +522,25 @@ connectors:
     vertical: destination
     payouts: n/a
     note: "Destination. Graph delegated permissions, not application. Deferred to roadmap §5.2."
-  google-drive: {status: local, family: none, source: runbook, auth: oauth3, vertical: destination, payouts: n/a}
+    github_org: OfficeDev
+    skills_repo: OfficeDev/microsoft-365-agents-toolkit
+    skills_published: 15
+    skills_license: mit
+    skills_indexed: 0
+    skills_checked: "2026-09-20"
+  google-drive:
+    status: local
+    family: none
+    source: runbook
+    auth: oauth3
+    vertical: destination
+    payouts: n/a
+    github_org: googleworkspace
+    skills_repo: googleworkspace/cli
+    skills_published: 95
+    skills_license: apache-2.0
+    skills_indexed: 5
+    skills_checked: "2026-09-20"
   csv:         {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
   pdf:         {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}
   word:        {status: local, family: none, source: runbook, auth: none, vertical: files, payouts: n/a}

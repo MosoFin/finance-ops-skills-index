@@ -270,6 +270,58 @@ def publisher_rows(skills: list) -> list[str]:
     return rows
 
 
+def tracker_page(conn: dict) -> str:
+    """Vendor-by-vendor: does this connector's owner publish agent skills?"""
+    cs = conn["statuses"]
+    rows = sorted(
+        ((n, c) for n, c in conn["connectors"].items() if c.get("github_org")),
+        key=lambda kv: (STATUS_ORDER.index(kv[1].get("status", "candidate")), kv[0]),
+    )
+    pub = [(n, c) for n, c in rows if c.get("skills_repo") not in (None, "none")]
+    none_yet = [(n, c) for n, c in rows if c.get("skills_repo") in (None, "none")]
+    gap = [(n, c) for n, c in pub if c.get("skills_indexed", 0) < c.get("skills_published", 0)]
+
+    L = [GENERATED, "", "# Connector Tracker", "",
+         "For every connector on the roadmap: who owns it on GitHub, whether they publish",
+         "agent skills of their own, and how many of those this index carries.", "",
+         f"**{len(rows)} connectors tracked** · **{len(pub)} publish skills** · "
+         f"**{len(none_yet)} publish none** · **{len(gap)} with skills not yet indexed**", "",
+         "Probed with `make probe`. A vendor publishing nothing today is a fact with a date",
+         "on it, not a permanent state — re-probe before relying on a zero.", "",
+         "## Vendors that publish agent skills", "",
+         "| Connector | Status | Skills repo | Published | Indexed | Licence | Checked |",
+         "|---|---|---|---|---|---|---|"]
+    for n, c in pub:
+        r = c["skills_repo"]
+        L.append(
+            f"| `{n}` | {c.get('status')} | [`{r}`](https://github.com/{r}) "
+            f"| {c.get('skills_published', 0)} | {c.get('skills_indexed', 0)} "
+            f"| `{c.get('skills_license', '?')}` | {c.get('skills_checked', '—')} |"
+        )
+    L += ["", "## Vendors that publish none", "",
+          "Org exists and was probed; no `SKILL.md` found in any repo whose name suggests",
+          "agents, skills, MCP, a toolkit, a plugin, a CLI or an SDK.", "",
+          "| Connector | Status | GitHub org | Checked |", "|---|---|---|---|"]
+    for n, c in none_yet:
+        org = c["github_org"]
+        link = f"[`{org}`](https://github.com/{org})" if org != "none-found" else "*no public org at the obvious name*"
+        L.append(f"| `{n}` | {c.get('status')} | {link} | {c.get('skills_checked', '—')} |")
+
+    if gap:
+        L += ["", "## Published but not indexed", "",
+              "Skills their owner ships that this index does not yet carry. Each is a",
+              "candidate for `make add`, subject to being finance-relevant — a vendor's",
+              "developer-tooling skills usually are not.", ""]
+        for n, c in gap:
+            r = c["skills_repo"]
+            L.append(
+                f"- **`{n}`** — {c['skills_published'] - c.get('skills_indexed', 0)} of "
+                f"{c['skills_published']} unindexed in [`{r}`](https://github.com/{r})"
+            )
+    L += ["", "---", "", "[← back to the index](../README.md)", ""]
+    return "\n".join(L)
+
+
 def index_page(data: dict, conn_meta: dict) -> str:
     meta = {**data["meta"], "stages": data["stages"]}
     skills = data["skills"]
@@ -369,9 +421,14 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "|---|---|---|---|---|",
         *publisher_rows(skills),
         "",
-        "No accounting or bookkeeping vendor — Intuit, Xero, Plaid, Ramp, Brex, Square,",
-        "PayPal — publishes first-party agent skills at the time of writing. The finance",
-        "vertical has no official publisher yet. That is the gap this index exists to fill.",
+        "Eleven of the connectors above have owners who publish agent skills themselves —",
+        "Intuit, Stripe, Shopify, PayPal, HubSpot, WooCommerce, Amazon, Google and Microsoft",
+        "among them. **[Connector Tracker](docs/CONNECTOR-TRACKER.md)** records which, how",
+        "many, and how many this index carries.",
+        "",
+        "Intuit's `quickbooks-claude-plugin` is the notable one: a ledger vendor shipping",
+        "its own bookkeeping skills, Apache-2.0. Square, Xero, Google Ads, Meta and Klaviyo",
+        "publish none at the time of writing.",
         "",
         "---",
         "",
@@ -445,6 +502,7 @@ def main() -> int:
         return 1
 
     (ROOT / "README.md").write_text(index_page(data, conn_meta))
+    (ROOT / "docs" / "CONNECTOR-TRACKER.md").write_text(tracker_page(conn_meta))
     for skill in data["skills"]:
         d = ROOT / "skills" / skill["id"]
         d.mkdir(parents=True, exist_ok=True)

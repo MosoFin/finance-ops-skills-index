@@ -4,7 +4,7 @@
 
 A graded, continuously-verified index of agent skills for accounting and finance.
 
-**39 skills** · **16 graded** · **23 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
+**52 skills** · **16 graded** · **36 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -39,6 +39,9 @@ Ordered by when you need it, not alphabetically.
 - **[Google Drive (gws-drive)](skills/gws-drive/README.md)** — Third party  
   `UNGRADED`  
   Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
+- **[setup](skills/qb-setup/README.md)** — Third party  
+  `UNGRADED`  
+  Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
 - **[skill-creator](skills/skill-creator/README.md)** — Third party  
   `UNGRADED`  
   Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
@@ -73,9 +76,15 @@ Ordered by when you need it, not alphabetically.
 - **[pdf](skills/pdf/README.md)** — Third party  
   `UNGRADED`  
   Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
+- **[email-to-estimate-invoice](skills/qb-email-to-estimate-invoice/README.md)** — Third party  
+  `UNGRADED`  
+  Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
 - **[Receipts](skills/receipts/README.md)** — Third party  
   `UNGRADED`  
   Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
+- **[shopify-admin](skills/shopify-admin/README.md)** — Third party  
+  `UNGRADED`  
+  Write or explain **Admin GraphQL** queries and mutations for apps and integrations that extend the Shopify admin. Use when the user wants to **understand, design, or generate** the operation itself—even before deciding how to run it. Do **not** choose `admin` first for **app monetization**—charging merchants for the app itself via app pricing plans, paid app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the user is maintaining an existing Manual Pricing integration or explicitly needs an Admin Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans, subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups, inventory changes).
 
 ### 3 · Reconcile
 
@@ -96,6 +105,15 @@ Ordered by when you need it, not alphabetically.
 - **[Gmail triage (gws-gmail-triage)](skills/gws-gmail-triage/README.md)** — Third party  
   `UNGRADED`  
   Google's official Gmail triage skill. Pairs with aging-review, where the collections follow-up and the client's reply both arrive by mail.
+- **[quote-to-cash](skills/hs-quote-to-cash/README.md)** — Third party  
+  `UNGRADED`  
+  Build the product catalog, assemble quotes (line items + associations to deals), and track invoices and subscriptions through to revenue.
+- **[paypal-best-practices](skills/paypal-best-practices/README.md)** — Third party  
+  `UNGRADED`  
+  PayPal integration guidance, code examples, and best practices. Use for checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane, payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal architecture decision or code generation question.
+- **[chase-overdue-invoices](skills/qb-chase-overdue-invoices/README.md)** — Third party  
+  `UNGRADED`  
+  Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
 - **[Stripe Pay](skills/stripe-pay/README.md)** — Third party  
   `UNGRADED`  
   Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
@@ -110,6 +128,15 @@ Ordered by when you need it, not alphabetically.
 - **[Journal Entry Builder](skills/journal-entry-builder/README.md)** — Mosofin published  
   `UNGRADED`  
   Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
+- **[payroll-employee-onboarding](skills/qb-payroll-employee-onboarding/README.md)** — Third party  
+  `UNGRADED`  
+  Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
+- **[payroll-help](skills/qb-payroll-help/README.md)** — Third party  
+  `UNGRADED`  
+  Answer read-only QuickBooks Payroll lookup and setup questions using connected company payroll data. Use for employee roster or lookup, company payroll setup, last payroll run, payslips or paycheck details, pay types, deductions/contributions, and time-off policies. Do not use for payroll cost-driver, spend-reduction, or cost-change analysis; use analyze-payroll-cost when the question asks why payroll cost changed or how to reduce it, including questions involving benefits, employer taxes/SUI, overtime, headcount, pay rates, or pay items. Use only available payroll tools; do not provide unsupported procedural, tax, filing, payment, legal, or compliance guidance.
+- **[set-base-pay](skills/qb-set-base-pay/README.md)** — Third party  
+  `UNGRADED`  
+  Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Payroll. Use when the user asks to see current pay, give a raise (absolute, increment, or percentage), reduce or adjust pay, switch between salary and hourly, change pay frequency, or update weekly contracted time for one or more named employees. Reads the current contract first, requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee, qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
 
 ### 5 · Review
 
@@ -127,6 +154,9 @@ Ordered by when you need it, not alphabetically.
 - **[Duplicate Invoice Detection](skills/duplicate-invoice-detection/README.md)** — Mosofin published  
   `UNGRADED`  
   Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
+- **[analyze-payroll-cost](skills/qb-analyze-payroll-cost/README.md)** — Third party  
+  `UNGRADED`  
+  Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
 - **[Three-Way Match](skills/three-way-match/README.md)** — Mosofin published  
   `UNGRADED`  
   Matches purchase orders, goods receipts, and vendor invoices line by line across the full population where the workspace holds POs and item receipts. Proposes only — pays nothing, releases nothing.
@@ -165,6 +195,12 @@ Ordered by when you need it, not alphabetically.
 - **[pptx](skills/pptx/README.md)** — Third party  
   `UNGRADED`  
   Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
+- **[business-health-check](skills/qb-business-health-check/README.md)** — Third party  
+  `UNGRADED`  
+  synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
+- **[industry-benchmark](skills/qb-industry-benchmark/README.md)** — Third party  
+  `UNGRADED`  
+  benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
 - **[xlsx](skills/xlsx/README.md)** — Third party  
   `UNGRADED`  
   Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
@@ -182,6 +218,9 @@ Ordered by when you need it, not alphabetically.
 - **[Metronome billing](skills/metronome/README.md)** — Third party  
   `UNGRADED`  
   Usage-based billing through Stripe's official toolkit. Where revenue is metered rather than invoiced, this is upstream of every revenue number.
+- **[lending](skills/qb-lending/README.md)** — Third party  
+  `UNGRADED`  
+  QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credit, Intuit Business Credit Card (issued by WebBank), and the QuickBooks Business Loan Marketplace. Use to explain how these products work (eligibility, rates, fees, terms), compare or choose between them, estimate loan payments (weekly/monthly payment, total interest, total repayment), and answer questions about the signed-in user's own QuickBooks Capital loans and lines of credit (balance, APR, repayment schedule, payoff, available credit), plus what similar businesses have borrowed. Use proactively when a funding need surfaces from payroll, cash-flow, or invoicing work to check for a drawable line of credit and, with consent, peer offers. Read-only guidance only: never makes payments, draws, or loan changes, and never gives a loan offer, rate, credit limit, or approval decision. Not for loan application status or non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer loans).
 
 ---
 
@@ -319,14 +358,23 @@ for a grade.
 |---|---|---|---|---|
 | Mosofin (local workspace) | 16 | first-party | `proprietary-mosofin` | no — restricted |
 | [`MosoFin/mosofin-finance-skills`](https://github.com/MosoFin/mosofin-finance-skills) | 10 | first-party | `agpl-3.0` | no — copyleft |
+| [`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) | 10 | first-party | `apache-2.0` | yes |
 | [`anthropics/skills`](https://github.com/anthropics/skills) | 5 | first-party | `proprietary-anthropic` | no — restricted |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 5 | first-party | `apache-2.0` | yes |
 | [`stripe/ai`](https://github.com/stripe/ai) | 2 | first-party | `mit` | yes |
+| [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) | 1 | first-party | `apache-2.0` | yes |
+| [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | 1 | first-party | `mit` | yes |
 | [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) | 1 | first-party | `apache-2.0` | yes |
+| [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | 1 | first-party | `apache-2.0` | yes |
 
-No accounting or bookkeeping vendor — Intuit, Xero, Plaid, Ramp, Brex, Square,
-PayPal — publishes first-party agent skills at the time of writing. The finance
-vertical has no official publisher yet. That is the gap this index exists to fill.
+Eleven of the connectors above have owners who publish agent skills themselves —
+Intuit, Stripe, Shopify, PayPal, HubSpot, WooCommerce, Amazon, Google and Microsoft
+among them. **[Connector Tracker](docs/CONNECTOR-TRACKER.md)** records which, how
+many, and how many this index carries.
+
+Intuit's `quickbooks-claude-plugin` is the notable one: a ledger vendor shipping
+its own bookkeeping skills, Apache-2.0. Square, Xero, Google Ads, Meta and Klaviyo
+publish none at the time of writing.
 
 ---
 

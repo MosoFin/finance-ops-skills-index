@@ -76,6 +76,8 @@ def main() -> int:
     ap.add_argument("--origin", default="third-party")
     ap.add_argument("--id", help="override the entry id (default: directory name)")
     ap.add_argument("--systems", default="any", help="comma-separated")
+    ap.add_argument("--no-refresh", action="store_true",
+                    help="skip drift+build; use for bulk adds, then run them once at the end")
     args = ap.parse_args()
 
     m = URL_RE.search(args.url.strip())
@@ -124,6 +126,8 @@ def main() -> int:
     yaml.safe_load(SOURCES.read_text())  # fail loudly rather than commit broken YAML
 
     print(f"added {sid}  ({repo}/{path}@{ref}, licence {lic}, UNGRADED)")
+    if args.no_refresh:
+        return 0
     for cmd in (["scripts/check_drift.py", "--write"], ["scripts/build.py"]):
         subprocess.run([sys.executable, str(ROOT / cmd[0]), *cmd[1:]], check=True)
     print(f"\nNext: grade it. Open skills/{sid}/README.md and follow CONTRIBUTING.md.")

@@ -990,3 +990,313 @@ skills:
     skill_md_hash: sha256:2308eab564907f4d
     upstream_sha: 705fb0ecac6f
     last_checked: 2026-09-20
+
+  - id: qb-analyze-payroll-cost
+    title: analyze-payroll-cost
+    origin: third-party
+    authority: first-party
+    stage: 5
+    summary: >-
+      Analyze QuickBooks Payroll cost, payroll spend changes, top-paid
+      employees, pay item drivers, and practical payroll cost-control ideas
+      using connected payroll run, employee, payslip, paycheck, and company
+      context data. Use when the user asks why payroll expense increased or
+      decreased, who was paid the most, what drove payroll spend, how to
+      reduce payroll spend, how current payroll compares with a prior period,
+      or whether overtime, headcount, pay rates, employer taxes such as SUI,
+      benefits, employer contributions, reimbursements, bonuses, commissions,
+      allowances, or pay-item mix affected payroll cost. Read only; use
+      available payroll tools and do not invent payroll facts.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/analyze-payroll-cost", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:fff521688da6d362
+    upstream_sha: 6db49c4f8ed3
+    last_checked: 2026-09-20
+  - id: qb-business-health-check
+    title: business-health-check
+    origin: third-party
+    authority: first-party
+    stage: 6
+    summary: >-
+      synthesize a QuickBooks business health briefing from multiple Intuit
+      QuickBooks app reports. Use when the user asks broad questions such as
+      "how's my business doing?", "give me the big picture", "what should I be
+      worried about?", "summarize my financials", "anything unusual this
+      month?", or wants one conversational view of profit and loss, cash flow,
+      balance sheet, receivables aging, and sales performance without opening
+      separate reports.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/business-health-check", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:6812bfc72086e284
+    upstream_sha: c8daa17a64d4
+    last_checked: 2026-09-20
+  - id: qb-chase-overdue-invoices
+    title: chase-overdue-invoices
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      Send payment reminders for invoices with tone matched to aging. ALWAYS
+      use this skill when the user asks to "send a reminder", "send reminder
+      to invoice", "remind about invoice", "send a reminder to invoice 1234",
+      "remind them about 4574", "send a firmer reminder for invoice 1042",
+      "who owes me money", "show me overdue invoices", "chase down overdue
+      invoices", "follow up on unpaid invoices", or "nudge customers who
+      haven't paid". This skill MUST be loaded before calling
+      qbo_sales_send_invoice_reminder to ensure confirmation and tone-
+      matching.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/chase-overdue-invoices", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:1f57d78c39b05bb2
+    upstream_sha: 6db49c4f8ed3
+    last_checked: 2026-09-20
+  - id: qb-email-to-estimate-invoice
+    title: email-to-estimate-invoice
+    origin: third-party
+    authority: first-party
+    stage: 2
+    summary: >-
+      Turn a customer email thread into a ready-to-send QuickBooks estimate or
+      invoice. Use when the user asks to "create an invoice from my email
+      thread", "draft an estimate based on what I quoted this customer over
+      email", "bill this customer for the work we discussed and send it to
+      them", "turn this email into an invoice", "make an estimate from this
+      thread", or wants to go from an email conversation to a QuickBooks sales
+      document without re-keying line items.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/email-to-estimate-invoice", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:b246cf48095e1acf
+    upstream_sha: 6db49c4f8ed3
+    last_checked: 2026-09-20
+  - id: qb-industry-benchmark
+    title: industry-benchmark
+    origin: third-party
+    authority: first-party
+    stage: 6
+    summary: >-
+      benchmark the user's CONNECTED QuickBooks company against industry peers
+      using their QuickBooks financial data. Use only when the numbers come
+      from the user's connected QuickBooks account — "how does my business
+      compare to similar businesses", "are my margins healthy", "am I spending
+      too much", "benchmark my QuickBooks company". Do NOT use for industry
+      research, for questions about which industries are most profitable in a
+      location, for expected profit for a business type, or when the user
+      supplies their own figures — those are answered by the Intuit QuickBooks
+      benchmarking tools directly.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/industry-benchmark", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:aa7605287cc45023
+    upstream_sha: c8daa17a64d4
+    last_checked: 2026-09-20
+  - id: qb-lending
+    title: lending
+    origin: third-party
+    authority: first-party
+    stage: 7
+    summary: >-
+      QuickBooks Capital small-business financing: QuickBooks Term Loan, Line
+      of Credit, Intuit Business Credit Card (issued by WebBank), and the
+      QuickBooks Business Loan Marketplace. Use to explain how these products
+      work (eligibility, rates, fees, terms), compare or choose between them,
+      estimate loan payments (weekly/monthly payment, total interest, total
+      repayment), and answer questions about the signed-in user's own
+      QuickBooks Capital loans and lines of credit (balance, APR, repayment
+      schedule, payoff, available credit), plus what similar businesses have
+      borrowed. Use proactively when a funding need surfaces from payroll,
+      cash-flow, or invoicing work to check for a drawable line of credit and,
+      with consent, peer offers. Read-only guidance only: never makes
+      payments, draws, or loan changes, and never gives a loan offer, rate,
+      credit limit, or approval decision. Not for loan application status or
+      non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash
+      advances, consumer loans).
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/lending", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:c2e057c1891d72bb
+    upstream_sha: bb30cbdf7b5b
+    last_checked: 2026-09-20
+  - id: qb-payroll-employee-onboarding
+    title: payroll-employee-onboarding
+    origin: third-party
+    authority: first-party
+    stage: 4
+    summary: >-
+      Onboard a new hire into QuickBooks Payroll from user-provided details or
+      onboarding source files such as offer letters and employee rosters. Use
+      when the user wants to add a new payroll employee, onboard a new
+      employee so they can be paid, deduplicate a new hire before creation,
+      assign an existing payroll work location, set initial contract/base pay
+      during onboarding, or review payroll-readiness gaps. Requires
+      confirmation before write actions and reports remaining setup to finish
+      in QuickBooks Payroll. Do not use for existing-employee pay changes
+      outside onboarding, payroll runs, taxes, direct deposit, benefits,
+      deductions, time off, or compliance advice.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/payroll-employee-onboarding", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:1de324182880658b
+    upstream_sha: 6db49c4f8ed3
+    last_checked: 2026-09-20
+  - id: qb-payroll-help
+    title: payroll-help
+    origin: third-party
+    authority: first-party
+    stage: 4
+    summary: >-
+      Answer read-only QuickBooks Payroll lookup and setup questions using
+      connected company payroll data. Use for employee roster or lookup,
+      company payroll setup, last payroll run, payslips or paycheck details,
+      pay types, deductions/contributions, and time-off policies. Do not use
+      for payroll cost-driver, spend-reduction, or cost-change analysis; use
+      analyze-payroll-cost when the question asks why payroll cost changed or
+      how to reduce it, including questions involving benefits, employer
+      taxes/SUI, overtime, headcount, pay rates, or pay items. Use only
+      available payroll tools; do not provide unsupported procedural, tax,
+      filing, payment, legal, or compliance guidance.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/payroll-help", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:a5f2bd5e101a3c67
+    upstream_sha: 6db49c4f8ed3
+    last_checked: 2026-09-20
+  - id: qb-set-base-pay
+    title: set-base-pay
+    origin: third-party
+    authority: first-party
+    stage: 4
+    summary: >-
+      Set, view, or change employee base pay (salary or hourly rate) in
+      QuickBooks Payroll. Use when the user asks to see current pay, give a
+      raise (absolute, increment, or percentage), reduce or adjust pay, switch
+      between salary and hourly, change pay frequency, or update weekly
+      contracted time for one or more named employees. Reads the current
+      contract first, requires explicit confirmation before writing, then
+      verifies the change using qbo_payroll_search_employee,
+      qbo_payroll_get_employee_contract_details, and
+      qbo_payroll_save_employee_contract_details.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/set-base-pay", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:7beb7d6f2a0a36db
+    upstream_sha: 6db49c4f8ed3
+    last_checked: 2026-09-20
+  - id: qb-setup
+    title: setup
+    origin: third-party
+    authority: first-party
+    stage: 0
+    summary: >-
+      Connect and troubleshoot QuickBooks for this plugin. Use when the
+      QuickBooks tools are unavailable, unauthenticated, or failing, when the
+      user has just installed the QuickBooks plugin, or when the user asks how
+      to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks
+      connection error.
+    tiers: []
+    systems: [quickbooks]
+    upstream: {repo: "intuit/quickbooks-claude-plugin", path: "skills/setup", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:03711cad3c3fb8f9
+    upstream_sha: 21067205c10c
+    last_checked: 2026-09-20
+  - id: hs-quote-to-cash
+    title: quote-to-cash
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      Build the product catalog, assemble quotes (line items + associations to
+      deals), and track invoices and subscriptions through to revenue.
+    tiers: []
+    systems: [hubspot]
+    upstream: {repo: "HubSpot/agent-cli-skills", path: "quote-to-cash", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:96d3ead568ea7602
+    upstream_sha: 5b773165f0c8
+    last_checked: 2026-09-20
+  - id: shopify-admin
+    title: shopify-admin
+    origin: third-party
+    authority: first-party
+    stage: 2
+    summary: >-
+      Write or explain **Admin GraphQL** queries and mutations for apps and
+      integrations that extend the Shopify admin. Use when the user wants to
+      **understand, design, or generate** the operation itself—even before
+      deciding how to run it. Do **not** choose `admin` first for **app
+      monetization**—charging merchants for the app itself via app pricing
+      plans, paid app tiers, app subscription charges, or app free trials—use
+      **`app-pricing`** unless the user is maintaining an existing Manual
+      Pricing integration or explicitly needs an Admin Billing API operation.
+      Merchant **product** subscriptions stay with `admin` (selling plans,
+      subscription contracts, try-before-you-buy). Do **not** choose `admin`
+      first for **app or extension config validation** —use **`use-shopify-
+      cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL
+      **now via Shopify CLI** or for CLI setup/troubleshooting on store
+      workflows—use **`use-shopify-cli`** (store auth/execute,
+      handle/SKU/location lookups, inventory changes).
+    tiers: []
+    systems: [shopify]
+    upstream: {repo: "Shopify/Shopify-AI-Toolkit", path: "skills/shopify-admin", ref: "main"}
+    license: mit
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:d0397fbe8b340064
+    upstream_sha: 27f223bd66d6
+    last_checked: 2026-09-20
+  - id: paypal-best-practices
+    title: paypal-best-practices
+    origin: third-party
+    authority: first-party
+    stage: 3
+    summary: >-
+      PayPal integration guidance, code examples, and best practices. Use for
+      checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing,
+      disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance,
+      payment sessions, web components, Fastlane, payment links, donations, 3D
+      Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal
+      architecture decision or code generation question.
+    tiers: []
+    systems: [paypal]
+    upstream: {repo: "paypal/AI-Toolkit", path: "skills/paypal-best-practices", ref: "main"}
+    license: apache-2.0
+    mirror: false
+    status: UNGRADED
+    skill_md_hash: sha256:09dc881c8ee7d471
+    upstream_sha: a9c0586fe495
+    last_checked: 2026-09-20
