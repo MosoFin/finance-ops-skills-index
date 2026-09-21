@@ -33,8 +33,8 @@ on it, not a permanent state.
 - **[`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit)** — The repo's .github/skills are Microsoft's internal development process — vibe-coding, governance remediation. Nothing to do with Excel.
 - **[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit)** — Five touch merchant data, payments or reporting. The other seventeen build Shopify apps — Polaris, Hydrogen, Liquid, Functions, CLI.
 - **[`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs)** — The nine are Amazon Ads API migration guides — a different product from SP-API, and developer tooling rather than bookkeeping.
-- **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Triage only — this connector is not recommended anyway.
+- **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Drive itself. See google-sheets for the rest.
 - **[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin)** — All ten are bookkeeping skills — the only vendor set that is.
 - **[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit)** — Both indexed.

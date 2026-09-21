@@ -42,7 +42,7 @@ add: $(PY)
 		--systems $${SYSTEMS:-any}
 
 check: build
-	@git diff --exit-code -- README.md skills/ \
+	@git diff --exit-code -- README.md skills/ connectors/ docs/CONNECTOR-TRACKER.md \
 		&& echo "generated docs are in sync" \
 		|| (echo "out of date — commit the rebuild"; exit 1)
 

@@ -270,6 +270,103 @@ def publisher_rows(skills: list) -> list[str]:
     return rows
 
 
+# File formats are not data sources; they get no page.
+NOT_A_SOURCE = {"csv", "pdf", "word", "powerpoint", "images", "any"}
+
+
+def connector_page(cid: str, c: dict, conn: dict, skills: list, stages: dict) -> str:
+    """One page per data source: how to reach it, and what runs once you have."""
+    cs = conn["statuses"]
+    users = [s for s in skills if cid in (s.get("systems") or [])]
+
+    L = [GENERATED, "", f"# {cid}", "",
+         f"`{c.get('status')}` `family-{c.get('family', 'none')}` `{c.get('auth', '—')}`", ""]
+    L += [f"**{cs.get(c.get('status'), '')}**", ""]
+
+    L += ["| | |", "|---|---|"]
+    rows = [
+        ("Status", f"{c.get('status')} — {cs.get(c.get('status'), '')}"),
+        ("connector_key", f"`{c['connector_key']}`" if c.get("connector_key") else None),
+        ("Family", c.get("family")),
+        ("Auth model", f"`{c.get('auth')}` — {conn['auth_models'].get(c.get('auth'), '')}"),
+        ("Entity", c.get("entity")),
+        ("Token", c.get("token")),
+        ("Lead time", c.get("lead_time")),
+        ("Settlement data", c.get("payouts")),
+        ("Vertical", c.get("vertical")),
+        ("Assessed in", c.get("source")),
+    ]
+    for k, v in rows:
+        if v:
+            L.append(f"| {k} | {esc(v)} |")
+    L += [""]
+
+    if c.get("note"):
+        L += ["## What to watch", "", esc(" ".join(c["note"].split())), ""]
+
+    repo = c.get("skills_repo")
+    L += ["## Official skills from the vendor", ""]
+    if repo and repo != "none":
+        L += [f"[`{repo}`](https://github.com/{repo}) · licence `{c.get('skills_license', '?')}` "
+              f"· probed {c.get('skills_checked', '—')}", "",
+              f"- **{c.get('skills_published', 0)}** skills published",
+              f"- **{c.get('skills_relevant', 0)}** finance-relevant",
+              f"- **{c.get('skills_indexed', 0)}** indexed here", ""]
+        if c.get("skills_note"):
+            L += [esc(" ".join(c["skills_note"].split())), ""]
+    elif c.get("github_org") == "none-found":
+        L += ["No public GitHub organisation at the obvious name. Not probed further.", ""]
+    else:
+        org = c.get("github_org")
+        L += [f"None. [`{org}`](https://github.com/{org}) was probed on "
+              f"{c.get('skills_checked', '—')} and publishes no agent skills — a dated fact, "
+              f"not a permanent state.", ""]
+
+    L += ["## Skills in this index that need it", ""]
+    if users:
+        by_stage: dict = {}
+        for sk in users:
+            by_stage.setdefault(sk["stage"], []).append(sk)
+        for st in sorted(by_stage):
+            L += [f"**{st} · {stages[st]['name']}**", ""]
+            for sk in sorted(by_stage[st], key=lambda x: x["id"]):
+                L.append(f"- [{sk['title']}](../../skills/{sk['id']}/README.md) — "
+                         f"`{sk['status']}`" +
+                         ("".join(f" `{t}`" for t in (sk.get("tiers") or []))))
+            L.append("")
+    else:
+        L += ["None yet. Connecting this reaches data no indexed skill currently reads.", ""]
+
+    L += ["---", "", "[← all connectors](../README.md) · "
+          "[the index](../../README.md) · [tracker](../../docs/CONNECTOR-TRACKER.md)", ""]
+    return "\n".join(L)
+
+
+def connectors_index(conn: dict, skills: list) -> str:
+    """Directory page for connectors/."""
+    cs = conn["statuses"]
+    L = [GENERATED, "", "# Data sources", "",
+         "One page per system Mosofin connects or has assessed — how to reach it, what it",
+         "costs to reach, whether its vendor publishes skills, and which skills in this",
+         "index run once it is connected.", ""]
+    for status in STATUS_ORDER:
+        rows = sorted((n, c) for n, c in conn["connectors"].items()
+                      if c.get("status") == status and n not in NOT_A_SOURCE)
+        if not rows:
+            continue
+        L += [f"## {status} — {cs.get(status, '')}", ""]
+        for n, c in rows:
+            used = sum(1 for s in skills if n in (s.get("systems") or []))
+            bits = [f"`{c.get('auth', '—')}`"]
+            if c.get("lead_time"):
+                bits.append(esc(c["lead_time"]))
+            bits.append(f"{used} skill{'s' if used != 1 else ''} in this index")
+            L.append(f"- **[{n}]({n}/README.md)** — " + " · ".join(bits))
+        L += [""]
+    L += ["---", "", "[← the index](../README.md)", ""]
+    return "\n".join(L)
+
+
 def tracker_page(conn: dict) -> str:
     """Vendor by vendor: does this connector's owner publish agent skills?
 
@@ -403,6 +500,9 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "",
         "## Connector pipeline",
         "",
+        "One page per data source in **[connectors/](connectors/README.md)** — how to reach",
+        "it, what it costs to reach, and which skills here run once it is connected.",
+        "",
         "A grade says what a skill does when it runs. This says whether it can run at all.",
         "A perfectly graded reconciliation skill is inert when its ledger sits behind a",
         "partner gate, so reachability is stated beside the grade rather than left for the",
@@ -460,6 +560,7 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "scripts/check_drift.py   compares each pointer against upstream, daily in CI",
         "docs/TRUST-TIERS.md      what every badge means",
         "skills/<id>/README.md    generated — purpose, inputs, outputs, limits",
+        "connectors/<id>/README.md generated — reachability, vendor skills, what runs on it",
         "```",
         "",
         "```bash",
@@ -523,12 +624,27 @@ def main() -> int:
 
     (ROOT / "README.md").write_text(index_page(data, conn_meta))
     (ROOT / "docs" / "CONNECTOR-TRACKER.md").write_text(tracker_page(conn_meta))
+
+    (ROOT / "connectors").mkdir(exist_ok=True)
+    (ROOT / "connectors" / "README.md").write_text(
+        connectors_index(conn_meta, data["skills"])
+    )
+    n_conn = 0
+    for cid, c in conn_meta["connectors"].items():
+        if cid in NOT_A_SOURCE:
+            continue
+        d = ROOT / "connectors" / cid
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "README.md").write_text(
+            connector_page(cid, c, conn_meta, data["skills"], meta["stages"])
+        )
+        n_conn += 1
     for skill in data["skills"]:
         d = ROOT / "skills" / skill["id"]
         d.mkdir(parents=True, exist_ok=True)
         (d / "README.md").write_text(skill_page(skill, meta))
 
-    print(f"built README.md and {len(data['skills'])} skill pages")
+    print(f"built README.md, {len(data['skills'])} skill pages, {n_conn} connector pages")
     return 0
 
 

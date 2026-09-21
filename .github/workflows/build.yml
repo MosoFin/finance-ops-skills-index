@@ -18,7 +18,7 @@ jobs:
       - name: Generated docs are in sync with sources.yml
         run: |
           python scripts/build.py
-          git diff --exit-code -- README.md skills/ || {
+          git diff --exit-code -- README.md skills/ connectors/ docs/CONNECTOR-TRACKER.md || {
             echo "::error::README.md or skills/*/README.md is out of date. Run scripts/build.py and commit."
             exit 1
           }

@@ -14,7 +14,8 @@ correctly-shaped entry to `sources.yml`, records its drift baseline, and regener
 the docs. Commit `sources.yml` together with the rebuilt files — CI rejects a pull
 request where they disagree.
 
-Never create or edit a file under `skills/`; they are generated.
+Never create or edit a file under `skills/` or `connectors/`; both are generated, as is
+`docs/CONNECTOR-TRACKER.md`. Connector pages come from `connectors.yml`.
 
 `STAGE` is 0-7 (see `stages` in `sources.yml`) — roughly, when in the close you reach
 for it. `AUTHORITY` is `first-party` when the organisation that owns the product

@@ -268,6 +268,9 @@ Ordered by when you need it, not alphabetically.
 
 ## Connector pipeline
 
+One page per data source in **[connectors/](connectors/README.md)** — how to reach
+it, what it costs to reach, and which skills here run once it is connected.
+
 A grade says what a skill does when it runs. This says whether it can run at all.
 A perfectly graded reconciliation skill is inert when its ledger sits behind a
 partner gate, so reachability is stated beside the grade rather than left for the
@@ -428,6 +431,7 @@ scripts/build.py         regenerates README.md and skills/*/README.md
 scripts/check_drift.py   compares each pointer against upstream, daily in CI
 docs/TRUST-TIERS.md      what every badge means
 skills/<id>/README.md    generated — purpose, inputs, outputs, limits
+connectors/<id>/README.md generated — reachability, vendor skills, what runs on it
 ```
 
 ```bash
