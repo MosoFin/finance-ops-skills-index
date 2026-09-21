@@ -5,16 +5,50 @@ authority: first-party
 stage: 0
 summary: Guidance for authoring skills — structure, progressive disclosure, bundled resources.
   Listed because contributors to this index need it.
-tiers: []
+tiers:
+- READ-ONLY
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: Authors and edits skill files. Nothing operational is touched.
+  HUMAN-APPROVAL: Intent is captured and confirmed before a skill is written, and the user
+    decides whether test cases are appropriate rather than having that imposed.
+  EVIDENCE-GATED: Pushes toward evals and variance analysis so a skill's triggering accuracy
+    is measured rather than assumed — and is candid that subjective outputs such as writing
+    style often should not be tested at all.
 systems:
 - any
+inputs:
+- name: intent
+  required: true
+  source: the user, or a workflow already present in the conversation
+  fallback: extract from history, then confirm the gaps
+- name: trigger phrases
+  required: true
+  source: user
+  fallback: none
+- name: test cases
+  required: false
+  source: user decision, with a suggested default by skill type
+  fallback: no evals
+outputs:
+- name: SKILL.md and bundled resources
+  type: files
+  dest: a new or edited skill directory
+- name: eval results
+  type: report
+  dest: benchmark with variance analysis, where tests were chosen
+never:
+- Use jargon without reading the room — the skill notes plainly that its users range from
+  computer-literate developers to people who have just googled how to install npm.
 upstream:
   repo: anthropics/skills
   path: skills/skill-creator
   ref: main
 license: proprietary-anthropic
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:dcd4803e61e913e6
 upstream_sha: b9e19e6f4477
 last_checked: 2026-09-20

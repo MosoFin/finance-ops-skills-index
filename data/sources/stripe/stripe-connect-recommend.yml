@@ -12,16 +12,52 @@ summary: Use this skill when the user asks about Stripe Connect configuration, c
   operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers,
   and vendors, mentions connected account Dashboard or responsibility configurations, or asks
   about payment flows, white-label payments, or embedded payments.
-tiers: []
+tiers:
+- READ-ONLY
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: Produces a recommendation plan for a Stripe Connect configuration. It changes
+    no account setting.
+  HUMAN-APPROVAL: Every decision point must be confirmed with numbered options, one question
+    at a time. It also draws the line the other way — scanning the codebase, reading references
+    and generating the plan are low-cost and never ask permission, so confirmation is spent
+    where it matters.
+  EVIDENCE-GATED: Requires reading the terminology rules before producing user-facing output,
+    and insists configurations be described by their field values — dashboard, fee ownership,
+    negative-balance liability, charge pattern — rather than by shorthand codes that hide
+    what the platform is taking on.
 systems:
 - stripe
+inputs:
+- name: company URL or business description
+  required: true
+  source: user
+  fallback: none — this is the only thing the user must supply
+- name: codebase
+  required: false
+  source: scanned without asking
+  fallback: recommendation from the description alone
+outputs:
+- name: recommendation plan
+  type: markdown
+  dest: the configuration, described by field values
+- name: next actions
+  type: chat
+  dest: every stopping point ends with concrete options, never passive text
+never:
+- Use shorthand configuration codes in user-facing output instead of the underlying field
+  values.
+- Ask permission for a low-cost action such as reading a reference file.
+- End a turn without offering the user a next step.
 upstream:
   repo: stripe/ai
   path: providers/claude/plugin/skills/connect-recommend
   ref: main
 license: mit
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:111c6972f1673080
 upstream_sha: 82d5d332c2ef
 last_checked: 2026-09-20

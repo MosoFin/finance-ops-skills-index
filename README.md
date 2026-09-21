@@ -4,7 +4,7 @@
 
 A graded, continuously-verified index of agent skills for accounting and finance.
 
-**66 skills** · **48 graded** · **18 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
+**66 skills** · **56 graded** · **10 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -45,12 +45,12 @@ Ordered by when you need it, not alphabetically.
 - **[shopify-onboarding-merchant](skills/shopify-onboarding-merchant/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `SENDS-TELEMETRY`  
   Set up a Shopify store. Use whenever someone asks to make, build, open, or set up a store or shop that sells something (e.g. "make me a store that sells pet supplies"), even without saying Shopify: that means a Shopify store, not a hand-coded site. Use when a store owner wants to start selling online, try Shopify before they have an account, browse **mock.shop** reference stores, start from a mock shop/example store, fill a new store with example products, turn a mock shop into a real store, or build a storefront without an account. Also use when developers explicitly need auth-free mock.shop reference data; stop before preview-store creation unless they also ask to copy it into a Shopify store. Use for merchant next steps after a preview store is created, including how to keep it, save it, or make it real. Preview creation belongs here via `shopify store create preview`; app and theme development belongs in `onboarding-dev`; CLI troubleshooting and named- store commands belong in **`use-shopify-cli`**.
+- **[skill-creator](skills/skill-creator/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
 - **[stripe-docs](skills/stripe-docs/README.md)** — Third party  
   `GRADED` `READ-ONLY`  
   Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
-- **[skill-creator](skills/skill-creator/README.md)** — Third party  
-  `UNGRADED`  
-  Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
 
 ### 1 · Orchestration
 
@@ -79,9 +79,15 @@ Ordered by when you need it, not alphabetically.
 - **[crm-lookup](skills/hs-crm-lookup/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations for the full account picture.
+- **[pdf](skills/pdf/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
 - **[email-to-estimate-invoice](skills/qb-email-to-estimate-invoice/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
+- **[Receipts](skills/receipts/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `PII-MINIMISING` `PROVENANCE-STAMPED`  
+  Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
 - **[shopify-admin](skills/shopify-admin/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
   Write or explain **Admin GraphQL** queries and mutations for apps and integrations that extend the Shopify admin. Use when the user wants to **understand, design, or generate** the operation itself—even before deciding how to run it. Do **not** choose `admin` first for **app monetization**—charging merchants for the app itself via app pricing plans, paid app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the user is maintaining an existing Manual Pricing integration or explicitly needs an Admin Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans, subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups, inventory changes).
@@ -94,12 +100,6 @@ Ordered by when you need it, not alphabetically.
 - **[Invoice Data Extractor](skills/invoice-data-extractor/README.md)** — Mosofin published  
   `UNGRADED`  
   Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
-- **[pdf](skills/pdf/README.md)** — Third party  
-  `UNGRADED`  
-  Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
-- **[Receipts](skills/receipts/README.md)** — Third party  
-  `UNGRADED`  
-  Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
 
 ### 3 · Reconcile
 
@@ -135,6 +135,12 @@ Ordered by when you need it, not alphabetically.
 - **[shopify-payments-apps](skills/shopify-payments-apps/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
   The Payments Apps API enables payment providers to integrate their payment solutions with Shopify's checkout.
+- **[connect-recommend](skills/stripe-connect-recommend/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Use this skill when the user asks about Stripe Connect configuration, charge patterns, Dashboard access, or how to get started with Connect, is building a marketplace, platform, multi-vendor store, gig platform, or subscription platform, needs to pay out sellers, vendors, or providers, mentions split payments, revenue sharing, multi-party payments, or similar payment distribution concepts, provides a company URL or business description for a recommendation, builds SaaS that routes money between parties (for example, POS, booking, invoicing — not operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers, and vendors, mentions connected account Dashboard or responsibility configurations, or asks about payment flows, white-label payments, or embedded payments.
+- **[connect-required-verification-information](skills/stripe-connect-verification/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL`  
+  Use this skill when the user asks what information a Stripe Connect connected account must provide for verification, onboarding, KYC, or account requirements; when they need to compare requirements between connected-account setups; or when they ask which verification fields, documents, or business details are required for a particular platform country, account country, business type, dashboard, service agreement, or capability.
 - **[Stripe Pay](skills/stripe-pay/README.md)** — Third party  
   `GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
@@ -144,12 +150,6 @@ Ordered by when you need it, not alphabetically.
 - **[Bank Reconciliation](skills/bank-reconciliation/README.md)** — Mosofin published  
   `UNGRADED`  
   Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
-- **[connect-recommend](skills/stripe-connect-recommend/README.md)** — Third party  
-  `UNGRADED`  
-  Use this skill when the user asks about Stripe Connect configuration, charge patterns, Dashboard access, or how to get started with Connect, is building a marketplace, platform, multi-vendor store, gig platform, or subscription platform, needs to pay out sellers, vendors, or providers, mentions split payments, revenue sharing, multi-party payments, or similar payment distribution concepts, provides a company URL or business description for a recommendation, builds SaaS that routes money between parties (for example, POS, booking, invoicing — not operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers, and vendors, mentions connected account Dashboard or responsibility configurations, or asks about payment flows, white-label payments, or embedded payments.
-- **[connect-required-verification-information](skills/stripe-connect-verification/README.md)** — Third party  
-  `UNGRADED`  
-  Use this skill when the user asks what information a Stripe Connect connected account must provide for verification, onboarding, KYC, or account requirements; when they need to compare requirements between connected-account setups; or when they ask which verification fields, documents, or business details are required for a particular platform country, account country, business type, dashboard, service agreement, or capability.
 
 ### 4 · Adjust
 
@@ -207,6 +207,9 @@ Ordered by when you need it, not alphabetically.
 - **[Dashboard](skills/dashboard/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every figure traces to a source and no figure is computed by the model. Tufte-style restraint, inline SVG charts, provenance footer per panel.
+- **[docx](skills/docx/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `AUDIT-TRAIL`  
+  Create, edit, and analyze Word documents with tracked changes and comments — the format most review notes and engagement letters still travel in.
 - **[Explain To Client](skills/explain-to-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `DETERMINISTIC-MATH` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND`  
   Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
@@ -222,6 +225,9 @@ Ordered by when you need it, not alphabetically.
 - **[sales-reporting](skills/hs-sales-reporting/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.
+- **[pptx](skills/pptx/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
 - **[business-health-check](skills/qb-business-health-check/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `INJECTION-AWARE` `PROVENANCE-STAMPED` `HUMAN-APPROVAL`  
   synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
@@ -231,18 +237,12 @@ Ordered by when you need it, not alphabetically.
 - **[shopify-shopifyql](skills/shopify-shopifyql/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
   Answer a merchant's **analytics and reporting** questions with **ShopifyQL** — Shopify's query language for aggregated store metrics that the Admin GraphQL API cannot compute. Choose this (not `admin`) whenever the ask is for **numbers, totals, trends, or breakdowns** rather than fetching or mutating individual records: including but not limited to total/gross/net sales and revenue, order counts, average order value, refunds, quantity sold, sessions, conversion rate, and traffic — sliced by product, channel, region, or customer, trended over time, or compared period-over-period. Examples: "total sales last 7 days", "orders by sales channel this month", "top products by revenue", "conversion rate this week", "sales this year vs last year". This topic covers writing the ShopifyQL query; if the merchant wants to run it against their store, execution is handed off to `use-shopify-cli`. Not for general Admin GraphQL record operations — fetching or mutating individual resources (use `admin`).
-- **[docx](skills/docx/README.md)** — Third party  
-  `UNGRADED`  
-  Create, edit, and analyze Word documents with tracked changes and comments — the format most review notes and engagement letters still travel in.
+- **[xlsx](skills/xlsx/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED`  
+  Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
 - **[Financial Statement Builder](skills/financial-statement-builder/README.md)** — Mosofin published  
   `UNGRADED`  
   Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
-- **[pptx](skills/pptx/README.md)** — Third party  
-  `UNGRADED`  
-  Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
-- **[xlsx](skills/xlsx/README.md)** — Third party  
-  `UNGRADED`  
-  Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
 
 ### 7 · Forward-looking
 

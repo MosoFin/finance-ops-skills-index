@@ -2,7 +2,7 @@
 
 # skill-creator
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
 
@@ -15,10 +15,32 @@ Guidance for authoring skills — structure, progressive disclosure, bundled res
 | Source | [`anthropics/skills/skills/skill-creator`](https://github.com/anthropics/skills/tree/main/skills/skill-creator) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Authors and edits skill files. Nothing operational is touched.
+- **`HUMAN-APPROVAL`** — Intent is captured and confirmed before a skill is written, and the user decides whether test cases are appropriate rather than having that imposed.
+- **`EVIDENCE-GATED`** — Pushes toward evals and variance analysis so a skill's triggering accuracy is measured rather than assumed — and is candid that subjective outputs such as writing style often should not be tested at all.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `intent` | **yes** | the user, or a workflow already present in the conversation | extract from history, then confirm the gaps |
+| `trigger phrases` | **yes** | user | none |
+| `test cases` | no | user decision, with a suggested default by skill type | no evals |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| SKILL.md and bundled resources | files | a new or edited skill directory |
+| eval results | report | benchmark with variance analysis, where tests were chosen |
+
+## What it will not do
+
+- Use jargon without reading the room — the skill notes plainly that its users range from computer-literate developers to people who have just googled how to install npm.
 
 ## Data reachability
 
@@ -30,7 +52,9 @@ Guidance for authoring skills — structure, progressive disclosure, bundled res
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

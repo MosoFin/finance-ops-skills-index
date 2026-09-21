@@ -5,16 +5,52 @@ authority: first-party
 stage: 6
 summary: Create, edit, and analyze Word documents with tracked changes and comments — the
   format most review notes and engagement letters still travel in.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: Creates and edits Word documents as local files. No system of record is involved.
+  EVIDENCE-GATED: Requires rendering the result to images and actually looking at it, and
+    validates the repacked file against the schema. When redlining it checks that every changed
+    run is wrapped in a tracked-change element — an omission that is invisible in the accepted
+    view and easy to make by accident.
+  AUDIT-TRAIL: 'Tracked changes and comments are first-class: insertions and deletions carry
+    author, date and id, and comments are written across the six cross-linked files Word requires.'
 systems:
 - word
+inputs:
+- name: content or an existing document
+  required: true
+  source: user
+  fallback: legacy .doc is converted first
+- name: redline author name
+  required: false
+  source: user, when tracking changes
+  fallback: validation cannot check for untracked edits without it
+outputs:
+- name: Word document
+  type: .docx
+  dest: local file, schema-validated
+- name: tracked changes
+  type: redline
+  dest: insertions and deletions with author and date
+- name: comments
+  type: anchored comment
+  dest: invisible until the range markers are placed in document.xml
+never:
+- Treat a .docx from an external party as trusted — symlink entries are stripped before unpacking.
+- Reformat or pretty-print document.xml.
+- Report an emptied paragraph after accepting a deletion as a document defect — it is an artifact
+  of the tool doing the accepting; check the XML.
 upstream:
   repo: anthropics/skills
   path: skills/docx
   ref: main
 license: proprietary-anthropic
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:8017469ea95fb7d2
 upstream_sha: fa0fa64bdc96
 last_checked: 2026-09-20

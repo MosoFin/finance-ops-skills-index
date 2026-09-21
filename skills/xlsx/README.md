@@ -2,7 +2,7 @@
 
 # xlsx
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED`
 
 Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
 
@@ -15,10 +15,38 @@ Spreadsheet creation and manipulation — formulas, charts, data transformations
 | Source | [`anthropics/skills/skills/xlsx`](https://github.com/anthropics/skills/tree/main/skills/xlsx) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Produces and edits spreadsheet files. It touches no system of record.
+- **`DETERMINISTIC-MATH`** — The same principle the Mosofin close skills hold: write the formula, never the Python-computed result, so the sheet recalculates when its inputs change. Every assumption gets its own labelled cell and is referenced, never inlined as a literal.
+- **`TIE-CHECKED`** — A mandatory recalculation through LibreOffice that must report no errors before the file ships. It also warns that `errors_found` exits zero, so a clean exit code is not a clean workbook.
+- **`EVIDENCE-GATED`** — States the limit of its own check plainly: a green recalc proves formulas evaluate, not that they are right, because an off-by-one range yields a clean file with wrong numbers. It advises writing two or three formulas and verifying them before building a grid.
+- **`PROVENANCE-STAMPED`** — Every assumption and hardcoded number is documented where the reader will see it, citing a real source when one exists and saying plainly when a figure came from the user.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `spreadsheet file or source data` | **yes** | user | none |
+| `the user's spec` | **yes** | exact tab names, headers and formulas | none — a redesign that computes something else fails however elegant |
+| `existing file conventions` | no | the file being edited — its input cells are marked by font colour, fill or shading | its conventions override every guideline in the skill |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| workbook | .xlsx | local file, recalculated and error-free |
+| recalc report | JSON | total formulas, total errors, and the cells at fault |
+
+## What it will not do
+
+- Ship while the recalculation reports errors.
+- Hardcode a computed result where a formula belongs.
+- Use XLOOKUP, FILTER, SORT, UNIQUE or SEQUENCE — the runtime cannot evaluate them, and a truncated spill still reports zero errors.
+- Save a workbook loaded with data_only=True — it replaces every formula with a literal, permanently.
+- Add an example row to a file you were asked to edit.
 
 ## Data reachability
 
@@ -32,7 +60,9 @@ Spreadsheet creation and manipulation — formulas, charts, data transformations
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | partial — no scripts |
+
+Requires from the host: script execution.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

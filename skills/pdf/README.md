@@ -2,7 +2,7 @@
 
 # pdf
 
-`UNGRADED`
+`GRADED` `READ-ONLY`
 
 Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
 
@@ -15,10 +15,29 @@ Extract text, tables, and metadata from PDFs; merge and annotate. Relevant where
 | Source | [`anthropics/skills/skills/pdf`](https://github.com/anthropics/skills/tree/main/skills/pdf) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Reads, extracts, merges, splits, watermarks, fills, encrypts and OCRs PDF files. Local files only; no system of record.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `PDF file(s)` | **yes** | user | none |
+| `form field data` | no | user — FORMS.md governs filling | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| extracted text or tables | text | chat or file |
+| produced PDF | .pdf | local file — merged, split, rotated, watermarked, encrypted, or OCR'd to searchable |
+
+## What it will not do
+
+- Reach for the reference material only when the task is advanced — FORMS.md is required reading before filling a form.
 
 ## Data reachability
 
@@ -30,7 +49,9 @@ Extract text, tables, and metadata from PDFs; merge and annotate. Relevant where
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

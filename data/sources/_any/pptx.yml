@@ -5,16 +5,46 @@ authority: first-party
 stage: 6
 summary: Read, generate, and adjust slides and layouts. Pairs with board-pack when report
   preferences call for a deck rather than a document.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: Creates, edits and reads presentations as local files.
+  EVIDENCE-GATED: Ships a schema, relationship, content-type and chart validator, and baselines
+    it against the source template so the template's own errors are not misread as yours.
+    Its gotcha list is unusually specific about silent corruption — several options corrupt
+    the file rather than erroring, which is the failure mode a validator exists to catch.
 systems:
 - powerpoint
+inputs:
+- name: content, or an existing deck or template
+  required: true
+  source: user
+  fallback: none
+- name: template layouts
+  required: false
+  source: a labelled thumbnail grid of every slide
+  fallback: none
+outputs:
+- name: presentation
+  type: .pptx
+  dest: local file, schema-validated
+- name: speaker notes
+  type: notes
+  dest: the notes pane, never a text box on the slide
+never:
+- 'Prefix a hex colour with # or bake alpha into it — both corrupt the file.'
+- Use a negative shadow offset, or outEnd labels on a stacked chart — both corrupt the file.
+- Share one options object across two calls; pptxgenjs mutates them in place.
+- Fall back to a rendered image for a chart PowerPoint can draw natively.
 upstream:
   repo: anthropics/skills
   path: skills/pptx
   ref: main
 license: proprietary-anthropic
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:a7ff03e2c85b636f
 upstream_sha: fa0fa64bdc96
 last_checked: 2026-09-20

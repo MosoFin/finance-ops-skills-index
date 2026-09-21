@@ -5,16 +5,64 @@ authority: first-party
 stage: 6
 summary: Spreadsheet creation and manipulation — formulas, charts, data transformations. The
   usual last mile when a close artifact has to leave as a workbook.
-tiers: []
+tiers:
+- READ-ONLY
+- DETERMINISTIC-MATH
+- TIE-CHECKED
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+tier_notes:
+  READ-ONLY: Produces and edits spreadsheet files. It touches no system of record.
+  DETERMINISTIC-MATH: 'The same principle the Mosofin close skills hold: write the formula,
+    never the Python-computed result, so the sheet recalculates when its inputs change. Every
+    assumption gets its own labelled cell and is referenced, never inlined as a literal.'
+  TIE-CHECKED: A mandatory recalculation through LibreOffice that must report no errors before
+    the file ships. It also warns that `errors_found` exits zero, so a clean exit code is
+    not a clean workbook.
+  EVIDENCE-GATED: 'States the limit of its own check plainly: a green recalc proves formulas
+    evaluate, not that they are right, because an off-by-one range yields a clean file with
+    wrong numbers. It advises writing two or three formulas and verifying them before building
+    a grid.'
+  PROVENANCE-STAMPED: Every assumption and hardcoded number is documented where the reader
+    will see it, citing a real source when one exists and saying plainly when a figure came
+    from the user.
 systems:
 - excel
+inputs:
+- name: spreadsheet file or source data
+  required: true
+  source: user
+  fallback: none
+- name: the user's spec
+  required: true
+  source: exact tab names, headers and formulas
+  fallback: none — a redesign that computes something else fails however elegant
+- name: existing file conventions
+  required: false
+  source: the file being edited — its input cells are marked by font colour, fill or shading
+  fallback: its conventions override every guideline in the skill
+outputs:
+- name: workbook
+  type: .xlsx
+  dest: local file, recalculated and error-free
+- name: recalc report
+  type: JSON
+  dest: total formulas, total errors, and the cells at fault
+never:
+- Ship while the recalculation reports errors.
+- Hardcode a computed result where a formula belongs.
+- Use XLOOKUP, FILTER, SORT, UNIQUE or SEQUENCE — the runtime cannot evaluate them, and a
+  truncated spill still reports zero errors.
+- Save a workbook loaded with data_only=True — it replaces every formula with a literal, permanently.
+- Add an example row to a file you were asked to edit.
 upstream:
   repo: anthropics/skills
   path: skills/xlsx
   ref: main
 license: proprietary-anthropic
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:6712b39718fe8150
 upstream_sha: fa0fa64bdc96
 last_checked: 2026-09-20

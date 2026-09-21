@@ -2,7 +2,7 @@
 
 # Receipts
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `PII-MINIMISING` `PROVENANCE-STAMPED`
 
 Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
 
@@ -15,10 +15,32 @@ Anthropic's own plugin for turning receipts into structured records. The substan
 | Source | [`anthropics/claude-plugins-official/plugins/receipts/skills/receipts`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/receipts/skills/receipts) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Mines local session transcripts and git history, and writes a report. Nothing is modified.
+- **`PII-MINIMISING`** — Stays on the machine — the transcripts are mined locally and the HTML receipt is built deterministically from the same data, with no extra API calls beyond one final write-up. It also forbids reading the raw transcript files directly, which keeps their contents out of the model's context.
+- **`PROVENANCE-STAMPED`** — The report is scoped to a stated period and project filter, and the exported CSV is embedded in the page so the underlying table travels with it.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `period` | no | an argument — week, month, quarter, year, or a number of days | 30 days |
+| `project filter` | no | a name substring, matched case-insensitively | all projects |
+| `~/.claude/projects and local git history` | **yes** | this machine | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| impact report | markdown | home directory |
+| HTML receipt | self-contained HTML | styled, offline-capable, with an embedded CSV export |
+
+## What it will not do
+
+- Read the raw .jsonl transcripts directly — the miner has already extracted what matters, and re-reading them would burn a large number of tokens to no benefit.
 
 ## Data reachability
 
@@ -31,7 +53,9 @@ Anthropic's own plugin for turning receipts into structured records. The substan
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

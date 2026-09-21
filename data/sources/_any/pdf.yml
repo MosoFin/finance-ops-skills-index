@@ -5,16 +5,40 @@ authority: first-party
 stage: 2
 summary: Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever
   statements, bills, or lender documents arrive as PDFs.
-tiers: []
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: Reads, extracts, merges, splits, watermarks, fills, encrypts and OCRs PDF files.
+    Local files only; no system of record.
 systems:
 - pdf
+inputs:
+- name: PDF file(s)
+  required: true
+  source: user
+  fallback: none
+- name: form field data
+  required: false
+  source: user — FORMS.md governs filling
+  fallback: none
+outputs:
+- name: extracted text or tables
+  type: text
+  dest: chat or file
+- name: produced PDF
+  type: .pdf
+  dest: local file — merged, split, rotated, watermarked, encrypted, or OCR'd to searchable
+never:
+- Reach for the reference material only when the task is advanced — FORMS.md is required reading
+  before filling a form.
 upstream:
   repo: anthropics/skills
   path: skills/pdf
   ref: main
 license: proprietary-anthropic
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:9f78b8359fbd4943
 upstream_sha: 1ed29a03dc85
 last_checked: 2026-09-20

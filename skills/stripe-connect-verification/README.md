@@ -2,7 +2,7 @@
 
 # connect-required-verification-information
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL`
 
 Use this skill when the user asks what information a Stripe Connect connected account must provide for verification, onboarding, KYC, or account requirements; when they need to compare requirements between connected-account setups; or when they ask which verification fields, documents, or business details are required for a particular platform country, account country, business type, dashboard, service agreement, or capability.
 
@@ -15,10 +15,34 @@ Use this skill when the user asks what information a Stripe Connect connected ac
 | Source | [`stripe/ai/providers/claude/plugin/skills/connect-required-verification-information`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/connect-required-verification-information) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Reports the verification and KYC requirements a connected account must satisfy for a given configuration. It collects nothing and submits nothing.
+- **`EVIDENCE-GATED`** — Fetches the same requirements the human-facing form would, rather than answering from memory — the requirements vary by platform country, account country, business type and capability, and are exactly the kind of detail that goes stale.
+- **`HUMAN-APPROVAL`** — Fields are asked only once their prerequisites are satisfied, always as multiple choice, and an answer already given earlier is reused rather than asked again.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `platformCountry` | **yes** | user, multiple choice | none |
+| `accountCountry` | **yes** | user, asked only after its prerequisites | none |
+| `business type, dashboard, service agreement, capabilities` | **yes** | user | free-response accepts any value from the full validated list |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| requirements | chat | the verification fields, documents and business details the configuration demands |
+| comparison | chat | between connected-account setups, where asked |
+
+## What it will not do
+
+- Ask for a field before its prerequisites are satisfied.
+- Stop at a plain free-form prompt where a multiple-choice question is required.
+- Re-ask something the user already answered.
 
 ## Data reachability
 
@@ -32,7 +56,9 @@ Use this skill when the user asks what information a Stripe Connect connected ac
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

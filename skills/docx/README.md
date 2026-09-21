@@ -2,7 +2,7 @@
 
 # docx
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `AUDIT-TRAIL`
 
 Create, edit, and analyze Word documents with tracked changes and comments — the format most review notes and engagement letters still travel in.
 
@@ -15,10 +15,34 @@ Create, edit, and analyze Word documents with tracked changes and comments — t
 | Source | [`anthropics/skills/skills/docx`](https://github.com/anthropics/skills/tree/main/skills/docx) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Creates and edits Word documents as local files. No system of record is involved.
+- **`EVIDENCE-GATED`** — Requires rendering the result to images and actually looking at it, and validates the repacked file against the schema. When redlining it checks that every changed run is wrapped in a tracked-change element — an omission that is invisible in the accepted view and easy to make by accident.
+- **`AUDIT-TRAIL`** — Tracked changes and comments are first-class: insertions and deletions carry author, date and id, and comments are written across the six cross-linked files Word requires.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `content or an existing document` | **yes** | user | legacy .doc is converted first |
+| `redline author name` | no | user, when tracking changes | validation cannot check for untracked edits without it |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| Word document | .docx | local file, schema-validated |
+| tracked changes | redline | insertions and deletions with author and date |
+| comments | anchored comment | invisible until the range markers are placed in document.xml |
+
+## What it will not do
+
+- Treat a .docx from an external party as trusted — symlink entries are stripped before unpacking.
+- Reformat or pretty-print document.xml.
+- Report an emptied paragraph after accepting a deletion as a document defect — it is an artifact of the tool doing the accepting; check the XML.
 
 ## Data reachability
 
@@ -30,7 +54,9 @@ Create, edit, and analyze Word documents with tracked changes and comments — t
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no workspace |
+
+Requires from the host: a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

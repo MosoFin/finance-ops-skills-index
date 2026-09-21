@@ -2,7 +2,7 @@
 
 # connect-recommend
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Use this skill when the user asks about Stripe Connect configuration, charge patterns, Dashboard access, or how to get started with Connect, is building a marketplace, platform, multi-vendor store, gig platform, or subscription platform, needs to pay out sellers, vendors, or providers, mentions split payments, revenue sharing, multi-party payments, or similar payment distribution concepts, provides a company URL or business description for a recommendation, builds SaaS that routes money between parties (for example, POS, booking, invoicing — not operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers, and vendors, mentions connected account Dashboard or responsibility configurations, or asks about payment flows, white-label payments, or embedded payments.
 
@@ -15,10 +15,33 @@ Use this skill when the user asks about Stripe Connect configuration, charge pat
 | Source | [`stripe/ai/providers/claude/plugin/skills/connect-recommend`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/connect-recommend) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Produces a recommendation plan for a Stripe Connect configuration. It changes no account setting.
+- **`HUMAN-APPROVAL`** — Every decision point must be confirmed with numbered options, one question at a time. It also draws the line the other way — scanning the codebase, reading references and generating the plan are low-cost and never ask permission, so confirmation is spent where it matters.
+- **`EVIDENCE-GATED`** — Requires reading the terminology rules before producing user-facing output, and insists configurations be described by their field values — dashboard, fee ownership, negative-balance liability, charge pattern — rather than by shorthand codes that hide what the platform is taking on.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `company URL or business description` | **yes** | user | none — this is the only thing the user must supply |
+| `codebase` | no | scanned without asking | recommendation from the description alone |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| recommendation plan | markdown | the configuration, described by field values |
+| next actions | chat | every stopping point ends with concrete options, never passive text |
+
+## What it will not do
+
+- Use shorthand configuration codes in user-facing output instead of the underlying field values.
+- Ask permission for a low-cost action such as reading a reference file.
+- End a turn without offering the user a next step.
 
 ## Data reachability
 
@@ -32,7 +55,9 @@ Use this skill when the user asks about Stripe Connect configuration, charge pat
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

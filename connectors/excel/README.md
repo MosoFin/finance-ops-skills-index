@@ -33,7 +33,7 @@ The repo's .github/skills are Microsoft's internal development process — vibe-
 
 **6 · Report**
 
-- [xlsx](../../skills/xlsx/README.md) — `UNGRADED`
+- [xlsx](../../skills/xlsx/README.md) — `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED`
 
 ---
 

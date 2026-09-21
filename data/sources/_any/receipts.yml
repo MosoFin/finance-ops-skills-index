@@ -5,17 +5,53 @@ authority: first-party
 stage: 2
 summary: Anthropic's own plugin for turning receipts into structured records. The substantiation
   end of expense work, upstream of coding and posting.
-tiers: []
+tiers:
+- READ-ONLY
+- PII-MINIMISING
+- PROVENANCE-STAMPED
+tier_notes:
+  READ-ONLY: Mines local session transcripts and git history, and writes a report. Nothing
+    is modified.
+  PII-MINIMISING: Stays on the machine — the transcripts are mined locally and the HTML receipt
+    is built deterministically from the same data, with no extra API calls beyond one final
+    write-up. It also forbids reading the raw transcript files directly, which keeps their
+    contents out of the model's context.
+  PROVENANCE-STAMPED: The report is scoped to a stated period and project filter, and the
+    exported CSV is embedded in the page so the underlying table travels with it.
 systems:
 - pdf
 - images
+inputs:
+- name: period
+  required: false
+  source: an argument — week, month, quarter, year, or a number of days
+  fallback: 30 days
+- name: project filter
+  required: false
+  source: a name substring, matched case-insensitively
+  fallback: all projects
+- name: ~/.claude/projects and local git history
+  required: true
+  source: this machine
+  fallback: none
+outputs:
+- name: impact report
+  type: markdown
+  dest: home directory
+- name: HTML receipt
+  type: self-contained HTML
+  dest: styled, offline-capable, with an embedded CSV export
+never:
+- Read the raw .jsonl transcripts directly — the miner has already extracted what matters,
+  and re-reading them would burn a large number of tokens to no benefit.
 upstream:
   repo: anthropics/claude-plugins-official
   path: plugins/receipts/skills/receipts
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:5b2f407ff4063972
 upstream_sha: 2476d52abc96
 last_checked: 2026-09-20

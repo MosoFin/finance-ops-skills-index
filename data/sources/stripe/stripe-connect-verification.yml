@@ -8,16 +8,52 @@ summary: Use this skill when the user asks what information a Stripe Connect con
   to compare requirements between connected-account setups; or when they ask which verification
   fields, documents, or business details are required for a particular platform country, account
   country, business type, dashboard, service agreement, or capability.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- HUMAN-APPROVAL
+tier_notes:
+  READ-ONLY: Reports the verification and KYC requirements a connected account must satisfy
+    for a given configuration. It collects nothing and submits nothing.
+  EVIDENCE-GATED: Fetches the same requirements the human-facing form would, rather than answering
+    from memory — the requirements vary by platform country, account country, business type
+    and capability, and are exactly the kind of detail that goes stale.
+  HUMAN-APPROVAL: Fields are asked only once their prerequisites are satisfied, always as
+    multiple choice, and an answer already given earlier is reused rather than asked again.
 systems:
 - stripe
+inputs:
+- name: platformCountry
+  required: true
+  source: user, multiple choice
+  fallback: none
+- name: accountCountry
+  required: true
+  source: user, asked only after its prerequisites
+  fallback: none
+- name: business type, dashboard, service agreement, capabilities
+  required: true
+  source: user
+  fallback: free-response accepts any value from the full validated list
+outputs:
+- name: requirements
+  type: chat
+  dest: the verification fields, documents and business details the configuration demands
+- name: comparison
+  type: chat
+  dest: between connected-account setups, where asked
+never:
+- Ask for a field before its prerequisites are satisfied.
+- Stop at a plain free-form prompt where a multiple-choice question is required.
+- Re-ask something the user already answered.
 upstream:
   repo: stripe/ai
   path: providers/claude/plugin/skills/connect-required-verification-information
   ref: main
 license: mit
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:9945d4ad0c46fbe4
 upstream_sha: 38d8933bffbd
 last_checked: 2026-09-20

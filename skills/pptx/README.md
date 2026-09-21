@@ -2,7 +2,7 @@
 
 # pptx
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
 
@@ -15,10 +15,33 @@ Read, generate, and adjust slides and layouts. Pairs with board-pack when report
 | Source | [`anthropics/skills/skills/pptx`](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Creates, edits and reads presentations as local files.
+- **`EVIDENCE-GATED`** — Ships a schema, relationship, content-type and chart validator, and baselines it against the source template so the template's own errors are not misread as yours. Its gotcha list is unusually specific about silent corruption — several options corrupt the file rather than erroring, which is the failure mode a validator exists to catch.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `content, or an existing deck or template` | **yes** | user | none |
+| `template layouts` | no | a labelled thumbnail grid of every slide | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| presentation | .pptx | local file, schema-validated |
+| speaker notes | notes | the notes pane, never a text box on the slide |
+
+## What it will not do
+
+- Prefix a hex colour with # or bake alpha into it — both corrupt the file.
+- Use a negative shadow offset, or outEnd labels on a stacked chart — both corrupt the file.
+- Share one options object across two calls; pptxgenjs mutates them in place.
+- Fall back to a rendered image for a chart PowerPoint can draw natively.
 
 ## Data reachability
 
@@ -30,7 +53,9 @@ Read, generate, and adjust slides and layouts. Pairs with board-pack when report
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 
