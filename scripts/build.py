@@ -45,6 +45,17 @@ def load_index() -> dict:
     if misfiled:
         raise SystemExit("skills filed under the wrong data source:\n  " + "\n  ".join(misfiled))
 
+    outward = [
+        sk["id"] for sk in skills
+        if "CLIENT-FACING" in (sk.get("tiers") or [])
+        and not {"NO-AUTO-SEND", "SENDS-EXTERNALLY"} & set(sk.get("tiers") or [])
+    ]
+    if outward:
+        raise SystemExit(
+            "CLIENT-FACING without a send declaration: " + ", ".join(outward)
+            + "\nA reader must never have to guess whether output leaves the building."
+        )
+
     defined = known_tiers()
     unknown = sorted(
         {t for sk in skills for t in (sk.get("tiers") or [])} - defined

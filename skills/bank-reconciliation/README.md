@@ -2,7 +2,7 @@
 
 # Bank Reconciliation
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 
 Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
 
@@ -15,10 +15,40 @@ Reconciles a cash GL to bank statements for a period. Builds the complete book s
 | Source | [`MosoFin/mosofin-finance-skills/skills/bank-reconciliation`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+- **`EVIDENCE-GATED`** — The most honest limitation statement in this index. A bank reconciliation has two sides and Mosofin reads one: comparing the books to the books is a total agreeing with itself, so an output without a statement is never labelled a reconciliation and cash is never reported as reconciled. A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+- **`TIE-CHECKED`** — Builds the bridge and proves the book side, but will not claim completion without the statement — the unmatched-bank rows read manual with the gap named, and the summary says the reconciliation was not completed.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified. The header states whether a bank statement was supplied.
+- **`HUMAN-APPROVAL`** — Corrections are proposals; nothing is marked cleared or signed off.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `GL cash balance and transactions` | **yes** | the connected accounting datasource | none |
+| `bank statement` | **yes** | the user — no accounting datasource exposes one | the book side is built and the statement requested; the reconciliation is reported as not completed |
+| `banking or payments datasource` | no | checked at Gate 1 before assuming the statement is unavailable | ask the user |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| reconciliation summary | document | workspace, entity, account, period, and whether a statement was supplied |
+| matched and unmatched lists | tables | each match carries the method that produced it; unmatched items are classified |
+| exception log | table | recommended action, owner and target date per item |
+| coverage sheet | table | per task: verdict, tool, policy, mock flag, and the gap |
+| workbook | .xlsx | Bank_Rec_[Account]_[YYYY-MM].xlsx, naming its datasource, entity and account |
+
+## What it will not do
+
+- Label a book-to-book comparison a reconciliation.
+- Report cash as reconciled without a statement.
+- Disguise a missing statement with a book-side total.
+- Post an adjusting entry or mark an item cleared.
 
 ## Data reachability
 
@@ -32,7 +62,9 @@ Reconciles a cash GL to bank statements for a period. Builds the complete book s
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no scripts, no workspace |
+
+Requires from the host: script execution, a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

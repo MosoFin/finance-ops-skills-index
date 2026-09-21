@@ -6,16 +6,66 @@ stage: 4
 summary: Constructs, formats, and validates journal entries against the real chart of accounts
   — checks accounts exist, signs match account types, the period is open, and no prior accrual
   already covers the item. Mosofin never posts.
-tiers: []
+tiers:
+- READ-ONLY
+- TIE-CHECKED
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: 'Absolute, and stronger than a default. Write tools stay out of scope even when
+    the connection''s effective_policy enables them — ''a permission to write is not an instruction
+    to write''. A step that would need a write becomes a manual task with the artefact handed
+    to a person, said plainly in the output so nobody assumes it was done. The skill argues
+    this is the correct division rather than a shortfall: posting is an authorised act with
+    a preparer and a reviewer, and an entry arriving pre-validated with its support attached
+    is what makes that review fast.'
+  TIE-CHECKED: Debits equal credits, arithmetically, every time. In a connected workspace
+    six of the original nine validations stop being judgment and become queries — accounts
+    checked against the live chart, sign conventions against real account types, no P&L accounts
+    in a pure balance-sheet reclass.
+  EVIDENCE-GATED: A gap is named, never estimated. Where data does not cover something the
+    skill names the tool that would have covered it, and a task with no tool becomes a manual
+    task with a named gap rather than a dropped task.
+  HUMAN-APPROVAL: Every output says 'proposed entry'. Dozens of other skills in the pack hand
+    off here, so this is where the read-only promise is load-bearing for the whole set.
 systems:
 - quickbooks
+inputs:
+- name: the transaction to record
+  required: true
+  source: user, or a hand-off from another skill
+  fallback: none
+- name: live chart of accounts
+  required: true
+  source: the connected accounting datasource
+  fallback: validate against a supplied list instead
+- name: open-period status
+  required: false
+  source: the datasource, where determinable
+  fallback: warn rather than assert
+outputs:
+- name: proposed journal entry
+  type: import-ready entry
+  dest: balanced, validated, with narration and support attached
+- name: validation results
+  type: table
+  dest: nine checks, each marked auto, gated or judgment
+- name: coverage sheet
+  type: table
+  dest: per task verdict, tool, policy and gap
+never:
+- Post an entry, or imply anything has been recorded.
+- Omit the words 'proposed entry' from an output.
 upstream:
   repo: MosoFin/mosofin-finance-skills
   path: skills/journal-entry-builder
   ref: main
 license: agpl-3.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:2e205addcb3b2e1a
 upstream_sha: ac12d064e857
 last_checked: 2026-09-20

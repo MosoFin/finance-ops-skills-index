@@ -2,7 +2,7 @@
 
 # Invoice Data Extractor
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 
 Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
 
@@ -15,10 +15,33 @@ Extracts structured fields from vendor invoice PDFs and images, then validates e
 | Source | [`MosoFin/mosofin-finance-skills/skills/invoice-data-extractor`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/invoice-data-extractor) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+- **`EVIDENCE-GATED`** — Extraction is semantic rather than raw OCR, and every extracted invoice is validated against the vendor master, the posted transaction history and the Bill-To entity — catching a duplicate before it is paid rather than after.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `vendor invoice` | **yes** | PDF, image or scan | none |
+| `vendor master and posted history` | **yes** | the connected accounting datasource | extraction proceeds; validation becomes a named gap |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| structured invoice row | table | vendor, dates, amounts, line items, tax breakdown, payment instructions |
+| validation result | table | vendor match, duplicate check, Bill-To entity check |
+| coverage sheet | table | per task verdict, tool, policy and gap |
+
+## What it will not do
+
+- Post the entry — pair with journal-entry-builder, and a person posts it.
+- Do OCR alone without extracting meaning.
 
 ## Data reachability
 
@@ -33,7 +56,9 @@ Extracts structured fields from vendor invoice PDFs and images, then validates e
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no workspace |
+
+Requires from the host: a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

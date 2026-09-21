@@ -2,7 +2,7 @@
 
 # Financial Statement Builder
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 
 Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
 
@@ -15,10 +15,36 @@ Builds Balance Sheet, Income Statement, and Statement of Cash Flows with compara
 | Source | [`MosoFin/mosofin-finance-skills/skills/financial-statement-builder`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+- **`TIE-CHECKED`** — Seven cross-statement tie-outs are the deliverable, not a formality. Each is reported as pass or fail with the difference shown even when it is zero — 'balances' without a number is not a result. The skill makes the point that a system-generated balance sheet always balances because double-entry software enforces it, so tie-out 1 must be re-proved against the reclassified statements the system did not produce.
+- **`EVIDENCE-GATED`** — A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified. The coverage sheet carries a row for each of the seven tie-outs, so a manual one cannot go unnoticed.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `trial balance` | **yes** | the connected accounting datasource, or uploaded | none |
+| `comparative period` | **yes** | the same datasource | stated as a gap |
+| `reporting framework` | **yes** | user — GAAP or IFRS presentation | ask |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| statement package | document | balance sheet, income statement and cash flows with comparatives |
+| tie-out results | table | seven, each pass or fail with its difference |
+| coverage sheet | table | including a row per tie-out |
+
+## What it will not do
+
+- Report a tie-out as balancing without showing the difference.
+- Rely on the system's own balance sheet balancing as proof for reclassified statements.
+- Produce footnotes or a standalone cash-flow statement — those are separate skills.
 
 ## Data reachability
 
@@ -32,7 +58,9 @@ Builds Balance Sheet, Income Statement, and Statement of Cash Flows with compara
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no scripts, no workspace |
+
+Requires from the host: script execution, a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

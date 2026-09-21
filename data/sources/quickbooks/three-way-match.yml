@@ -6,16 +6,61 @@ stage: 5
 summary: Matches purchase orders, goods receipts, and vendor invoices line by line across
   the full population where the workspace holds POs and item receipts. Proposes only — pays
   nothing, releases nothing.
-tiers: []
+tiers:
+- READ-ONLY
+- TIE-CHECKED
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when
+    the connection's effective_policy enables them — 'a permission to write is not an instruction
+    to write'. A step that would need a write becomes a manual task with the artefact handed
+    to a person, said plainly in the output so nobody assumes it was done. It pays nothing
+    and releases nothing.
+  TIE-CHECKED: Line-by-line comparison across purchase order, goods receipt and invoice, producing
+    an exception list rather than a verdict of its own.
+  EVIDENCE-GATED: A gap is named, never estimated. Where data does not cover something the
+    skill names the tool that would have covered it, and a task with no tool becomes a manual
+    task with a named gap rather than a dropped task.
+  PROVENANCE-STAMPED: 'Ends with a Data sources line naming the calls and their retrieval
+    time, and carries a coverage sheet: one row per task with its verdict (auto, gated or
+    manual), the tool used, the policy, whether any figure rests on mock data, and the named
+    gap for anything unverified. The coverage and provenance sheet is mandatory here, not
+    optional.'
 systems:
 - quickbooks
+inputs:
+- name: purchase orders and item receipts
+  required: true
+  source: the workspace, where it holds them
+  fallback: document-by-document matching from uploads
+- name: vendor invoices
+  required: true
+  source: the workspace or upload
+  fallback: none
+outputs:
+- name: match result
+  type: table
+  dest: line by line across the three documents
+- name: exception list
+  type: table
+  dest: quantity, price and receipt discrepancies
+- name: coverage and provenance sheet
+  type: table
+  dest: mandatory
+never:
+- Release a payment or approve an invoice.
+- Run duplicate detection or invoice extraction — those are separate skills.
 upstream:
   repo: MosoFin/mosofin-finance-skills
   path: skills/three-way-match
   ref: main
 license: agpl-3.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:2a4e014df4600db4
 upstream_sha: ac12d064e857
 last_checked: 2026-09-20

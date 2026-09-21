@@ -6,16 +6,61 @@ stage: 2
 summary: Assigns GL accounts, expense categories, and tax codes against the real chart of
   accounts, grounding every suggestion in how this entity has actually coded the same vendor
   before. Outputs confidence ratings, reasoning, evidence.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when
+    the connection's effective_policy enables them — 'a permission to write is not an instruction
+    to write'. A step that would need a write becomes a manual task with the artefact handed
+    to a person, said plainly in the output so nobody assumes it was done.
+  EVIDENCE-GATED: Every suggestion is grounded in how this entity has actually coded the same
+    vendor before, against the real chart of accounts — not in a general notion of where an
+    expense belongs. Suggestions carry confidence ratings and their reasoning.
+  PROVENANCE-STAMPED: 'Ends with a Data sources line naming the calls and their retrieval
+    time, and carries a coverage sheet: one row per task with its verdict (auto, gated or
+    manual), the tool used, the policy, whether any figure rests on mock data, and the named
+    gap for anything unverified.'
 systems:
 - quickbooks
+inputs:
+- name: transactions to code
+  required: true
+  source: user paste, or a bank or card export
+  fallback: none
+- name: live chart of accounts
+  required: true
+  source: the connected accounting datasource
+  fallback: ask for a chart export
+- name: prior coding history
+  required: true
+  source: how this entity coded the same vendor before
+  fallback: the suggestion is weaker and says so
+- name: tax jurisdiction
+  required: false
+  source: entity profile or interview
+  fallback: tax codes become a question
+outputs:
+- name: coded transaction list
+  type: table
+  dest: account, confidence, reasoning and evidence per line
+- name: coverage sheet
+  type: table
+  dest: per task verdict, tool, policy and gap
+never:
+- Post the coding — that is journal-entry-builder, and a person posts it.
+- Design the chart of accounts — that is a separate skill.
 upstream:
   repo: MosoFin/mosofin-finance-skills
   path: skills/gl-coding-assistant
   ref: main
 license: agpl-3.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:b0709543fe75304e
 upstream_sha: ac12d064e857
 last_checked: 2026-09-20

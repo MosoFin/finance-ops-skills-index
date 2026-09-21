@@ -11,6 +11,7 @@ summary: Send payment reminders for invoices with tone matched to aging. ALWAYS 
   loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
 tiers:
 - SENDS-EXTERNALLY
+- CLIENT-FACING
 - HUMAN-APPROVAL
 - EVIDENCE-GATED
 tier_notes:

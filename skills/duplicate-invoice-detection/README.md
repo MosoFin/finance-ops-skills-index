@@ -2,7 +2,7 @@
 
 # Duplicate Invoice Detection
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `PII-MINIMISING`
 
 Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
 
@@ -15,10 +15,34 @@ Ten detection rules for duplicate and fraudulent AP invoices run against live bi
 | Source | [`MosoFin/mosofin-finance-skills/skills/duplicate-invoice-detection`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+- **`EVIDENCE-GATED`** — Nine of its ten detection rules run as direct queries against live bills, payments and the vendor master. The tenth cannot run, and the skill says why rather than approximating it: Mosofin deliberately does not expose vendor bank details. Suspects carry confidence ratings and supporting evidence, not verdicts.
+- **`PII-MINIMISING`** — Vendor bank details are outside what the platform exposes at all, and internal numeric tenant ids are never printed.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `bills, payments and vendor master` | **yes** | the connected accounting datasource | an uploaded AP register or payment history |
+| `entity profile` | no | there is no company-profile tool, so base currency, fiscal calendar, region and time zone become questions | ask |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| duplicate-suspect list | table | with confidence rating and the evidence behind each |
+| coverage sheet | table | including the bank-account rule as a named, unrunnable gap |
+
+## What it will not do
+
+- Report the bank-account rule as run.
+- Void or delete a suspected duplicate.
+- Serve as general fraud detection across all transaction types.
 
 ## Data reachability
 
@@ -32,7 +56,9 @@ Ten detection rules for duplicate and fraudulent AP invoices run against live bi
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no workspace |
+
+Requires from the host: a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

@@ -2,7 +2,7 @@
 
 # Journal Entry Builder
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 
 Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
 
@@ -15,10 +15,35 @@ Constructs, formats, and validates journal entries against the real chart of acc
 | Source | [`MosoFin/mosofin-finance-skills/skills/journal-entry-builder`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. The skill argues this is the correct division rather than a shortfall: posting is an authorised act with a preparer and a reviewer, and an entry arriving pre-validated with its support attached is what makes that review fast.
+- **`TIE-CHECKED`** — Debits equal credits, arithmetically, every time. In a connected workspace six of the original nine validations stop being judgment and become queries — accounts checked against the live chart, sign conventions against real account types, no P&amp;L accounts in a pure balance-sheet reclass.
+- **`EVIDENCE-GATED`** — A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+- **`HUMAN-APPROVAL`** — Every output says 'proposed entry'. Dozens of other skills in the pack hand off here, so this is where the read-only promise is load-bearing for the whole set.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `the transaction to record` | **yes** | user, or a hand-off from another skill | none |
+| `live chart of accounts` | **yes** | the connected accounting datasource | validate against a supplied list instead |
+| `open-period status` | no | the datasource, where determinable | warn rather than assert |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| proposed journal entry | import-ready entry | balanced, validated, with narration and support attached |
+| validation results | table | nine checks, each marked auto, gated or judgment |
+| coverage sheet | table | per task verdict, tool, policy and gap |
+
+## What it will not do
+
+- Post an entry, or imply anything has been recorded.
+- Omit the words 'proposed entry' from an output.
 
 ## Data reachability
 
@@ -32,7 +57,9 @@ Constructs, formats, and validates journal entries against the real chart of acc
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no scripts, no workspace |
+
+Requires from the host: script execution, a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

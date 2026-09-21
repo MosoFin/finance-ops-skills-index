@@ -6,16 +6,68 @@ stage: 6
 summary: Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives
   from the live trial balance, reclassifies into framework presentation, and proves seven
   cross-statement tie-outs.
-tiers: []
+tiers:
+- READ-ONLY
+- TIE-CHECKED
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when
+    the connection's effective_policy enables them — 'a permission to write is not an instruction
+    to write'. A step that would need a write becomes a manual task with the artefact handed
+    to a person, said plainly in the output so nobody assumes it was done.
+  TIE-CHECKED: Seven cross-statement tie-outs are the deliverable, not a formality. Each is
+    reported as pass or fail with the difference shown even when it is zero — 'balances' without
+    a number is not a result. The skill makes the point that a system-generated balance sheet
+    always balances because double-entry software enforces it, so tie-out 1 must be re-proved
+    against the reclassified statements the system did not produce.
+  EVIDENCE-GATED: A gap is named, never estimated. Where data does not cover something the
+    skill names the tool that would have covered it, and a task with no tool becomes a manual
+    task with a named gap rather than a dropped task.
+  PROVENANCE-STAMPED: 'Ends with a Data sources line naming the calls and their retrieval
+    time, and carries a coverage sheet: one row per task with its verdict (auto, gated or
+    manual), the tool used, the policy, whether any figure rests on mock data, and the named
+    gap for anything unverified. The coverage sheet carries a row for each of the seven tie-outs,
+    so a manual one cannot go unnoticed.'
 systems:
 - quickbooks
+inputs:
+- name: trial balance
+  required: true
+  source: the connected accounting datasource, or uploaded
+  fallback: none
+- name: comparative period
+  required: true
+  source: the same datasource
+  fallback: stated as a gap
+- name: reporting framework
+  required: true
+  source: user — GAAP or IFRS presentation
+  fallback: ask
+outputs:
+- name: statement package
+  type: document
+  dest: balance sheet, income statement and cash flows with comparatives
+- name: tie-out results
+  type: table
+  dest: seven, each pass or fail with its difference
+- name: coverage sheet
+  type: table
+  dest: including a row per tie-out
+never:
+- Report a tie-out as balancing without showing the difference.
+- Rely on the system's own balance sheet balancing as proof for reclassified statements.
+- Produce footnotes or a standalone cash-flow statement — those are separate skills.
 upstream:
   repo: MosoFin/mosofin-finance-skills
   path: skills/financial-statement-builder
   ref: main
 license: agpl-3.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:0edd578122d3c364
 upstream_sha: ac12d064e857
 last_checked: 2026-09-20

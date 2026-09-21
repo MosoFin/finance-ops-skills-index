@@ -6,16 +6,77 @@ stage: 3
 summary: Reconciles a cash GL to bank statements for a period. Builds the complete book side
   from live ledger data and prepares the bridge, while stating plainly that the statement
   sits outside any accounting datasource and must be supplied.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- TIE-CHECKED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when
+    the connection's effective_policy enables them — 'a permission to write is not an instruction
+    to write'. A step that would need a write becomes a manual task with the artefact handed
+    to a person, said plainly in the output so nobody assumes it was done.
+  EVIDENCE-GATED: 'The most honest limitation statement in this index. A bank reconciliation
+    has two sides and Mosofin reads one: comparing the books to the books is a total agreeing
+    with itself, so an output without a statement is never labelled a reconciliation and cash
+    is never reported as reconciled. A gap is named, never estimated. Where data does not
+    cover something the skill names the tool that would have covered it, and a task with no
+    tool becomes a manual task with a named gap rather than a dropped task.'
+  TIE-CHECKED: Builds the bridge and proves the book side, but will not claim completion without
+    the statement — the unmatched-bank rows read manual with the gap named, and the summary
+    says the reconciliation was not completed.
+  PROVENANCE-STAMPED: 'Ends with a Data sources line naming the calls and their retrieval
+    time, and carries a coverage sheet: one row per task with its verdict (auto, gated or
+    manual), the tool used, the policy, whether any figure rests on mock data, and the named
+    gap for anything unverified. The header states whether a bank statement was supplied.'
+  HUMAN-APPROVAL: Corrections are proposals; nothing is marked cleared or signed off.
 systems:
 - quickbooks
+inputs:
+- name: GL cash balance and transactions
+  required: true
+  source: the connected accounting datasource
+  fallback: none
+- name: bank statement
+  required: true
+  source: the user — no accounting datasource exposes one
+  fallback: the book side is built and the statement requested; the reconciliation is reported
+    as not completed
+- name: banking or payments datasource
+  required: false
+  source: checked at Gate 1 before assuming the statement is unavailable
+  fallback: ask the user
+outputs:
+- name: reconciliation summary
+  type: document
+  dest: workspace, entity, account, period, and whether a statement was supplied
+- name: matched and unmatched lists
+  type: tables
+  dest: each match carries the method that produced it; unmatched items are classified
+- name: exception log
+  type: table
+  dest: recommended action, owner and target date per item
+- name: coverage sheet
+  type: table
+  dest: 'per task: verdict, tool, policy, mock flag, and the gap'
+- name: workbook
+  type: .xlsx
+  dest: Bank_Rec_[Account]_[YYYY-MM].xlsx, naming its datasource, entity and account
+never:
+- Label a book-to-book comparison a reconciliation.
+- Report cash as reconciled without a statement.
+- Disguise a missing statement with a book-side total.
+- Post an adjusting entry or mark an item cleared.
 upstream:
   repo: MosoFin/mosofin-finance-skills
   path: skills/bank-reconciliation
   ref: main
 license: agpl-3.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:31a56e737c65229c
 upstream_sha: ac12d064e857
 last_checked: 2026-09-20

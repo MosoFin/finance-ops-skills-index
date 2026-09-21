@@ -4,7 +4,7 @@
 
 A graded, continuously-verified index of agent skills for accounting and finance.
 
-**66 skills** · **56 graded** · **10 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
+**66 skills** · **66 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -60,7 +60,7 @@ Ordered by when you need it, not alphabetically.
   `GRADED` `READ-ONLY` `STATEFUL` `AUDIT-TRAIL` `HUMAN-APPROVAL` `TIE-CHECKED`  
   A stateful month-end checklist for one period. Generates tasks from the client's close calendar, tracks status across sessions, and names the skill that fits the next open task. Tracks and suggests — it runs nothing and posts nothing.
 - **[Month-End Close Checklist](skills/month-end-close-checklist/README.md)** — Mosofin published  
-  `UNGRADED`  
+  `GRADED` `READ-ONLY` `TIE-CHECKED` `MATERIALITY-AWARE` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `STATEFUL`  
   Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the checklist from the entity's actual chart of accounts, pre-populates the status of every task that leaves ledger evidence, and runs a final tie-out including inter-period continuity.
 
 ### 2 · Data hygiene
@@ -70,6 +70,12 @@ Ordered by when you need it, not alphabetically.
 - **[Categorize Transactions](skills/categorize-transactions/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `EVIDENCE-GATED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `DETERMINISTIC-MATH` `POLICY-CAPTURING`  
   Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
+- **[Expense Report Processor](skills/expense-report-processor/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `PII-MINIMISING`  
+  Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — codes against the real chart of accounts, matches claims against already-posted transactions, and checks reimbursement and card-clearing balances.
+- **[GL Coding Assistant](skills/gl-coding-assistant/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
+  Assigns GL accounts, expense categories, and tax codes against the real chart of accounts, grounding every suggestion in how this entity has actually coded the same vendor before. Outputs confidence ratings, reasoning, evidence.
 - **[bulk-operations](skills/hs-bulk-operations/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `AUDIT-TRAIL`  
   Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, pagination, dry-run/digest/confirm for destructive ops, and `hubspot history` for recovery. Every other skill builds on this one.
@@ -79,6 +85,9 @@ Ordered by when you need it, not alphabetically.
 - **[crm-lookup](skills/hs-crm-lookup/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations for the full account picture.
+- **[Invoice Data Extractor](skills/invoice-data-extractor/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
+  Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
 - **[pdf](skills/pdf/README.md)** — Third party  
   `GRADED` `READ-ONLY`  
   Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
@@ -91,15 +100,6 @@ Ordered by when you need it, not alphabetically.
 - **[shopify-admin](skills/shopify-admin/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
   Write or explain **Admin GraphQL** queries and mutations for apps and integrations that extend the Shopify admin. Use when the user wants to **understand, design, or generate** the operation itself—even before deciding how to run it. Do **not** choose `admin` first for **app monetization**—charging merchants for the app itself via app pricing plans, paid app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the user is maintaining an existing Manual Pricing integration or explicitly needs an Admin Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans, subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups, inventory changes).
-- **[Expense Report Processor](skills/expense-report-processor/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — codes against the real chart of accounts, matches claims against already-posted transactions, and checks reimbursement and card-clearing balances.
-- **[GL Coding Assistant](skills/gl-coding-assistant/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Assigns GL accounts, expense categories, and tax codes against the real chart of accounts, grounding every suggestion in how this entity has actually coded the same vendor before. Outputs confidence ratings, reasoning, evidence.
-- **[Invoice Data Extractor](skills/invoice-data-extractor/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
 
 ### 3 · Reconcile
 
@@ -108,9 +108,15 @@ Ordered by when you need it, not alphabetically.
 - **[Aging Review](skills/aging-review/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND` `AUDIT-TRAIL`  
   Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and credit-balance items, then drafts collections notes and a proposed payment run. Cross-foots the aging to the ledger before any of it is believed.
+- **[A/R Aging and Collections](skills/ar-aging-and-collections/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `CLIENT-FACING` `NO-AUTO-SEND` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
+  Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
 - **[Bank Rec](skills/bank-rec/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Reconciles one bank or credit-card account for one period. Matches statement lines against ledger transactions with a deterministic script; the script's leftovers are the work list. Done means the difference is zero, computed.
+- **[Bank Reconciliation](skills/bank-reconciliation/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
+  Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
 - **[Gmail triage (gws-gmail-triage)](skills/gws-gmail-triage/README.md)** — Third party  
   `GRADED` `READ-ONLY`  
   Google's official Gmail triage skill. Pairs with aging-review, where the collections follow-up and the client's reply both arrive by mail.
@@ -127,7 +133,7 @@ Ordered by when you need it, not alphabetically.
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes PayPal developer questions to the right command or reference file.
 - **[chase-overdue-invoices](skills/qb-chase-overdue-invoices/README.md)** — Third party  
-  `GRADED` `SENDS-EXTERNALLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  `GRADED` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
 - **[shopify-customer](skills/shopify-customer/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY` `PII-MINIMISING`  
@@ -144,12 +150,6 @@ Ordered by when you need it, not alphabetically.
 - **[Stripe Pay](skills/stripe-pay/README.md)** — Third party  
   `GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
-- **[A/R Aging and Collections](skills/ar-aging-and-collections/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
-- **[Bank Reconciliation](skills/bank-reconciliation/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
 
 ### 4 · Adjust
 
@@ -158,6 +158,9 @@ Ordered by when you need it, not alphabetically.
 - **[Accruals](skills/accruals/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   Proposes and reviews accruals, prepaid amortization, and deferrals for a period — recurring accruals, reversals due, missing accruals from open bills, schedule releases. Accrual basis only; stops on cash basis.
+- **[Journal Entry Builder](skills/journal-entry-builder/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
+  Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
 - **[payroll-employee-onboarding](skills/qb-payroll-employee-onboarding/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `PII-MINIMISING`  
   Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
@@ -167,14 +170,14 @@ Ordered by when you need it, not alphabetically.
 - **[set-base-pay](skills/qb-set-base-pay/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Payroll. Use when the user asks to see current pay, give a raise (absolute, increment, or percentage), reduce or adjust pay, switch between salary and hourly, change pay frequency, or update weekly contracted time for one or more named employees. Reads the current contract first, requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee, qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
-- **[Journal Entry Builder](skills/journal-entry-builder/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
 
 ### 5 · Review
 
 *The skeptical second pass*
 
+- **[Duplicate Invoice Detection](skills/duplicate-invoice-detection/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `PII-MINIMISING`  
+  Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
 - **[Flux](skills/flux/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Period-over-period variance analysis as a disciplined loop — isolate, drill, hypothesise, verify, explain. Commentary is earned from transactions, never invented from account names.
@@ -184,15 +187,12 @@ Ordered by when you need it, not alphabetically.
 - **[analyze-payroll-cost](skills/qb-analyze-payroll-cost/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED`  
   Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
+- **[Three-Way Match](skills/three-way-match/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
+  Matches purchase orders, goods receipts, and vendor invoices line by line across the full population where the workspace holds POs and item receipts. Proposes only — pays nothing, releases nothing.
 - **[Tie-Out](skills/tie-out/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Ties every balance-sheet account to a source — subledger, statement, or schedule — and produces a green/red schedule. The close's backbone: red until tied.
-- **[Duplicate Invoice Detection](skills/duplicate-invoice-detection/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
-- **[Three-Way Match](skills/three-way-match/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Matches purchase orders, goods receipts, and vendor invoices line by line across the full population where the workspace holds POs and item receipts. Proposes only — pays nothing, releases nothing.
 
 ### 6 · Report
 
@@ -213,6 +213,9 @@ Ordered by when you need it, not alphabetically.
 - **[Explain To Client](skills/explain-to-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `DETERMINISTIC-MATH` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND`  
   Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
+- **[Financial Statement Builder](skills/financial-statement-builder/README.md)** — Mosofin published  
+  `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
+  Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
 - **[Google Sheets (gws-sheets)](skills/gws-sheets/README.md)** — Third party  
   `GRADED` `WRITES-DIRECT`  
   Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers and hand-built budgets actually live.
@@ -240,9 +243,6 @@ Ordered by when you need it, not alphabetically.
 - **[xlsx](skills/xlsx/README.md)** — Third party  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED`  
   Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
-- **[Financial Statement Builder](skills/financial-statement-builder/README.md)** — Mosofin published  
-  `UNGRADED`  
-  Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
 
 ### 7 · Forward-looking
 

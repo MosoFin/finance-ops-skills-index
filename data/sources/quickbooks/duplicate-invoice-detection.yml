@@ -6,16 +6,59 @@ stage: 5
 summary: Ten detection rules for duplicate and fraudulent AP invoices run against live bills,
   payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run
   because Mosofin deliberately does not expose vendor bank details.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+- PII-MINIMISING
+tier_notes:
+  READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when
+    the connection's effective_policy enables them — 'a permission to write is not an instruction
+    to write'. A step that would need a write becomes a manual task with the artefact handed
+    to a person, said plainly in the output so nobody assumes it was done.
+  EVIDENCE-GATED: 'Nine of its ten detection rules run as direct queries against live bills,
+    payments and the vendor master. The tenth cannot run, and the skill says why rather than
+    approximating it: Mosofin deliberately does not expose vendor bank details. Suspects carry
+    confidence ratings and supporting evidence, not verdicts.'
+  PII-MINIMISING: Vendor bank details are outside what the platform exposes at all, and internal
+    numeric tenant ids are never printed.
+  PROVENANCE-STAMPED: 'Ends with a Data sources line naming the calls and their retrieval
+    time, and carries a coverage sheet: one row per task with its verdict (auto, gated or
+    manual), the tool used, the policy, whether any figure rests on mock data, and the named
+    gap for anything unverified.'
 systems:
 - quickbooks
+inputs:
+- name: bills, payments and vendor master
+  required: true
+  source: the connected accounting datasource
+  fallback: an uploaded AP register or payment history
+- name: entity profile
+  required: false
+  source: there is no company-profile tool, so base currency, fiscal calendar, region and
+    time zone become questions
+  fallback: ask
+outputs:
+- name: duplicate-suspect list
+  type: table
+  dest: with confidence rating and the evidence behind each
+- name: coverage sheet
+  type: table
+  dest: including the bank-account rule as a named, unrunnable gap
+never:
+- Report the bank-account rule as run.
+- Void or delete a suspected duplicate.
+- Serve as general fraud detection across all transaction types.
 upstream:
   repo: MosoFin/mosofin-finance-skills
   path: skills/duplicate-invoice-detection
   ref: main
 license: agpl-3.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:5594c83387a77ab5
 upstream_sha: ac12d064e857
 last_checked: 2026-09-20

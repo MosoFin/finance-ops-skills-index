@@ -42,39 +42,39 @@ All ten are bookkeeping skills — the only vendor set that is.
 
 **1 · Orchestration**
 
-- [Month-End Close Checklist](../../skills/month-end-close-checklist/README.md) — `UNGRADED`
+- [Month-End Close Checklist](../../skills/month-end-close-checklist/README.md) — `GRADED` `READ-ONLY` `TIE-CHECKED` `MATERIALITY-AWARE` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `STATEFUL`
 
 **2 · Data hygiene**
 
 - [Categorize Transactions](../../skills/categorize-transactions/README.md) — `GRADED` `PROPOSES-WRITES` `EVIDENCE-GATED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `DETERMINISTIC-MATH` `POLICY-CAPTURING`
-- [Expense Report Processor](../../skills/expense-report-processor/README.md) — `UNGRADED`
-- [GL Coding Assistant](../../skills/gl-coding-assistant/README.md) — `UNGRADED`
-- [Invoice Data Extractor](../../skills/invoice-data-extractor/README.md) — `UNGRADED`
+- [Expense Report Processor](../../skills/expense-report-processor/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `PII-MINIMISING`
+- [GL Coding Assistant](../../skills/gl-coding-assistant/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
+- [Invoice Data Extractor](../../skills/invoice-data-extractor/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 - [email-to-estimate-invoice](../../skills/qb-email-to-estimate-invoice/README.md) — `GRADED` `PROPOSES-WRITES` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 **3 · Reconcile**
 
 - [Aging Review](../../skills/aging-review/README.md) — `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND` `AUDIT-TRAIL`
-- [A/R Aging and Collections](../../skills/ar-aging-and-collections/README.md) — `UNGRADED`
+- [A/R Aging and Collections](../../skills/ar-aging-and-collections/README.md) — `GRADED` `READ-ONLY` `CLIENT-FACING` `NO-AUTO-SEND` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 - [Bank Rec](../../skills/bank-rec/README.md) — `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
-- [Bank Reconciliation](../../skills/bank-reconciliation/README.md) — `UNGRADED`
-- [chase-overdue-invoices](../../skills/qb-chase-overdue-invoices/README.md) — `GRADED` `SENDS-EXTERNALLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
+- [Bank Reconciliation](../../skills/bank-reconciliation/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
+- [chase-overdue-invoices](../../skills/qb-chase-overdue-invoices/README.md) — `GRADED` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 **4 · Adjust**
 
 - [Accruals](../../skills/accruals/README.md) — `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `POLICY-CAPTURING` `AUDIT-TRAIL`
-- [Journal Entry Builder](../../skills/journal-entry-builder/README.md) — `UNGRADED`
+- [Journal Entry Builder](../../skills/journal-entry-builder/README.md) — `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 - [payroll-employee-onboarding](../../skills/qb-payroll-employee-onboarding/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `PII-MINIMISING`
 - [payroll-help](../../skills/qb-payroll-help/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED`
 - [set-base-pay](../../skills/qb-set-base-pay/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 **5 · Review**
 
-- [Duplicate Invoice Detection](../../skills/duplicate-invoice-detection/README.md) — `UNGRADED`
+- [Duplicate Invoice Detection](../../skills/duplicate-invoice-detection/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `PII-MINIMISING`
 - [Flux](../../skills/flux/README.md) — `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 - [JE Review](../../skills/je-review/README.md) — `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`
 - [analyze-payroll-cost](../../skills/qb-analyze-payroll-cost/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED`
-- [Three-Way Match](../../skills/three-way-match/README.md) — `UNGRADED`
+- [Three-Way Match](../../skills/three-way-match/README.md) — `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 - [Tie-Out](../../skills/tie-out/README.md) — `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 
 **6 · Report**
@@ -82,7 +82,7 @@ All ten are bookkeeping skills — the only vendor set that is.
 - [Board Pack](../../skills/board-pack/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND`
 - [Budget vs Actuals](../../skills/budget-vs-actuals/README.md) — `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`
 - [Dashboard](../../skills/dashboard/README.md) — `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
-- [Financial Statement Builder](../../skills/financial-statement-builder/README.md) — `UNGRADED`
+- [Financial Statement Builder](../../skills/financial-statement-builder/README.md) — `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 - [business-health-check](../../skills/qb-business-health-check/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `INJECTION-AWARE` `PROVENANCE-STAMPED` `HUMAN-APPROVAL`
 - [industry-benchmark](../../skills/qb-industry-benchmark/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `PROVENANCE-STAMPED`
 

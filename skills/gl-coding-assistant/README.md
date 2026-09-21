@@ -2,7 +2,7 @@
 
 # GL Coding Assistant
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 
 Assigns GL accounts, expense categories, and tax codes against the real chart of accounts, grounding every suggestion in how this entity has actually coded the same vendor before. Outputs confidence ratings, reasoning, evidence.
 
@@ -15,10 +15,34 @@ Assigns GL accounts, expense categories, and tax codes against the real chart of
 | Source | [`MosoFin/mosofin-finance-skills/skills/gl-coding-assistant`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+- **`EVIDENCE-GATED`** — Every suggestion is grounded in how this entity has actually coded the same vendor before, against the real chart of accounts — not in a general notion of where an expense belongs. Suggestions carry confidence ratings and their reasoning.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `transactions to code` | **yes** | user paste, or a bank or card export | none |
+| `live chart of accounts` | **yes** | the connected accounting datasource | ask for a chart export |
+| `prior coding history` | **yes** | how this entity coded the same vendor before | the suggestion is weaker and says so |
+| `tax jurisdiction` | no | entity profile or interview | tax codes become a question |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| coded transaction list | table | account, confidence, reasoning and evidence per line |
+| coverage sheet | table | per task verdict, tool, policy and gap |
+
+## What it will not do
+
+- Post the coding — that is journal-entry-builder, and a person posts it.
+- Design the chart of accounts — that is a separate skill.
 
 ## Data reachability
 
@@ -32,7 +56,9 @@ Assigns GL accounts, expense categories, and tax codes against the real chart of
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no workspace |
+
+Requires from the host: a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

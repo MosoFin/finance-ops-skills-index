@@ -2,7 +2,7 @@
 
 # Three-Way Match
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 
 Matches purchase orders, goods receipts, and vendor invoices line by line across the full population where the workspace holds POs and item receipts. Proposes only — pays nothing, releases nothing.
 
@@ -15,10 +15,34 @@ Matches purchase orders, goods receipts, and vendor invoices line by line across
 | Source | [`MosoFin/mosofin-finance-skills/skills/three-way-match`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/three-way-match) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. It pays nothing and releases nothing.
+- **`TIE-CHECKED`** — Line-by-line comparison across purchase order, goods receipt and invoice, producing an exception list rather than a verdict of its own.
+- **`EVIDENCE-GATED`** — A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified. The coverage and provenance sheet is mandatory here, not optional.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `purchase orders and item receipts` | **yes** | the workspace, where it holds them | document-by-document matching from uploads |
+| `vendor invoices` | **yes** | the workspace or upload | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| match result | table | line by line across the three documents |
+| exception list | table | quantity, price and receipt discrepancies |
+| coverage and provenance sheet | table | mandatory |
+
+## What it will not do
+
+- Release a payment or approve an invoice.
+- Run duplicate detection or invoice extraction — those are separate skills.
 
 ## Data reachability
 
@@ -32,7 +56,9 @@ Matches purchase orders, goods receipts, and vendor invoices line by line across
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no scripts, no workspace |
+
+Requires from the host: script execution, a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

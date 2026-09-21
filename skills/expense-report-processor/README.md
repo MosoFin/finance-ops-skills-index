@@ -2,7 +2,7 @@
 
 # Expense Report Processor
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `PII-MINIMISING`
 
 Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — codes against the real chart of accounts, matches claims against already-posted transactions, and checks reimbursement and card-clearing balances.
 
@@ -15,10 +15,35 @@ Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — 
 | Source | [`MosoFin/mosofin-finance-skills/skills/expense-report-processor`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/expense-report-processor) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. The GL posting it builds is a proposal.
+- **`EVIDENCE-GATED`** — Codes against the real chart of accounts, matches claims against transactions already posted, and checks the reimbursement and card-clearing balances rather than assuming the report is self-consistent.
+- **`PII-MINIMISING`** — Handles employee expense data and never prints internal tenant identifiers.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `expense report export` | **yes** | Concur, Expensify, Brex, Pleo, Spendesk, Soldo or any T&amp;E tool | a pasted report |
+| `live chart of accounts` | **yes** | the connected accounting datasource | coding becomes a named gap |
+| `expense policy` | no | user or entity profile | policy validation is a named gap |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| policy-validated report | table | per claim, with exceptions flagged |
+| proposed GL posting | entry | coded, with reimbursement and card-clearing amounts computed |
+| coverage sheet | table | per task verdict, tool, policy and gap |
+
+## What it will not do
+
+- Post the reimbursement or the GL entry.
+- Handle vendor invoices or petty cash — those are separate skills.
 
 ## Data reachability
 
@@ -33,7 +58,9 @@ Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — 
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no workspace |
+
+Requires from the host: a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

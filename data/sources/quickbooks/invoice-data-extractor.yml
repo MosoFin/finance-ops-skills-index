@@ -6,17 +6,57 @@ stage: 2
 summary: Extracts structured fields from vendor invoice PDFs and images, then validates each
   against the vendor master, posted transaction history, and the Bill-To entity — catching
   duplicates before they are paid.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when
+    the connection's effective_policy enables them — 'a permission to write is not an instruction
+    to write'. A step that would need a write becomes a manual task with the artefact handed
+    to a person, said plainly in the output so nobody assumes it was done.
+  EVIDENCE-GATED: Extraction is semantic rather than raw OCR, and every extracted invoice
+    is validated against the vendor master, the posted transaction history and the Bill-To
+    entity — catching a duplicate before it is paid rather than after.
+  PROVENANCE-STAMPED: 'Ends with a Data sources line naming the calls and their retrieval
+    time, and carries a coverage sheet: one row per task with its verdict (auto, gated or
+    manual), the tool used, the policy, whether any figure rests on mock data, and the named
+    gap for anything unverified.'
 systems:
 - quickbooks
 - pdf
+inputs:
+- name: vendor invoice
+  required: true
+  source: PDF, image or scan
+  fallback: none
+- name: vendor master and posted history
+  required: true
+  source: the connected accounting datasource
+  fallback: extraction proceeds; validation becomes a named gap
+outputs:
+- name: structured invoice row
+  type: table
+  dest: vendor, dates, amounts, line items, tax breakdown, payment instructions
+- name: validation result
+  type: table
+  dest: vendor match, duplicate check, Bill-To entity check
+- name: coverage sheet
+  type: table
+  dest: per task verdict, tool, policy and gap
+never:
+- Post the entry — pair with journal-entry-builder, and a person posts it.
+- Do OCR alone without extracting meaning.
 upstream:
   repo: MosoFin/mosofin-finance-skills
   path: skills/invoice-data-extractor
   ref: main
 license: agpl-3.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:2e056d89c2ac2261
 upstream_sha: ac12d064e857
 last_checked: 2026-09-20

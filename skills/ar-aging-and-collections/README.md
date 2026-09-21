@@ -2,7 +2,7 @@
 
 # A/R Aging and Collections
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `CLIENT-FACING` `NO-AUTO-SEND` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 
 Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
 
@@ -15,10 +15,36 @@ Pulls live A/R, builds and reconciles an aging, prioritizes collections, calcula
 | Source | [`MosoFin/mosofin-finance-skills/skills/ar-aging-and-collections`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. No payments applied, no balances written off, no reminders sent.
+- **`NO-AUTO-SEND`** — All correspondence is marked REVIEW REQUIRED - NOT SENT. This is the direct counterpart to Intuit's chase-overdue-invoices, which sends; both are defensible, and the difference is the point of grading them.
+- **`EVIDENCE-GATED`** — Will not invent a dispute, credit hold, payment promise, late fee, service suspension or legal action. Where the aging is accrual-only it asks whether accrual basis is acceptable before reading data, rather than reading first and caveating afterwards.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `A/R and open invoices` | **yes** | the connected accounting datasource | upload |
+| `accounting basis` | **yes** | confirmed with the user before reading, when only accrual is available | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| reconciled aging | table | normalised and tied before analysis |
+| collections priority | table | with receivables metrics such as DSO |
+| draft correspondence | text | every piece marked REVIEW REQUIRED - NOT SENT |
+| coverage sheet | table | per task verdict, tool, policy and gap |
+
+## What it will not do
+
+- Send a reminder.
+- Apply a payment or write off a balance.
+- Invent a dispute, promise, late fee or legal step.
 
 ## Data reachability
 
@@ -32,7 +58,9 @@ Pulls live A/R, builds and reconciles an aging, prioritizes collections, calcula
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no workspace |
+
+Requires from the host: a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

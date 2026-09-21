@@ -6,16 +6,66 @@ stage: 3
 summary: Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates
   receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs,
   invoice creation, or sending.
-tiers: []
+tiers:
+- READ-ONLY
+- CLIENT-FACING
+- NO-AUTO-SEND
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+- AUDIT-TRAIL
+tier_notes:
+  READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when
+    the connection's effective_policy enables them — 'a permission to write is not an instruction
+    to write'. A step that would need a write becomes a manual task with the artefact handed
+    to a person, said plainly in the output so nobody assumes it was done. No payments applied,
+    no balances written off, no reminders sent.
+  NO-AUTO-SEND: All correspondence is marked REVIEW REQUIRED - NOT SENT. This is the direct
+    counterpart to Intuit's chase-overdue-invoices, which sends; both are defensible, and
+    the difference is the point of grading them.
+  EVIDENCE-GATED: Will not invent a dispute, credit hold, payment promise, late fee, service
+    suspension or legal action. Where the aging is accrual-only it asks whether accrual basis
+    is acceptable before reading data, rather than reading first and caveating afterwards.
+  PROVENANCE-STAMPED: 'Ends with a Data sources line naming the calls and their retrieval
+    time, and carries a coverage sheet: one row per task with its verdict (auto, gated or
+    manual), the tool used, the policy, whether any figure rests on mock data, and the named
+    gap for anything unverified.'
 systems:
 - quickbooks
+inputs:
+- name: A/R and open invoices
+  required: true
+  source: the connected accounting datasource
+  fallback: upload
+- name: accounting basis
+  required: true
+  source: confirmed with the user before reading, when only accrual is available
+  fallback: none
+outputs:
+- name: reconciled aging
+  type: table
+  dest: normalised and tied before analysis
+- name: collections priority
+  type: table
+  dest: with receivables metrics such as DSO
+- name: draft correspondence
+  type: text
+  dest: every piece marked REVIEW REQUIRED - NOT SENT
+- name: coverage sheet
+  type: table
+  dest: per task verdict, tool, policy and gap
+never:
+- Send a reminder.
+- Apply a payment or write off a balance.
+- Invent a dispute, promise, late fee or legal step.
 upstream:
   repo: MosoFin/mosofin-finance-skills
   path: skills/ar-aging-and-collections
   ref: main
 license: agpl-3.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:c381b58714db19ba
 upstream_sha: ac12d064e857
 last_checked: 2026-09-20

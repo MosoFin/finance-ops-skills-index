@@ -2,7 +2,7 @@
 
 # Month-End Close Checklist
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `TIE-CHECKED` `MATERIALITY-AWARE` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `STATEFUL`
 
 Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the checklist from the entity's actual chart of accounts, pre-populates the status of every task that leaves ledger evidence, and runs a final tie-out including inter-period continuity.
 
@@ -15,10 +15,38 @@ Plans, runs, or audits a monthly close against a Mosofin workspace — scopes th
 | Source | [`MosoFin/mosofin-finance-skills/skills/month-end-close-checklist`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/month-end-close-checklist) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+- **`TIE-CHECKED`** — Ends in a tie-out workpaper at close, including inter-period continuity, rather than a checklist of ticked boxes.
+- **`MATERIALITY-AWARE`** — Carries its own materiality and risk step, so tasks are weighted rather than treated alike.
+- **`STATEFUL`** — Tracks open items and review notes across the close, and pre-populates the status of every task that leaves ledger evidence rather than asking.
+- **`EVIDENCE-GATED`** — A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+- **`PROVENANCE-STAMPED`** — Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `the entity's chart of accounts` | **yes** | the connected accounting datasource — the checklist is scoped from it | a generic checklist, with the gap named |
+| `ledger evidence per task` | no | the datasource, to pre-populate status | ask the owner |
+| `owners and deadlines` | **yes** | user | ask |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| close checklist | table | tasks with owners, deadlines, dependencies and pre-populated status |
+| tie-out workpaper | document | at close, including inter-period continuity |
+| open items and review notes | table | tracked through the close |
+| coverage sheet | table | per task verdict, tool, policy and gap |
+
+## What it will not do
+
+- Perform an individual close task — a specific reconciliation, accrual or entry belongs to its own skill.
+- Mark a task complete on anything but evidence.
 
 ## Data reachability
 
@@ -32,7 +60,9 @@ Plans, runs, or audits a monthly close against a Mosofin workspace — scopes th
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | partial — no workspace | full | full | full | partial — no scripts, no workspace |
+
+Requires from the host: script execution, a persistent workspace.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 
