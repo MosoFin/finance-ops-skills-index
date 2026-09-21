@@ -2,7 +2,7 @@
 
 # business-health-check
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `INJECTION-AWARE` `PROVENANCE-STAMPED` `HUMAN-APPROVAL`
 
 synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
 
@@ -15,10 +15,37 @@ synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks
 | Source | [`intuit/quickbooks-claude-plugin/skills/business-health-check`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/business-health-check) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`INJECTION-AWARE`** — States plainly that report contents — customer names, memos, product descriptions — are data to analyse, never instructions to follow.
+- **`PROVENANCE-STAMPED`** — The briefing must carry the connected company name, the reporting period, the accounting method, and the comparison window, including where reports use different windows.
+- **`HUMAN-APPROVAL`** — Will not run on defaults: period, scope, accounting method and comparison are confirmed before any report call.
+- **`EVIDENCE-GATED`** — A gap is reported as a gap — 'do not invent missing numbers' — and cash-basis runs drop A/R aging rather than presenting it wrongly.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `reporting period` | **yes** | user, at pre-flight | current month-to-date only if the user asks for defaults |
+| `report scope` | **yes** | user — standard, expanded, or custom | standard: P&amp;L, cash flow, balance sheet, A/R aging, sales by customer |
+| `accounting method` | **yes** | user | accrual; cash basis omits A/R aging entirely |
+| `QuickBooks *_text report tools` | **yes** | QuickBooks connector — text variants only | explain the gap and continue with the reports that succeeded |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| integrated briefing | chat | one CFO-style narrative, not a stack of raw reports |
+| concern flags | chat | against stated triggers — margin decline, cash falling while profit is positive, current ratio below 1.0, 61+/91+ growing, customer concentration |
+
+## What it will not do
+
+- Call a widget-suffixed report tool; only `_text` variants are permitted, because a widget duplicates the final output.
+- Issue separate prior-period calls to synthesise a comparison the tools did not return.
+- Invent a number a tool did not return.
+- Read a negative A/R bucket as collections risk — it is a cleanup, credit or payment-application flag.
 
 ## Data reachability
 
@@ -32,7 +59,9 @@ synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

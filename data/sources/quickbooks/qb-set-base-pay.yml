@@ -9,16 +9,57 @@ summary: Set, view, or change employee base pay (salary or hourly rate) in Quick
   weekly contracted time for one or more named employees. Reads the current contract first,
   requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee,
   qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  PROPOSES-WRITES: Saves employee contract pay, but only after an explicit approval of the
+    computed before-and-after.
+  EVIDENCE-GATED: Reads the current contract before proposing anything, and will not claim
+    success until read-back confirms the approved values. Refuses to convert currencies —
+    it asks for the exact amount to save.
+  HUMAN-APPROVAL: 'Ambiguity stops the run rather than resolving itself: two name matches,
+    conflicting changes for one employee, or a group named without individuals all become
+    questions.'
 systems:
 - quickbooks
+inputs:
+- name: named employees and requested change
+  required: true
+  source: user
+  fallback: a broad group without names is refused — it will not discover a roster
+- name: qbo_payroll_search_employee
+  required: true
+  source: QuickBooks Payroll
+  fallback: 0 matches asks for a corrected name; 2+ shows candidates and asks
+- name: qbo_payroll_get_employee_contract_details
+  required: true
+  source: QuickBooks Payroll
+  fallback: none — current contract is read before any proposal
+outputs:
+- name: current pay summary
+  type: chat
+  dest: 'read-only path: pay type, rate, frequency, weekly contracted time, then stop'
+- name: saved contract
+  type: payroll write
+  dest: QuickBooks Payroll, verified by read-back
+- name: Open in QuickBooks handoff
+  type: link
+  dest: only after a verified change
+never:
+- Update an inactive employee — it is skipped and the status reported.
+- Convert currencies.
+- Apply a field it cannot save, such as an effective date, without saying so.
+- Process more than ten named employees in one batch.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/set-base-pay
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:7beb7d6f2a0a36db
 upstream_sha: 6db49c4f8ed3
 last_checked: 2026-09-20

@@ -9,16 +9,66 @@ summary: Turn a customer email thread into a ready-to-send QuickBooks estimate o
   and send it to them", "turn this email into an invoice", "make an estimate from this thread",
   or wants to go from an email conversation to a QuickBooks sales document without re-keying
   line items.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- SENDS-EXTERNALLY
+- CLIENT-FACING
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  PROPOSES-WRITES: Creates customers, products and sales documents in QuickBooks. Each record
+    type needs its own explicit yes — the skill states that asking for an invoice is not consent
+    to create the customer or product behind it.
+  SENDS-EXTERNALLY: Emails the estimate or invoice to the customer, after a draft preview
+    and an explicit approval.
+  EVIDENCE-GATED: Line items come from the email thread; gaps are questions, not guesses.
+    If the thread cannot be found it stops rather than inventing content.
+  HUMAN-APPROVAL: One successful create only. A wrong draft is reported and discussed, never
+    silently re-created — and a schema validation failure is retried once, not looped.
 systems:
 - quickbooks
+inputs:
+- name: email thread
+  required: true
+  source: whichever email connector is installed — Gmail, Outlook, IMAP or third-party
+  fallback: offer to set a connector up, or let the user paste the thread; never invent content
+- name: qbo_contact_search_customer
+  required: true
+  source: QuickBooks
+  fallback: propose the customer to create and wait for a yes
+- name: qbo_catalog_search_products
+  required: true
+  source: QuickBooks
+  fallback: stop, show the proposed product, wait for a yes
+- name: document type
+  required: true
+  source: inferred from bill/quote language
+  fallback: ask once when ambiguous
+outputs:
+- name: extraction table
+  type: chat
+  dest: line items with unit price and extended amount kept separate
+- name: estimate or invoice
+  type: QuickBooks write
+  dest: created once as a draft, total compared against the email total
+- name: sent document
+  type: email to the customer
+  dest: only after the draft preview is approved
+never:
+- Put an extended line total in `amount` — it is the unit rate, and QuickBooks multiplies
+  by quantity. Getting this wrong inflates an invoice by orders of magnitude.
+- Auto-create a customer or product.
+- Create a second document to fix a bad first one.
+- Set `taxable` unless the user or the thread stated it.
+- Give tax, legal or collections advice.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/email-to-estimate-invoice
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:b246cf48095e1acf
 upstream_sha: 6db49c4f8ed3
 last_checked: 2026-09-20

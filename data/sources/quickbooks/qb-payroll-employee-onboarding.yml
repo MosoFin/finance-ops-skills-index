@@ -11,16 +11,62 @@ summary: Onboard a new hire into QuickBooks Payroll from user-provided details o
   actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee
   pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions,
   time off, or compliance advice.
-tiers: []
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+- PII-MINIMISING
+tier_notes:
+  PROPOSES-WRITES: Creates and updates payroll employees, assigns work locations and saves
+    contract pay — all behind a consolidated approval listing every action and payload.
+  HUMAN-APPROVAL: Exact values must be shown; 'standard setup' is explicitly forbidden as
+    a way to hide a change. A correction that alters the payload re-opens confirmation.
+  EVIDENCE-GATED: Searches before creating because create is not idempotent, warns on likely
+    duplicates, and reads back through a tool before reporting success. Never invents an id,
+    rate or address.
+  PII-MINIMISING: Never collects, displays or stores SSNs, tax identifiers, bank account or
+    routing numbers in chat — those are routed to the guided QuickBooks Payroll flow.
 systems:
 - quickbooks
+inputs:
+- name: new hire details
+  required: true
+  source: user, or an offer letter / roster file
+  fallback: confirm the extracted draft before any payroll lookup
+- name: qbo_payroll_search_employee
+  required: true
+  source: QuickBooks Payroll
+  fallback: none — search before create is mandatory
+- name: work_location_id
+  required: false
+  source: an existing company work location
+  fallback: cannot create one; present as an in-product next step
+outputs:
+- name: employee record
+  type: payroll write
+  dest: QuickBooks Payroll, after approval and verified by read-back
+- name: contract pay details
+  type: payroll write
+  dest: pay type, rate and frequency, or weekly contracted time for salary
+- name: readiness gaps
+  type: chat
+  dest: setup that must be finished in QuickBooks Payroll rather than improvised here
+- name: Open in QuickBooks handoff
+  type: link
+  dest: only when a change was verified, never with an invented employee id
+never:
+- Collect or display an SSN, tax identifier, or bank details in chat.
+- Blindly retry a create after a timeout — it is not idempotent.
+- Claim write support for gender, birth date, direct deposit, tax setup, benefits or deductions.
+- Report success before read-back confirms it.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/payroll-employee-onboarding
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:1de324182880658b
 upstream_sha: 6db49c4f8ed3
 last_checked: 2026-09-20

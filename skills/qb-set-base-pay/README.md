@@ -2,7 +2,7 @@
 
 # set-base-pay
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Payroll. Use when the user asks to see current pay, give a raise (absolute, increment, or percentage), reduce or adjust pay, switch between salary and hourly, change pay frequency, or update weekly contracted time for one or more named employees. Reads the current contract first, requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee, qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
 
@@ -15,10 +15,36 @@ Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Pay
 | Source | [`intuit/quickbooks-claude-plugin/skills/set-base-pay`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/set-base-pay) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Saves employee contract pay, but only after an explicit approval of the computed before-and-after.
+- **`EVIDENCE-GATED`** — Reads the current contract before proposing anything, and will not claim success until read-back confirms the approved values. Refuses to convert currencies — it asks for the exact amount to save.
+- **`HUMAN-APPROVAL`** — Ambiguity stops the run rather than resolving itself: two name matches, conflicting changes for one employee, or a group named without individuals all become questions.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `named employees and requested change` | **yes** | user | a broad group without names is refused — it will not discover a roster |
+| `qbo_payroll_search_employee` | **yes** | QuickBooks Payroll | 0 matches asks for a corrected name; 2+ shows candidates and asks |
+| `qbo_payroll_get_employee_contract_details` | **yes** | QuickBooks Payroll | none — current contract is read before any proposal |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| current pay summary | chat | read-only path: pay type, rate, frequency, weekly contracted time, then stop |
+| saved contract | payroll write | QuickBooks Payroll, verified by read-back |
+| Open in QuickBooks handoff | link | only after a verified change |
+
+## What it will not do
+
+- Update an inactive employee — it is skipped and the status reported.
+- Convert currencies.
+- Apply a field it cannot save, such as an effective date, without saying so.
+- Process more than ten named employees in one batch.
 
 ## Data reachability
 
@@ -32,7 +58,9 @@ Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Pay
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

@@ -26,6 +26,13 @@ def primary_system(skill: dict) -> str:
     return real[0] if real else AGNOSTIC
 
 
+def known_tiers() -> set[str]:
+    """Badges defined in docs/TRUST-TIERS.md, so none can be invented in passing."""
+    import re as _re
+    text = (ROOT / "docs" / "TRUST-TIERS.md").read_text()
+    return set(_re.findall(r"^\| `([A-Z][A-Z-]+)` \|", text, _re.M))
+
+
 def load_index() -> dict:
     """Skills live under the data source they read: data/sources/<system>/<id>.yml."""
     meta = yaml.safe_load((DATA / "meta.yml").read_text())
@@ -37,6 +44,16 @@ def load_index() -> dict:
         skills.append(sk)
     if misfiled:
         raise SystemExit("skills filed under the wrong data source:\n  " + "\n  ".join(misfiled))
+
+    defined = known_tiers()
+    unknown = sorted(
+        {t for sk in skills for t in (sk.get("tiers") or [])} - defined
+    )
+    if unknown:
+        raise SystemExit(
+            "badges not defined in docs/TRUST-TIERS.md: " + ", ".join(unknown)
+            + "\nA badge is a claim readers rely on — define it before using it."
+        )
     return {**meta, "skills": skills}
 def esc(v) -> str:
     """Escape angle brackets so placeholders like <YYYY-MM> survive Markdown."""

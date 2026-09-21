@@ -2,7 +2,7 @@
 
 # lending
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL`
 
 QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credit, Intuit Business Credit Card (issued by WebBank), and the QuickBooks Business Loan Marketplace. Use to explain how these products work (eligibility, rates, fees, terms), compare or choose between them, estimate loan payments (weekly/monthly payment, total interest, total repayment), and answer questions about the signed-in user's own QuickBooks Capital loans and lines of credit (balance, APR, repayment schedule, payoff, available credit), plus what similar businesses have borrowed. Use proactively when a funding need surfaces from payroll, cash-flow, or invoicing work to check for a drawable line of credit and, with consent, peer offers. Read-only guidance only: never makes payments, draws, or loan changes, and never gives a loan offer, rate, credit limit, or approval decision. Not for loan application status or non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer loans).
 
@@ -15,10 +15,36 @@ QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credi
 | Source | [`intuit/quickbooks-claude-plugin/skills/lending`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/lending) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — No payments, no draws, no loan changes. Servicing tools report the user's own balances and terms; nothing writes.
+- **`EVIDENCE-GATED`** — Pre-auth tools return educational guidance only. The skill never issues a loan offer, rate, credit limit or approval decision, and keeps help, shop and estimate tools to their separate jobs.
+- **`HUMAN-APPROVAL`** — Peer offers are pulled only with consent when a funding need surfaces from other work.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `qbo_lending_get_loans` | no | QuickBooks Capital — the signed-in user's own loans | an empty result means no active or completed loans |
+| `qbo_lending_help` | no | QuickBooks Capital help centre | none |
+| `qbo_lending_estimate_loan_payments` | no | educational calculator | none |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| loan servicing summary | chat | balance, APR, term, repayment status, payoff, available credit |
+| product comparison | widget | ranked guidance on which QuickBooks Capital product fits |
+| payment estimate | calculator | weekly or monthly payment, total interest, total repayment |
+
+## What it will not do
+
+- Act in a way that could constitute an attempt to collect a debt — reporting a balance the user asked for is fine, nudging them to pay is not.
+- Issue a loan offer, rate, credit limit or approval decision.
+- Make a payment, draw on a line of credit, or modify terms.
+- Advise on non-QuickBooks-Capital products such as SBA loans, factoring or merchant cash advances.
 
 ## Data reachability
 
@@ -32,7 +58,9 @@ QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credi
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

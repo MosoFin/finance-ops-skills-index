@@ -7,16 +7,43 @@ summary: Connect and troubleshoot QuickBooks for this plugin. Use when the Quick
   are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks
   plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a
   QuickBooks connection error.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: Diagnoses the connector only. Its one data call is company_info, used to prove
+    the connection works.
+  EVIDENCE-GATED: Checks whether a read-only tool actually succeeds before declaring setup
+    complete, rather than assuming from the presence of a connector.
 systems:
 - quickbooks
+inputs:
+- name: session tool list
+  required: true
+  source: whether qbo_* / quickbooks tools are loaded
+  fallback: none — this is the diagnosis
+- name: Claude surface
+  required: true
+  source: claude.ai, Claude Code, or an org-managed plan
+  fallback: instructions branch per surface
+outputs:
+- name: connection verdict
+  type: chat
+  dest: connected, or the specific step that is failing
+- name: remediation steps
+  type: chat
+  dest: per surface, including the admin path on Team and Enterprise plans
+never:
+- Suggest `claude mcp add` for QuickBooks — a locally added server shadows the claude.ai connector
+  and cannot authenticate, since Intuit rejects the localhost redirect.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/setup
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:03711cad3c3fb8f9
 upstream_sha: 21067205c10c
 last_checked: 2026-09-20

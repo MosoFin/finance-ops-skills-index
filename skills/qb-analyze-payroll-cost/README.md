@@ -2,7 +2,7 @@
 
 # analyze-payroll-cost
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED`
 
 Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
 
@@ -15,10 +15,36 @@ Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay 
 | Source | [`intuit/quickbooks-claude-plugin/skills/analyze-payroll-cost`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — States it outright. Actual compensation changes are routed to a write-capable workflow, not attempted here.
+- **`EVIDENCE-GATED`** — Missing data is unavailable, never zero — a distinction most analysis skills leave implicit and get wrong. Facts and interpretation are separated in the wording: 'the data shows' against 'this may indicate'.
+- **`PROVENANCE-STAMPED`** — Every total is labelled by basis — gross pay, net pay, employer cost, or the returned run total — and the last-payroll-run tool is labelled as one pay schedule rather than company-wide.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `qbo_payroll_get_company_last_payroll_run` | no | QuickBooks Payroll | labelled as the latest returned run only; not treated as company history |
+| `qbo_payroll_get_payslips` | no | QuickBooks Payroll — date ranges and prior-period comparison | say the comparison is limited and analyse what returned |
+| `qbo_payroll_get_payslip_details` | no | QuickBooks Payroll — pay items, taxes, gross-to-net | driver analysis is limited |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| payroll cost analysis | chat | drivers, top-paid employees, period comparison, each total labelled by basis |
+| cost-control ideas | chat | operational and grounded in returned data, never HR, legal or tax advice |
+| limits note | chat | whenever a tool failed or payslip coverage does not span every pay schedule |
+
+## What it will not do
+
+- Treat missing data as zero.
+- Imply a full payroll-expense total unless every relevant cost component supports it.
+- Give legal, tax or compliance advice.
+- Answer from generic payroll knowledge rather than returned data.
 
 ## Data reachability
 
@@ -32,7 +58,9 @@ Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay 
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

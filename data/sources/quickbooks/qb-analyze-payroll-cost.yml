@@ -11,16 +11,57 @@ summary: Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employ
   pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements,
   bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use
   available payroll tools and do not invent payroll facts.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+tier_notes:
+  READ-ONLY: States it outright. Actual compensation changes are routed to a write-capable
+    workflow, not attempted here.
+  EVIDENCE-GATED: 'Missing data is unavailable, never zero — a distinction most analysis skills
+    leave implicit and get wrong. Facts and interpretation are separated in the wording: ''the
+    data shows'' against ''this may indicate''.'
+  PROVENANCE-STAMPED: Every total is labelled by basis — gross pay, net pay, employer cost,
+    or the returned run total — and the last-payroll-run tool is labelled as one pay schedule
+    rather than company-wide.
 systems:
 - quickbooks
+inputs:
+- name: qbo_payroll_get_company_last_payroll_run
+  required: false
+  source: QuickBooks Payroll
+  fallback: labelled as the latest returned run only; not treated as company history
+- name: qbo_payroll_get_payslips
+  required: false
+  source: QuickBooks Payroll — date ranges and prior-period comparison
+  fallback: say the comparison is limited and analyse what returned
+- name: qbo_payroll_get_payslip_details
+  required: false
+  source: QuickBooks Payroll — pay items, taxes, gross-to-net
+  fallback: driver analysis is limited
+outputs:
+- name: payroll cost analysis
+  type: chat
+  dest: drivers, top-paid employees, period comparison, each total labelled by basis
+- name: cost-control ideas
+  type: chat
+  dest: operational and grounded in returned data, never HR, legal or tax advice
+- name: limits note
+  type: chat
+  dest: whenever a tool failed or payslip coverage does not span every pay schedule
+never:
+- Treat missing data as zero.
+- Imply a full payroll-expense total unless every relevant cost component supports it.
+- Give legal, tax or compliance advice.
+- Answer from generic payroll knowledge rather than returned data.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/analyze-payroll-cost
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:fff521688da6d362
 upstream_sha: 6db49c4f8ed3
 last_checked: 2026-09-20

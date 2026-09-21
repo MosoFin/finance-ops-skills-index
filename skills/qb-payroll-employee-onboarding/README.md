@@ -2,7 +2,7 @@
 
 # payroll-employee-onboarding
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `PII-MINIMISING`
 
 Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
 
@@ -15,10 +15,38 @@ Onboard a new hire into QuickBooks Payroll from user-provided details or onboard
 | Source | [`intuit/quickbooks-claude-plugin/skills/payroll-employee-onboarding`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Creates and updates payroll employees, assigns work locations and saves contract pay — all behind a consolidated approval listing every action and payload.
+- **`HUMAN-APPROVAL`** — Exact values must be shown; 'standard setup' is explicitly forbidden as a way to hide a change. A correction that alters the payload re-opens confirmation.
+- **`EVIDENCE-GATED`** — Searches before creating because create is not idempotent, warns on likely duplicates, and reads back through a tool before reporting success. Never invents an id, rate or address.
+- **`PII-MINIMISING`** — Never collects, displays or stores SSNs, tax identifiers, bank account or routing numbers in chat — those are routed to the guided QuickBooks Payroll flow.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `new hire details` | **yes** | user, or an offer letter / roster file | confirm the extracted draft before any payroll lookup |
+| `qbo_payroll_search_employee` | **yes** | QuickBooks Payroll | none — search before create is mandatory |
+| `work_location_id` | no | an existing company work location | cannot create one; present as an in-product next step |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| employee record | payroll write | QuickBooks Payroll, after approval and verified by read-back |
+| contract pay details | payroll write | pay type, rate and frequency, or weekly contracted time for salary |
+| readiness gaps | chat | setup that must be finished in QuickBooks Payroll rather than improvised here |
+| Open in QuickBooks handoff | link | only when a change was verified, never with an invented employee id |
+
+## What it will not do
+
+- Collect or display an SSN, tax identifier, or bank details in chat.
+- Blindly retry a create after a timeout — it is not idempotent.
+- Claim write support for gender, birth date, direct deposit, tax setup, benefits or deductions.
+- Report success before read-back confirms it.
 
 ## Data reachability
 
@@ -32,7 +60,9 @@ Onboard a new hire into QuickBooks Payroll from user-provided details or onboard
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

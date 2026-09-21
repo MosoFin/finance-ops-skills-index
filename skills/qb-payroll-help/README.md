@@ -2,7 +2,7 @@
 
 # payroll-help
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED`
 
 Answer read-only QuickBooks Payroll lookup and setup questions using connected company payroll data. Use for employee roster or lookup, company payroll setup, last payroll run, payslips or paycheck details, pay types, deductions/contributions, and time-off policies. Do not use for payroll cost-driver, spend-reduction, or cost-change analysis; use analyze-payroll-cost when the question asks why payroll cost changed or how to reduce it, including questions involving benefits, employer taxes/SUI, overtime, headcount, pay rates, or pay items. Use only available payroll tools; do not provide unsupported procedural, tax, filing, payment, legal, or compliance guidance.
 
@@ -15,10 +15,36 @@ Answer read-only QuickBooks Payroll lookup and setup questions using connected c
 | Source | [`intuit/quickbooks-claude-plugin/skills/payroll-help`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — States it outright and declines write requests, routing them to a write-capable workflow only if the environment exposes one.
+- **`EVIDENCE-GATED`** — Company payroll facts are never answered from memory. An absent field is reported as not visible from the available tools rather than filled in, and a failed tool produces a named limit.
+- **`PROVENANCE-STAMPED`** — QuickBooks handoff links are added only for tools whose data is substantively used in the answer — never for a tool used to resolve an id or paginate, so a link always means the reader can see the same figures.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `qbo_payroll_search_employee` | no | QuickBooks Payroll | ask for a corrected name |
+| `qbo_payroll_get_employees` | no | QuickBooks Payroll — roster | answer from what returned and name the limit |
+| `qbo_payroll_get_payslips / _payslip_details` | no | QuickBooks Payroll | same |
+| `qbo_payroll_get_company_info` | no | QuickBooks Payroll — setup and pay schedules | same |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| payroll lookup answer | chat | roster, setup, last run, payslips, pay types, deductions, time-off policies |
+| scope statement | chat | what can and cannot be checked here, when a request falls outside the nine tools |
+| Open in QuickBooks handoff | link | matched to the tool whose data was actually used |
+
+## What it will not do
+
+- Create, update, delete, run or send payroll, reverse a payment, or void a cheque.
+- Give procedural, tax, filing, legal or compliance guidance not supported by current tool data.
+- Answer payroll cost-driver or spend-reduction questions — those belong to analyze-payroll-cost.
 
 ## Data reachability
 
@@ -32,7 +58,9 @@ Answer read-only QuickBooks Payroll lookup and setup questions using connected c
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

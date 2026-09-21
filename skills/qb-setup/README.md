@@ -2,7 +2,7 @@
 
 # setup
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
 
@@ -15,10 +15,30 @@ Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks too
 | Source | [`intuit/quickbooks-claude-plugin/skills/setup`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`READ-ONLY`** — Diagnoses the connector only. Its one data call is company_info, used to prove the connection works.
+- **`EVIDENCE-GATED`** — Checks whether a read-only tool actually succeeds before declaring setup complete, rather than assuming from the presence of a connector.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `session tool list` | **yes** | whether qbo_* / quickbooks tools are loaded | none — this is the diagnosis |
+| `Claude surface` | **yes** | claude.ai, Claude Code, or an org-managed plan | instructions branch per surface |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| connection verdict | chat | connected, or the specific step that is failing |
+| remediation steps | chat | per surface, including the admin path on Team and Enterprise plans |
+
+## What it will not do
+
+- Suggest `claude mcp add` for QuickBooks — a locally added server shadows the claude.ai connector and cannot authenticate, since Intuit rejects the localhost redirect.
 
 ## Data reachability
 
@@ -32,7 +52,9 @@ Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks too
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

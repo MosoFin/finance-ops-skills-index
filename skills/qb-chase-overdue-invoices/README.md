@@ -2,7 +2,7 @@
 
 # chase-overdue-invoices
 
-`UNGRADED`
+`GRADED` `SENDS-EXTERNALLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
 
@@ -15,10 +15,38 @@ Send payment reminders for invoices with tone matched to aging. ALWAYS use this 
 | Source | [`intuit/quickbooks-claude-plugin/skills/chase-overdue-invoices`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/chase-overdue-invoices) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`SENDS-EXTERNALLY`** — This skill transmits email to the client's customers. It is the clearest contrast in the index: Mosofin's aging-review drafts collections notes and stops, while this one sends them.
+- **`HUMAN-APPROVAL`** — A confirmation showing the exact subject and body is required before every send, and approval does not carry across a changed set — 'Never auto-send' is stated as a hard rule.
+- **`EVIDENCE-GATED`** — Invoice facts come from tool calls, never memory. Tone edits may change wording but never amount, balance, due date or terms, and a hold for a pending bank match must be reported as *may* be paid, never as paid.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `qbo_accounting_get_ar_aging_summary_text` | no | QuickBooks connector | one scoped qbo_sales_get_invoices call; ask the user to narrow rather than paging the ledger |
+| `qbo_sales_get_invoices` | **yes** | QuickBooks connector — resolves a named invoice via doc_numbers | none |
+| `qbo_sales_get_settings (reminder_template)` | **yes** | QuickBooks connector — mandatory before any bulk send | tell the user the template could not be retrieved; still show the full invoice list |
+| `user confirmation` | **yes** | an explicit yes, per set and per wording | none — nothing sends without it |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| prioritised chase list | chat | ranked 91+ first, then by balance, invoice numbers rendered as links |
+| reminder emails | email to the customer | sent through QuickBooks after confirmation; tone matched to the aging bucket for a single invoice, merchant template for bulk |
+| send result | chat | sent and failed counts; held invoices are never reported as sent |
+
+## What it will not do
+
+- Auto-send. Every send waits for an explicit yes on the current set and current text.
+- Pass custom subject or body on a bulk send — the tool rejects it.
+- State that an invoice IS paid when a pending bank match is flagged.
+- Let a tone edit change an amount, balance, due date or terms.
+- Give legal or collections advice.
 
 ## Data reachability
 
@@ -32,7 +60,9 @@ Send payment reminders for invoices with tone matched to aging. ALWAYS use this 
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

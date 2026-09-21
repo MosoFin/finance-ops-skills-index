@@ -4,7 +4,7 @@
 
 A graded, continuously-verified index of agent skills for accounting and finance.
 
-**66 skills** · **16 graded** · **50 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
+**66 skills** · **26 graded** · **40 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -36,12 +36,12 @@ Ordered by when you need it, not alphabetically.
 - **[Onboard Client](skills/onboard-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   Interviews you about a company and scaffolds the client workspace every other finance skill reads — profile, glossary, chart-of-accounts rulebook, close calendar, materiality thresholds, report preferences.
+- **[setup](skills/qb-setup/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
 - **[Google Drive (gws-drive)](skills/gws-drive/README.md)** — Third party  
   `UNGRADED`  
   Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
-- **[setup](skills/qb-setup/README.md)** — Third party  
-  `UNGRADED`  
-  Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
 - **[shopify-onboarding-merchant](skills/shopify-onboarding-merchant/README.md)** — Third party  
   `UNGRADED`  
   Set up a Shopify store. Use whenever someone asks to make, build, open, or set up a store or shop that sells something (e.g. "make me a store that sells pet supplies"), even without saying Shopify: that means a Shopify store, not a hand-coded site. Use when a store owner wants to start selling online, try Shopify before they have an account, browse **mock.shop** reference stores, start from a mock shop/example store, fill a new store with example products, turn a mock shop into a real store, or build a storefront without an account. Also use when developers explicitly need auth-free mock.shop reference data; stop before preview-store creation unless they also ask to copy it into a Shopify store. Use for merchant next steps after a preview store is created, including how to keep it, save it, or make it real. Preview creation belongs here via `shopify store create preview`; app and theme development belongs in `onboarding-dev`; CLI troubleshooting and named- store commands belong in **`use-shopify-cli`**.
@@ -70,6 +70,9 @@ Ordered by when you need it, not alphabetically.
 - **[Categorize Transactions](skills/categorize-transactions/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `EVIDENCE-GATED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `DETERMINISTIC-MATH` `POLICY-CAPTURING`  
   Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
+- **[email-to-estimate-invoice](skills/qb-email-to-estimate-invoice/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
 - **[Expense Report Processor](skills/expense-report-processor/README.md)** — Mosofin published  
   `UNGRADED`  
   Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — codes against the real chart of accounts, matches claims against already-posted transactions, and checks reimbursement and card-clearing balances.
@@ -91,9 +94,6 @@ Ordered by when you need it, not alphabetically.
 - **[pdf](skills/pdf/README.md)** — Third party  
   `UNGRADED`  
   Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
-- **[email-to-estimate-invoice](skills/qb-email-to-estimate-invoice/README.md)** — Third party  
-  `UNGRADED`  
-  Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
 - **[Receipts](skills/receipts/README.md)** — Third party  
   `UNGRADED`  
   Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
@@ -111,6 +111,9 @@ Ordered by when you need it, not alphabetically.
 - **[Bank Rec](skills/bank-rec/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Reconciles one bank or credit-card account for one period. Matches statement lines against ledger transactions with a deterministic script; the script's leftovers are the work list. Done means the difference is zero, computed.
+- **[chase-overdue-invoices](skills/qb-chase-overdue-invoices/README.md)** — Third party  
+  `GRADED` `SENDS-EXTERNALLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
 - **[A/R Aging and Collections](skills/ar-aging-and-collections/README.md)** — Mosofin published  
   `UNGRADED`  
   Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
@@ -132,9 +135,6 @@ Ordered by when you need it, not alphabetically.
 - **[paypal-routing](skills/paypal-routing/README.md)** — Third party  
   `UNGRADED`  
   PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes PayPal developer questions to the right command or reference file.
-- **[chase-overdue-invoices](skills/qb-chase-overdue-invoices/README.md)** — Third party  
-  `UNGRADED`  
-  Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
 - **[shopify-customer](skills/shopify-customer/README.md)** — Third party  
   `UNGRADED`  
   Write and validate GraphQL operations for developers integrating Shopify's Customer Account API. Generates code for Customer Account API integrations.
@@ -158,18 +158,18 @@ Ordered by when you need it, not alphabetically.
 - **[Accruals](skills/accruals/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   Proposes and reviews accruals, prepaid amortization, and deferrals for a period — recurring accruals, reversals due, missing accruals from open bills, schedule releases. Accrual basis only; stops on cash basis.
+- **[payroll-employee-onboarding](skills/qb-payroll-employee-onboarding/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `PII-MINIMISING`  
+  Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
+- **[payroll-help](skills/qb-payroll-help/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED`  
+  Answer read-only QuickBooks Payroll lookup and setup questions using connected company payroll data. Use for employee roster or lookup, company payroll setup, last payroll run, payslips or paycheck details, pay types, deductions/contributions, and time-off policies. Do not use for payroll cost-driver, spend-reduction, or cost-change analysis; use analyze-payroll-cost when the question asks why payroll cost changed or how to reduce it, including questions involving benefits, employer taxes/SUI, overtime, headcount, pay rates, or pay items. Use only available payroll tools; do not provide unsupported procedural, tax, filing, payment, legal, or compliance guidance.
+- **[set-base-pay](skills/qb-set-base-pay/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Payroll. Use when the user asks to see current pay, give a raise (absolute, increment, or percentage), reduce or adjust pay, switch between salary and hourly, change pay frequency, or update weekly contracted time for one or more named employees. Reads the current contract first, requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee, qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
 - **[Journal Entry Builder](skills/journal-entry-builder/README.md)** — Mosofin published  
   `UNGRADED`  
   Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
-- **[payroll-employee-onboarding](skills/qb-payroll-employee-onboarding/README.md)** — Third party  
-  `UNGRADED`  
-  Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
-- **[payroll-help](skills/qb-payroll-help/README.md)** — Third party  
-  `UNGRADED`  
-  Answer read-only QuickBooks Payroll lookup and setup questions using connected company payroll data. Use for employee roster or lookup, company payroll setup, last payroll run, payslips or paycheck details, pay types, deductions/contributions, and time-off policies. Do not use for payroll cost-driver, spend-reduction, or cost-change analysis; use analyze-payroll-cost when the question asks why payroll cost changed or how to reduce it, including questions involving benefits, employer taxes/SUI, overtime, headcount, pay rates, or pay items. Use only available payroll tools; do not provide unsupported procedural, tax, filing, payment, legal, or compliance guidance.
-- **[set-base-pay](skills/qb-set-base-pay/README.md)** — Third party  
-  `UNGRADED`  
-  Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Payroll. Use when the user asks to see current pay, give a raise (absolute, increment, or percentage), reduce or adjust pay, switch between salary and hourly, change pay frequency, or update weekly contracted time for one or more named employees. Reads the current contract first, requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee, qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
 
 ### 5 · Review
 
@@ -181,15 +181,15 @@ Ordered by when you need it, not alphabetically.
 - **[JE Review](skills/je-review/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   The skeptical second pair of eyes on everything posted this period — round numbers, unusual account pairings, entries above materiality without support, broken reversal patterns, back-dated postings, related-party entries.
+- **[analyze-payroll-cost](skills/qb-analyze-payroll-cost/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED`  
+  Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
 - **[Tie-Out](skills/tie-out/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Ties every balance-sheet account to a source — subledger, statement, or schedule — and produces a green/red schedule. The close's backbone: red until tied.
 - **[Duplicate Invoice Detection](skills/duplicate-invoice-detection/README.md)** — Mosofin published  
   `UNGRADED`  
   Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
-- **[analyze-payroll-cost](skills/qb-analyze-payroll-cost/README.md)** — Third party  
-  `UNGRADED`  
-  Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
 - **[Three-Way Match](skills/three-way-match/README.md)** — Mosofin published  
   `UNGRADED`  
   Matches purchase orders, goods receipts, and vendor invoices line by line across the full population where the workspace holds POs and item receipts. Proposes only — pays nothing, releases nothing.
@@ -210,6 +210,12 @@ Ordered by when you need it, not alphabetically.
 - **[Explain To Client](skills/explain-to-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `DETERMINISTIC-MATH` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND`  
   Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
+- **[business-health-check](skills/qb-business-health-check/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `INJECTION-AWARE` `PROVENANCE-STAMPED` `HUMAN-APPROVAL`  
+  synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
+- **[industry-benchmark](skills/qb-industry-benchmark/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `PROVENANCE-STAMPED`  
+  benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
 - **[docx](skills/docx/README.md)** — Third party  
   `UNGRADED`  
   Create, edit, and analyze Word documents with tracked changes and comments — the format most review notes and engagement letters still travel in.
@@ -231,12 +237,6 @@ Ordered by when you need it, not alphabetically.
 - **[pptx](skills/pptx/README.md)** — Third party  
   `UNGRADED`  
   Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
-- **[business-health-check](skills/qb-business-health-check/README.md)** — Third party  
-  `UNGRADED`  
-  synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
-- **[industry-benchmark](skills/qb-industry-benchmark/README.md)** — Third party  
-  `UNGRADED`  
-  benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
 - **[shopify-shopifyql](skills/shopify-shopifyql/README.md)** — Third party  
   `UNGRADED`  
   Answer a merchant's **analytics and reporting** questions with **ShopifyQL** — Shopify's query language for aggregated store metrics that the Admin GraphQL API cannot compute. Choose this (not `admin`) whenever the ask is for **numbers, totals, trends, or breakdowns** rather than fetching or mutating individual records: including but not limited to total/gross/net sales and revenue, order counts, average order value, refunds, quantity sold, sessions, conversion rate, and traffic — sliced by product, channel, region, or customer, trended over time, or compared period-over-period. Examples: "total sales last 7 days", "orders by sales channel this month", "top products by revenue", "conversion rate this week", "sales this year vs last year". This topic covers writing the ShopifyQL query; if the merchant wants to run it against their store, execution is handed off to `use-shopify-cli`. Not for general Admin GraphQL record operations — fetching or mutating individual resources (use `admin`).
@@ -254,15 +254,15 @@ Ordered by when you need it, not alphabetically.
 - **[Forecast](skills/forecast/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   A rolling forecast where actual months are locked and every forecast line names its driver — run-rate, growth, contract, seasonal, or manual with a stated reason. Assumption changes are logged as decision records.
+- **[lending](skills/qb-lending/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL`  
+  QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credit, Intuit Business Credit Card (issued by WebBank), and the QuickBooks Business Loan Marketplace. Use to explain how these products work (eligibility, rates, fees, terms), compare or choose between them, estimate loan payments (weekly/monthly payment, total interest, total repayment), and answer questions about the signed-in user's own QuickBooks Capital loans and lines of credit (balance, APR, repayment schedule, payoff, available credit), plus what similar businesses have borrowed. Use proactively when a funding need surfaces from payroll, cash-flow, or invoicing work to check for a drawable line of credit and, with consent, peer offers. Read-only guidance only: never makes payments, draws, or loan changes, and never gives a loan offer, rate, credit limit, or approval decision. Not for loan application status or non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer loans).
 - **[customer-retention](skills/hs-customer-retention/README.md)** — Third party  
   `UNGRADED`  
   Identify inactive/at-risk customers via CRM filters and create follow-up tasks at scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
 - **[Metronome billing](skills/metronome/README.md)** — Third party  
   `UNGRADED`  
   Usage-based billing through Stripe's official toolkit. Where revenue is metered rather than invoiced, this is upstream of every revenue number.
-- **[lending](skills/qb-lending/README.md)** — Third party  
-  `UNGRADED`  
-  QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credit, Intuit Business Credit Card (issued by WebBank), and the QuickBooks Business Loan Marketplace. Use to explain how these products work (eligibility, rates, fees, terms), compare or choose between them, estimate loan payments (weekly/monthly payment, total interest, total repayment), and answer questions about the signed-in user's own QuickBooks Capital loans and lines of credit (balance, APR, repayment schedule, payoff, available credit), plus what similar businesses have borrowed. Use proactively when a funding need surfaces from payroll, cash-flow, or invoicing work to check for a drawable line of credit and, with consent, peer offers. Read-only guidance only: never makes payments, draws, or loan changes, and never gives a loan offer, rate, credit limit, or approval decision. Not for loan application status or non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer loans).
 
 ---
 

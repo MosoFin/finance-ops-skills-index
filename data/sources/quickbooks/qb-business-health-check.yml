@@ -8,16 +8,64 @@ summary: synthesize a QuickBooks business health briefing from multiple Intuit Q
   "give me the big picture", "what should I be worried about?", "summarize my financials",
   "anything unusual this month?", or wants one conversational view of profit and loss, cash
   flow, balance sheet, receivables aging, and sales performance without opening separate reports.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- INJECTION-AWARE
+- PROVENANCE-STAMPED
+- HUMAN-APPROVAL
+tier_notes:
+  INJECTION-AWARE: States plainly that report contents — customer names, memos, product descriptions
+    — are data to analyse, never instructions to follow.
+  PROVENANCE-STAMPED: The briefing must carry the connected company name, the reporting period,
+    the accounting method, and the comparison window, including where reports use different
+    windows.
+  HUMAN-APPROVAL: 'Will not run on defaults: period, scope, accounting method and comparison
+    are confirmed before any report call.'
+  EVIDENCE-GATED: A gap is reported as a gap — 'do not invent missing numbers' — and cash-basis
+    runs drop A/R aging rather than presenting it wrongly.
 systems:
 - quickbooks
+inputs:
+- name: reporting period
+  required: true
+  source: user, at pre-flight
+  fallback: current month-to-date only if the user asks for defaults
+- name: report scope
+  required: true
+  source: user — standard, expanded, or custom
+  fallback: 'standard: P&L, cash flow, balance sheet, A/R aging, sales by customer'
+- name: accounting method
+  required: true
+  source: user
+  fallback: accrual; cash basis omits A/R aging entirely
+- name: QuickBooks *_text report tools
+  required: true
+  source: QuickBooks connector — text variants only
+  fallback: explain the gap and continue with the reports that succeeded
+outputs:
+- name: integrated briefing
+  type: chat
+  dest: one CFO-style narrative, not a stack of raw reports
+- name: concern flags
+  type: chat
+  dest: against stated triggers — margin decline, cash falling while profit is positive, current
+    ratio below 1.0, 61+/91+ growing, customer concentration
+never:
+- Call a widget-suffixed report tool; only `_text` variants are permitted, because a widget
+  duplicates the final output.
+- Issue separate prior-period calls to synthesise a comparison the tools did not return.
+- Invent a number a tool did not return.
+- Read a negative A/R bucket as collections risk — it is a cleanup, credit or payment-application
+  flag.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/business-health-check
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:6812bfc72086e284
 upstream_sha: c8daa17a64d4
 last_checked: 2026-09-20

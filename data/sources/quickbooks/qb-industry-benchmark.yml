@@ -10,16 +10,60 @@ summary: benchmark the user's CONNECTED QuickBooks company against industry peer
   for questions about which industries are most profitable in a location, for expected profit
   for a business type, or when the user supplies their own figures — those are answered by
   the Intuit QuickBooks benchmarking tools directly.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- HUMAN-APPROVAL
+- PROVENANCE-STAMPED
+tier_notes:
+  HUMAN-APPROVAL: The pre-flight runs even when every value could be inferred confidently
+    — being able to infer a value is a reason to pre-fill it, never to skip confirmation.
+  EVIDENCE-GATED: Refuses figures the user supplies themselves and industry-general questions,
+    routing both to a different tool, so a benchmark always reflects the connected company's
+    own books.
 systems:
 - quickbooks
+inputs:
+- name: metric
+  required: true
+  source: user — profit, revenue, expenses or margin
+  fallback: profit, shown pre-filled and never adopted silently
+- name: aggregation period
+  required: true
+  source: user — yearly, monthly, quarterly
+  fallback: yearly, shown pre-filled
+- name: industry and NAICS
+  required: true
+  source: QuickBooks company profile
+  fallback: ask; refer to the category rather than displaying a bare NAICS code
+- name: location
+  required: true
+  source: user — state, optionally county
+  fallback: ask; two-letter state code when calling tools
+- name: benchmarking_quickbooks_account_text
+  required: true
+  source: QuickBooks connector
+  fallback: explain the gap and continue
+outputs:
+- name: benchmark briefing
+  type: chat
+  dest: ahead, behind or in line with regional peers, in plain language
+- name: key numbers
+  type: table
+  dest: including peer margin as its own row when the metric is profit
+never:
+- Call the industry-research tools from this skill — they serve user-supplied figures and
+  general questions, which are out of scope.
+- Run on inferred values without confirmation.
+- Invent a number a tool did not return.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/industry-benchmark
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:aa7605287cc45023
 upstream_sha: c8daa17a64d4
 last_checked: 2026-09-20

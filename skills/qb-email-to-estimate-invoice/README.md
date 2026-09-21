@@ -2,7 +2,7 @@
 
 # email-to-estimate-invoice
 
-`UNGRADED`
+`GRADED` `PROPOSES-WRITES` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
 
@@ -15,10 +15,39 @@ Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice
 | Source | [`intuit/quickbooks-claude-plugin/skills/email-to-estimate-invoice`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/email-to-estimate-invoice) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`PROPOSES-WRITES`** — Creates customers, products and sales documents in QuickBooks. Each record type needs its own explicit yes — the skill states that asking for an invoice is not consent to create the customer or product behind it.
+- **`SENDS-EXTERNALLY`** — Emails the estimate or invoice to the customer, after a draft preview and an explicit approval.
+- **`EVIDENCE-GATED`** — Line items come from the email thread; gaps are questions, not guesses. If the thread cannot be found it stops rather than inventing content.
+- **`HUMAN-APPROVAL`** — One successful create only. A wrong draft is reported and discussed, never silently re-created — and a schema validation failure is retried once, not looped.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `email thread` | **yes** | whichever email connector is installed — Gmail, Outlook, IMAP or third-party | offer to set a connector up, or let the user paste the thread; never invent content |
+| `qbo_contact_search_customer` | **yes** | QuickBooks | propose the customer to create and wait for a yes |
+| `qbo_catalog_search_products` | **yes** | QuickBooks | stop, show the proposed product, wait for a yes |
+| `document type` | **yes** | inferred from bill/quote language | ask once when ambiguous |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| extraction table | chat | line items with unit price and extended amount kept separate |
+| estimate or invoice | QuickBooks write | created once as a draft, total compared against the email total |
+| sent document | email to the customer | only after the draft preview is approved |
+
+## What it will not do
+
+- Put an extended line total in `amount` — it is the unit rate, and QuickBooks multiplies by quantity. Getting this wrong inflates an invoice by orders of magnitude.
+- Auto-create a customer or product.
+- Create a second document to fix a bad first one.
+- Set `taxable` unless the user or the thread stated it.
+- Give tax, legal or collections advice.
 
 ## Data reachability
 
@@ -32,7 +61,9 @@ Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 

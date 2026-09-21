@@ -11,16 +11,61 @@ summary: Answer read-only QuickBooks Payroll lookup and setup questions using co
   involving benefits, employer taxes/SUI, overtime, headcount, pay rates, or pay items. Use
   only available payroll tools; do not provide unsupported procedural, tax, filing, payment,
   legal, or compliance guidance.
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- PROVENANCE-STAMPED
+tier_notes:
+  READ-ONLY: States it outright and declines write requests, routing them to a write-capable
+    workflow only if the environment exposes one.
+  EVIDENCE-GATED: Company payroll facts are never answered from memory. An absent field is
+    reported as not visible from the available tools rather than filled in, and a failed tool
+    produces a named limit.
+  PROVENANCE-STAMPED: QuickBooks handoff links are added only for tools whose data is substantively
+    used in the answer — never for a tool used to resolve an id or paginate, so a link always
+    means the reader can see the same figures.
 systems:
 - quickbooks
+inputs:
+- name: qbo_payroll_search_employee
+  required: false
+  source: QuickBooks Payroll
+  fallback: ask for a corrected name
+- name: qbo_payroll_get_employees
+  required: false
+  source: QuickBooks Payroll — roster
+  fallback: answer from what returned and name the limit
+- name: qbo_payroll_get_payslips / _payslip_details
+  required: false
+  source: QuickBooks Payroll
+  fallback: same
+- name: qbo_payroll_get_company_info
+  required: false
+  source: QuickBooks Payroll — setup and pay schedules
+  fallback: same
+outputs:
+- name: payroll lookup answer
+  type: chat
+  dest: roster, setup, last run, payslips, pay types, deductions, time-off policies
+- name: scope statement
+  type: chat
+  dest: what can and cannot be checked here, when a request falls outside the nine tools
+- name: Open in QuickBooks handoff
+  type: link
+  dest: matched to the tool whose data was actually used
+never:
+- Create, update, delete, run or send payroll, reverse a payment, or void a cheque.
+- Give procedural, tax, filing, legal or compliance guidance not supported by current tool
+  data.
+- Answer payroll cost-driver or spend-reduction questions — those belong to analyze-payroll-cost.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/payroll-help
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:a5f2bd5e101a3c67
 upstream_sha: 6db49c4f8ed3
 last_checked: 2026-09-20

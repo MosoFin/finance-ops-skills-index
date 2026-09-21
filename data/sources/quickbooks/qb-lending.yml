@@ -15,16 +15,58 @@ summary: 'QuickBooks Capital small-business financing: QuickBooks Term Loan, Lin
   loan offer, rate, credit limit, or approval decision. Not for loan application status or
   non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer
   loans).'
-tiers: []
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+- HUMAN-APPROVAL
+tier_notes:
+  READ-ONLY: No payments, no draws, no loan changes. Servicing tools report the user's own
+    balances and terms; nothing writes.
+  EVIDENCE-GATED: Pre-auth tools return educational guidance only. The skill never issues
+    a loan offer, rate, credit limit or approval decision, and keeps help, shop and estimate
+    tools to their separate jobs.
+  HUMAN-APPROVAL: Peer offers are pulled only with consent when a funding need surfaces from
+    other work.
 systems:
 - quickbooks
+inputs:
+- name: qbo_lending_get_loans
+  required: false
+  source: QuickBooks Capital — the signed-in user's own loans
+  fallback: an empty result means no active or completed loans
+- name: qbo_lending_help
+  required: false
+  source: QuickBooks Capital help centre
+  fallback: none
+- name: qbo_lending_estimate_loan_payments
+  required: false
+  source: educational calculator
+  fallback: none
+outputs:
+- name: loan servicing summary
+  type: chat
+  dest: balance, APR, term, repayment status, payoff, available credit
+- name: product comparison
+  type: widget
+  dest: ranked guidance on which QuickBooks Capital product fits
+- name: payment estimate
+  type: calculator
+  dest: weekly or monthly payment, total interest, total repayment
+never:
+- Act in a way that could constitute an attempt to collect a debt — reporting a balance the
+  user asked for is fine, nudging them to pay is not.
+- Issue a loan offer, rate, credit limit or approval decision.
+- Make a payment, draw on a line of credit, or modify terms.
+- Advise on non-QuickBooks-Capital products such as SBA loans, factoring or merchant cash
+  advances.
 upstream:
   repo: intuit/quickbooks-claude-plugin
   path: skills/lending
   ref: main
 license: apache-2.0
 mirror: false
-status: UNGRADED
+status: GRADED
+last_graded: '2026-09-21'
 skill_md_hash: sha256:c2e057c1891d72bb
 upstream_sha: bb30cbdf7b5b
 last_checked: 2026-09-20

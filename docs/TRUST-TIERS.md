@@ -33,6 +33,7 @@ design, and it is the one that survives an audit conversation.
 | `TIE-CHECKED` | Ends in a computed proof — a difference that must be zero, a schedule that must roll, a cross-foot that must balance. Red until it passes. |
 | `EVIDENCE-GATED` | Refuses to assert a conclusion the underlying data does not support. Distinguishes *explained* (evidence) from *attributed* (someone said so). |
 | `PROVENANCE-STAMPED` | Every output figure carries its source and as-of date. |
+| `INJECTION-AWARE` | Treats retrieved content — memos, customer names, product descriptions — as data to analyse, never as instructions to follow. Ledgers are full of free text written by outsiders; a skill that reads it without saying this is trusting it. |
 
 ## Judgment and control
 
@@ -40,6 +41,7 @@ design, and it is the one that survives an audit conversation.
 |---|---|
 | `HUMAN-APPROVAL` | Has at least one hard checkpoint where the run stops for a person. |
 | `MATERIALITY-AWARE` | Reads a threshold and behaves differently above and below it, instead of treating a $12 variance like a $120,000 one. |
+| `PII-MINIMISING` | States what personal data it will not touch. Payroll and A/R skills sit next to SSNs, tax identifiers and bank details; one that refuses to collect them in chat and routes the user to a secure surface is making a commitment worth recording. |
 | `AUDIT-TRAIL` | Persists its workpaper — proof, schedule, or summary — to a durable location, not just the chat. |
 | `POLICY-CAPTURING` | Turns recurring judgment calls into written decision records so next period isn't re-litigated. |
 
@@ -47,8 +49,9 @@ design, and it is the one that survives an audit conversation.
 
 | Badge | Meaning |
 |---|---|
-| `CLIENT-FACING` | Produces output intended to leave the building. |
-| `NO-AUTO-SEND` | Drafts only — will not transmit to a third party itself. Every `CLIENT-FACING` entry must also carry this or be flagged. |
+| `CLIENT-FACING` | Produces output intended to leave the building. Must also carry `NO-AUTO-SEND` or `SENDS-EXTERNALLY`, so the reader never has to guess which. |
+| `NO-AUTO-SEND` | Drafts only — will not transmit to a third party itself. |
+| `SENDS-EXTERNALLY` | Transmits to someone outside the business — an email to a customer, a filing, a message. The opposite of `NO-AUTO-SEND`, and never implied: a skill carries one or the other, never neither, once it produces outward-facing content. |
 | `STATEFUL` | Carries state across sessions. Re-reads its own state file rather than trusting conversation memory. |
 
 ## Status

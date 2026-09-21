@@ -2,7 +2,7 @@
 
 # industry-benchmark
 
-`UNGRADED`
+`GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `PROVENANCE-STAMPED`
 
 benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
 
@@ -15,10 +15,35 @@ benchmark the user's CONNECTED QuickBooks company against industry peers using t
 | Source | [`intuit/quickbooks-claude-plugin/skills/industry-benchmark`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/industry-benchmark) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
+| Last graded | 2026-09-21 |
 
-> **Not yet graded.** This entry is listed and pointed at, but nobody has read
-> its source line-by-line and assigned trust tiers. Treat the absence of badges
-> as *unknown*, not as *passing*. Inputs and outputs below are unverified.
+## Why these badges
+
+- **`HUMAN-APPROVAL`** — The pre-flight runs even when every value could be inferred confidently — being able to infer a value is a reason to pre-fill it, never to skip confirmation.
+- **`EVIDENCE-GATED`** — Refuses figures the user supplies themselves and industry-general questions, routing both to a different tool, so a benchmark always reflects the connected company's own books.
+
+## Inputs
+
+| Input | Required | Where it comes from | If it's missing |
+|---|---|---|---|
+| `metric` | **yes** | user — profit, revenue, expenses or margin | profit, shown pre-filled and never adopted silently |
+| `aggregation period` | **yes** | user — yearly, monthly, quarterly | yearly, shown pre-filled |
+| `industry and NAICS` | **yes** | QuickBooks company profile | ask; refer to the category rather than displaying a bare NAICS code |
+| `location` | **yes** | user — state, optionally county | ask; two-letter state code when calling tools |
+| `benchmarking_quickbooks_account_text` | **yes** | QuickBooks connector | explain the gap and continue |
+
+## Outputs
+
+| Output | Type | Where it lands |
+|---|---|---|
+| benchmark briefing | chat | ahead, behind or in line with regional peers, in plain language |
+| key numbers | table | including peer margin as its own row when the metric is profit |
+
+## What it will not do
+
+- Call the industry-research tools from this skill — they serve user-supplied figures and general questions, which are out of scope.
+- Run on inferred values without confirmation.
+- Invent a number a tool did not return.
 
 ## Data reachability
 
@@ -32,7 +57,9 @@ benchmark the user's CONNECTED QuickBooks company against industry peers using t
 
 | Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
 |---|---|---|---|---|---|
-| ? | ? | ? | ? | ? | ? |
+| full | full | full | full | full | full |
+
+Requires from the host: nothing beyond reading instructions.
 
 *Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
 
