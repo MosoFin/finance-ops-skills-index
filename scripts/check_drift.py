@@ -21,6 +21,7 @@ import os
 import pathlib
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -43,17 +44,27 @@ FILE_FORMATS = {"csv", "pdf", "word", "powerpoint", "images", "any", "excel"}
 AGNOSTIC = "_any"
 API = "https://api.github.com"
 RAW = "https://raw.githubusercontent.com"
+MAX_RETRIES = 4
+BACKOFF = 2.0          # seconds, doubled per retry
+PACE = 0.08            # seconds between calls, to stay under the burst threshold
+
 PERMISSIVE = {"mit", "apache-2.0", "bsd-3-clause", "bsd-2-clause", "isc", "cc0-1.0"}
 # Open source, but strong copyleft: mirroring would relicense this index.
 COPYLEFT = {"agpl-3.0", "gpl-3.0", "gpl-2.0", "lgpl-3.0", "mpl-2.0"}
 
 
-def _get(url: str, raw: bool = False):
+def _get(url: str, raw: bool = False, _attempt: int = 0):
+    """One GitHub API call, with backoff for the secondary rate limit.
+
+    GitHub answers 403 for two different things: the primary hourly limit
+    (x-ratelimit-remaining: 0) and a secondary limit that throttles rapid
+    bursts. This job makes three sequential calls per pointer with no pacing,
+    which trips the secondary limit well before the hourly one — so treating
+    every 403 as "out of quota" both misdiagnosed the failure and told the
+    reader to set a token they had already set.
+    """
     req = urllib.request.Request(url, headers={"User-Agent": "mosofin-skills-index"})
-    if raw:
-        req.add_header("Accept", "application/vnd.github.raw")
-    else:
-        req.add_header("Accept", "application/vnd.github+json")
+    req.add_header("Accept", "application/vnd.github.raw" if raw else "application/vnd.github+json")
     if tok := os.environ.get("GITHUB_TOKEN"):
         req.add_header("Authorization", f"Bearer {tok}")
     try:
@@ -61,7 +72,28 @@ def _get(url: str, raw: bool = False):
             body = r.read()
         return body if raw else json.loads(body)
     except urllib.error.HTTPError as e:
-        return e.code
+        if e.code not in (403, 429):
+            return e.code
+        hdr = e.headers
+        if hdr.get("x-ratelimit-remaining") == "0":
+            reset = hdr.get("x-ratelimit-reset", "")
+            when = (
+                dt.datetime.fromtimestamp(int(reset), dt.timezone.utc).strftime("%H:%M UTC")
+                if reset.isdigit() else "unknown"
+            )
+            raise Fatal(
+                f"GitHub hourly rate limit exhausted; resets at {when}. "
+                + ("Token in use — wait for the reset." if os.environ.get("GITHUB_TOKEN")
+                   else "Set GITHUB_TOKEN to raise the limit: export GITHUB_TOKEN=$(gh auth token)")
+            )
+        if _attempt >= MAX_RETRIES:
+            raise Fatal(
+                f"GitHub secondary rate limit after {MAX_RETRIES} retries on {url}. "
+                "Re-run; the check is idempotent and resumes from the recorded baselines."
+            )
+        delay = float(hdr.get("retry-after") or BACKOFF * (2 ** _attempt))
+        time.sleep(delay)
+        return _get(url, raw, _attempt + 1)
     except urllib.error.URLError as e:
         raise Fatal(f"network error for {url}: {e}") from e
 
@@ -155,6 +187,7 @@ def main() -> int:
             fatal.append(f"{sid}: GitHub API returned {sha} for {repo}/{path}")
             continue
 
+        time.sleep(PACE)
         bh = body_hash(repo, path, ref)
         if isinstance(bh, int):
             fatal.append(f"{sid}: SKILL.md unreadable at {repo}/{path} (HTTP {bh})")
