@@ -42,7 +42,7 @@ URL_RE = re.compile(
 
 
 def get(url: str, raw: bool = False):
-    req = urllib.request.Request(url, headers={"User-Agent": "mosofin-skills-index"})
+    req = urllib.request.Request(url, headers={"User-Agent": "finance-ops-skills-index"})
     req.add_header("Accept", "application/vnd.github.raw" if raw else "application/vnd.github+json")
     if tok := os.environ.get("GITHUB_TOKEN"):
         req.add_header("Authorization", f"Bearer {tok}")

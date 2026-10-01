@@ -526,6 +526,17 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "",
         "**[Read the trust tiers →](docs/TRUST-TIERS.md)**",
         "",
+        "## Use it as a Claude plugin",
+        "",
+        "```",
+        "/plugin marketplace add MosoFin/finance-ops-skills-index",
+        "/plugin install finance-ops-skills-index@finance-ops-skills-index",
+        "```",
+        "",
+        "The plugin ships one read-only skill that answers \"which skills exist for this",
+        "platform, and can I trust them?\" from this catalog. It installs nothing from the",
+        "vendors; see [`plugins/finance-ops-skills-index`](plugins/finance-ops-skills-index).",
+        "",
         "Nothing here is mirrored. Every third-party entry is a pointer to its own",
         "repository, checked daily; when an upstream `SKILL.md` changes, its grade is",
         "marked stale and a human re-reads it. The list is cheap — the grade is the product.",
@@ -704,7 +715,15 @@ def main() -> int:
         d.mkdir(parents=True, exist_ok=True)
         (d / "README.md").write_text(skill_page(skill, meta))
 
-    print(f"built README.md, {len(data['skills'])} skill pages, {n_conn} connector pages")
+    import build_plugin
+    n_plugin = build_plugin.build(
+        ROOT, data["skills"], conn_meta["connectors"], conn_meta["statuses"], primary_system
+    )
+
+    print(
+        f"built README.md, {len(data['skills'])} skill pages, {n_conn} connector pages, "
+        f"plugin with {n_plugin} vendor references"
+    )
     return 0
 
 

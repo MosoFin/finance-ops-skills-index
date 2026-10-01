@@ -59,7 +59,7 @@ TOK = token()
 
 def api(url: str):
     req = urllib.request.Request(
-        url, headers={"Accept": "application/vnd.github+json", "User-Agent": "mosofin-skills-index"}
+        url, headers={"Accept": "application/vnd.github+json", "User-Agent": "finance-ops-skills-index"}
     )
     if TOK:
         req.add_header("Authorization", f"Bearer {TOK}")
