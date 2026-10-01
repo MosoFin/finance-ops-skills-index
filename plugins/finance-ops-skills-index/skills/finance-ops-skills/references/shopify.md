@@ -5,53 +5,17 @@
 - Reachability: **code-complete** — Built; blocked on credentials or review, not engineering
 - Vertical: ecommerce
 - Vendor skills repository: https://github.com/Shopify/Shopify-AI-Toolkit
-- Published there: 22 · indexed here: 5 · checked 2026-09-20
+- Published there: 2 · indexed here: 1 · checked 2026-10-01
 - Repository licence: mit
-- Note: Five touch merchant data, payments or reporting. The other seventeen build Shopify apps — Polaris, Hydrogen, Liquid, Functions, CLI.
+- Note: On 2026-09-25 Shopify moved its 21 per-surface skills to deprecated/ as stubs and replaced them with one consolidated `shopify` skill, which is indexed. The other active skill, `ucp`, is a buyer-side shopping agent for purchasing from merchants — not store operations — so it is not.
 
 ## Indexed skills
 
-### shopify-admin
+### shopify
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
-- Trust badges: READ-ONLY, EVIDENCE-GATED, SENDS-TELEMETRY
+- Authority: first-party · stage 2 · status GRADED (graded 2026-10-01)
+- Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, SENDS-TELEMETRY
 - Licence: mit
-- Upstream: https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-admin
-- Summary: Write or explain **Admin GraphQL** queries and mutations for apps and integrations that extend the Shopify admin. Use when the user wants to **understand, design, or generate** the operation itself—even before deciding how to run it. Do **not** choose `admin` first for **app monetization**—charging merchants for the app itself via app pricing plans, paid app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the user is maintaining an existing Manual Pricing integration or explicitly needs an Admin Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans, subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups, inventory changes).
-- Never: Return code without running the validator. | Handle app monetization — that belongs to app-pricing. | Execute the operation against a store.
-
-### shopify-customer
-
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
-- Trust badges: READ-ONLY, EVIDENCE-GATED, SENDS-TELEMETRY, PII-MINIMISING
-- Licence: mit
-- Upstream: https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-customer
-- Summary: Write and validate GraphQL operations for developers integrating Shopify's Customer Account API. Generates code for Customer Account API integrations.
-- Never: Confuse the Customer Account API with the Admin API — one is a customer acting on their own data, the other is merchant store management. | Return code that has not been validated.
-
-### shopify-onboarding-merchant
-
-- Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
-- Trust badges: PROPOSES-WRITES, SENDS-TELEMETRY
-- Licence: mit
-- Upstream: https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-onboarding-merchant
-- Summary: Set up a Shopify store. Use whenever someone asks to make, build, open, or set up a store or shop that sells something (e.g. "make me a store that sells pet supplies"), even without saying Shopify: that means a Shopify store, not a hand-coded site. Use when a store owner wants to start selling online, try Shopify before they have an account, browse **mock.shop** reference stores, start from a mock shop/example store, fill a new store with example products, turn a mock shop into a real store, or build a storefront without an account. Also use when developers explicitly need auth-free mock.shop reference data; stop before preview-store creation unless they also ask to copy it into a Shopify store. Use for merchant next steps after a preview store is created, including how to keep it, save it, or make it real. Preview creation belongs here via `shopify store create preview`; app and theme development belongs in `onboarding-dev`; CLI troubleshooting and named- store commands belong in **`use-shopify-cli`**.
-- Never: Create a preview store for a developer who only asked for mock.shop reference data. | Handle app or theme development — that is onboarding-dev. | Handle CLI troubleshooting or named-store commands — that is use-shopify-cli.
-
-### shopify-payments-apps
-
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
-- Trust badges: READ-ONLY, EVIDENCE-GATED, SENDS-TELEMETRY
-- Licence: mit
-- Upstream: https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-payments-apps
-- Summary: The Payments Apps API enables payment providers to integrate their payment solutions with Shopify's checkout.
-- Never: Write payment code without the documentation search. | Ignore PCI, 3D Secure and fraud-prevention requirements when generating a flow. | Produce a refund or void path that does not reconcile against the original transaction.
-
-### shopify-shopifyql
-
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
-- Trust badges: READ-ONLY, EVIDENCE-GATED, SENDS-TELEMETRY
-- Licence: mit
-- Upstream: https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify-shopifyql
-- Summary: Answer a merchant's **analytics and reporting** questions with **ShopifyQL** — Shopify's query language for aggregated store metrics that the Admin GraphQL API cannot compute. Choose this (not `admin`) whenever the ask is for **numbers, totals, trends, or breakdowns** rather than fetching or mutating individual records: including but not limited to total/gross/net sales and revenue, order counts, average order value, refunds, quantity sold, sessions, conversion rate, and traffic — sliced by product, channel, region, or customer, trended over time, or compared period-over-period. Examples: "total sales last 7 days", "orders by sales channel this month", "top products by revenue", "conversion rate this week", "sales this year vs last year". This topic covers writing the ShopifyQL query; if the merchant wants to run it against their store, execution is handed off to `use-shopify-cli`. Not for general Admin GraphQL record operations — fetching or mutating individual resources (use `admin`).
-- Never: Write a query from memory rather than from the documentation search. | Fetch or mutate individual records — that is admin's job.
+- Upstream: https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify
+- Summary: Shopify's consolidated skill, replacing the 21 per-surface skills it deprecated on 2026-09-25. Routes any Shopify task — Admin GraphQL, ShopifyQL sales and analytics, Payments Apps, Customer Account API, Shopify CLI store reads and writes, merchant onboarding — to a topic reference, searches Shopify's docs and validates generated code before returning it.
+- Never: Return code that has not passed validation. | Run a mutating or transmitting CLI command without separate-turn confirmation. | Guess at valid values.

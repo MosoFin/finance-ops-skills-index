@@ -25,7 +25,7 @@ Entity is the merchant, never the location — locations are a reporting dimensi
 
 ## Official skills from the vendor
 
-None. [`square`](https://github.com/square) was probed on 2026-09-20 and publishes no agent skills — a dated fact, not a permanent state.
+None. [`square`](https://github.com/square) was probed on 2026-10-01 and publishes no agent skills — a dated fact, not a permanent state.
 
 ## Skills in this index that need it
 

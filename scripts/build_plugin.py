@@ -38,12 +38,12 @@ def _vendor_page(cid: str, c: dict, skills: list, statuses: dict) -> str:
         )
         if c.get("skills_license"):
             L.append(f"- Repository licence: {c['skills_license']}")
-        if c.get("skills_note"):
-            L.append(f"- Note: {' '.join(str(c['skills_note']).split())}")
     else:
         L.append(
             f"- **No vendor-published skills found** as of {c.get('skills_checked', 'the last check')}."
         )
+    if c.get("skills_note"):
+        L.append(f"- Note: {' '.join(str(c['skills_note']).split())}")
     L += ["", "## Indexed skills", ""]
     if not skills:
         L.append("None indexed. Do not invent one — say so and point to the vendor's own developer docs.")

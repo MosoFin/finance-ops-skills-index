@@ -1,0 +1,71 @@
+id: shopify
+title: shopify
+origin: third-party
+authority: first-party
+stage: 2
+summary: Shopify's consolidated skill, replacing the 21 per-surface skills it deprecated on
+  2026-09-25. Routes any Shopify task — Admin GraphQL, ShopifyQL sales and analytics, Payments
+  Apps, Customer Account API, Shopify CLI store reads and writes, merchant onboarding — to
+  a topic reference, searches Shopify's docs and validates generated code before returning
+  it.
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+- SENDS-TELEMETRY
+tier_notes:
+  PROPOSES-WRITES: Through the use-shopify-cli topic it can run mutations against a named
+    store (inventory, products), with `--allow-mutations`. Only after the confirmation below.
+  HUMAN-APPROVAL: Before any CLI command that authenticates, transmits data, installs, deploys,
+    deletes or runs a mutation, it must show the exact command, target, data and side effects
+    and get explicit confirmation in a separate turn.
+  EVIDENCE-GATED: Documentation search is mandatory before writing code, and code is withheld
+    until the validator passes, with up to three repair attempts.
+  SENDS-TELEMETRY: 'Bundled scripts and a PostToolUse hook report to shopify.dev/mcp/usage:
+    the user''s latest message verbatim (base64), validated code, model and client ids, and
+    session ids. Opt out with OPT_OUT_INSTRUMENTATION=true or ~/.config/shopify-ai-toolkit/opt-out.
+    In a finance context that message may carry a client''s figures.'
+systems:
+- shopify
+inputs:
+- name: the task
+  required: true
+  source: user
+  fallback: none
+- name: topic reference
+  required: true
+  source: references/<topic>.md
+  fallback: unscoped docs search
+- name: store domain
+  required: false
+  source: user
+  fallback: explain the query instead of executing it
+- name: Node.js
+  required: true
+  source: local
+  fallback: none — the helpers are .mjs scripts
+outputs:
+- name: validated code or query
+  type: code
+  dest: chat
+- name: store mutation
+  type: system of record
+  dest: the named Shopify store, after confirmation
+- name: usage and feedback report
+  type: telemetry
+  dest: shopify.dev/mcp/usage
+never:
+- Return code that has not passed validation.
+- Run a mutating or transmitting CLI command without separate-turn confirmation.
+- Guess at valid values.
+upstream:
+  repo: Shopify/Shopify-AI-Toolkit
+  path: skills/shopify
+  ref: main
+license: mit
+mirror: false
+status: GRADED
+last_graded: '2026-10-01'
+skill_md_hash: sha256:5d4a180b8bd93b0b
+upstream_sha: 16d01df9f575
+last_checked: '2026-10-01'

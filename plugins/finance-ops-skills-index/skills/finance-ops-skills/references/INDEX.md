@@ -5,17 +5,17 @@
 | Vendor | Vertical | Reachability | Vendor skills repo | Indexed |
 | - | - | - | - | - |
 | quickbooks | accounting | live | intuit/quickbooks-claude-plugin | 34 |
-| stripe | payments | live | stripe/ai | 5 |
-| shopify | ecommerce | code-complete | Shopify/Shopify-AI-Toolkit | 5 |
+| stripe | payments | live | stripe/ai | 7 |
+| shopify | ecommerce | code-complete | Shopify/Shopify-AI-Toolkit | 1 |
 | meta-ads | advertising | roadmap | none | 0 |
 | google-ads | advertising | roadmap | none | 0 |
 | square | payments | roadmap | none | 0 |
 | paypal | payments | roadmap | paypal/AI-Toolkit | 2 |
-| xero | accounting | roadmap | none | 0 |
+| xero | accounting | roadmap | none | 1 |
 | hubspot | crm | roadmap | HubSpot/agent-cli-skills | 7 |
 | klaviyo | marketing | roadmap | none | 0 |
 | amazon-sp | ecommerce | roadmap | amzn/ads-advanced-tools-docs | 0 |
-| bigcommerce | ecommerce | candidate | none | 0 |
+| bigcommerce | ecommerce | candidate | none | 1 |
 | ebay | ecommerce | candidate | none | 0 |
 | ecwid | ecommerce | candidate | none | 0 |
 | lightspeed-x | ecommerce | candidate | none | 0 |
@@ -24,7 +24,7 @@
 | harvest | professional | candidate | none | 0 |
 | jobber | fieldservice | candidate | none | 0 |
 | servicem8 | fieldservice | candidate | none | 0 |
-| woocommerce | ecommerce | costly | woocommerce/agent-skills | 0 |
+| woocommerce | ecommerce | costly | woocommerce/agent-skills | 1 |
 | servicetitan | fieldservice | costly | none | 0 |
 | housecallpro | fieldservice | costly | none | 0 |
 | clover | retail | costly | none | 0 |

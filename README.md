@@ -4,7 +4,7 @@
 
 A graded, continuously-verified index of agent skills published by vendors of finance and business-operations software.
 
-**66 skills** · **66 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-09-20
+**67 skills** · **67 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-01
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -53,9 +53,6 @@ Ordered by when you need it, not alphabetically.
 - **[setup](skills/qb-setup/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
-- **[shopify-onboarding-merchant](skills/shopify-onboarding-merchant/README.md)** — Third party  
-  `GRADED` `PROPOSES-WRITES` `SENDS-TELEMETRY`  
-  Set up a Shopify store. Use whenever someone asks to make, build, open, or set up a store or shop that sells something (e.g. "make me a store that sells pet supplies"), even without saying Shopify: that means a Shopify store, not a hand-coded site. Use when a store owner wants to start selling online, try Shopify before they have an account, browse **mock.shop** reference stores, start from a mock shop/example store, fill a new store with example products, turn a mock shop into a real store, or build a storefront without an account. Also use when developers explicitly need auth-free mock.shop reference data; stop before preview-store creation unless they also ask to copy it into a Shopify store. Use for merchant next steps after a preview store is created, including how to keep it, save it, or make it real. Preview creation belongs here via `shopify store create preview`; app and theme development belongs in `onboarding-dev`; CLI troubleshooting and named- store commands belong in **`use-shopify-cli`**.
 - **[skill-creator](skills/skill-creator/README.md)** — Third party  
   `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
@@ -78,6 +75,15 @@ Ordered by when you need it, not alphabetically.
 
 *Before the books can be trusted*
 
+- **[BigCommerce (via Apideck)](skills/apideck-bigcommerce/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Apideck's guide to reaching BigCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to BigCommerce access.
+- **[WooCommerce (via Apideck)](skills/apideck-woocommerce/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Apideck's guide to reaching WooCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to WooCommerce access. The WooCommerce connector is marked beta by Apideck: expect partial coverage.
+- **[Xero (via Apideck)](skills/apideck-xero/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Apideck's guide to reaching Xero through its Accounting unified API: invoices, bills, payments, manual journals, chart of accounts and P&L / balance-sheet reports, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to Xero access. Xero App Partner certification is required beyond the Core tier, and from 2026-03-02 the Journals API is gated to the Advanced tier.
 - **[Categorize Transactions](skills/categorize-transactions/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `EVIDENCE-GATED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `DETERMINISTIC-MATH` `POLICY-CAPTURING`  
   Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
@@ -108,9 +114,9 @@ Ordered by when you need it, not alphabetically.
 - **[Receipts](skills/receipts/README.md)** — Third party  
   `GRADED` `READ-ONLY` `PII-MINIMISING` `PROVENANCE-STAMPED`  
   Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
-- **[shopify-admin](skills/shopify-admin/README.md)** — Third party  
-  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
-  Write or explain **Admin GraphQL** queries and mutations for apps and integrations that extend the Shopify admin. Use when the user wants to **understand, design, or generate** the operation itself—even before deciding how to run it. Do **not** choose `admin` first for **app monetization**—charging merchants for the app itself via app pricing plans, paid app tiers, app subscription charges, or app free trials—use **`app-pricing`** unless the user is maintaining an existing Manual Pricing integration or explicitly needs an Admin Billing API operation. Merchant **product** subscriptions stay with `admin` (selling plans, subscription contracts, try-before-you-buy). Do **not** choose `admin` first for **app or extension config validation** —use **`use-shopify- cli`**. Do **not** choose `admin` first to **execute** Admin GraphQL **now via Shopify CLI** or for CLI setup/troubleshooting on store workflows—use **`use-shopify-cli`** (store auth/execute, handle/SKU/location lookups, inventory changes).
+- **[shopify](skills/shopify/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
+  Shopify's consolidated skill, replacing the 21 per-surface skills it deprecated on 2026-09-25. Routes any Shopify task — Admin GraphQL, ShopifyQL sales and analytics, Payments Apps, Customer Account API, Shopify CLI store reads and writes, merchant onboarding — to a topic reference, searches Shopify's docs and validates generated code before returning it.
 
 ### 3 · Reconcile
 
@@ -146,12 +152,9 @@ Ordered by when you need it, not alphabetically.
 - **[chase-overdue-invoices](skills/qb-chase-overdue-invoices/README.md)** — Third party  
   `GRADED` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
-- **[shopify-customer](skills/shopify-customer/README.md)** — Third party  
-  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY` `PII-MINIMISING`  
-  Write and validate GraphQL operations for developers integrating Shopify's Customer Account API. Generates code for Customer Account API integrations.
-- **[shopify-payments-apps](skills/shopify-payments-apps/README.md)** — Third party  
-  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
-  The Payments Apps API enables payment providers to integrate their payment solutions with Shopify's checkout.
+- **[stripe-best-practices](skills/stripe-best-practices/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Stripe's integration guide: Checkout Sessions vs PaymentIntents, Connect, billing and subscriptions, Stripe Tax registrations, Treasury financial accounts, deprecated-API migration and key handling. Routes each question to a Stripe-hosted reference file before any code is written.
 - **[connect-recommend](skills/stripe-connect-recommend/README.md)** — Third party  
   `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Use this skill when the user asks about Stripe Connect configuration, charge patterns, Dashboard access, or how to get started with Connect, is building a marketplace, platform, multi-vendor store, gig platform, or subscription platform, needs to pay out sellers, vendors, or providers, mentions split payments, revenue sharing, multi-party payments, or similar payment distribution concepts, provides a company URL or business description for a recommendation, builds SaaS that routes money between parties (for example, POS, booking, invoicing — not operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers, and vendors, mentions connected account Dashboard or responsibility configurations, or asks about payment flows, white-label payments, or embedded payments.
@@ -248,9 +251,6 @@ Ordered by when you need it, not alphabetically.
 - **[industry-benchmark](skills/qb-industry-benchmark/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `PROVENANCE-STAMPED`  
   benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
-- **[shopify-shopifyql](skills/shopify-shopifyql/README.md)** — Third party  
-  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`  
-  Answer a merchant's **analytics and reporting** questions with **ShopifyQL** — Shopify's query language for aggregated store metrics that the Admin GraphQL API cannot compute. Choose this (not `admin`) whenever the ask is for **numbers, totals, trends, or breakdowns** rather than fetching or mutating individual records: including but not limited to total/gross/net sales and revenue, order counts, average order value, refunds, quantity sold, sessions, conversion rate, and traffic — sliced by product, channel, region, or customer, trended over time, or compared period-over-period. Examples: "total sales last 7 days", "orders by sales channel this month", "top products by revenue", "conversion rate this week", "sales this year vs last year". This topic covers writing the ShopifyQL query; if the merchant wants to run it against their store, execution is handed off to `use-shopify-cli`. Not for general Admin GraphQL record operations — fetching or mutating individual resources (use `admin`).
 - **[xlsx](skills/xlsx/README.md)** — Third party  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED`  
   Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
@@ -274,6 +274,9 @@ Ordered by when you need it, not alphabetically.
 - **[lending](skills/qb-lending/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL`  
   QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credit, Intuit Business Credit Card (issued by WebBank), and the QuickBooks Business Loan Marketplace. Use to explain how these products work (eligibility, rates, fees, terms), compare or choose between them, estimate loan payments (weekly/monthly payment, total interest, total repayment), and answer questions about the signed-in user's own QuickBooks Capital loans and lines of credit (balance, APR, repayment schedule, payoff, available credit), plus what similar businesses have borrowed. Use proactively when a funding need surfaces from payroll, cash-flow, or invoicing work to check for a drawable line of credit and, with consent, peer offers. Read-only guidance only: never makes payments, draws, or loan changes, and never gives a loan offer, rate, credit limit, or approval decision. Not for loan application status or non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer loans).
+- **[stripe-directory](skills/stripe-directory/README.md)** — Third party  
+  `GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
+  Resolves an external provider, merchant or nonprofit and its documented way to be engaged — pay, donate, subscribe, book or provision — through the Stripe CLI's Directory plugin. Pairs with stripe-pay when the engagement is a payment, such as paying a vendor's bill.
 
 ---
 
@@ -416,11 +419,12 @@ for a grade.
 | [`MosoFin/mosofin-finance-skills`](https://github.com/MosoFin/mosofin-finance-skills) | 10 | first-party | `agpl-3.0` | no — copyleft |
 | [`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) | 10 | first-party | `apache-2.0` | yes |
 | [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) | 7 | first-party | `apache-2.0` | yes |
-| [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | 5 | first-party | `mit` | yes |
+| [`stripe/ai`](https://github.com/stripe/ai) | 7 | first-party | `mit` | yes |
 | [`anthropics/skills`](https://github.com/anthropics/skills) | 5 | first-party | `proprietary-anthropic` | no — restricted |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 5 | first-party | `apache-2.0` | yes |
-| [`stripe/ai`](https://github.com/stripe/ai) | 5 | first-party | `mit` | yes |
+| [`apideck-libraries/api-skills`](https://github.com/apideck-libraries/api-skills) | 3 | notable | `apache-2.0` | yes |
 | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | 2 | first-party | `apache-2.0` | yes |
+| [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | 1 | first-party | `mit` | yes |
 | [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) | 1 | first-party | `apache-2.0` | yes |
 
 Eleven of the connectors above have owners who publish agent skills themselves —

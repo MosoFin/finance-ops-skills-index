@@ -4,8 +4,15 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: ecommerce
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-01.
+- Note: No vendor-published skills. One third-party pointer is indexed: Apideck's `bigcommerce` skill, which reaches it through Apideck's unified API (notable authority, needs an Apideck account).
 
 ## Indexed skills
 
-None indexed. Do not invent one — say so and point to the vendor's own developer docs.
+### apideck-bigcommerce
+
+- Authority: notable · stage 2 · status GRADED (graded 2026-10-01)
+- Trust badges: READ-ONLY
+- Licence: apache-2.0
+- Upstream: https://github.com/apideck-libraries/api-skills/tree/main/skills/bigcommerce
+- Summary: Apideck's guide to reaching BigCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to BigCommerce access.

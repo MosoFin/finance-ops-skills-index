@@ -1,0 +1,44 @@
+id: apideck-xero
+title: Xero (via Apideck)
+origin: third-party
+authority: notable
+stage: 2
+summary: 'Apideck''s guide to reaching Xero through its Accounting unified API: invoices,
+  bills, payments, manual journals, chart of accounts and P&L / balance-sheet reports, with
+  auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an
+  Apideck account in addition to Xero access. Xero App Partner certification is required beyond
+  the Core tier, and from 2026-03-02 the Journals API is gated to the Advanced tier.'
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: 'A developer reference: it explains the serviceId, entity mapping and caveats
+    and shows example code. It runs nothing itself. The code it shows can create records in
+    Xero, and the skill gives no confirmation guidance for those writes — that is the integrator''s
+    job.'
+systems:
+- xero
+inputs:
+- name: integration goal
+  required: true
+  source: user
+  fallback: none
+- name: Apideck API key, app id and consumer id
+  required: true
+  source: environment variables in generated code
+  fallback: none — Apideck is the transport
+outputs:
+- name: example code and caveats
+  type: chat
+  dest: chat
+never: []
+upstream:
+  repo: apideck-libraries/api-skills
+  path: skills/xero
+  ref: main
+license: apache-2.0
+mirror: false
+status: GRADED
+last_graded: '2026-10-01'
+skill_md_hash: sha256:2668a6c7928f0c13
+upstream_sha: ff0e8fccc3ff
+last_checked: '2026-10-01'

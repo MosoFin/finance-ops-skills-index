@@ -1,0 +1,59 @@
+id: stripe-directory
+title: stripe-directory
+origin: third-party
+authority: first-party
+stage: 7
+summary: Resolves an external provider, merchant or nonprofit and its documented way to be
+  engaged — pay, donate, subscribe, book or provision — through the Stripe CLI's Directory
+  plugin. Pairs with stripe-pay when the engagement is a payment, such as paying a vendor's
+  bill.
+tiers:
+- MOVES-MONEY
+- HUMAN-APPROVAL
+- EVIDENCE-GATED
+tier_notes:
+  MOVES-MONEY: Drives payments and donations to the recipient it resolves. The transfer itself
+    is executed by stripe-pay or another documented payment flow, but this skill is the one
+    that starts the journey.
+  HUMAN-APPROVAL: Before any payment or donation it must show recipient, purpose, amount,
+    currency and constraints and obtain explicit approval, and it must not drive to a purchase
+    or provisioning step without an explicit request.
+  EVIDENCE-GATED: Uses recipients and payment paths returned by Directory rather than model
+    memory, and forbids inventing CLI details, endpoints, prices or provisioning commands.
+systems:
+- stripe
+inputs:
+- name: provider, merchant or need
+  required: true
+  source: user
+  fallback: search a category instead of a name
+- name: Stripe CLI with the directory plugin
+  required: true
+  source: local install
+  fallback: install it, or follow stripe.directory setup
+- name: approval for payment
+  required: true
+  source: user
+  fallback: stop before paying
+outputs:
+- name: ranked providers and next action
+  type: chat
+  dest: chat
+- name: payment or provisioning hand-off
+  type: money movement
+  dest: stripe-pay or stripe projects, after approval
+never:
+- Pay, donate or provision without an explicit request and approval.
+- Invent recipients, prices or endpoints.
+- Skip Directory and pick a provider from model memory.
+upstream:
+  repo: stripe/ai
+  path: providers/claude/plugin/skills/stripe-directory
+  ref: main
+license: mit
+mirror: false
+status: GRADED
+last_graded: '2026-10-01'
+skill_md_hash: sha256:0805bce6792026e5
+upstream_sha: 9f39fa607a63
+last_checked: '2026-10-01'

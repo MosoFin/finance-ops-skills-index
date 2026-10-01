@@ -5,9 +5,9 @@
 - Reachability: **live** — Connected today
 - Vertical: payments
 - Vendor skills repository: https://github.com/stripe/ai
-- Published there: 60 · indexed here: 5 · checked 2026-09-20
+- Published there: 60 · indexed here: 7 · checked 2026-09-20
 - Repository licence: mit
-- Note: The repo ships the same 10 skills under six provider directories; 10 unique. Five are payments or Connect. The rest build Stripe apps.
+- Note: The repo ships the same 10 skills under six provider directories; 10 unique. Seven are payments, Connect, billing, tax or paying vendors (stripe-directory). The other three build Stripe apps, provision infrastructure or upgrade SDKs.
 
 ## Indexed skills
 
@@ -19,6 +19,15 @@
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/metronome
 - Summary: Usage-based billing through Stripe's official toolkit. Where revenue is metered rather than invoiced, this is upstream of every revenue number.
 - Never: Name an endpoint or field without reading its documentation page first. | Recommend legacy Plans or deprecated Amendments for new work. | Hardcode pricing in contracts rather than rate cards. | Reconcile payments against the Metronome invoice total — it is pre-tax; use the Stripe total.
+
+### stripe-best-practices
+
+- Authority: first-party · stage 3 · status GRADED (graded 2026-10-01)
+- Trust badges: READ-ONLY, EVIDENCE-GATED
+- Licence: mit
+- Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices
+- Summary: Stripe's integration guide: Checkout Sessions vs PaymentIntents, Connect, billing and subscriptions, Stripe Tax registrations, Treasury financial accounts, deprecated-API migration and key handling. Routes each question to a Stripe-hosted reference file before any code is written.
+- Never: Pass payment_method_types, except card_present for Terminal. | Present webhooks as optional. | Use the deprecated global API-key pattern. | Recommend a secret key where a restricted key will do.
 
 ### stripe-connect-recommend
 
@@ -37,6 +46,15 @@
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/connect-required-verification-information
 - Summary: Use this skill when the user asks what information a Stripe Connect connected account must provide for verification, onboarding, KYC, or account requirements; when they need to compare requirements between connected-account setups; or when they ask which verification fields, documents, or business details are required for a particular platform country, account country, business type, dashboard, service agreement, or capability.
 - Never: Ask for a field before its prerequisites are satisfied. | Stop at a plain free-form prompt where a multiple-choice question is required. | Re-ask something the user already answered.
+
+### stripe-directory
+
+- Authority: first-party · stage 7 · status GRADED (graded 2026-10-01)
+- Trust badges: MOVES-MONEY, HUMAN-APPROVAL, EVIDENCE-GATED
+- Licence: mit
+- Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-directory
+- Summary: Resolves an external provider, merchant or nonprofit and its documented way to be engaged — pay, donate, subscribe, book or provision — through the Stripe CLI's Directory plugin. Pairs with stripe-pay when the engagement is a payment, such as paying a vendor's bill.
+- Never: Pay, donate or provision without an explicit request and approval. | Invent recipients, prices or endpoints. | Skip Directory and pick a provider from model memory.
 
 ### stripe-docs
 

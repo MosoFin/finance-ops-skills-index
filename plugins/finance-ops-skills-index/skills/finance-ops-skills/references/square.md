@@ -4,7 +4,8 @@
 
 - Reachability: **roadmap** — Committed — registration runbook written
 - Vertical: payments
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-01.
+- Note: Nothing published by Square, and no Square skill in Apideck's third-party set either.
 
 ## Indexed skills
 

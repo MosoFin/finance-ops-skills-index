@@ -5,7 +5,7 @@
 For every connector on the roadmap: who owns it on GitHub, whether they publish
 agent skills of their own, and how many this index carries.
 
-**30 connectors tracked** · **9 vendor skill repositories** · **230 skills published** · **34 finance-relevant** · **19 vendors publish none**
+**30 connectors tracked** · **9 vendor skill repositories** · **210 skills published** · **32 finance-relevant** · **19 vendors publish none**
 
 *Published* is everything in the repo. *Relevant* is what belongs in a finance
 index — most vendor skills teach you to build on their platform, which is a
@@ -20,26 +20,26 @@ on it, not a permanent state.
 | Repository | Serves | Published | Relevant | Indexed | Licence | Checked |
 |---|---|---|---|---|---|---|
 | [`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) | `quickbooks` | 10 | 10 | 10 | `apache-2.0` | 2026-09-20 |
+| [`stripe/ai`](https://github.com/stripe/ai) | `stripe` | 60 | 7 | 7 | `mit` | 2026-09-20 |
 | [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) | `hubspot` | 15 | 7 | 7 | `apache-2.0` | 2026-09-20 |
-| [`stripe/ai`](https://github.com/stripe/ai) | `stripe` | 60 | 5 | 5 | `mit` | 2026-09-20 |
-| [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | `shopify` | 22 | 5 | 5 | `mit` | 2026-09-20 |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | `gmail`, `google-drive`, `google-sheets` | 95 | 5 | 5 | `apache-2.0` | 2026-09-20 |
 | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | `paypal` | 2 | 2 | 2 | `apache-2.0` | 2026-09-20 |
+| [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | `shopify` | 2 | 1 | 1 | `mit` | 2026-10-01 |
 | [`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs) | `amazon-sp` | 9 | 0 | 0 | `mit-0` | 2026-09-20 |
-| [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | `woocommerce` | 2 | 0 | 0 | `unclear` | 2026-09-20 |
+| [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | `woocommerce` | 2 | 0 | 1 | `unclear` | 2026-09-20 |
 | [`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit) | `excel` | 15 | 0 | 0 | `mit` | 2026-09-20 |
 
 - **[`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills)** — Seven are revenue operations. The rest are CRM workflow and support.
 - **[`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit)** — The repo's .github/skills are Microsoft's internal development process — vibe-coding, governance remediation. Nothing to do with Excel.
-- **[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit)** — Five touch merchant data, payments or reporting. The other seventeen build Shopify apps — Polaris, Hydrogen, Liquid, Functions, CLI.
+- **[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit)** — On 2026-09-25 Shopify moved its 21 per-surface skills to deprecated/ as stubs and replaced them with one consolidated `shopify` skill, which is indexed. The other active skill, `ucp`, is a buyer-side shopping agent for purchasing from merchants — not store operations — so it is not.
 - **[`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs)** — The nine are Amazon Ads API migration guides — a different product from SP-API, and developer tooling rather than bookkeeping.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Triage only — this connector is not recommended anyway.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Drive itself. See google-sheets for the rest.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
 - **[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin)** — All ten are bookkeeping skills — the only vendor set that is.
 - **[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit)** — Both indexed.
-- **[`stripe/ai`](https://github.com/stripe/ai)** — The repo ships the same 10 skills under six provider directories; 10 unique. Five are payments or Connect. The rest build Stripe apps.
-- **[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)** — Both are the repository's own automation, including a stale-PR audit. Licence is unrecognised.
+- **[`stripe/ai`](https://github.com/stripe/ai)** — The repo ships the same 10 skills under six provider directories; 10 unique. Seven are payments, Connect, billing, tax or paying vendors (stripe-directory). The other three build Stripe apps, provision infrastructure or upgrade SDKs.
+- **[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)** — WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed. One third-party pointer is: Apideck's `woocommerce` skill, via Apideck's unified API, beta.
 
 ## Vendors that publish none
 
@@ -51,9 +51,9 @@ skills, MCP, a toolkit, a plugin, a CLI or an SDK.
 | `google-ads` | roadmap | [`googleads`](https://github.com/googleads) | 2026-09-20 |
 | `klaviyo` | roadmap | [`klaviyo`](https://github.com/klaviyo) | 2026-09-20 |
 | `meta-ads` | roadmap | [`facebook`](https://github.com/facebook) | 2026-09-20 |
-| `square` | roadmap | [`square`](https://github.com/square) | 2026-09-20 |
-| `xero` | roadmap | [`XeroAPI`](https://github.com/XeroAPI) | 2026-09-20 |
-| `bigcommerce` | candidate | [`bigcommerce`](https://github.com/bigcommerce) | 2026-09-20 |
+| `square` | roadmap | [`square`](https://github.com/square) | 2026-10-01 |
+| `xero` | roadmap | [`XeroAPI`](https://github.com/XeroAPI) | 2026-10-01 |
+| `bigcommerce` | candidate | [`bigcommerce`](https://github.com/bigcommerce) | 2026-10-01 |
 | `clio` | candidate | [`clio`](https://github.com/clio) | 2026-09-20 |
 | `ebay` | candidate | [`eBay`](https://github.com/eBay) | 2026-09-20 |
 | `ecwid` | candidate | [`Ecwid`](https://github.com/Ecwid) | 2026-09-20 |
