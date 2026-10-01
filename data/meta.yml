@@ -2,8 +2,8 @@
 # Skills live in data/sources/<system>/<id>.yml — one folder per data source.
 
 meta:
-  title: Mosofin Skills Index
-  tagline: A graded, continuously-verified index of agent skills for accounting and finance.
+  title: Finance & Ops Skills Index
+  tagline: A graded, continuously-verified index of agent skills published by vendors of finance and business-operations software.
   regrade_after_days: 180
   tiers_doc: docs/TRUST-TIERS.md
 stages:

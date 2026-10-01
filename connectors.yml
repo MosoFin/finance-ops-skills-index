@@ -89,10 +89,10 @@ connectors:
     skills_published: 60
     skills_license: mit
     skills_checked: "2026-09-20"
-    skills_relevant: 5
-    skills_indexed: 5
+    skills_relevant: 7
+    skills_indexed: 7
     skills_note: >-
-      The repo ships the same 10 skills under six provider directories; 10 unique. Five are payments or Connect. The rest build Stripe apps.
+      The repo ships the same 10 skills under six provider directories; 10 unique. Seven are payments, Connect, billing, tax or paying vendors (stripe-directory). The other three build Stripe apps, provision infrastructure or upgrade SDKs.
 
   # ===== Built, awaiting review ===========================================
   shopify:
@@ -112,13 +112,13 @@ connectors:
       merchants on Shopify Payments. Public distribution is irreversible.
     github_org: Shopify
     skills_repo: Shopify/Shopify-AI-Toolkit
-    skills_published: 22
+    skills_published: 2
     skills_license: mit
-    skills_checked: "2026-09-20"
-    skills_relevant: 5
-    skills_indexed: 5
+    skills_checked: "2026-10-01"
+    skills_relevant: 1
+    skills_indexed: 1
     skills_note: >-
-      Five touch merchant data, payments or reporting. The other seventeen build Shopify apps — Polaris, Hydrogen, Liquid, Functions, CLI.
+      On 2026-09-25 Shopify moved its 21 per-surface skills to deprecated/ as stubs and replaced them with one consolidated `shopify` skill, which is indexed. The other active skill, `ucp`, is a buyer-side shopping agent for purchasing from merchants — not store operations — so it is not.
 
   # ===== Committed roadmap ================================================
   meta-ads:
@@ -181,7 +181,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-01"
+    skills_note: >-
+      Nothing published by Square, and no Square skill in Apideck's third-party set either.
   paypal:
     status: roadmap
     family: A
@@ -221,8 +223,10 @@ connectors:
     github_org: XeroAPI
     skills_repo: none
     skills_published: 0
-    skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_indexed: 1
+    skills_note: >-
+      No vendor-published skills. One third-party pointer is indexed: Apideck's `xero` skill, which reaches it through Apideck's unified API (notable authority, needs an Apideck account).
+    skills_checked: "2026-10-01"
   hubspot:
     status: roadmap
     family: A
@@ -297,8 +301,10 @@ connectors:
     github_org: bigcommerce
     skills_repo: none
     skills_published: 0
-    skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_indexed: 1
+    skills_note: >-
+      No vendor-published skills. One third-party pointer is indexed: Apideck's `bigcommerce` skill, which reaches it through Apideck's unified API (notable authority, needs an Apideck account).
+    skills_checked: "2026-10-01"
   ebay:
     status: candidate
     family: A
@@ -420,9 +426,9 @@ connectors:
     skills_license: unclear
     skills_checked: "2026-09-20"
     skills_relevant: 0
-    skills_indexed: 0
+    skills_indexed: 1
     skills_note: >-
-      Both are the repository's own automation, including a stale-PR audit. Licence is unrecognised.
+      WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed. One third-party pointer is: Apideck's `woocommerce` skill, via Apideck's unified API, beta.
   servicetitan:
     status: costly
     family: A

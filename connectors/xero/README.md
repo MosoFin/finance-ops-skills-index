@@ -25,11 +25,13 @@ Rotating refresh tokens need atomic persistence — a lost write costs the grant
 
 ## Official skills from the vendor
 
-None. [`XeroAPI`](https://github.com/XeroAPI) was probed on 2026-09-20 and publishes no agent skills — a dated fact, not a permanent state.
+None. [`XeroAPI`](https://github.com/XeroAPI) was probed on 2026-10-01 and publishes no agent skills — a dated fact, not a permanent state.
 
 ## Skills in this index that need it
 
-None yet. Connecting this reaches data no indexed skill currently reads.
+**2 · Data hygiene**
+
+- [Xero (via Apideck)](../../skills/apideck-xero/README.md) — `GRADED` `READ-ONLY`
 
 ---
 

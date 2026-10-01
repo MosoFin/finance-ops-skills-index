@@ -19,7 +19,7 @@ Stripe's own skill for payment flows. The merchant-side counterpart to reconcili
 
 ## Why these badges
 
-- **`MOVES-MONEY`** — `stripe pay` transfers funds from the authenticated Stripe business to another. This is the only entry in the index that moves real money, and the reason the badge exists.
+- **`MOVES-MONEY`** — `stripe pay` transfers funds from the authenticated Stripe business to another. This and stripe-directory, which hands payments to it, are the entries in the index that move real money.
 - **`HUMAN-APPROVAL`** — The exact command must be shown and confirmed before running, `--agent` or `--json` used first so the transfer can be reviewed, and `-y` withheld until after that review. A transfer also requires the user to have asked for it explicitly.
 - **`EVIDENCE-GATED`** — Nothing is guessed — not the handle, financial account, amount, currency or memo. Missing setup stops the transfer and is explained rather than retried, and fee and delivery timing are reported before confirmation rather than assumed free or instant.
 

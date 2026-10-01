@@ -25,32 +25,19 @@ read_all_orders must be requested or the API silently caps order history at 60 d
 
 ## Official skills from the vendor
 
-[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) · licence `mit` · probed 2026-09-20
+[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) · licence `mit` · probed 2026-10-01
 
-- **22** skills published
-- **5** finance-relevant
-- **5** indexed here
+- **2** skills published
+- **1** finance-relevant
+- **1** indexed here
 
-Five touch merchant data, payments or reporting. The other seventeen build Shopify apps — Polaris, Hydrogen, Liquid, Functions, CLI.
+On 2026-09-25 Shopify moved its 21 per-surface skills to deprecated/ as stubs and replaced them with one consolidated `shopify` skill, which is indexed. The other active skill, `ucp`, is a buyer-side shopping agent for purchasing from merchants — not store operations — so it is not.
 
 ## Skills in this index that need it
 
-**0 · Setup**
-
-- [shopify-onboarding-merchant](../../skills/shopify-onboarding-merchant/README.md) — `GRADED` `PROPOSES-WRITES` `SENDS-TELEMETRY`
-
 **2 · Data hygiene**
 
-- [shopify-admin](../../skills/shopify-admin/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
-
-**3 · Reconcile**
-
-- [shopify-customer](../../skills/shopify-customer/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY` `PII-MINIMISING`
-- [shopify-payments-apps](../../skills/shopify-payments-apps/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
-
-**6 · Report**
-
-- [shopify-shopifyql](../../skills/shopify-shopifyql/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `SENDS-TELEMETRY`
+- [shopify](../../skills/shopify/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `SENDS-TELEMETRY`
 
 ---
 

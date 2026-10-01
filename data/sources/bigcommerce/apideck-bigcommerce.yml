@@ -1,0 +1,42 @@
+id: apideck-bigcommerce
+title: BigCommerce (via Apideck)
+origin: third-party
+authority: notable
+stage: 2
+summary: 'Apideck''s guide to reaching BigCommerce through its Ecommerce unified API: orders,
+  products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes
+  through Apideck, so it needs an Apideck account in addition to BigCommerce access.'
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: 'A developer reference: it explains the serviceId, entity mapping and caveats
+    and shows example code. It runs nothing itself. The code it shows can create records in
+    BigCommerce, and the skill gives no confirmation guidance for those writes — that is the
+    integrator''s job.'
+systems:
+- bigcommerce
+inputs:
+- name: integration goal
+  required: true
+  source: user
+  fallback: none
+- name: Apideck API key, app id and consumer id
+  required: true
+  source: environment variables in generated code
+  fallback: none — Apideck is the transport
+outputs:
+- name: example code and caveats
+  type: chat
+  dest: chat
+never: []
+upstream:
+  repo: apideck-libraries/api-skills
+  path: skills/bigcommerce
+  ref: main
+license: apache-2.0
+mirror: false
+status: GRADED
+last_graded: '2026-10-01'
+skill_md_hash: sha256:3b6c73dea3ef0a24
+upstream_sha: 704bda32cc7b
+last_checked: '2026-10-01'

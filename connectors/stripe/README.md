@@ -27,10 +27,10 @@ read_only scope needs Stripe approval; currently authorising read_write and neve
 [`stripe/ai`](https://github.com/stripe/ai) · licence `mit` · probed 2026-09-20
 
 - **60** skills published
-- **5** finance-relevant
-- **5** indexed here
+- **7** finance-relevant
+- **7** indexed here
 
-The repo ships the same 10 skills under six provider directories; 10 unique. Five are payments or Connect. The rest build Stripe apps.
+The repo ships the same 10 skills under six provider directories; 10 unique. Seven are payments, Connect, billing, tax or paying vendors (stripe-directory). The other three build Stripe apps, provision infrastructure or upgrade SDKs.
 
 ## Skills in this index that need it
 
@@ -40,6 +40,7 @@ The repo ships the same 10 skills under six provider directories; 10 unique. Fiv
 
 **3 · Reconcile**
 
+- [stripe-best-practices](../../skills/stripe-best-practices/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
 - [connect-recommend](../../skills/stripe-connect-recommend/README.md) — `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 - [connect-required-verification-information](../../skills/stripe-connect-verification/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL`
 - [Stripe Pay](../../skills/stripe-pay/README.md) — `GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
@@ -47,6 +48,7 @@ The repo ships the same 10 skills under six provider directories; 10 unique. Fiv
 **7 · Forward-looking**
 
 - [Metronome billing](../../skills/metronome/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
+- [stripe-directory](../../skills/stripe-directory/README.md) — `GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 
 ---
 

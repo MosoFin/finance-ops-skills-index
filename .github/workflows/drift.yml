@@ -71,7 +71,7 @@ jobs:
         run: |
           BRANCH="drift/regrade-$(date -u +%Y%m%d)"
           git checkout -b "$BRANCH"
-          git add data/ README.md skills/ connectors/ docs/CONNECTOR-TRACKER.md
+          git add data/ README.md skills/ connectors/ plugins/ docs/CONNECTOR-TRACKER.md
           git commit -m "chore(drift): mark changed entries NEEDS-RE-GRADING"
           git push -f origin "$BRANCH"
           gh issue create \
@@ -84,6 +84,6 @@ jobs:
       - name: Commit bookkeeping
         if: steps.drift.outputs.code == '0'
         run: |
-          git add data/ README.md skills/ connectors/ docs/CONNECTOR-TRACKER.md
+          git add data/ README.md skills/ connectors/ plugins/ docs/CONNECTOR-TRACKER.md
           git diff --staged --quiet || git commit -m "chore(drift): refresh upstream SHAs"
           git push

@@ -9,11 +9,11 @@ index run once it is connected.
 ## live — Connected today
 
 - **[quickbooks](quickbooks/README.md)** — `oauth3` · 34 skills in this index
-- **[stripe](stripe/README.md)** — `oauth3` · 5 skills in this index
+- **[stripe](stripe/README.md)** — `oauth3` · 7 skills in this index
 
 ## code-complete — Built; blocked on credentials or review, not engineering
 
-- **[shopify](shopify/README.md)** — `oauth3` · 2–6 weeks review · 5 skills in this index
+- **[shopify](shopify/README.md)** — `oauth3` · 2–6 weeks review · 1 skill in this index
 
 ## roadmap — Committed — registration runbook written
 
@@ -24,11 +24,11 @@ index run once it is connected.
 - **[meta-ads](meta-ads/README.md)** — `oauth3` · 1–3 weeks, two independent queues · 0 skills in this index
 - **[paypal](paypal/README.md)** — `oauth3` · None — self-serve · 2 skills in this index
 - **[square](square/README.md)** — `oauth3` · Sandbox instant · 0 skills in this index
-- **[xero](xero/README.md)** — `oauth3` · Self-serve · 0 skills in this index
+- **[xero](xero/README.md)** — `oauth3` · Self-serve · 1 skill in this index
 
 ## candidate — Evaluated, not yet committed
 
-- **[bigcommerce](bigcommerce/README.md)** — `oauth3` · 0 skills in this index
+- **[bigcommerce](bigcommerce/README.md)** — `oauth3` · 1 skill in this index
 - **[clio](clio/README.md)** — `oauth3` · 0 skills in this index
 - **[ebay](ebay/README.md)** — `oauth3` · 0 skills in this index
 - **[ecwid](ecwid/README.md)** — `oauth3` · 0 skills in this index
@@ -43,7 +43,7 @@ index run once it is connected.
 - **[clover](clover/README.md)** — `oauth3` · 0 skills in this index
 - **[housecallpro](housecallpro/README.md)** — `merchant-keys` · 0 skills in this index
 - **[servicetitan](servicetitan/README.md)** — `merchant-keys` · 0 skills in this index
-- **[woocommerce](woocommerce/README.md)** — `merchant-keys` · 0 skills in this index
+- **[woocommerce](woocommerce/README.md)** — `merchant-keys` · 1 skill in this index
 
 ## gated — Partner agreement required before technical evaluation
 

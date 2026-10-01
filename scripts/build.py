@@ -526,6 +526,67 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "",
         "**[Read the trust tiers →](docs/TRUST-TIERS.md)**",
         "",
+        "## How to use it",
+        "",
+        "There are two ways in: ask Claude through the plugin, or browse the index here.",
+        "",
+        "### 1. Install the Claude plugin",
+        "",
+        "**Claude Code** — in any session, add this repository as a marketplace, then install:",
+        "",
+        "```",
+        "/plugin marketplace add MosoFin/finance-ops-skills-index",
+        "/plugin install finance-ops-skills-index@finance-ops-skills-index",
+        "```",
+        "",
+        "Or from your shell:",
+        "",
+        "```bash",
+        "claude plugin marketplace add MosoFin/finance-ops-skills-index",
+        "claude plugin install finance-ops-skills-index@finance-ops-skills-index",
+        "```",
+        "",
+        "Run `/plugin` and check that `finance-ops-skills-index` is listed as enabled.",
+        "",
+        "**claude.ai and Cowork** — go to **Customize > Plugins > Add > Add marketplace**,",
+        "enter `MosoFin/finance-ops-skills-index`, then add **Finance & Ops Skills Index**.",
+        "Once the plugin is listed in Anthropic's directory you can also find it by name",
+        "under **Customize > Plugins**.",
+        "",
+        "### 2. Ask Claude",
+        "",
+        "Ask in plain language; you do not need to name the plugin. For example:",
+        "",
+        "| You ask | Claude answers with |",
+        "| - | - |",
+        "| \"Has Xero published any official skills?\" | No vendor skills, and the third-party Apideck option labelled as such |",
+        "| \"Which QuickBooks skills can post journal entries?\" | The matching skills, each with its write authority (read-only, proposes writes, writes direct) |",
+        "| \"Is there a Stripe skill that can pay a supplier, and does it ask first?\" | `stripe-pay` and `stripe-directory`, marked as moving money, with their confirmation step |",
+        "| \"What should I use for sales by channel on Shopify, and what does it send back?\" | Shopify's `shopify` skill, what its telemetry contains and how to opt out |",
+        "| \"What helps me reconcile the bank at month end?\" | Reconciliation skills from every vendor, ranked by fit |",
+        "",
+        "Each answer gives the upstream link, the publisher, the licence, the trust badges and",
+        "the date the entry was last checked.",
+        "",
+        "### 3. Install the skill you picked",
+        "",
+        "The plugin only points; it never installs a vendor's skill for you. Open the upstream",
+        "link Claude gives you and follow that vendor's install steps. Read the trust badges",
+        "first, especially `WRITES-DIRECT`, `MOVES-MONEY` and `SENDS-TELEMETRY`.",
+        "",
+        "### 4. Keep it current",
+        "",
+        "Every upstream pointer is re-checked daily, and the plugin's version changes whenever",
+        "the catalog does. To pick up changes in Claude Code, run `/plugin marketplace update",
+        "finance-ops-skills-index`, or turn on auto-update for the marketplace under",
+        "**Marketplaces** in `/plugin`. To remove it, run",
+        "`/plugin uninstall finance-ops-skills-index@finance-ops-skills-index`.",
+        "",
+        "### Without the plugin",
+        "",
+        "Everything the plugin knows is browsable here: the tables below, a page per skill",
+        "under [`skills/`](skills/), and a page per vendor under [`connectors/`](connectors/).",
+        "",
         "Nothing here is mirrored. Every third-party entry is a pointer to its own",
         "repository, checked daily; when an upstream `SKILL.md` changes, its grade is",
         "marked stale and a human re-reads it. The list is cheap — the grade is the product.",
@@ -704,7 +765,15 @@ def main() -> int:
         d.mkdir(parents=True, exist_ok=True)
         (d / "README.md").write_text(skill_page(skill, meta))
 
-    print(f"built README.md, {len(data['skills'])} skill pages, {n_conn} connector pages")
+    import build_plugin
+    n_plugin = build_plugin.build(
+        ROOT, data["skills"], conn_meta["connectors"], conn_meta["statuses"], primary_system
+    )
+
+    print(
+        f"built README.md, {len(data['skills'])} skill pages, {n_conn} connector pages, "
+        f"plugin with {n_plugin} vendor references"
+    )
     return 0
 
 

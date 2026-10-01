@@ -21,11 +21,13 @@ Survey priority 2 — cleanest registration found; mirrors the Shopify code.
 
 ## Official skills from the vendor
 
-None. [`bigcommerce`](https://github.com/bigcommerce) was probed on 2026-09-20 and publishes no agent skills — a dated fact, not a permanent state.
+None. [`bigcommerce`](https://github.com/bigcommerce) was probed on 2026-10-01 and publishes no agent skills — a dated fact, not a permanent state.
 
 ## Skills in this index that need it
 
-None yet. Connecting this reaches data no indexed skill currently reads.
+**2 · Data hygiene**
+
+- [BigCommerce (via Apideck)](../../skills/apideck-bigcommerce/README.md) — `GRADED` `READ-ONLY`
 
 ---
 

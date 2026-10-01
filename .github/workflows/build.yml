@@ -18,10 +18,21 @@ jobs:
       - name: Generated docs are in sync with the data files
         run: |
           python scripts/build.py
-          git diff --exit-code -- README.md skills/ connectors/ docs/CONNECTOR-TRACKER.md || {
+          git diff --exit-code -- README.md skills/ connectors/ plugins/ docs/CONNECTOR-TRACKER.md || {
             echo "::error::Generated pages are out of date. Run make build and commit."
             exit 1
           }
+
+      # The checks the Claude docs prescribe before publishing: the marketplace
+      # catalog and the plugin manifest must both validate, warnings included.
+      # The CLI is pinned so a new release cannot change the verdict silently.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Claude plugin manifests validate
+        run: |
+          npx -y @anthropic-ai/claude-code@2.1.286 plugin validate --strict .
+          npx -y @anthropic-ai/claude-code@2.1.286 plugin validate --strict ./plugins/finance-ops-skills-index
 
       # Restricted-licence entries are pointers. Vendoring them would redistribute
       # material this repository has no right to redistribute.

@@ -1,0 +1,53 @@
+id: stripe-best-practices
+title: stripe-best-practices
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'Stripe''s integration guide: Checkout Sessions vs PaymentIntents, Connect, billing
+  and subscriptions, Stripe Tax registrations, Treasury financial accounts, deprecated-API
+  migration and key handling. Routes each question to a Stripe-hosted reference file before
+  any code is written.'
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: Guidance and code generation only. It never calls the Stripe API on a live account;
+    the one command it may suggest, `stripe sandbox create`, makes a test account.
+  EVIDENCE-GATED: Requires reading the relevant Stripe reference file before answering, and
+    requires confirming an active tax registration before enabling automatic_tax — otherwise
+    Stripe collects no tax while the user believes it does.
+systems:
+- stripe
+inputs:
+- name: integration goal
+  required: true
+  source: user
+  fallback: none
+- name: Stripe reference files
+  required: true
+  source: docs.stripe.com/references/*.md
+  fallback: none — read before answering
+- name: API version
+  required: false
+  source: user or project
+  fallback: latest (stated in the skill)
+outputs:
+- name: integration recommendation and code
+  type: chat
+  dest: chat
+never:
+- Pass payment_method_types, except card_present for Terminal.
+- Present webhooks as optional.
+- Use the deprecated global API-key pattern.
+- Recommend a secret key where a restricted key will do.
+upstream:
+  repo: stripe/ai
+  path: providers/claude/plugin/skills/stripe-best-practices
+  ref: main
+license: mit
+mirror: false
+status: GRADED
+last_graded: '2026-10-01'
+skill_md_hash: sha256:55c73cae0acb93e7
+upstream_sha: 85d998e928da
+last_checked: '2026-10-01'
