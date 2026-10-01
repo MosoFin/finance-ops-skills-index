@@ -15,6 +15,7 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY
+  - READ-ONLY: States it plainly — never modifies the mailbox. It lists unread mail; it does not label, archive or reply.
 - Licence: apache-2.0
 - Upstream: https://github.com/googleworkspace/cli/tree/main/skills/gws-gmail-triage
 - Summary: Google's official Gmail triage skill. Pairs with aging-review, where the collections follow-up and the client's reply both arrive by mail.

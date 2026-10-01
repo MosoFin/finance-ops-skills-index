@@ -13,6 +13,7 @@
 
 - Authority: notable · stage 2 · status GRADED (graded 2026-10-01)
 - Trust badges: READ-ONLY
+  - READ-ONLY: A developer reference: it explains the serviceId, entity mapping and caveats and shows example code. It runs nothing itself. The code it shows can create records in BigCommerce, and the skill gives no confirmation guidance for those writes — that is the integrator's job.
 - Licence: apache-2.0
 - Upstream: https://github.com/apideck-libraries/api-skills/tree/main/skills/bigcommerce
 - Summary: Apideck's guide to reaching BigCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to BigCommerce access.

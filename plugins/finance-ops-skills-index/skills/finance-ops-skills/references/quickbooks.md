@@ -15,6 +15,9 @@
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-18)
 - Trust badges: PROPOSES-WRITES, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, MATERIALITY-AWARE, POLICY-CAPTURING, AUDIT-TRAIL
+  - MATERIALITY-AWARE: Below the accruals threshold, book-when-paid is the documented policy — stated as policy, not silence.
+  - TIE-CHECKED: Every entry balances; prepaid and deferral schedules must roll (opening + additions − releases = closing) against account balances.
+  - DETERMINISTIC-MATH: Amounts show their arithmetic source — contract ÷ term, prior actuals — scripted beyond a single division.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/accruals` (local)
 - Summary: Proposes and reviews accruals, prepaid amortization, and deferrals for a period — recurring accruals, reversals due, missing accruals from open bills, schedule releases. Accrual basis only; stops on cash basis.
@@ -24,6 +27,9 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, CLIENT-FACING, NO-AUTO-SEND, AUDIT-TRAIL
+  - TIE-CHECKED: Bucket totals must sum to the report total and tie to the balance-sheet A/R or A/P balance. Red until tied.
+  - NO-AUTO-SEND: Collections notes are drafts. You send them.
+  - READ-ONLY: Items needing accounting action are noted for /accruals or /je-review — suggested, never invoked.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/aging-review` (local)
 - Summary: Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and credit-balance items, then drafts collections notes and a proposed payment run. Cross-foots the aging to the ledger before any of it is believed.
@@ -33,6 +39,10 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, CLIENT-FACING, NO-AUTO-SEND, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. No payments applied, no balances written off, no reminders sent.
+  - NO-AUTO-SEND: All correspondence is marked REVIEW REQUIRED - NOT SENT. This is the direct counterpart to Intuit's chase-overdue-invoices, which sends; both are defensible, and the difference is the point of grading them.
+  - EVIDENCE-GATED: Will not invent a dispute, credit hold, payment promise, late fee, service suspension or legal action. Where the aging is accrual-only it asks whether accrual basis is acceptable before reading data, rather than reading first and caveating afterwards.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections
 - Summary: Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
@@ -42,6 +52,9 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-18)
 - Trust badges: PROPOSES-WRITES, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - DETERMINISTIC-MATH: scripts/match.py does exact-amount, one-to-one matching within a date window. No matching by hand.
+  - TIE-CHECKED: Red until statement closing − ledger balance − outstanding items ± unposted adjustments = zero.
+  - PROPOSES-WRITES: Posts adjustments only via ledger.create-journal-entry after confirmation; otherwise emits drafts.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/bank-rec` (local)
 - Summary: Reconciles one bank or credit-card account for one period. Matches statement lines against ledger transactions with a deterministic script; the script's leftovers are the work list. Done means the difference is zero, computed.
@@ -51,6 +64,11 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+  - EVIDENCE-GATED: The most honest limitation statement in this index. A bank reconciliation has two sides and Mosofin reads one: comparing the books to the books is a total agreeing with itself, so an output without a statement is never labelled a reconciliation and cash is never reported as reconciled. A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+  - TIE-CHECKED: Builds the bridge and proves the book side, but will not claim completion without the statement — the unmatched-bank rows read manual with the gap named, and the summary says the reconciliation was not completed.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified. The header states whether a bank statement was supplied.
+  - HUMAN-APPROVAL: Corrections are proposals; nothing is marked cleared or signed off.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation
 - Summary: Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
@@ -60,6 +78,9 @@
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, CLIENT-FACING, NO-AUTO-SEND
+  - EVIDENCE-GATED: Missing artifacts are gaps, not prompts to improvise. A pack built on an unclosed period carries a visible draft warning.
+  - NO-AUTO-SEND: This output goes to outsiders. You send it.
+  - TIE-CHECKED: Scripted spot-check that statement totals match the close's tied numbers before assembly.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/board-pack` (local)
 - Summary: Assembles the period's existing close artifacts into a board or management pack. Synthesis, not creation — missing artifacts are listed as gaps with the skill that produces each, never improvised around.
@@ -69,6 +90,8 @@
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, MATERIALITY-AWARE, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
+  - TIE-CHECKED: The actuals column must tie to the P&L total for the period, computed. Red until tied.
+  - DETERMINISTIC-MATH: scripts/bva.py joins on account and computes variance, %, and favorable/unfavorable by account type. No cell is recomputed by the model.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/budget-vs-actuals` (local)
 - Summary: Builds a BvA table with scripted variance math, separates timing from true variance, and drafts commentary with the full-year implication computed rather than estimated.
@@ -78,6 +101,9 @@
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, PROVENANCE-STAMPED, MATERIALITY-AWARE, HUMAN-APPROVAL
+  - TIE-CHECKED: Starts red until the opening balance is tied to the bank or you accept the gap.
+  - PROVENANCE-STAMPED: Each line carries invoice #, bill #, 'recurring — last 3 occurrences', or 'user-stated'. Projections go stale weekly and say so.
+  - DETERMINISTIC-MATH: The week × category grid is scripted, and re-run after each what-if so effects are computed, not estimated.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/cash-flow` (local)
 - Summary: A 13-week cash projection built from open A/R and A/P, recurring items mined from history, and bank balances — opening balance tied to the bank before a single week is projected. Every projected line carries its basis.
@@ -87,6 +113,9 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-18)
 - Trust badges: PROPOSES-WRITES, EVIDENCE-GATED, HUMAN-APPROVAL, MATERIALITY-AWARE, DETERMINISTIC-MATH, POLICY-CAPTURING
+  - PROPOSES-WRITES: Applies categorizations only after batch confirmation; without the write capability it emits a CSV for manual import.
+  - EVIDENCE-GATED: Stops entirely if no COA.md exists — categorizing without rules is guessing.
+  - DETERMINISTIC-MATH: Counts and totals computed by awk/python3 over the CSV, never mental math.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/categorize-transactions` (local)
 - Summary: Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
@@ -96,6 +125,9 @@
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - PROVENANCE-STAMPED: Every panel notes source and as-of date; unclosed-period numbers are marked preliminary; build date stamped prominently.
+  - TIE-CHECKED: Headline figures must tie to statement totals before the file is written. Red figures get a visible flag or the panel is dropped.
+  - DETERMINISTIC-MATH: The model writes the layout, never the numbers.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/dashboard` (local)
 - Summary: One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every figure traces to a source and no figure is computed by the model. Tufte-style restraint, inline SVG charts, provenance footer per panel.
@@ -105,6 +137,10 @@
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, PII-MINIMISING
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+  - EVIDENCE-GATED: Nine of its ten detection rules run as direct queries against live bills, payments and the vendor master. The tenth cannot run, and the skill says why rather than approximating it: Mosofin deliberately does not expose vendor bank details. Suspects carry confidence ratings and supporting evidence, not verdicts.
+  - PII-MINIMISING: Vendor bank details are outside what the platform exposes at all, and internal numeric tenant ids are never printed.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection
 - Summary: Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
@@ -114,6 +150,10 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, PII-MINIMISING
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. The GL posting it builds is a proposal.
+  - EVIDENCE-GATED: Codes against the real chart of accounts, matches claims against transactions already posted, and checks the reimbursement and card-clearing balances rather than assuming the report is self-consistent.
+  - PII-MINIMISING: Handles employee expense data and never prints internal tenant identifiers.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/expense-report-processor
 - Summary: Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — codes against the real chart of accounts, matches claims against already-posted transactions, and checks reimbursement and card-clearing balances.
@@ -123,6 +163,10 @@
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+  - TIE-CHECKED: Seven cross-statement tie-outs are the deliverable, not a formality. Each is reported as pass or fail with the difference shown even when it is zero — 'balances' without a number is not a result. The skill makes the point that a system-generated balance sheet always balances because double-entry software enforces it, so tie-out 1 must be re-proved against the reclassified statements the system did not produce.
+  - EVIDENCE-GATED: A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified. The coverage sheet carries a row for each of the seven tie-outs, so a manual one cannot go unnoticed.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder
 - Summary: Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
@@ -132,6 +176,9 @@
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, MATERIALITY-AWARE, HUMAN-APPROVAL, AUDIT-TRAIL
+  - EVIDENCE-GATED: Labels each line *explained* (evidence) vs *attributed* (your word). Partial explanations say what remains unexplained.
+  - TIE-CHECKED: Explained + unexplained must equal the total period delta, line by line and in total.
+  - DETERMINISTIC-MATH: scripts/flux.py computes deltas and percentages and filters by the materiality thresholds.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/flux` (local)
 - Summary: Period-over-period variance analysis as a disciplined loop — isolate, drill, hypothesise, verify, explain. Commentary is earned from transactions, never invented from account names.
@@ -141,6 +188,8 @@
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
+  - TIE-CHECKED: Actual columns tie to the P&L export, and every forecast cell traces to a driver in FORECAST.md — no orphan numbers.
+  - EVIDENCE-GATED: Never forecasts a month that has actuals; says so plainly if the latest month isn't closed.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/forecast` (local)
 - Summary: A rolling forecast where actual months are locked and every forecast line names its driver — run-rate, growth, contract, seasonal, or manual with a stated reason. Assumption changes are logged as decision records.
@@ -150,6 +199,9 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+  - EVIDENCE-GATED: Every suggestion is grounded in how this entity has actually coded the same vendor before, against the real chart of accounts — not in a general notion of where an expense belongs. Suggestions carry confidence ratings and their reasoning.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant
 - Summary: Assigns GL accounts, expense categories, and tax codes against the real chart of accounts, grounding every suggestion in how this entity has actually coded the same vendor before. Outputs confidence ratings, reasoning, evidence.
@@ -159,6 +211,8 @@
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL, POLICY-CAPTURING
+  - EVIDENCE-GATED: Surfaces where posted reality contradicts stated account purpose, rather than accepting the stated purpose.
+  - READ-ONLY: Chart edits happen in the accounting system, by you. This session produces the rulebook and an edit list.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/grill-my-coa` (local)
 - Summary: Relentless interview about your chart of accounts until every account has one clear purpose and every recurring transaction has exactly one home. Queries the ledger instead of asking whenever the ledger can answer.
@@ -168,6 +222,9 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+  - EVIDENCE-GATED: Extraction is semantic rather than raw OCR, and every extracted invoice is validated against the vendor master, the posted transaction history and the Bill-To entity — catching a duplicate before it is paid rather than after.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/invoice-data-extractor
 - Summary: Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
@@ -177,6 +234,8 @@
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, MATERIALITY-AWARE, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
+  - TIE-CHECKED: Cross-foots debits = credits per entry and in aggregate first; an unbalanced export stops the review.
+  - READ-ONLY: Drafts correcting entries on request; never posts from here.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/je-review` (local)
 - Summary: The skeptical second pair of eyes on everything posted this period — round numbers, unusual account pairings, entries above materiality without support, broken reversal patterns, back-dated postings, related-party entries.
@@ -186,6 +245,10 @@
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. The skill argues this is the correct division rather than a shortfall: posting is an authorised act with a preparer and a reviewer, and an entry arriving pre-validated with its support attached is what makes that review fast.
+  - TIE-CHECKED: Debits equal credits, arithmetically, every time. In a connected workspace six of the original nine validations stop being judgment and become queries — accounts checked against the live chart, sign conventions against real account types, no P&L accounts in a pure balance-sheet reclass.
+  - EVIDENCE-GATED: A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+  - HUMAN-APPROVAL: Every output says 'proposed entry'. Dozens of other skills in the pack hand off here, so this is where the read-only promise is load-bearing for the whole set.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
 - Summary: Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
@@ -195,6 +258,12 @@
 
 - Authority: first-party · stage 1 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, TIE-CHECKED, MATERIALITY-AWARE, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, STATEFUL
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
+  - TIE-CHECKED: Ends in a tie-out workpaper at close, including inter-period continuity, rather than a checklist of ticked boxes.
+  - MATERIALITY-AWARE: Carries its own materiality and risk step, so tasks are weighted rather than treated alike.
+  - STATEFUL: Tracks open items and review notes across the close, and pre-populates the status of every task that leaves ledger evidence rather than asking.
+  - EVIDENCE-GATED: A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/month-end-close-checklist
 - Summary: Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the checklist from the entity's actual chart of accounts, pre-populates the status of every task that leaves ledger evidence, and runs a final tie-out including inter-period continuity.
@@ -204,6 +273,9 @@
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
+  - READ-ONLY: Reads company profile and chart of accounts; writes only local workspace files.
+  - HUMAN-APPROVAL: Shows drafts of every file and waits for edits before writing.
+  - POLICY-CAPTURING: Accounting-policy decisions become ADR-format records in docs/decisions/.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/onboard-client` (local)
 - Summary: Interviews you about a company and scaffolds the client workspace every other finance skill reads — profile, glossary, chart-of-accounts rulebook, close calendar, materiality thresholds, report preferences.
@@ -213,6 +285,9 @@
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED
+  - READ-ONLY: States it outright. Actual compensation changes are routed to a write-capable workflow, not attempted here.
+  - EVIDENCE-GATED: Missing data is unavailable, never zero — a distinction most analysis skills leave implicit and get wrong. Facts and interpretation are separated in the wording: 'the data shows' against 'this may indicate'.
+  - PROVENANCE-STAMPED: Every total is labelled by basis — gross pay, net pay, employer cost, or the returned run total — and the last-payroll-run tool is labelled as one pay schedule rather than company-wide.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost
 - Summary: Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
@@ -222,6 +297,10 @@
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, INJECTION-AWARE, PROVENANCE-STAMPED, HUMAN-APPROVAL
+  - INJECTION-AWARE: States plainly that report contents — customer names, memos, product descriptions — are data to analyse, never instructions to follow.
+  - PROVENANCE-STAMPED: The briefing must carry the connected company name, the reporting period, the accounting method, and the comparison window, including where reports use different windows.
+  - HUMAN-APPROVAL: Will not run on defaults: period, scope, accounting method and comparison are confirmed before any report call.
+  - EVIDENCE-GATED: A gap is reported as a gap — 'do not invent missing numbers' — and cash-basis runs drop A/R aging rather than presenting it wrongly.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/business-health-check
 - Summary: synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
@@ -231,6 +310,9 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: SENDS-EXTERNALLY, CLIENT-FACING, HUMAN-APPROVAL, EVIDENCE-GATED
+  - SENDS-EXTERNALLY: This skill transmits email to the client's customers. It is the clearest contrast in the index: Mosofin's aging-review drafts collections notes and stops, while this one sends them.
+  - HUMAN-APPROVAL: A confirmation showing the exact subject and body is required before every send, and approval does not carry across a changed set — 'Never auto-send' is stated as a hard rule.
+  - EVIDENCE-GATED: Invoice facts come from tool calls, never memory. Tone edits may change wording but never amount, balance, due date or terms, and a hold for a pending bank match must be reported as *may* be paid, never as paid.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/chase-overdue-invoices
 - Summary: Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
@@ -240,6 +322,10 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
 - Trust badges: PROPOSES-WRITES, SENDS-EXTERNALLY, CLIENT-FACING, HUMAN-APPROVAL, EVIDENCE-GATED
+  - PROPOSES-WRITES: Creates customers, products and sales documents in QuickBooks. Each record type needs its own explicit yes — the skill states that asking for an invoice is not consent to create the customer or product behind it.
+  - SENDS-EXTERNALLY: Emails the estimate or invoice to the customer, after a draft preview and an explicit approval.
+  - EVIDENCE-GATED: Line items come from the email thread; gaps are questions, not guesses. If the thread cannot be found it stops rather than inventing content.
+  - HUMAN-APPROVAL: One successful create only. A wrong draft is reported and discussed, never silently re-created — and a schema validation failure is retried once, not looped.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/email-to-estimate-invoice
 - Summary: Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
@@ -249,6 +335,8 @@
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL, PROVENANCE-STAMPED
+  - HUMAN-APPROVAL: The pre-flight runs even when every value could be inferred confidently — being able to infer a value is a reason to pre-fill it, never to skip confirmation.
+  - EVIDENCE-GATED: Refuses figures the user supplies themselves and industry-general questions, routing both to a different tool, so a benchmark always reflects the connected company's own books.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/industry-benchmark
 - Summary: benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
@@ -258,6 +346,9 @@
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL
+  - READ-ONLY: No payments, no draws, no loan changes. Servicing tools report the user's own balances and terms; nothing writes.
+  - EVIDENCE-GATED: Pre-auth tools return educational guidance only. The skill never issues a loan offer, rate, credit limit or approval decision, and keeps help, shop and estimate tools to their separate jobs.
+  - HUMAN-APPROVAL: Peer offers are pulled only with consent when a funding need surfaces from other work.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/lending
 - Summary: QuickBooks Capital small-business financing: QuickBooks Term Loan, Line of Credit, Intuit Business Credit Card (issued by WebBank), and the QuickBooks Business Loan Marketplace. Use to explain how these products work (eligibility, rates, fees, terms), compare or choose between them, estimate loan payments (weekly/monthly payment, total interest, total repayment), and answer questions about the signed-in user's own QuickBooks Capital loans and lines of credit (balance, APR, repayment schedule, payoff, available credit), plus what similar businesses have borrowed. Use proactively when a funding need surfaces from payroll, cash-flow, or invoicing work to check for a drawable line of credit and, with consent, peer offers. Read-only guidance only: never makes payments, draws, or loan changes, and never gives a loan offer, rate, credit limit, or approval decision. Not for loan application status or non-QuickBooks-Capital products (SBA, invoice factoring, merchant cash advances, consumer loans).
@@ -267,6 +358,10 @@
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, PII-MINIMISING
+  - PROPOSES-WRITES: Creates and updates payroll employees, assigns work locations and saves contract pay — all behind a consolidated approval listing every action and payload.
+  - HUMAN-APPROVAL: Exact values must be shown; 'standard setup' is explicitly forbidden as a way to hide a change. A correction that alters the payload re-opens confirmation.
+  - EVIDENCE-GATED: Searches before creating because create is not idempotent, warns on likely duplicates, and reads back through a tool before reporting success. Never invents an id, rate or address.
+  - PII-MINIMISING: Never collects, displays or stores SSNs, tax identifiers, bank account or routing numbers in chat — those are routed to the guided QuickBooks Payroll flow.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding
 - Summary: Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
@@ -276,6 +371,9 @@
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED
+  - READ-ONLY: States it outright and declines write requests, routing them to a write-capable workflow only if the environment exposes one.
+  - EVIDENCE-GATED: Company payroll facts are never answered from memory. An absent field is reported as not visible from the available tools rather than filled in, and a failed tool produces a named limit.
+  - PROVENANCE-STAMPED: QuickBooks handoff links are added only for tools whose data is substantively used in the answer — never for a tool used to resolve an id or paginate, so a link always means the reader can see the same figures.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help
 - Summary: Answer read-only QuickBooks Payroll lookup and setup questions using connected company payroll data. Use for employee roster or lookup, company payroll setup, last payroll run, payslips or paycheck details, pay types, deductions/contributions, and time-off policies. Do not use for payroll cost-driver, spend-reduction, or cost-change analysis; use analyze-payroll-cost when the question asks why payroll cost changed or how to reduce it, including questions involving benefits, employer taxes/SUI, overtime, headcount, pay rates, or pay items. Use only available payroll tools; do not provide unsupported procedural, tax, filing, payment, legal, or compliance guidance.
@@ -285,6 +383,9 @@
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
+  - PROPOSES-WRITES: Saves employee contract pay, but only after an explicit approval of the computed before-and-after.
+  - EVIDENCE-GATED: Reads the current contract before proposing anything, and will not claim success until read-back confirms the approved values. Refuses to convert currencies — it asks for the exact amount to save.
+  - HUMAN-APPROVAL: Ambiguity stops the run rather than resolving itself: two name matches, conflicting changes for one employee, or a group named without individuals all become questions.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/set-base-pay
 - Summary: Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Payroll. Use when the user asks to see current pay, give a raise (absolute, increment, or percentage), reduce or adjust pay, switch between salary and hourly, change pay frequency, or update weekly contracted time for one or more named employees. Reads the current contract first, requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee, qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
@@ -294,6 +395,8 @@
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED
+  - READ-ONLY: Diagnoses the connector only. Its one data call is company_info, used to prove the connection works.
+  - EVIDENCE-GATED: Checks whether a read-only tool actually succeeds before declaring setup complete, rather than assuming from the presence of a connector.
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup
 - Summary: Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
@@ -303,6 +406,10 @@
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
+  - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. It pays nothing and releases nothing.
+  - TIE-CHECKED: Line-by-line comparison across purchase order, goods receipt and invoice, producing an exception list rather than a verdict of its own.
+  - EVIDENCE-GATED: A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
+  - PROVENANCE-STAMPED: Ends with a Data sources line naming the calls and their retrieval time, and carries a coverage sheet: one row per task with its verdict (auto, gated or manual), the tool used, the policy, whether any figure rests on mock data, and the named gap for anything unverified. The coverage and provenance sheet is mandatory here, not optional.
 - Licence: agpl-3.0
 - Upstream: https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/three-way-match
 - Summary: Matches purchase orders, goods receipts, and vendor invoices line by line across the full population where the workspace holds POs and item receipts. Proposes only — pays nothing, releases nothing.
@@ -312,6 +419,9 @@
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, MATERIALITY-AWARE, HUMAN-APPROVAL, AUDIT-TRAIL
+  - TIE-CHECKED: Cross-foots assets = liabilities + equity first; stops if that fails. Then one computed comparison per account.
+  - READ-ONLY: Corrections become JE drafts and a pointer to /accruals — never posted from here.
+  - MATERIALITY-AWARE: Red rows above materiality keep the close task red; accepted exceptions need a recorded why.
 - Licence: proprietary-mosofin
 - Upstream: `~/.claude/skills/tie-out` (local)
 - Summary: Ties every balance-sheet account to a source — subledger, statement, or schedule — and produces a green/red schedule. The close's backbone: red until tied.

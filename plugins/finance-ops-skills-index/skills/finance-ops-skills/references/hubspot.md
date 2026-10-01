@@ -15,6 +15,10 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, AUDIT-TRAIL
+  - PROPOSES-WRITES: This is the foundation every other HubSpot skill builds on — the JSONL pipe through which creates, updates, upserts, deletes, merges and association writes all flow.
+  - HUMAN-APPROVAL: It is where the dry-run, digest and confirm escalation for destructive operations is defined. The other HubSpot entries inherit their gating from here, which is why their grades depend on this file.
+  - AUDIT-TRAIL: `hubspot history` provides a recovery path after a bulk write.
+  - EVIDENCE-GATED: Instructs that `--help` is authoritative and that where this file contradicts it, `--help` wins and the user is told.
 - Licence: apache-2.0
 - Upstream: https://github.com/HubSpot/agent-cli-skills/tree/main/bulk-operations
 - Summary: Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, pagination, dry-run/digest/confirm for destructive ops, and `hubspot history` for recovery. Every other skill builds on this one.
@@ -24,6 +28,9 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
+  - PROPOSES-WRITES: Bulk-normalises field values and merges duplicate records. A merge is not reversible, which makes the gating below load-bearing rather than ceremonial.
+  - HUMAN-APPROVAL: Always dry-run first; Destructive operations are gated by the dry-run, digest and confirm flow in hs-bulk-operations, which this skill requires reading first. That dependency is indexed here.
+  - EVIDENCE-GATED: Property names are listed from the live schema rather than guessed.
 - Licence: apache-2.0
 - Upstream: https://github.com/HubSpot/agent-cli-skills/tree/main/crm-data-quality
 - Summary: Find incomplete records, normalize field values in bulk, dedupe with `hubspot objects merge`, and audit custom properties. Builds on `bulk- operations` for JSONL piping and dry-run/digest/confirm.
@@ -33,6 +40,8 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED
+  - READ-ONLY: States it outright. Any write that follows a lookup is gated by hs-bulk-operations.
+  - EVIDENCE-GATED: Schemas drift, so properties are read from the live schema rather than a hardcoded table.
 - Licence: apache-2.0
 - Upstream: https://github.com/HubSpot/agent-cli-skills/tree/main/crm-lookup
 - Summary: Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations for the full account picture.
@@ -42,6 +51,9 @@
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-21)
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
+  - PROPOSES-WRITES: Creates follow-up tasks at scale against at-risk accounts.
+  - EVIDENCE-GATED: Schema is portal-specific, so every churn-signal property is verified before it is filtered on.
+  - HUMAN-APPROVAL: Destructive operations are gated by the dry-run, digest and confirm flow in hs-bulk-operations, which this skill requires reading first. That dependency is indexed here.
 - Licence: apache-2.0
 - Upstream: https://github.com/HubSpot/agent-cli-skills/tree/main/customer-retention
 - Summary: Identify inactive/at-risk customers via CRM filters and create follow-up tasks at scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
@@ -51,6 +63,9 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
+  - PROPOSES-WRITES: Creates deals, advances stages, reassigns owners and closes — in bulk.
+  - HUMAN-APPROVAL: Destructive operations are gated by the dry-run, digest and confirm flow in hs-bulk-operations, which this skill requires reading first. That dependency is indexed here.
+  - EVIDENCE-GATED: Pipeline and stage IDs are portal-specific and must be discovered at runtime, never hardcoded across portals.
 - Licence: apache-2.0
 - Upstream: https://github.com/HubSpot/agent-cli-skills/tree/main/deal-management
 - Summary: Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs into deals with associations, advance/reassign in bulk, hunt stalled deals, and close.
@@ -60,6 +75,9 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
+  - PROPOSES-WRITES: Creates products, line items and quotes, and reads invoices and subscriptions through to revenue.
+  - EVIDENCE-GATED: Every enum value is verified against the live schema before being written, rather than assumed.
+  - HUMAN-APPROVAL: Destructive operations are gated by the dry-run, digest and confirm flow in hs-bulk-operations, which this skill requires reading first. That dependency is indexed here.
 - Licence: apache-2.0
 - Upstream: https://github.com/HubSpot/agent-cli-skills/tree/main/quote-to-cash
 - Summary: Build the product catalog, assemble quotes (line items + associations to deals), and track invoices and subscriptions through to revenue.
@@ -69,6 +87,8 @@
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED
+  - READ-ONLY: Briefings, pipeline snapshots and win/loss analysis. Reads only.
+  - EVIDENCE-GATED: Carries the correctness rule that matters most for reporting: search and list cap at 100 rows, and a result of exactly 100 is almost always truncated, so it must be paginated before aggregating. It also warns that every CRM value returns as a string — amounts must be converted before arithmetic and booleans compared as strings — which is exactly how a silently wrong total gets produced.
 - Licence: apache-2.0
 - Upstream: https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting
 - Summary: Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.

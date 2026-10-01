@@ -11,7 +11,7 @@ A read-only catalog of pointers to skills that vendors publish for their own sof
 ## Steps
 
 1. Read `references/INDEX.md` to see the vendors covered and how many skills are indexed for each.
-2. Read `references/<vendor>.md` for the platform the user named. Use `references/_any.md` for skills that need no connected system (documents, spreadsheets, close checklists).
+2. Read `references/<vendor>.md` for the platform the user named, for example `references/quickbooks.md` or `references/stripe.md`. Use `references/_any.md` for skills that need no connected system (documents, spreadsheets, close checklists).
 3. Match the user's task against each entry's summary and report the best fits.
 
 ## What to report for each match

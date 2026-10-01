@@ -15,6 +15,8 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED
+  - READ-ONLY: Architecture and code guidance. Live operations are explicitly handed to the PayPal MCP server rather than performed here.
+  - EVIDENCE-GATED: Requires reading the matching reference file before answering, and asks which SDK version is in use rather than assuming. Where three Fastlane variants exist it refuses to generate code until the user picks one.
 - Licence: apache-2.0
 - Upstream: https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-best-practices
 - Summary: PayPal integration guidance, code examples, and best practices. Use for checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane, payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal architecture decision or code generation question.
@@ -24,6 +26,8 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED
+  - READ-ONLY: A routing table. It dispatches to commands and reference files and performs no operation itself; it is not user-invocable.
+  - EVIDENCE-GATED: Requires generating code strictly from the fetched language snippet rather than falling back on training knowledge, and states that reference files override what the model already believes.
 - Licence: apache-2.0
 - Upstream: https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-routing
 - Summary: PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes PayPal developer questions to the right command or reference file.

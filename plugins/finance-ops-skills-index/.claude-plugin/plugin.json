@@ -1,7 +1,7 @@
 {
   "name": "finance-ops-skills-index",
   "displayName": "Finance & Ops Skills Index",
-  "version": "0.1.0",
+  "version": "1.0.20261001",
   "description": "Find vendor-published agent skills for accounting, payments and e-commerce software, with upstream links, licences and independent trust grades.",
   "author": {
     "name": "MosoFin",
@@ -10,5 +10,12 @@
   "homepage": "https://github.com/MosoFin/finance-ops-skills-index",
   "repository": "https://github.com/MosoFin/finance-ops-skills-index",
   "license": "MIT",
-  "keywords": ["finance", "accounting", "payments", "ecommerce", "skills", "index"]
+  "keywords": [
+    "finance",
+    "accounting",
+    "payments",
+    "ecommerce",
+    "skills",
+    "index"
+  ]
 }

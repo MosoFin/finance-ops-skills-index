@@ -117,3 +117,22 @@ Nothing is vendored by default.
 
 If an upstream `LICENSE.txt` hash changes, the drift job raises it as a hard failure
 ahead of everything else. Look at that first.
+
+## The Claude plugin
+
+`plugins/finance-ops-skills-index/` is the catalog packaged as a Claude plugin, laid out as
+the Claude plugin docs prescribe, and listed by `.claude-plugin/marketplace.json` at the
+repository root.
+
+- **Generated:** everything under `skills/finance-ops-skills/references/`, the plugin
+  `README.md`, and the `version` in `plugin.json`. `make build` writes them. The version's
+  last part is the date of the newest catalog fact, so users receive each catalog change.
+  Set the version in `plugin.json` only, never in the marketplace entry.
+- **Hand-written:** the rest of `plugin.json`, the `SKILL.md`, `LICENSE`, and `evals/`.
+  Raise `VERSION_BASE` in `scripts/build_plugin.py` when the skill or the reference format
+  changes.
+- **Before you push a plugin change:** run `claude plugin validate --strict .` and
+  `claude plugin validate --strict ./plugins/finance-ops-skills-index`, which CI also
+  runs. If you changed the skill or the reference format, also run
+  `claude plugin eval ./plugins/finance-ops-skills-index`. It calls the model on your
+  account, so CI doesn't run it.

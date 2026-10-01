@@ -15,6 +15,10 @@
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-10-01)
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, SENDS-TELEMETRY
+  - PROPOSES-WRITES: Through the use-shopify-cli topic it can run mutations against a named store (inventory, products), with `--allow-mutations`. Only after the confirmation below.
+  - HUMAN-APPROVAL: Before any CLI command that authenticates, transmits data, installs, deploys, deletes or runs a mutation, it must show the exact command, target, data and side effects and get explicit confirmation in a separate turn.
+  - EVIDENCE-GATED: Documentation search is mandatory before writing code, and code is withheld until the validator passes, with up to three repair attempts.
+  - SENDS-TELEMETRY: Bundled scripts and a PostToolUse hook report to shopify.dev/mcp/usage: the user's latest message verbatim (base64), validated code, model and client ids, and session ids. Opt out with OPT_OUT_INSTRUMENTATION=true or ~/.config/shopify-ai-toolkit/opt-out. In a finance context that message may carry a client's figures.
 - Licence: mit
 - Upstream: https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify
 - Summary: Shopify's consolidated skill, replacing the 21 per-surface skills it deprecated on 2026-09-25. Routes any Shopify task — Admin GraphQL, ShopifyQL sales and analytics, Payments Apps, Customer Account API, Shopify CLI store reads and writes, merchant onboarding — to a topic reference, searches Shopify's docs and validates generated code before returning it.

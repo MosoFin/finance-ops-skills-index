@@ -15,6 +15,8 @@
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED
+  - READ-ONLY: Integration guidance for usage-based billing. It advises on API design; it issues no calls itself.
+  - EVIDENCE-GATED: States that endpoint paths, request shapes and units are misremembered easily, and requires reading the linked documentation page before naming any endpoint, field or amount.
 - Licence: mit
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/metronome
 - Summary: Usage-based billing through Stripe's official toolkit. Where revenue is metered rather than invoiced, this is upstream of every revenue number.
@@ -24,6 +26,8 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-10-01)
 - Trust badges: READ-ONLY, EVIDENCE-GATED
+  - READ-ONLY: Guidance and code generation only. It never calls the Stripe API on a live account; the one command it may suggest, `stripe sandbox create`, makes a test account.
+  - EVIDENCE-GATED: Requires reading the relevant Stripe reference file before answering, and requires confirming an active tax registration before enabling automatic_tax — otherwise Stripe collects no tax while the user believes it does.
 - Licence: mit
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices
 - Summary: Stripe's integration guide: Checkout Sessions vs PaymentIntents, Connect, billing and subscriptions, Stripe Tax registrations, Treasury financial accounts, deprecated-API migration and key handling. Routes each question to a Stripe-hosted reference file before any code is written.
@@ -33,6 +37,9 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, HUMAN-APPROVAL, EVIDENCE-GATED
+  - READ-ONLY: Produces a recommendation plan for a Stripe Connect configuration. It changes no account setting.
+  - HUMAN-APPROVAL: Every decision point must be confirmed with numbered options, one question at a time. It also draws the line the other way — scanning the codebase, reading references and generating the plan are low-cost and never ask permission, so confirmation is spent where it matters.
+  - EVIDENCE-GATED: Requires reading the terminology rules before producing user-facing output, and insists configurations be described by their field values — dashboard, fee ownership, negative-balance liability, charge pattern — rather than by shorthand codes that hide what the platform is taking on.
 - Licence: mit
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/connect-recommend
 - Summary: Use this skill when the user asks about Stripe Connect configuration, charge patterns, Dashboard access, or how to get started with Connect, is building a marketplace, platform, multi-vendor store, gig platform, or subscription platform, needs to pay out sellers, vendors, or providers, mentions split payments, revenue sharing, multi-party payments, or similar payment distribution concepts, provides a company URL or business description for a recommendation, builds SaaS that routes money between parties (for example, POS, booking, invoicing — not operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers, and vendors, mentions connected account Dashboard or responsibility configurations, or asks about payment flows, white-label payments, or embedded payments.
@@ -42,6 +49,9 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL
+  - READ-ONLY: Reports the verification and KYC requirements a connected account must satisfy for a given configuration. It collects nothing and submits nothing.
+  - EVIDENCE-GATED: Fetches the same requirements the human-facing form would, rather than answering from memory — the requirements vary by platform country, account country, business type and capability, and are exactly the kind of detail that goes stale.
+  - HUMAN-APPROVAL: Fields are asked only once their prerequisites are satisfied, always as multiple choice, and an answer already given earlier is reused rather than asked again.
 - Licence: mit
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/connect-required-verification-information
 - Summary: Use this skill when the user asks what information a Stripe Connect connected account must provide for verification, onboarding, KYC, or account requirements; when they need to compare requirements between connected-account setups; or when they ask which verification fields, documents, or business details are required for a particular platform country, account country, business type, dashboard, service agreement, or capability.
@@ -51,6 +61,9 @@
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-10-01)
 - Trust badges: MOVES-MONEY, HUMAN-APPROVAL, EVIDENCE-GATED
+  - MOVES-MONEY: Drives payments and donations to the recipient it resolves. The transfer itself is executed by stripe-pay or another documented payment flow, but this skill is the one that starts the journey.
+  - HUMAN-APPROVAL: Before any payment or donation it must show recipient, purpose, amount, currency and constraints and obtain explicit approval, and it must not drive to a purchase or provisioning step without an explicit request.
+  - EVIDENCE-GATED: Uses recipients and payment paths returned by Directory rather than model memory, and forbids inventing CLI details, endpoints, prices or provisioning commands.
 - Licence: mit
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-directory
 - Summary: Resolves an external provider, merchant or nonprofit and its documented way to be engaged — pay, donate, subscribe, book or provision — through the Stripe CLI's Directory plugin. Pairs with stripe-pay when the engagement is a payment, such as paying a vendor's bill.
@@ -60,6 +73,7 @@
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
 - Trust badges: READ-ONLY
+  - READ-ONLY: Fetches and searches Stripe documentation through the CLI. It reads; nothing else.
 - Licence: mit
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs
 - Summary: Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
@@ -69,6 +83,9 @@
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
 - Trust badges: MOVES-MONEY, HUMAN-APPROVAL, EVIDENCE-GATED
+  - MOVES-MONEY: `stripe pay` transfers funds from the authenticated Stripe business to another. This and stripe-directory, which hands payments to it, are the entries in the index that move real money.
+  - HUMAN-APPROVAL: The exact command must be shown and confirmed before running, `--agent` or `--json` used first so the transfer can be reviewed, and `-y` withheld until after that review. A transfer also requires the user to have asked for it explicitly.
+  - EVIDENCE-GATED: Nothing is guessed — not the handle, financial account, amount, currency or memo. Missing setup stops the transfer and is explained rather than retried, and fee and delivery timing are reported before confirmation rather than assumed free or instant.
 - Licence: mit
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-pay
 - Summary: Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.

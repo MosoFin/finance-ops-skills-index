@@ -4,17 +4,20 @@
     "name": "MosoFin",
     "url": "https://github.com/MosoFin"
   },
-  "metadata": {
-    "description": "An index of agent skills published by vendors of finance and business-operations software."
-  },
+  "description": "An index of agent skills published by vendors of finance and business-operations software, with independent trust grades.",
   "plugins": [
     {
       "name": "finance-ops-skills-index",
       "source": "./plugins/finance-ops-skills-index",
       "description": "Find vendor-published agent skills for accounting, payments and e-commerce software, with upstream links, licences and independent trust grades.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "keywords": ["finance", "accounting", "payments", "ecommerce", "skills", "index"]
+      "category": "finance",
+      "tags": [
+        "finance",
+        "accounting",
+        "payments",
+        "ecommerce",
+        "skills-index"
+      ]
     }
   ]
 }
