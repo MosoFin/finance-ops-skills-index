@@ -14,6 +14,8 @@
 ### shopify
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-10-01)
+- Grade current: yes
+- Graded version: SKILL.md sha256:5d4a180b8bd93b0b · upstream commit 16d01df9f575 · checked 2026-10-01
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, SENDS-TELEMETRY
   - PROPOSES-WRITES: Through the use-shopify-cli topic it can run mutations against a named store (inventory, products), with `--allow-mutations`. Only after the confirmation below.
   - HUMAN-APPROVAL: Before any CLI command that authenticates, transmits data, installs, deploys, deletes or runs a mutation, it must show the exact command, target, data and side effects and get explicit confirmation in a separate turn.

@@ -12,6 +12,8 @@
 ### apideck-xero
 
 - Authority: notable · stage 2 · status GRADED (graded 2026-10-01)
+- Grade current: yes
+- Graded version: SKILL.md sha256:2668a6c7928f0c13 · upstream commit ff0e8fccc3ff · checked 2026-10-01
 - Trust badges: READ-ONLY
   - READ-ONLY: A developer reference: it explains the serviceId, entity mapping and caveats and shows example code. It runs nothing itself. The code it shows can create records in Xero, and the skill gives no confirmation guidance for those writes — that is the integrator's job.
 - Licence: apache-2.0

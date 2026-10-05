@@ -14,6 +14,8 @@
 ### apideck-woocommerce
 
 - Authority: notable · stage 2 · status GRADED (graded 2026-10-01)
+- Grade current: yes
+- Graded version: SKILL.md sha256:d03373b9b59a297a · upstream commit 704bda32cc7b · checked 2026-10-01
 - Trust badges: READ-ONLY
   - READ-ONLY: A developer reference: it explains the serviceId, entity mapping and caveats and shows example code. It runs nothing itself. The code it shows can create records in WooCommerce, and the skill gives no confirmation guidance for those writes — that is the integrator's job.
 - Licence: apache-2.0

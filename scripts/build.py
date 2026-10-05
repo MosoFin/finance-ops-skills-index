@@ -555,15 +555,21 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "",
         "### 2. Ask Claude",
         "",
-        "Ask in plain language; you do not need to name the plugin. For example:",
+        "Tell Claude what you want done, in plain language; you do not need to name the plugin.",
+        "Claude first confirms which platforms you use (your ledger, payment processor, store,",
+        "CRM), asking if you have not said, and then answers with a step-by-step plan: one",
+        "graded skill per step that runs on those platforms, and the steps nothing in the",
+        "index covers yet. For example:",
         "",
         "| You ask | Claude answers with |",
         "| - | - |",
+        "| \"Help me close September.\" | First: which accounting system and payment processor you use. Then the close step by step, a skill for each step that runs on them, and the gaps |",
+        "| \"We're on Xero and Stripe. What should I use for month-end?\" | A close plan using only skills that work with Xero and Stripe, with the steps that have no Xero skill named as gaps |",
+        "| \"We're on QuickBooks and customers pay late. Help me collect.\" | Build the aging, then send reminders, with the skill for each and a note that reminders go out to customers |",
         "| \"Has Xero published any official skills?\" | No vendor skills, and the third-party Apideck option labelled as such |",
         "| \"Which QuickBooks skills can post journal entries?\" | The matching skills, each with its write authority (read-only, proposes writes, writes direct) |",
         "| \"Is there a Stripe skill that can pay a supplier, and does it ask first?\" | `stripe-pay` and `stripe-directory`, marked as moving money, with their confirmation step |",
         "| \"What should I use for sales by channel on Shopify, and what does it send back?\" | Shopify's `shopify` skill, what its telemetry contains and how to opt out |",
-        "| \"What helps me reconcile the bank at month end?\" | Reconciliation skills from every vendor, ranked by fit |",
         "",
         "Each answer gives the upstream link, the publisher, the licence, the trust badges and",
         "the date the entry was last checked.",
@@ -767,7 +773,9 @@ def main() -> int:
 
     import build_plugin
     n_plugin = build_plugin.build(
-        ROOT, data["skills"], conn_meta["connectors"], conn_meta["statuses"], primary_system
+        ROOT, data["skills"], conn_meta["connectors"], conn_meta["statuses"], primary_system,
+        meta["regrade_after_days"],
+        yaml.safe_load((DATA / "goals.yml").read_text())["goals"], meta["stages"],
     )
 
     print(

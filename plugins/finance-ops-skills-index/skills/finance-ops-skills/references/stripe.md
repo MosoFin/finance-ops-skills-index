@@ -14,6 +14,8 @@
 ### metronome
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:62220ba4b5d261bc · upstream commit 82d5d332c2ef · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
   - READ-ONLY: Integration guidance for usage-based billing. It advises on API design; it issues no calls itself.
   - EVIDENCE-GATED: States that endpoint paths, request shapes and units are misremembered easily, and requires reading the linked documentation page before naming any endpoint, field or amount.
@@ -25,6 +27,8 @@
 ### stripe-best-practices
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-10-01)
+- Grade current: yes
+- Graded version: SKILL.md sha256:55c73cae0acb93e7 · upstream commit 85d998e928da · checked 2026-10-01
 - Trust badges: READ-ONLY, EVIDENCE-GATED
   - READ-ONLY: Guidance and code generation only. It never calls the Stripe API on a live account; the one command it may suggest, `stripe sandbox create`, makes a test account.
   - EVIDENCE-GATED: Requires reading the relevant Stripe reference file before answering, and requires confirming an active tax registration before enabling automatic_tax — otherwise Stripe collects no tax while the user believes it does.
@@ -36,6 +40,8 @@
 ### stripe-connect-recommend
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:111c6972f1673080 · upstream commit 82d5d332c2ef · checked 2026-09-20
 - Trust badges: READ-ONLY, HUMAN-APPROVAL, EVIDENCE-GATED
   - READ-ONLY: Produces a recommendation plan for a Stripe Connect configuration. It changes no account setting.
   - HUMAN-APPROVAL: Every decision point must be confirmed with numbered options, one question at a time. It also draws the line the other way — scanning the codebase, reading references and generating the plan are low-cost and never ask permission, so confirmation is spent where it matters.
@@ -48,6 +54,8 @@
 ### stripe-connect-verification
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:9945d4ad0c46fbe4 · upstream commit 38d8933bffbd · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL
   - READ-ONLY: Reports the verification and KYC requirements a connected account must satisfy for a given configuration. It collects nothing and submits nothing.
   - EVIDENCE-GATED: Fetches the same requirements the human-facing form would, rather than answering from memory — the requirements vary by platform country, account country, business type and capability, and are exactly the kind of detail that goes stale.
@@ -60,6 +68,8 @@
 ### stripe-directory
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-10-01)
+- Grade current: yes
+- Graded version: SKILL.md sha256:0805bce6792026e5 · upstream commit 9f39fa607a63 · checked 2026-10-01
 - Trust badges: MOVES-MONEY, HUMAN-APPROVAL, EVIDENCE-GATED
   - MOVES-MONEY: Drives payments and donations to the recipient it resolves. The transfer itself is executed by stripe-pay or another documented payment flow, but this skill is the one that starts the journey.
   - HUMAN-APPROVAL: Before any payment or donation it must show recipient, purpose, amount, currency and constraints and obtain explicit approval, and it must not drive to a purchase or provisioning step without an explicit request.
@@ -72,6 +82,8 @@
 ### stripe-docs
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:af38e784edcdb2f1 · upstream commit 12f48810695e · checked 2026-09-20
 - Trust badges: READ-ONLY
   - READ-ONLY: Fetches and searches Stripe documentation through the CLI. It reads; nothing else.
 - Licence: mit
@@ -82,6 +94,8 @@
 ### stripe-pay
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:2a085814fdb5f8a4 · upstream commit 9dde68ae5ef3 · checked 2026-09-20
 - Trust badges: MOVES-MONEY, HUMAN-APPROVAL, EVIDENCE-GATED
   - MOVES-MONEY: `stripe pay` transfers funds from the authenticated Stripe business to another. This and stripe-directory, which hands payments to it, are the entries in the index that move real money.
   - HUMAN-APPROVAL: The exact command must be shown and confirmed before running, `--agent` or `--json` used first so the transfer can be reviewed, and `-y` withheld until after that review. A transfer also requires the user to have asked for it explicitly.
