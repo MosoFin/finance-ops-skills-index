@@ -10,7 +10,8 @@
 
 ### close
 
-- Authority: first-party · stage 1 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 1 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, STATEFUL, AUDIT-TRAIL, HUMAN-APPROVAL, TIE-CHECKED
@@ -24,7 +25,8 @@
 
 ### docx
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Publisher: Anthropic
+- Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:8017469ea95fb7d2 · upstream commit fa0fa64bdc96 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, AUDIT-TRAIL
@@ -38,7 +40,8 @@
 
 ### explain-to-client
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 6 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, EVIDENCE-GATED, DETERMINISTIC-MATH, HUMAN-APPROVAL, CLIENT-FACING, NO-AUTO-SEND
@@ -52,7 +55,8 @@
 
 ### pdf
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: Anthropic
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:9f78b8359fbd4943 · upstream commit 1ed29a03dc85 · checked 2026-09-20
 - Trust badges: READ-ONLY
@@ -64,7 +68,8 @@
 
 ### pptx
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Publisher: Anthropic
+- Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:a7ff03e2c85b636f · upstream commit fa0fa64bdc96 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
@@ -77,7 +82,8 @@
 
 ### receipts
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: Anthropic
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:5b2f407ff4063972 · upstream commit 2476d52abc96 · checked 2026-09-20
 - Trust badges: READ-ONLY, PII-MINIMISING, PROVENANCE-STAMPED
@@ -91,7 +97,8 @@
 
 ### skill-creator
 
-- Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
+- Publisher: Anthropic
+- Stage 0 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:dcd4803e61e913e6 · upstream commit b9e19e6f4477 · checked 2026-09-20
 - Trust badges: READ-ONLY, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -105,7 +112,8 @@
 
 ### xlsx
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Publisher: Anthropic
+- Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:6712b39718fe8150 · upstream commit fa0fa64bdc96 · checked 2026-09-20
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED

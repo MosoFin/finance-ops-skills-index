@@ -13,7 +13,8 @@
 
 ### hs-bulk-operations
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: HubSpot — the platform vendor's own skill
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:02cc417abc0ab9b4 · upstream commit ed4123453010 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, AUDIT-TRAIL
@@ -28,7 +29,8 @@
 
 ### hs-crm-data-quality
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: HubSpot — the platform vendor's own skill
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:5c51e00fb3addfb8 · upstream commit 5b773165f0c8 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -42,7 +44,8 @@
 
 ### hs-crm-lookup
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: HubSpot — the platform vendor's own skill
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:579bd26b13828ebc · upstream commit 5b773165f0c8 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
@@ -55,7 +58,8 @@
 
 ### hs-customer-retention
 
-- Authority: first-party · stage 7 · status GRADED (graded 2026-09-21)
+- Publisher: HubSpot — the platform vendor's own skill
+- Stage 7 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:9965f44f3042b8c0 · upstream commit 5b773165f0c8 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -69,7 +73,8 @@
 
 ### hs-deal-management
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: HubSpot — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:de039e2299446039 · upstream commit 5b773165f0c8 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -83,7 +88,8 @@
 
 ### hs-quote-to-cash
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: HubSpot — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:96d3ead568ea7602 · upstream commit 5b773165f0c8 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -97,7 +103,8 @@
 
 ### hs-sales-reporting
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Publisher: HubSpot — the platform vendor's own skill
+- Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:f842a04872f7307f · upstream commit 5b773165f0c8 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED

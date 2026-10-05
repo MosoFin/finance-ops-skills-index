@@ -11,7 +11,8 @@
 
 ### apideck-xero
 
-- Authority: notable · stage 2 · status GRADED (graded 2026-10-01)
+- Publisher: Apideck — third party, not the platform's vendor
+- Stage 2 · status GRADED (graded 2026-10-01)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2668a6c7928f0c13 · upstream commit ff0e8fccc3ff · checked 2026-10-01
 - Trust badges: READ-ONLY
