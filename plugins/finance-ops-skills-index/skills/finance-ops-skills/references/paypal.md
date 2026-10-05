@@ -14,6 +14,8 @@
 ### paypal-best-practices
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:09dc881c8ee7d471 · upstream commit a9c0586fe495 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
   - READ-ONLY: Architecture and code guidance. Live operations are explicitly handed to the PayPal MCP server rather than performed here.
   - EVIDENCE-GATED: Requires reading the matching reference file before answering, and asks which SDK version is in use rather than assuming. Where three Fastlane variants exist it refuses to generate code until the user picks one.
@@ -25,6 +27,8 @@
 ### paypal-routing
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:3c99aba0118d4733 · upstream commit c93cbfe5b0b1 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
   - READ-ONLY: A routing table. It dispatches to commands and reference files and performs no operation itself; it is not user-invocable.
   - EVIDENCE-GATED: Requires generating code strictly from the fetched language snippet rather than falling back on training knowledge, and states that reference files override what the model already believes.

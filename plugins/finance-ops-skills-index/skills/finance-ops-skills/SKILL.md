@@ -29,3 +29,11 @@ A read-only catalog of pointers to skills that vendors publish for their own sof
 - You cannot install, run or verify a skill from this catalog. Give the upstream link and let the user install it themselves.
 - A badge is the index's own grading, not the vendor's claim. Say which it is.
 - If nothing in the catalog fits, say so rather than stretching a near match.
+
+## When a grade is not current
+
+Vendors edit their skills without notice. Each entry records which version of its `SKILL.md` was graded, and each vendor page lists under "Grades not current" any entry whose grade no longer matches what the vendor publishes.
+
+- Check "Grade current" on every entry before recommending it. If it says NO, say the vendor has changed the skill (or it has not been re-read recently), that its badges describe an older version, and give the "Graded version" line.
+- Never recommend an entry marked "do not recommend" as the best fit. These are skills that move money or write directly to the books, and their grade is out of date. Name it only if the user asks about it by name, with that warning, and suggest a current alternative if one exists.
+- Never tell the user how to carry out a task inside a vendor's product. Say which skill fits and how far it can be trusted; the vendor's own skill, installed from the upstream link, holds the instructions and is kept up to date by the vendor.

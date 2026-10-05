@@ -48,6 +48,9 @@ MAX_RETRIES = 4
 BACKOFF = 2.0          # seconds, doubled per retry
 PACE = 0.08            # seconds between calls, to stay under the burst threshold
 
+# Listed first in the re-grading issue: a stale grade on these is the costly kind.
+HIGH_RISK = ("MOVES-MONEY", "WRITES-DIRECT")
+
 PERMISSIVE = {"mit", "apache-2.0", "bsd-3-clause", "bsd-2-clause", "isc", "cc0-1.0"}
 # Open source, but strong copyleft: mirroring would relicense this index.
 COPYLEFT = {"agpl-3.0", "gpl-3.0", "gpl-2.0", "lgpl-3.0", "mpl-2.0"}
@@ -196,7 +199,9 @@ def main() -> int:
             if s.get("skill_md_hash") is None:
                 notices.append(f"{sid}: first check — recording baseline {bh}")
             else:
+                risky = [b for b in HIGH_RISK if b in (s.get("tiers") or [])]
                 changed.append(
+                    (f"[{', '.join(risky)}] " if risky else "") +
                     f"{sid}: SKILL.md changed upstream "
                     f"({s['skill_md_hash']} -> {bh}) — grade expired, re-read "
                     f"https://github.com/{repo}/commits/{ref}/{path}"
@@ -224,7 +229,7 @@ def main() -> int:
 
     for line in fatal:
         print(f"FATAL   {line}")
-    for line in changed:
+    for line in sorted(changed, key=lambda l: not l.startswith("[")):
         print(f"REGRADE {line}")
     for line in notices:
         print(f"note    {line}")

@@ -11,6 +11,8 @@
 ### close
 
 - Authority: first-party · stage 1 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, STATEFUL, AUDIT-TRAIL, HUMAN-APPROVAL, TIE-CHECKED
   - STATEFUL: Re-reads CHECKLIST.md fresh each session; if conversation and checklist disagree, the checklist wins.
   - TIE-CHECKED: A task with a tie-check is only done when that check was green — 'ran it' is not 'tied'.
@@ -23,6 +25,8 @@
 ### docx
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:8017469ea95fb7d2 · upstream commit fa0fa64bdc96 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, AUDIT-TRAIL
   - READ-ONLY: Creates and edits Word documents as local files. No system of record is involved.
   - EVIDENCE-GATED: Requires rendering the result to images and actually looking at it, and validates the repacked file against the schema. When redlining it checks that every changed run is wrapped in a tracked-change element — an omission that is invisible in the accepted view and easy to make by accident.
@@ -35,6 +39,8 @@
 ### explain-to-client
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, EVIDENCE-GATED, DETERMINISTIC-MATH, HUMAN-APPROVAL, CLIENT-FACING, NO-AUTO-SEND
   - EVIDENCE-GATED: *Explained* vs *attributed* vs *estimated* survive translation — 'about', 'we believe', 'confirmed' are load-bearing.
   - DETERMINISTIC-MATH: Figures are quoted from the artifact or pull; any derived figure is computed, not estimated.
@@ -47,6 +53,8 @@
 ### pdf
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:9f78b8359fbd4943 · upstream commit 1ed29a03dc85 · checked 2026-09-20
 - Trust badges: READ-ONLY
   - READ-ONLY: Reads, extracts, merges, splits, watermarks, fills, encrypts and OCRs PDF files. Local files only; no system of record.
 - Licence: proprietary-anthropic
@@ -57,6 +65,8 @@
 ### pptx
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:a7ff03e2c85b636f · upstream commit fa0fa64bdc96 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
   - READ-ONLY: Creates, edits and reads presentations as local files.
   - EVIDENCE-GATED: Ships a schema, relationship, content-type and chart validator, and baselines it against the source template so the template's own errors are not misread as yours. Its gotcha list is unusually specific about silent corruption — several options corrupt the file rather than erroring, which is the failure mode a validator exists to catch.
@@ -68,6 +78,8 @@
 ### receipts
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:5b2f407ff4063972 · upstream commit 2476d52abc96 · checked 2026-09-20
 - Trust badges: READ-ONLY, PII-MINIMISING, PROVENANCE-STAMPED
   - READ-ONLY: Mines local session transcripts and git history, and writes a report. Nothing is modified.
   - PII-MINIMISING: Stays on the machine — the transcripts are mined locally and the HTML receipt is built deterministically from the same data, with no extra API calls beyond one final write-up. It also forbids reading the raw transcript files directly, which keeps their contents out of the model's context.
@@ -80,6 +92,8 @@
 ### skill-creator
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:dcd4803e61e913e6 · upstream commit b9e19e6f4477 · checked 2026-09-20
 - Trust badges: READ-ONLY, HUMAN-APPROVAL, EVIDENCE-GATED
   - READ-ONLY: Authors and edits skill files. Nothing operational is touched.
   - HUMAN-APPROVAL: Intent is captured and confirmed before a skill is written, and the user decides whether test cases are appropriate rather than having that imposed.
@@ -92,6 +106,8 @@
 ### xlsx
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:6712b39718fe8150 · upstream commit fa0fa64bdc96 · checked 2026-09-20
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED
   - READ-ONLY: Produces and edits spreadsheet files. It touches no system of record.
   - DETERMINISTIC-MATH: The same principle the Mosofin close skills hold: write the formula, never the Python-computed result, so the sheet recalculates when its inputs change. Every assumption gets its own labelled cell and is referenced, never inlined as a literal.

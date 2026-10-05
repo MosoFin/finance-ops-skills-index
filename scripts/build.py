@@ -767,7 +767,8 @@ def main() -> int:
 
     import build_plugin
     n_plugin = build_plugin.build(
-        ROOT, data["skills"], conn_meta["connectors"], conn_meta["statuses"], primary_system
+        ROOT, data["skills"], conn_meta["connectors"], conn_meta["statuses"], primary_system,
+        meta["regrade_after_days"],
     )
 
     print(

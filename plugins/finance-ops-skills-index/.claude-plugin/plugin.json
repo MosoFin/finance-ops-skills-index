@@ -2,7 +2,7 @@
   "name": "finance-ops-skills-index",
   "displayName": "Finance & Ops Skills Index",
   "icon": "./.claude-plugin/icon.png",
-  "version": "1.0.20261001",
+  "version": "1.1.20261001",
   "description": "Find vendor-published agent skills for accounting, payments and e-commerce software, with upstream links, licences and independent trust grades.",
   "author": {
     "name": "MosoFin",

@@ -82,10 +82,17 @@ design, and it is the one that survives an audit conversation.
 A grade is a claim about a specific version of a file. When upstream changes the file,
 the claim expires.
 
-`scripts/check_drift.py` hashes each pointed-to `SKILL.md` daily. A changed body opens
-a pull request that flips the entry to `NEEDS-RE-GRADING` and pastes the upstream diff
-into the PR body. **The bot never re-grades and never auto-merges a body change** — it
-only tells a person their judgment expired.
+`scripts/check_drift.py` hashes each pointed-to `SKILL.md` daily. A changed body flips
+the entry to `NEEDS-RE-GRADING` on `main` at once, and opens an issue linking the
+upstream diff, with `MOVES-MONEY` and `WRITES-DIRECT` entries listed first. **The bot
+never re-grades** — it only tells a person their judgment expired. Expiring a grade only
+ever lowers a claim, so it ships without review; restoring one is a human's pull request.
+
+The plugin carries this through to the answer. Every entry shows the `SKILL.md` hash it
+was graded against and whether its grade is current, and each vendor page lists the
+entries whose grade is not. The plugin never recommends a `MOVES-MONEY` or
+`WRITES-DIRECT` skill whose grade is not current, and the build refuses to ship a
+`GRADED` upstream entry that has no recorded hash.
 
 That is the entire point of this index. The list is cheap; the grade is the product.
 

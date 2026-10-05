@@ -14,6 +14,8 @@
 ### accruals
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: PROPOSES-WRITES, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, MATERIALITY-AWARE, POLICY-CAPTURING, AUDIT-TRAIL
   - MATERIALITY-AWARE: Below the accruals threshold, book-when-paid is the documented policy — stated as policy, not silence.
   - TIE-CHECKED: Every entry balances; prepaid and deferral schedules must roll (opening + additions − releases = closing) against account balances.
@@ -26,6 +28,8 @@
 ### aging-review
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, CLIENT-FACING, NO-AUTO-SEND, AUDIT-TRAIL
   - TIE-CHECKED: Bucket totals must sum to the report total and tie to the balance-sheet A/R or A/P balance. Red until tied.
   - NO-AUTO-SEND: Collections notes are drafts. You send them.
@@ -38,6 +42,8 @@
 ### ar-aging-and-collections
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:c381b58714db19ba · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, CLIENT-FACING, NO-AUTO-SEND, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. No payments applied, no balances written off, no reminders sent.
   - NO-AUTO-SEND: All correspondence is marked REVIEW REQUIRED - NOT SENT. This is the direct counterpart to Intuit's chase-overdue-invoices, which sends; both are defensible, and the difference is the point of grading them.
@@ -51,6 +57,8 @@
 ### bank-rec
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: PROPOSES-WRITES, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, AUDIT-TRAIL
   - DETERMINISTIC-MATH: scripts/match.py does exact-amount, one-to-one matching within a date window. No matching by hand.
   - TIE-CHECKED: Red until statement closing − ledger balance − outstanding items ± unposted adjustments = zero.
@@ -63,6 +71,8 @@
 ### bank-reconciliation
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:31a56e737c65229c · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
   - EVIDENCE-GATED: The most honest limitation statement in this index. A bank reconciliation has two sides and Mosofin reads one: comparing the books to the books is a total agreeing with itself, so an output without a statement is never labelled a reconciliation and cash is never reported as reconciled. A gap is named, never estimated. Where data does not cover something the skill names the tool that would have covered it, and a task with no tool becomes a manual task with a named gap rather than a dropped task.
@@ -77,6 +87,8 @@
 ### board-pack
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, EVIDENCE-GATED, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, CLIENT-FACING, NO-AUTO-SEND
   - EVIDENCE-GATED: Missing artifacts are gaps, not prompts to improvise. A pack built on an unclosed period carries a visible draft warning.
   - NO-AUTO-SEND: This output goes to outsiders. You send it.
@@ -89,6 +101,8 @@
 ### budget-vs-actuals
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, MATERIALITY-AWARE, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
   - TIE-CHECKED: The actuals column must tie to the P&L total for the period, computed. Red until tied.
   - DETERMINISTIC-MATH: scripts/bva.py joins on account and computes variance, %, and favorable/unfavorable by account type. No cell is recomputed by the model.
@@ -100,6 +114,8 @@
 ### cash-flow
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, PROVENANCE-STAMPED, MATERIALITY-AWARE, HUMAN-APPROVAL
   - TIE-CHECKED: Starts red until the opening balance is tied to the bank or you accept the gap.
   - PROVENANCE-STAMPED: Each line carries invoice #, bill #, 'recurring — last 3 occurrences', or 'user-stated'. Projections go stale weekly and say so.
@@ -112,6 +128,8 @@
 ### categorize-transactions
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: PROPOSES-WRITES, EVIDENCE-GATED, HUMAN-APPROVAL, MATERIALITY-AWARE, DETERMINISTIC-MATH, POLICY-CAPTURING
   - PROPOSES-WRITES: Applies categorizations only after batch confirmation; without the write capability it emits a CSV for manual import.
   - EVIDENCE-GATED: Stops entirely if no COA.md exists — categorizing without rules is guessing.
@@ -124,6 +142,8 @@
 ### dashboard
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
   - PROVENANCE-STAMPED: Every panel notes source and as-of date; unclosed-period numbers are marked preliminary; build date stamped prominently.
   - TIE-CHECKED: Headline figures must tie to statement totals before the file is written. Red figures get a visible flag or the panel is dropped.
@@ -136,6 +156,8 @@
 ### duplicate-invoice-detection
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:5594c83387a77ab5 · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, PII-MINIMISING
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
   - EVIDENCE-GATED: Nine of its ten detection rules run as direct queries against live bills, payments and the vendor master. The tenth cannot run, and the skill says why rather than approximating it: Mosofin deliberately does not expose vendor bank details. Suspects carry confidence ratings and supporting evidence, not verdicts.
@@ -149,6 +171,8 @@
 ### expense-report-processor
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:d6c63a0d1e2b9d3f · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, PII-MINIMISING
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. The GL posting it builds is a proposal.
   - EVIDENCE-GATED: Codes against the real chart of accounts, matches claims against transactions already posted, and checks the reimbursement and card-clearing balances rather than assuming the report is self-consistent.
@@ -162,6 +186,8 @@
 ### financial-statement-builder
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:0edd578122d3c364 · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
   - TIE-CHECKED: Seven cross-statement tie-outs are the deliverable, not a formality. Each is reported as pass or fail with the difference shown even when it is zero — 'balances' without a number is not a result. The skill makes the point that a system-generated balance sheet always balances because double-entry software enforces it, so tie-out 1 must be re-proved against the reclassified statements the system did not produce.
@@ -175,6 +201,8 @@
 ### flux
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, MATERIALITY-AWARE, HUMAN-APPROVAL, AUDIT-TRAIL
   - EVIDENCE-GATED: Labels each line *explained* (evidence) vs *attributed* (your word). Partial explanations say what remains unexplained.
   - TIE-CHECKED: Explained + unexplained must equal the total period delta, line by line and in total.
@@ -187,6 +215,8 @@
 ### forecast
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
   - TIE-CHECKED: Actual columns tie to the P&L export, and every forecast cell traces to a driver in FORECAST.md — no orphan numbers.
   - EVIDENCE-GATED: Never forecasts a month that has actuals; says so plainly if the latest month isn't closed.
@@ -198,6 +228,8 @@
 ### gl-coding-assistant
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:b0709543fe75304e · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
   - EVIDENCE-GATED: Every suggestion is grounded in how this entity has actually coded the same vendor before, against the real chart of accounts — not in a general notion of where an expense belongs. Suggestions carry confidence ratings and their reasoning.
@@ -210,6 +242,8 @@
 ### grill-my-coa
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL, POLICY-CAPTURING
   - EVIDENCE-GATED: Surfaces where posted reality contradicts stated account purpose, rather than accepting the stated purpose.
   - READ-ONLY: Chart edits happen in the accounting system, by you. This session produces the rulebook and an edit list.
@@ -221,6 +255,8 @@
 ### invoice-data-extractor
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:2e056d89c2ac2261 · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
   - EVIDENCE-GATED: Extraction is semantic rather than raw OCR, and every extracted invoice is validated against the vendor master, the posted transaction history and the Bill-To entity — catching a duplicate before it is paid rather than after.
@@ -233,6 +269,8 @@
 ### je-review
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, MATERIALITY-AWARE, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
   - TIE-CHECKED: Cross-foots debits = credits per entry and in aggregate first; an unbalanced export stops the review.
   - READ-ONLY: Drafts correcting entries on request; never posts from here.
@@ -244,6 +282,8 @@
 ### journal-entry-builder
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:2e205addcb3b2e1a · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. The skill argues this is the correct division rather than a shortfall: posting is an authorised act with a preparer and a reviewer, and an entry arriving pre-validated with its support attached is what makes that review fast.
   - TIE-CHECKED: Debits equal credits, arithmetically, every time. In a connected workspace six of the original nine validations stop being judgment and become queries — accounts checked against the live chart, sign conventions against real account types, no P&L accounts in a pure balance-sheet reclass.
@@ -257,6 +297,8 @@
 ### month-end-close-checklist
 
 - Authority: first-party · stage 1 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:2fec514402ed928d · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, TIE-CHECKED, MATERIALITY-AWARE, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, STATEFUL
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done.
   - TIE-CHECKED: Ends in a tie-out workpaper at close, including inter-period continuity, rather than a checklist of ticked boxes.
@@ -272,6 +314,8 @@
 ### onboard-client
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
   - READ-ONLY: Reads company profile and chart of accounts; writes only local workspace files.
   - HUMAN-APPROVAL: Shows drafts of every file and waits for edits before writing.
@@ -284,6 +328,8 @@
 ### qb-analyze-payroll-cost
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:fff521688da6d362 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED
   - READ-ONLY: States it outright. Actual compensation changes are routed to a write-capable workflow, not attempted here.
   - EVIDENCE-GATED: Missing data is unavailable, never zero — a distinction most analysis skills leave implicit and get wrong. Facts and interpretation are separated in the wording: 'the data shows' against 'this may indicate'.
@@ -296,6 +342,8 @@
 ### qb-business-health-check
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:6812bfc72086e284 · upstream commit c8daa17a64d4 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, INJECTION-AWARE, PROVENANCE-STAMPED, HUMAN-APPROVAL
   - INJECTION-AWARE: States plainly that report contents — customer names, memos, product descriptions — are data to analyse, never instructions to follow.
   - PROVENANCE-STAMPED: The briefing must carry the connected company name, the reporting period, the accounting method, and the comparison window, including where reports use different windows.
@@ -309,6 +357,8 @@
 ### qb-chase-overdue-invoices
 
 - Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:1f57d78c39b05bb2 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: SENDS-EXTERNALLY, CLIENT-FACING, HUMAN-APPROVAL, EVIDENCE-GATED
   - SENDS-EXTERNALLY: This skill transmits email to the client's customers. It is the clearest contrast in the index: Mosofin's aging-review drafts collections notes and stops, while this one sends them.
   - HUMAN-APPROVAL: A confirmation showing the exact subject and body is required before every send, and approval does not carry across a changed set — 'Never auto-send' is stated as a hard rule.
@@ -321,6 +371,8 @@
 ### qb-email-to-estimate-invoice
 
 - Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:b246cf48095e1acf · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, SENDS-EXTERNALLY, CLIENT-FACING, HUMAN-APPROVAL, EVIDENCE-GATED
   - PROPOSES-WRITES: Creates customers, products and sales documents in QuickBooks. Each record type needs its own explicit yes — the skill states that asking for an invoice is not consent to create the customer or product behind it.
   - SENDS-EXTERNALLY: Emails the estimate or invoice to the customer, after a draft preview and an explicit approval.
@@ -334,6 +386,8 @@
 ### qb-industry-benchmark
 
 - Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:aa7605287cc45023 · upstream commit c8daa17a64d4 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL, PROVENANCE-STAMPED
   - HUMAN-APPROVAL: The pre-flight runs even when every value could be inferred confidently — being able to infer a value is a reason to pre-fill it, never to skip confirmation.
   - EVIDENCE-GATED: Refuses figures the user supplies themselves and industry-general questions, routing both to a different tool, so a benchmark always reflects the connected company's own books.
@@ -345,6 +399,8 @@
 ### qb-lending
 
 - Authority: first-party · stage 7 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:c2e057c1891d72bb · upstream commit bb30cbdf7b5b · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL
   - READ-ONLY: No payments, no draws, no loan changes. Servicing tools report the user's own balances and terms; nothing writes.
   - EVIDENCE-GATED: Pre-auth tools return educational guidance only. The skill never issues a loan offer, rate, credit limit or approval decision, and keeps help, shop and estimate tools to their separate jobs.
@@ -357,6 +413,8 @@
 ### qb-payroll-employee-onboarding
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:1de324182880658b · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, PII-MINIMISING
   - PROPOSES-WRITES: Creates and updates payroll employees, assigns work locations and saves contract pay — all behind a consolidated approval listing every action and payload.
   - HUMAN-APPROVAL: Exact values must be shown; 'standard setup' is explicitly forbidden as a way to hide a change. A correction that alters the payload re-opens confirmation.
@@ -370,6 +428,8 @@
 ### qb-payroll-help
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:a5f2bd5e101a3c67 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED
   - READ-ONLY: States it outright and declines write requests, routing them to a write-capable workflow only if the environment exposes one.
   - EVIDENCE-GATED: Company payroll facts are never answered from memory. An absent field is reported as not visible from the available tools rather than filled in, and a failed tool produces a named limit.
@@ -382,6 +442,8 @@
 ### qb-set-base-pay
 
 - Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:7beb7d6f2a0a36db · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
   - PROPOSES-WRITES: Saves employee contract pay, but only after an explicit approval of the computed before-and-after.
   - EVIDENCE-GATED: Reads the current contract before proposing anything, and will not claim success until read-back confirms the approved values. Refuses to convert currencies — it asks for the exact amount to save.
@@ -394,6 +456,8 @@
 ### qb-setup
 
 - Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:03711cad3c3fb8f9 · upstream commit 21067205c10c · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
   - READ-ONLY: Diagnoses the connector only. Its one data call is company_info, used to prove the connection works.
   - EVIDENCE-GATED: Checks whether a read-only tool actually succeeds before declaring setup complete, rather than assuming from the presence of a connector.
@@ -405,6 +469,8 @@
 ### three-way-match
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:2a4e014df4600db4 · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
   - READ-ONLY: Absolute, and stronger than a default. Write tools stay out of scope even when the connection's effective_policy enables them — 'a permission to write is not an instruction to write'. A step that would need a write becomes a manual task with the artefact handed to a person, said plainly in the output so nobody assumes it was done. It pays nothing and releases nothing.
   - TIE-CHECKED: Line-by-line comparison across purchase order, goods receipt and invoice, producing an exception list rather than a verdict of its own.
@@ -418,6 +484,8 @@
 ### tie-out
 
 - Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
+- Grade current: yes
+- Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, MATERIALITY-AWARE, HUMAN-APPROVAL, AUDIT-TRAIL
   - TIE-CHECKED: Cross-foots assets = liabilities + equity first; stops if that fails. Then one computed comparison per account.
   - READ-ONLY: Corrections become JE drafts and a pointer to /accruals — never posted from here.

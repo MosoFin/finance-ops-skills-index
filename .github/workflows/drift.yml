@@ -62,23 +62,23 @@ jobs:
                       "$(grep -E '^(FATAL|REGRADE)' "$RUNNER_TEMP/drift.log" || tail -20 "$RUNNER_TEMP/drift.log")")"
 
       # Exit 1 — an upstream SKILL.md changed, so those entries are now
-      # NEEDS-RE-GRADING. This organisation forbids Actions from opening pull
-      # requests, so the branch is pushed and an issue asks for the PR.
-      - name: Push a re-grading branch and open an issue
+      # NEEDS-RE-GRADING. The expiry is committed straight to main: until it is,
+      # the published plugin keeps vouching for a version of the skill nobody has
+      # read. Expiring a grade only ever lowers a claim, so it needs no review;
+      # restoring one does, and that is what the issue asks a person to do.
+      - name: Publish the expired grades and open a re-grading issue
         if: steps.drift.outputs.code == '1'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          BRANCH="drift/regrade-$(date -u +%Y%m%d)"
-          git checkout -b "$BRANCH"
           git add data/ README.md skills/ connectors/ plugins/ docs/CONNECTOR-TRACKER.md
           git commit -m "chore(drift): mark changed entries NEEDS-RE-GRADING"
-          git push -f origin "$BRANCH"
+          git push
           gh issue create \
             --title "Re-grading required — upstream SKILL.md changed" \
             --label "needs-re-grading" \
-            --body "$(printf 'Branch \`%s\` marks the affected entries NEEDS-RE-GRADING.\n\n```\n%s\n```\n\n**Do not merge this as a formality.** For each entry, open the upstream diff, re-read `SKILL.md`, confirm or correct the trust tiers and the inputs/outputs in its `data/sources/<system>/<id>.yml`, set `status: GRADED` with today `last_graded`, then run `make build`.\n\nSee docs/TRUST-TIERS.md, section "The re-grading rule".\n' \
-                      "$BRANCH" "$(grep '^REGRADE' "$RUNNER_TEMP/drift.log" || true)")"
+            --body "$(printf 'These entries are now NEEDS-RE-GRADING on main, and the plugin tells users their grade is out of date. Entries that move money or write directly to the books are listed first: until they are re-graded the plugin will not recommend them.\n\n```\n%s\n```\n\nFor each entry, open the upstream diff, re-read `SKILL.md`, confirm or correct the trust tiers and the inputs/outputs in its `data/sources/<system>/<id>.yml`, set `status: GRADED` with today `last_graded`, run `make build`, and open a pull request.\n\nSee docs/TRUST-TIERS.md, section "The re-grading rule".\n' \
+                      "$(grep '^REGRADE' "$RUNNER_TEMP/drift.log" || true)")"
 
       # Exit 0 — only sibling files moved, or nothing at all. Bookkeeping only.
       - name: Commit bookkeeping
