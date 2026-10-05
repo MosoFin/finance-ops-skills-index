@@ -124,7 +124,8 @@ def _vendor_page(cid: str, c: dict, skills: list, statuses: dict, as_of: str, re
         L += [
             f"### {s['id']}",
             "",
-            f"- Authority: {s.get('authority', 'community')} · stage {s.get('stage', 'n/a')} · "
+            f"- Publisher: {_publisher(s)}",
+            f"- Stage {s.get('stage', 'n/a')} · "
             f"status {s.get('status', 'UNGRADED')}"
             + (f" (graded {s['last_graded']})" if s.get("last_graded") else ""),
             f"- Grade current: {'yes' if state == 'CURRENT' else 'NO — ' + state}",
@@ -150,6 +151,32 @@ def _authority(s: dict) -> str:
     return next((b for b in AUTHORITY if b in tiers), "not graded for write authority")
 
 
+# Upstream GitHub owner -> the publisher's name, for vendors that publish skills for their
+# own product. Anthropic publishes the file-format skills, which belong to no platform.
+VENDOR_OWNERS = {
+    "intuit": "Intuit", "stripe": "Stripe", "paypal": "PayPal", "Shopify": "Shopify",
+    "HubSpot": "HubSpot", "googleworkspace": "Google",
+}
+
+
+def _publisher(s: dict) -> str:
+    """Who published the skill, and whether that is the platform's own vendor.
+
+    `authority: first-party` in the data means the publisher's own skill. For a Mosofin
+    skill that runs on QuickBooks that is Mosofin, not Intuit, so calling it first-party
+    in an answer would tell the user Intuit made it.
+    """
+    owner = ((s.get("upstream") or {}).get("repo") or "").split("/")[0]
+    if str(s.get("origin", "")).startswith("mosofin"):
+        return "Mosofin — independent, not the platform's vendor"
+    if owner in VENDOR_OWNERS:
+        return f"{VENDOR_OWNERS[owner]} — the platform vendor's own skill"
+    if owner == "anthropics":
+        return "Anthropic"
+    name = {"apideck-libraries": "Apideck"}.get(owner, owner or "unknown")
+    return f"{name} — third party, not the platform's vendor"
+
+
 def _availability(s: dict) -> str:
     if s.get("origin") == "mosofin-workspace":
         return "Mosofin workspace only — not publicly installable"
@@ -161,6 +188,7 @@ def _line(s: dict, as_of: str, regrade_after: int) -> str:
     state = grade_state(s, as_of, regrade_after)
     return (
         f"`{s['id']}` — runs on: {', '.join(s.get('systems') or ['unknown'])} · "
+        f"by {_publisher(s)} · "
         f"{_authority(s)} · grade {'current' if state == 'CURRENT' else 'NOT CURRENT (' + state + ')'}"
         + (" — do not recommend" if state != "CURRENT" and _high_risk(s) else "")
         + f" · {_availability(s)}"

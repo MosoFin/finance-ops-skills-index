@@ -13,7 +13,8 @@
 
 ### paypal-best-practices
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: PayPal — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:09dc881c8ee7d471 · upstream commit a9c0586fe495 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
@@ -26,7 +27,8 @@
 
 ### paypal-routing
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: PayPal — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:3c99aba0118d4733 · upstream commit c93cbfe5b0b1 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED

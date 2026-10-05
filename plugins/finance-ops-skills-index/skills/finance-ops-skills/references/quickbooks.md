@@ -13,7 +13,8 @@
 
 ### accruals
 
-- Authority: first-party · stage 4 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 4 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: PROPOSES-WRITES, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, MATERIALITY-AWARE, POLICY-CAPTURING, AUDIT-TRAIL
@@ -27,7 +28,8 @@
 
 ### aging-review
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 3 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, CLIENT-FACING, NO-AUTO-SEND, AUDIT-TRAIL
@@ -41,7 +43,8 @@
 
 ### ar-aging-and-collections
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:c381b58714db19ba · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, CLIENT-FACING, NO-AUTO-SEND, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -56,7 +59,8 @@
 
 ### bank-rec
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 3 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: PROPOSES-WRITES, DETERMINISTIC-MATH, TIE-CHECKED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -70,7 +74,8 @@
 
 ### bank-reconciliation
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:31a56e737c65229c · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -86,7 +91,8 @@
 
 ### board-pack
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 6 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, EVIDENCE-GATED, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, CLIENT-FACING, NO-AUTO-SEND
@@ -100,7 +106,8 @@
 
 ### budget-vs-actuals
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 6 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, MATERIALITY-AWARE, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
@@ -113,7 +120,8 @@
 
 ### cash-flow
 
-- Authority: first-party · stage 7 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 7 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, PROVENANCE-STAMPED, MATERIALITY-AWARE, HUMAN-APPROVAL
@@ -127,7 +135,8 @@
 
 ### categorize-transactions
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 2 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: PROPOSES-WRITES, EVIDENCE-GATED, HUMAN-APPROVAL, MATERIALITY-AWARE, DETERMINISTIC-MATH, POLICY-CAPTURING
@@ -141,7 +150,8 @@
 
 ### dashboard
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 6 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -155,7 +165,8 @@
 
 ### duplicate-invoice-detection
 
-- Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 5 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:5594c83387a77ab5 · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, PII-MINIMISING
@@ -170,7 +181,8 @@
 
 ### expense-report-processor
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:d6c63a0d1e2b9d3f · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, PII-MINIMISING
@@ -185,7 +197,8 @@
 
 ### financial-statement-builder
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:0edd578122d3c364 · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -200,7 +213,8 @@
 
 ### flux
 
-- Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 5 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, MATERIALITY-AWARE, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -214,7 +228,8 @@
 
 ### forecast
 
-- Authority: first-party · stage 7 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 7 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, EVIDENCE-GATED, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
@@ -227,7 +242,8 @@
 
 ### gl-coding-assistant
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:b0709543fe75304e · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -241,7 +257,8 @@
 
 ### grill-my-coa
 
-- Authority: first-party · stage 0 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 0 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL, POLICY-CAPTURING
@@ -254,7 +271,8 @@
 
 ### invoice-data-extractor
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2e056d89c2ac2261 · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -268,7 +286,8 @@
 
 ### je-review
 
-- Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 5 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, MATERIALITY-AWARE, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
@@ -281,7 +300,8 @@
 
 ### journal-entry-builder
 
-- Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 4 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2e205addcb3b2e1a · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -296,7 +316,8 @@
 
 ### month-end-close-checklist
 
-- Authority: first-party · stage 1 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 1 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2fec514402ed928d · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, TIE-CHECKED, MATERIALITY-AWARE, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL, STATEFUL
@@ -313,7 +334,8 @@
 
 ### onboard-client
 
-- Authority: first-party · stage 0 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 0 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, HUMAN-APPROVAL, POLICY-CAPTURING, AUDIT-TRAIL
@@ -327,7 +349,8 @@
 
 ### qb-analyze-payroll-cost
 
-- Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 5 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:fff521688da6d362 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED
@@ -341,7 +364,8 @@
 
 ### qb-business-health-check
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:6812bfc72086e284 · upstream commit c8daa17a64d4 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, INJECTION-AWARE, PROVENANCE-STAMPED, HUMAN-APPROVAL
@@ -356,7 +380,8 @@
 
 ### qb-chase-overdue-invoices
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:1f57d78c39b05bb2 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: SENDS-EXTERNALLY, CLIENT-FACING, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -370,7 +395,8 @@
 
 ### qb-email-to-estimate-invoice
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:b246cf48095e1acf · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, SENDS-EXTERNALLY, CLIENT-FACING, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -385,7 +411,8 @@
 
 ### qb-industry-benchmark
 
-- Authority: first-party · stage 6 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:aa7605287cc45023 · upstream commit c8daa17a64d4 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL, PROVENANCE-STAMPED
@@ -398,7 +425,8 @@
 
 ### qb-lending
 
-- Authority: first-party · stage 7 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 7 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:c2e057c1891d72bb · upstream commit bb30cbdf7b5b · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL
@@ -412,7 +440,8 @@
 
 ### qb-payroll-employee-onboarding
 
-- Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 4 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:1de324182880658b · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, PII-MINIMISING
@@ -427,7 +456,8 @@
 
 ### qb-payroll-help
 
-- Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 4 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:a5f2bd5e101a3c67 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, PROVENANCE-STAMPED
@@ -441,7 +471,8 @@
 
 ### qb-set-base-pay
 
-- Authority: first-party · stage 4 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 4 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:7beb7d6f2a0a36db · upstream commit 6db49c4f8ed3 · checked 2026-09-20
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -455,7 +486,8 @@
 
 ### qb-setup
 
-- Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
+- Publisher: Intuit — the platform vendor's own skill
+- Stage 0 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:03711cad3c3fb8f9 · upstream commit 21067205c10c · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
@@ -468,7 +500,8 @@
 
 ### three-way-match
 
-- Authority: first-party · stage 5 · status GRADED (graded 2026-09-21)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 5 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2a4e014df4600db4 · upstream commit ac12d064e857 · checked 2026-09-20
 - Trust badges: READ-ONLY, TIE-CHECKED, EVIDENCE-GATED, PROVENANCE-STAMPED, HUMAN-APPROVAL, AUDIT-TRAIL
@@ -483,7 +516,8 @@
 
 ### tie-out
 
-- Authority: first-party · stage 5 · status GRADED (graded 2026-09-18)
+- Publisher: Mosofin — independent, not the platform's vendor
+- Stage 5 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
 - Trust badges: READ-ONLY, DETERMINISTIC-MATH, TIE-CHECKED, MATERIALITY-AWARE, HUMAN-APPROVAL, AUDIT-TRAIL

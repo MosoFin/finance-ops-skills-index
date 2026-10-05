@@ -13,7 +13,8 @@
 
 ### shopify
 
-- Authority: first-party · stage 2 · status GRADED (graded 2026-10-01)
+- Publisher: Shopify — the platform vendor's own skill
+- Stage 2 · status GRADED (graded 2026-10-01)
 - Grade current: yes
 - Graded version: SKILL.md sha256:5d4a180b8bd93b0b · upstream commit 16d01df9f575 · checked 2026-10-01
 - Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, EVIDENCE-GATED, SENDS-TELEMETRY

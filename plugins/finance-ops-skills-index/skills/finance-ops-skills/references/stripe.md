@@ -13,7 +13,8 @@
 
 ### metronome
 
-- Authority: first-party · stage 7 · status GRADED (graded 2026-09-21)
+- Publisher: Stripe — the platform vendor's own skill
+- Stage 7 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:62220ba4b5d261bc · upstream commit 82d5d332c2ef · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED
@@ -26,7 +27,8 @@
 
 ### stripe-best-practices
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-10-01)
+- Publisher: Stripe — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-10-01)
 - Grade current: yes
 - Graded version: SKILL.md sha256:55c73cae0acb93e7 · upstream commit 85d998e928da · checked 2026-10-01
 - Trust badges: READ-ONLY, EVIDENCE-GATED
@@ -39,7 +41,8 @@
 
 ### stripe-connect-recommend
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: Stripe — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:111c6972f1673080 · upstream commit 82d5d332c2ef · checked 2026-09-20
 - Trust badges: READ-ONLY, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -53,7 +56,8 @@
 
 ### stripe-connect-verification
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: Stripe — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:9945d4ad0c46fbe4 · upstream commit 38d8933bffbd · checked 2026-09-20
 - Trust badges: READ-ONLY, EVIDENCE-GATED, HUMAN-APPROVAL
@@ -67,7 +71,8 @@
 
 ### stripe-directory
 
-- Authority: first-party · stage 7 · status GRADED (graded 2026-10-01)
+- Publisher: Stripe — the platform vendor's own skill
+- Stage 7 · status GRADED (graded 2026-10-01)
 - Grade current: yes
 - Graded version: SKILL.md sha256:0805bce6792026e5 · upstream commit 9f39fa607a63 · checked 2026-10-01
 - Trust badges: MOVES-MONEY, HUMAN-APPROVAL, EVIDENCE-GATED
@@ -81,7 +86,8 @@
 
 ### stripe-docs
 
-- Authority: first-party · stage 0 · status GRADED (graded 2026-09-21)
+- Publisher: Stripe — the platform vendor's own skill
+- Stage 0 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:af38e784edcdb2f1 · upstream commit 12f48810695e · checked 2026-09-20
 - Trust badges: READ-ONLY
@@ -93,7 +99,8 @@
 
 ### stripe-pay
 
-- Authority: first-party · stage 3 · status GRADED (graded 2026-09-21)
+- Publisher: Stripe — the platform vendor's own skill
+- Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2a085814fdb5f8a4 · upstream commit 9dde68ae5ef3 · checked 2026-09-20
 - Trust badges: MOVES-MONEY, HUMAN-APPROVAL, EVIDENCE-GATED

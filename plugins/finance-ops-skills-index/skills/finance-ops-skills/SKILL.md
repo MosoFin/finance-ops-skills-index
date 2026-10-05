@@ -49,7 +49,7 @@ If no candidate passes, the step is a gap. Say "no indexed skill covers this for
 Start with the platforms you are recommending for, so the user can correct them. Then, for each step in order:
 
 - the step and what it achieves, in one line
-- the recommended skill, its publisher (first-party or not), and its upstream link
+- the recommended skill, its publisher exactly as the "Publisher" or "by" line gives it, and its upstream link. Call a skill the vendor's own only when that line says so: a Mosofin or Apideck skill that runs on QuickBooks or Xero was not made by Intuit or Xero.
 - its write authority: READ-ONLY, PROPOSES-WRITES, WRITES-DIRECT, or MOVES-MONEY. Put MOVES-MONEY and WRITES-DIRECT first in the line, and say what confirmation it asks for.
 - any warning: grade not current, sends telemetry, workspace only
 
