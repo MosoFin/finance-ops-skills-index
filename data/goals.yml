@@ -1,0 +1,309 @@
+# Goals — what users come to do, broken into steps, each step mapped to the
+# indexed skills that can do it.
+#
+# This is the plugin's recommendation layer. A user says "close September" or
+# "chase my overdue invoices"; the plugin finds the goal here, keeps the
+# candidates that fit the systems the user has, and answers with a plan.
+#
+# Rules for editing:
+#   - `skills` lists candidates for the step, best general fit first. Every id must
+#     exist under data/sources/ — the build fails otherwise.
+#   - A step with no indexed skill keeps `skills: []` and says so in `gap`. A gap is
+#     an answer: the plugin reports it rather than stretching a near match.
+#   - `does` says what the step achieves, never how to do it in a vendor's product.
+#     The vendor's own skill holds the instructions.
+#   - Order the steps the way a careful bookkeeper would run them.
+
+goals:
+
+  month-end-close:
+    title: Close the books for a month
+    asks:
+      - close September
+      - run my month-end close
+      - get the books ready for the board
+    steps:
+      - step: Track the close
+        does: Generate the period's checklist and see what is open, blocked or done.
+        skills: [month-end-close-checklist, close]
+      - step: Clean up uncategorized and miscoded transactions
+        does: Clear suspense and uncategorized buckets before anything is reconciled.
+        skills: [categorize-transactions, gl-coding-assistant]
+      - step: Reconcile every bank and card account
+        does: Tie each cash and card account to its statement for the period.
+        skills: [bank-reconciliation, bank-rec]
+      - step: Review receivables and payables
+        does: Walk A/R and A/P aging for stale, duplicate and credit-balance items.
+        skills: [ar-aging-and-collections, aging-review, duplicate-invoice-detection]
+      - step: Book accruals and adjusting entries
+        does: Move expenses and revenue into the period they belong to.
+        skills: [accruals, journal-entry-builder]
+      - step: Review what was posted
+        does: A skeptical second pass over the period's entries and balances.
+        skills: [je-review, tie-out, flux]
+      - step: Produce the statements
+        does: Balance sheet, income statement and cash flow with comparatives.
+        skills: [financial-statement-builder, board-pack]
+
+  bank-reconciliation:
+    title: Reconcile a bank or credit-card account
+    asks:
+      - reconcile my bank account
+      - my bank balance doesn't match the books
+      - reconcile the Amex for August
+    steps:
+      - step: Get the statement into a readable form
+        does: Extract statement lines from a PDF when there is no bank feed.
+        skills: [pdf]
+      - step: Match statement lines to the ledger
+        does: Match, list what is unmatched on each side, and prove the reconciled balance.
+        skills: [bank-reconciliation, bank-rec]
+      - step: Fix what does not match
+        does: Draft the correcting entries for review before anything is posted.
+        skills: [journal-entry-builder]
+
+  processor-payouts:
+    title: Reconcile Stripe, PayPal or Shopify payouts to the books
+    asks:
+      - reconcile Stripe payouts
+      - my Shopify deposits don't match sales
+      - book PayPal fees correctly
+    steps:
+      - step: Understand how the processor reports money
+        does: Learn which object holds gross, fees, refunds and the net payout, before matching anything.
+        skills: [stripe-best-practices, stripe-docs, paypal-best-practices, shopify]
+      - step: Match payouts to bank deposits
+        does: Tie each net payout to the deposit that landed in the bank.
+        skills: [bank-reconciliation, bank-rec]
+      - step: Gross up sales and book fees
+        does: Record gross sales, processor fees and refunds rather than the net deposit.
+        skills: [journal-entry-builder]
+      - step: Reach store data on other platforms
+        does: Orders and payouts from stores without a vendor skill.
+        skills: [apideck-woocommerce, apideck-bigcommerce]
+
+  categorize-transactions:
+    title: Catch up on bookkeeping and categorize transactions
+    asks:
+      - categorize my transactions
+      - clean up uncategorized expenses
+      - I'm three months behind on bookkeeping
+    steps:
+      - step: Settle the chart of accounts first
+        does: Give every account one purpose so each transaction has one right home.
+        skills: [grill-my-coa]
+      - step: Categorize
+        does: Propose an account for each transaction, grounded in the entity's own history and rules.
+        skills: [categorize-transactions, gl-coding-assistant]
+      - step: Review the result
+        does: Check what was coded this period for unusual pairings and round numbers.
+        skills: [je-review]
+
+  collect-receivables:
+    title: Collect overdue invoices
+    asks:
+      - chase overdue invoices
+      - who owes me money
+      - reduce my DSO
+    steps:
+      - step: Build the aging
+        does: See who owes what, how late, and which balances are disputed or duplicated.
+        skills: [ar-aging-and-collections, aging-review]
+      - step: Send reminders
+        does: Remind customers with tone matched to how late they are. Check what it sends and when before using it.
+        skills: [qb-chase-overdue-invoices]
+      - step: Follow up from the inbox
+        does: Find customer replies and promises to pay in email.
+        skills: [gws-gmail-triage]
+
+  pay-bills:
+    title: Process and review bills before paying them
+    asks:
+      - process vendor invoices
+      - make sure we're not paying a bill twice
+      - AP review before the payment run
+    steps:
+      - step: Capture invoices
+        does: Pull vendor, amount, dates and lines out of invoice PDFs and validate them against the vendor master.
+        skills: [invoice-data-extractor, pdf]
+      - step: Code them
+        does: Assign GL accounts and tax codes grounded in how this vendor was coded before.
+        skills: [gl-coding-assistant]
+      - step: Check before paying
+        does: Catch duplicates and invoices that do not match their purchase order and receipt.
+        skills: [duplicate-invoice-detection, three-way-match]
+      - step: Pay
+        does: Send the payment. This moves real money — confirm every transfer.
+        skills: [stripe-pay, stripe-directory]
+        gap: No indexed skill pays bills through QuickBooks, Bill.com or a bank.
+
+  expenses:
+    title: Process expense reports and receipts
+    asks:
+      - process expense reports
+      - match receipts to card transactions
+      - code employee expenses
+    steps:
+      - step: Capture receipts
+        does: Turn receipts into structured records.
+        skills: [receipts, pdf]
+      - step: Process the report
+        does: Code claims, match them to posted card transactions, and check reimbursement and clearing balances.
+        skills: [expense-report-processor, gl-coding-assistant]
+
+  accruals-and-adjustments:
+    title: Book accruals and journal entries
+    asks:
+      - book month-end accruals
+      - amortize prepaid insurance
+      - write a journal entry for this
+    steps:
+      - step: Work out what to accrue
+        does: Recurring accruals, reversals, prepaid amortization and deferrals for the period.
+        skills: [accruals]
+      - step: Build the entry
+        does: Construct and validate the entry against the real chart of accounts before it is posted.
+        skills: [journal-entry-builder]
+      - step: Review it
+        does: Second pass over what was posted.
+        skills: [je-review]
+
+  financial-statements:
+    title: Produce financial statements or a board pack
+    asks:
+      - build a P&L and balance sheet
+      - prepare the board pack
+      - explain the numbers to my client
+    steps:
+      - step: Make sure the balances tie
+        does: Tie every balance-sheet account to a source before anything is published.
+        skills: [tie-out]
+      - step: Build the statements
+        does: Balance sheet, income statement and cash flow with comparatives.
+        skills: [financial-statement-builder]
+      - step: Explain the movements
+        does: Variance commentary that names its driver.
+        skills: [flux, budget-vs-actuals]
+      - step: Package it
+        does: Assemble into the format the reader wants.
+        skills: [board-pack, dashboard, xlsx, pptx, docx]
+      - step: Say it plainly
+        does: Translate the result for a non-accountant.
+        skills: [explain-to-client]
+
+  budget-vs-actuals:
+    title: Compare actuals to budget and explain variances
+    asks:
+      - budget vs actuals
+      - why are expenses up this month
+      - variance analysis
+    steps:
+      - step: Get the budget
+        does: Read the budget from wherever it is kept.
+        skills: [gws-sheets-read, xlsx]
+      - step: Compare and explain
+        does: Variance table with timing separated from true variance, and commentary.
+        skills: [budget-vs-actuals, flux]
+
+  cash-forecast:
+    title: Forecast cash
+    asks:
+      - 13-week cash flow
+      - will we run out of cash
+      - build a forecast
+    steps:
+      - step: Project cash
+        does: Week-by-week cash from open A/R, A/P, recurring items and bank balances.
+        skills: [cash-flow]
+      - step: Forecast the P&L
+        does: Rolling forecast where every line names its driver.
+        skills: [forecast]
+      - step: Look at financing if cash runs short
+        does: QuickBooks Capital loan and credit options.
+        skills: [qb-lending]
+
+  business-health:
+    title: Check how the business is doing
+    asks:
+      - how is my business doing
+      - compare us to our industry
+      - give me a dashboard
+    steps:
+      - step: Health briefing
+        does: Summary across the main reports.
+        skills: [qb-business-health-check, dashboard]
+      - step: Benchmark
+        does: Compare against industry peers.
+        skills: [qb-industry-benchmark]
+
+  payroll:
+    title: Run payroll tasks
+    asks:
+      - add a new employee to payroll
+      - give someone a raise
+      - why did payroll cost go up
+    steps:
+      - step: Onboard a new hire
+        does: Set the employee up in payroll from their offer details.
+        skills: [qb-payroll-employee-onboarding]
+      - step: Change pay
+        does: View or change base pay.
+        skills: [qb-set-base-pay]
+      - step: Answer payroll questions
+        does: Look up payroll setup and history.
+        skills: [qb-payroll-help]
+      - step: Analyse payroll cost
+        does: What drove a change in payroll spend.
+        skills: [qb-analyze-payroll-cost]
+    gap: Payroll skills are indexed for QuickBooks Payroll only.
+
+  invoice-customers:
+    title: Quote and invoice customers
+    asks:
+      - turn this email into an invoice
+      - create a quote
+      - set up subscriptions billing
+    steps:
+      - step: Quote or invoice from a request
+        does: Turn a customer's email or a deal into an estimate, quote or invoice for review.
+        skills: [qb-email-to-estimate-invoice, hs-quote-to-cash]
+      - step: Bill on usage or subscription
+        does: Metered and subscription billing design.
+        skills: [metronome, stripe-best-practices]
+
+  new-client-setup:
+    title: Set up books for a new client or company
+    asks:
+      - onboard a new client
+      - set up my chart of accounts
+      - connect QuickBooks
+    steps:
+      - step: Connect the ledger
+        does: Get the accounting system connected and working.
+        skills: [qb-setup]
+      - step: Capture how the client works
+        does: Profile, close calendar, materiality and reporting preferences.
+        skills: [onboard-client]
+      - step: Settle the chart of accounts
+        does: One clear purpose per account before the first close.
+        skills: [grill-my-coa]
+      - step: Set up the document archive
+        does: Where statements, workpapers and client documents live.
+        skills: [gws-drive]
+
+  sales-pipeline:
+    title: Report on the sales pipeline and customers
+    asks:
+      - pipeline report
+      - which customers are at risk
+      - clean up the CRM
+    steps:
+      - step: Clean the data
+        does: Fix incomplete and duplicate records before reporting on them.
+        skills: [hs-crm-data-quality, hs-bulk-operations]
+      - step: Report
+        does: Pipeline snapshots and win/loss.
+        skills: [hs-sales-reporting, hs-deal-management]
+      - step: Retain customers
+        does: Find inactive and at-risk customers and set follow-ups.
+        skills: [hs-customer-retention]

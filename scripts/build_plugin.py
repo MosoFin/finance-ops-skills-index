@@ -141,12 +141,92 @@ def _vendor_page(cid: str, c: dict, skills: list, statuses: dict, as_of: str, re
     return "\n".join(L)
 
 
+# The badge that says how far a skill can change things, most dangerous first.
+AUTHORITY = ("MOVES-MONEY", "WRITES-DIRECT", "SENDS-EXTERNALLY", "PROPOSES-WRITES", "READ-ONLY")
+
+
+def _authority(s: dict) -> str:
+    tiers = s.get("tiers") or []
+    return next((b for b in AUTHORITY if b in tiers), "not graded for write authority")
+
+
+def _availability(s: dict) -> str:
+    if s.get("origin") == "mosofin-workspace":
+        return "Mosofin workspace only — not publicly installable"
+    return "public — install from " + _link(s)
+
+
+def _line(s: dict, as_of: str, regrade_after: int) -> str:
+    """One skill as a candidate: everything needed to filter it by the user's systems."""
+    state = grade_state(s, as_of, regrade_after)
+    return (
+        f"`{s['id']}` — runs on: {', '.join(s.get('systems') or ['unknown'])} · "
+        f"{_authority(s)} · grade {'current' if state == 'CURRENT' else 'NOT CURRENT (' + state + ')'}"
+        + (" — do not recommend" if state != "CURRENT" and _high_risk(s) else "")
+        + f" · {_availability(s)}"
+    )
+
+
+def _goals_page(goals: dict, by_id: dict, as_of: str, regrade_after: int) -> str:
+    L = [GENERATED, "", "# Goals", "",
+         f"Catalog as of {as_of}. Each goal is broken into steps; each step lists the indexed "
+         "skills that can do it, best general fit first. Keep only the candidates whose "
+         "\"runs on\" matches a system the user has confirmed. `csv`, `pdf`, `excel` and the "
+         "other file formats mean the skill works from an export, which any ledger can produce. "
+         "`any` means it needs no connected system.", ""]
+    for gid, g in goals.items():
+        L += [f"## {gid}: {g['title']}", ""]
+        L.append("Asked as: " + " · ".join(f"\"{a}\"" for a in g.get("asks") or []))
+        L.append("")
+        for i, st in enumerate(g["steps"], 1):
+            L.append(f"{i}. **{st['step']}** — {' '.join(st['does'].split())}")
+            for sid in st.get("skills") or []:
+                L.append(f"   - {_line(by_id[sid], as_of, regrade_after)}")
+            if not st.get("skills"):
+                L.append("   - No indexed skill.")
+            if st.get("gap"):
+                L.append(f"   - Gap: {' '.join(st['gap'].split())}")
+        if g.get("gap"):
+            L += ["", f"Gap: {' '.join(g['gap'].split())}"]
+        L.append("")
+    return "\n".join(L)
+
+
+def _catalog_page(skills: list, stages: dict, as_of: str, regrade_after: int) -> str:
+    """Every skill on one page, by close stage — for goals the goal list does not cover."""
+    L = [GENERATED, "", "# Catalog by close stage", "",
+         f"Catalog as of {as_of}. Use this when the user's goal is not in GOALS.md. Full "
+         "details for each skill are on its vendor page.", ""]
+    for n in sorted(stages):
+        mine = sorted((s for s in skills if s.get("stage") == n), key=lambda s: s["id"])
+        if not mine:
+            continue
+        L += [f"## {n} · {stages[n]['name']}", "", f"_{stages[n]['note']}_", ""]
+        for s in mine:
+            L.append(f"- {_line(s, as_of, regrade_after)}")
+            L.append(f"  {' '.join(str(s.get('summary', '')).split())}")
+        L.append("")
+    return "\n".join(L)
+
+
+def _check_goals(goals: dict, by_id: dict) -> None:
+    bad = [
+        f"{gid}/{st['step']}: {sid}"
+        for gid, g in goals.items() for st in g["steps"]
+        for sid in st.get("skills") or [] if sid not in by_id
+    ]
+    if bad:
+        raise SystemExit("data/goals.yml names skills that are not in the index:\n  " + "\n  ".join(bad))
+
+
 def _high_risk(s: dict) -> list[str]:
     return [b for b in HIGH_RISK if b in (s.get("tiers") or [])]
 
 
 def build(root: pathlib.Path, skills: list, connectors: dict, statuses: dict, primary_system,
-          regrade_after: int) -> int:
+          regrade_after: int, goals: dict, stages: dict) -> int:
+    by_id = {s["id"]: s for s in skills}
+    _check_goals(goals, by_id)
     missing = unpinned(skills)
     if missing:
         raise SystemExit(
@@ -199,6 +279,9 @@ def build(root: pathlib.Path, skills: list, connectors: dict, statuses: dict, pr
         )
     )
 
+    (ref / "GOALS.md").write_text(_goals_page(goals, by_id, newest, regrade_after))
+    (ref / "CATALOG.md").write_text(_catalog_page(skills, stages, newest, regrade_after))
+
     manifest = pdir / ".claude-plugin" / "plugin.json"
     pj = json.loads(manifest.read_text())
     pj["version"] = f"{VERSION_BASE}.{newest.replace('-', '')}"
@@ -214,9 +297,13 @@ def build(root: pathlib.Path, skills: list, connectors: dict, statuses: dict, pr
                 "business-operations products — accounting, payments, e-commerce, CRM — and see "
                 "how far each can be trusted before you install it.", "",
                 "## What it does", "",
-                "The plugin adds one skill, `finance-ops-skills`. Claude uses it when you ask "
-                "whether skills exist for a platform, which one fits a task, or whether one is safe "
-                "to use. It answers from a catalog bundled in the plugin: for each skill, the "
+                "The plugin adds one skill, `finance-ops-skills`. Tell Claude a finance or "
+                "operations goal — close the month, reconcile the bank, collect overdue invoices, "
+                "forecast cash — and it first confirms which platforms you use, then answers with "
+                "a plan: one graded skill per step that runs on those platforms, and the steps "
+                "nothing in the index covers yet. It also answers whether skills exist for a "
+                "platform and whether one is safe to use. Everything comes from a catalog bundled "
+                "in the plugin: for each skill, the "
                 "upstream link, who published it (the vendor itself, or a third party), its licence, "
                 "and an independent grade — can it write to your books, can it move money, does it "
                 "send your prompts to the vendor. Vendors with nothing published are listed as such "
@@ -224,6 +311,9 @@ def build(root: pathlib.Path, skills: list, connectors: dict, statuses: dict, pr
                 f"Catalog as of **{newest}** · {len(skills)} skills · {len(vendors)} vendors.", "",
                 "## How to use it", "",
                 "Install it, then ask in plain language:", "",
+                "- \"Help me close September.\"",
+                "- \"We're on Xero and Stripe — what should I use for month-end?\"",
+                "- \"We're on QuickBooks and customers pay late. Help me collect.\"",
                 "- \"Are there any official skills for Xero?\"",
                 "- \"Which QuickBooks skills can post journal entries?\"",
                 "- \"Is there a Stripe skill that moves money, and does it ask first?\"",

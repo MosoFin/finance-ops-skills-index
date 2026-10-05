@@ -3,7 +3,7 @@
   "displayName": "Finance & Ops Skills Index",
   "icon": "./.claude-plugin/icon.png",
   "version": "1.1.20261001",
-  "description": "Find vendor-published agent skills for accounting, payments and e-commerce software, with upstream links, licences and independent trust grades.",
+  "description": "Tell it a finance goal — close the month, reconcile the bank, collect overdue invoices — and get a plan of graded agent skills that run on your accounting, payments and e-commerce platforms.",
   "author": {
     "name": "MosoFin",
     "url": "https://github.com/MosoFin"
@@ -17,6 +17,9 @@
     "payments",
     "ecommerce",
     "skills",
-    "index"
+    "index",
+    "reconciliation",
+    "bookkeeping",
+    "month-end-close"
   ]
 }

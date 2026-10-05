@@ -9,7 +9,7 @@
     {
       "name": "finance-ops-skills-index",
       "source": "./plugins/finance-ops-skills-index",
-      "description": "Find vendor-published agent skills for accounting, payments and e-commerce software, with upstream links, licences and independent trust grades.",
+      "description": "Tell it a finance goal — close the month, reconcile the bank, collect overdue invoices — and get a plan of graded agent skills that run on your accounting, payments and e-commerce platforms.",
       "category": "finance",
       "tags": [
         "finance",
