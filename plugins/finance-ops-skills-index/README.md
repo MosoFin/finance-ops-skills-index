@@ -6,7 +6,11 @@ Find the agent skills that software vendors publish for their own finance and bu
 
 ## What it does
 
-The plugin adds one skill, `finance-ops-skills`. Tell Claude a finance or operations goal — close the month, reconcile the bank, collect overdue invoices, forecast cash — and it first confirms which platforms you use, then answers with a plan: one graded skill per step that runs on those platforms, and the steps nothing in the index covers yet. It also answers whether skills exist for a platform and whether one is safe to use. Everything comes from a catalog bundled in the plugin: for each skill, the upstream link, who published it (the vendor itself, or a third party), its licence, and an independent grade — can it write to your books, can it move money, does it send your prompts to the vendor. Vendors with nothing published are listed as such rather than left out.
+The plugin adds two skills.
+
+`finance-ops-skills`: tell Claude a finance or operations goal — close the month, reconcile the bank, collect overdue invoices, forecast cash — and it first confirms which platforms you use, then answers with a plan: one graded skill per step that runs on those platforms, and the steps nothing in the index covers yet. It also answers whether skills exist for a platform and whether one is safe to use. Everything comes from a catalog bundled in the plugin: for each skill, the upstream link, who published it (the vendor itself, or a third party), its licence, and an independent grade — can it write to your books, can it move money, does it send your prompts to the vendor. Vendors with nothing published are listed as such rather than left out.
+
+`vet-skill`: share any skill or plugin — a GitHub link or its SKILL.md — and Claude reads it and grades it with the same rubric: can it write to your books, can it move money, does it ask first, does it send anything outside the business, and any red flags, each backed by a quote from the skill. It works for skills the index has not graded, and it says plainly that the result is an automated assessment, not a reviewed grade.
 
 Catalog as of **2026-10-01** · 67 skills · 28 vendors.
 
@@ -18,6 +22,7 @@ Install it, then ask in plain language:
 - "We're on Xero and Stripe — what should I use for month-end?"
 - "We're on QuickBooks and customers pay late. Help me collect."
 - "Are there any official skills for Xero?"
+- "Is this skill safe to connect to my QuickBooks? https://github.com/…"
 - "Which QuickBooks skills can post journal entries?"
 - "Is there a Stripe skill that moves money, and does it ask first?"
 - "What should I use to reconcile Shopify payouts?"

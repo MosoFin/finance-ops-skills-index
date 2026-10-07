@@ -9,98 +9,98 @@ Catalog as of 2026-10-01. Each goal is broken into steps; each step lists the in
 Asked as: "close September" · "run my month-end close" · "get the books ready for the board"
 
 1. **Track the close** — Generate the period's checklist and see what is open, blocked or done.
-   - `month-end-close-checklist` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/month-end-close-checklist
-   - `close` — runs on: any · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `month-end-close-checklist` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/month-end-close-checklist · details: references/quickbooks.md
+   - `close` — runs on: any · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/_any.md
 2. **Clean up uncategorized and miscoded transactions** — Clear suspense and uncategorized buckets before anything is reconciled.
-   - `categorize-transactions` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
-   - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant
+   - `categorize-transactions` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant · details: references/quickbooks.md
 3. **Reconcile every bank and card account** — Tie each cash and card account to its statement for the period.
-   - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation
-   - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
+   - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation · details: references/quickbooks.md
+   - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 4. **Review receivables and payables** — Walk A/R and A/P aging for stale, duplicate and credit-balance items.
-   - `ar-aging-and-collections` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections
-   - `aging-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
-   - `duplicate-invoice-detection` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection
+   - `ar-aging-and-collections` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections · details: references/quickbooks.md
+   - `aging-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `duplicate-invoice-detection` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection · details: references/quickbooks.md
 5. **Book accruals and adjusting entries** — Move expenses and revenue into the period they belong to.
-   - `accruals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
-   - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
+   - `accruals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder · details: references/quickbooks.md
 6. **Review what was posted** — A skeptical second pass over the period's entries and balances.
-   - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
-   - `tie-out` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
-   - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `tie-out` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 7. **Produce the statements** — Balance sheet, income statement and cash flow with comparatives.
-   - `financial-statement-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder
-   - `board-pack` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `financial-statement-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder · details: references/quickbooks.md
+   - `board-pack` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 
 ## bank-reconciliation: Reconcile a bank or credit-card account
 
 Asked as: "reconcile my bank account" · "my bank balance doesn't match the books" · "reconcile the Amex for August"
 
 1. **Get the statement into a readable form** — Extract statement lines from a PDF when there is no bank feed.
-   - `pdf` — runs on: pdf · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pdf
+   - `pdf` — runs on: pdf · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pdf · details: references/_any.md
 2. **Match statement lines to the ledger** — Match, list what is unmatched on each side, and prove the reconciled balance.
-   - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation
-   - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
+   - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation · details: references/quickbooks.md
+   - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 3. **Fix what does not match** — Draft the correcting entries for review before anything is posted.
-   - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
+   - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder · details: references/quickbooks.md
 
 ## processor-payouts: Reconcile Stripe, PayPal or Shopify payouts to the books
 
 Asked as: "reconcile Stripe payouts" · "my Shopify deposits don't match sales" · "book PayPal fees correctly"
 
 1. **Understand how the processor reports money** — Learn which object holds gross, fees, refunds and the net payout, before matching anything.
-   - `stripe-best-practices` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices
-   - `stripe-docs` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs
-   - `paypal-best-practices` — runs on: paypal · by PayPal — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-best-practices
-   - `shopify` — runs on: shopify · by Shopify — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify
+   - `stripe-best-practices` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices · details: references/stripe.md
+   - `stripe-docs` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs · details: references/stripe.md
+   - `paypal-best-practices` — runs on: paypal · by PayPal — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-best-practices · details: references/paypal.md
+   - `shopify` — runs on: shopify · by Shopify — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify · details: references/shopify.md
 2. **Match payouts to bank deposits** — Tie each net payout to the deposit that landed in the bank.
-   - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation
-   - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
+   - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation · details: references/quickbooks.md
+   - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 3. **Gross up sales and book fees** — Record gross sales, processor fees and refunds rather than the net deposit.
-   - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
+   - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder · details: references/quickbooks.md
 4. **Reach store data on other platforms** — Orders and payouts from stores without a vendor skill.
-   - `apideck-woocommerce` — runs on: woocommerce · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/woocommerce
-   - `apideck-bigcommerce` — runs on: bigcommerce · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/bigcommerce
+   - `apideck-woocommerce` — runs on: woocommerce · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/woocommerce · details: references/woocommerce.md
+   - `apideck-bigcommerce` — runs on: bigcommerce · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/bigcommerce · details: references/bigcommerce.md
 
 ## categorize-transactions: Catch up on bookkeeping and categorize transactions
 
 Asked as: "categorize my transactions" · "clean up uncategorized expenses" · "I'm three months behind on bookkeeping"
 
 1. **Settle the chart of accounts first** — Give every account one purpose so each transaction has one right home.
-   - `grill-my-coa` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `grill-my-coa` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 2. **Categorize** — Propose an account for each transaction, grounded in the entity's own history and rules.
-   - `categorize-transactions` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
-   - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant
+   - `categorize-transactions` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant · details: references/quickbooks.md
 3. **Review the result** — Check what was coded this period for unusual pairings and round numbers.
-   - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 
 ## collect-receivables: Collect overdue invoices
 
 Asked as: "chase overdue invoices" · "who owes me money" · "reduce my DSO"
 
 1. **Build the aging** — See who owes what, how late, and which balances are disputed or duplicated.
-   - `ar-aging-and-collections` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections
-   - `aging-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `ar-aging-and-collections` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections · details: references/quickbooks.md
+   - `aging-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 2. **Send reminders** — Remind customers with tone matched to how late they are. Check what it sends and when before using it.
-   - `qb-chase-overdue-invoices` — runs on: quickbooks · by Intuit — the platform vendor's own skill · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/chase-overdue-invoices
+   - `qb-chase-overdue-invoices` — runs on: quickbooks · by Intuit — the platform vendor's own skill · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/chase-overdue-invoices · details: references/quickbooks.md
 3. **Follow up from the inbox** — Find customer replies and promises to pay in email.
-   - `gws-gmail-triage` — runs on: gmail · by Google — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-gmail-triage
+   - `gws-gmail-triage` — runs on: gmail · by Google — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-gmail-triage · details: references/gmail.md
 
 ## pay-bills: Process and review bills before paying them
 
 Asked as: "process vendor invoices" · "make sure we're not paying a bill twice" · "AP review before the payment run"
 
 1. **Capture invoices** — Pull vendor, amount, dates and lines out of invoice PDFs and validate them against the vendor master.
-   - `invoice-data-extractor` — runs on: quickbooks, pdf · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/invoice-data-extractor
-   - `pdf` — runs on: pdf · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pdf
+   - `invoice-data-extractor` — runs on: quickbooks, pdf · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/invoice-data-extractor · details: references/quickbooks.md
+   - `pdf` — runs on: pdf · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pdf · details: references/_any.md
 2. **Code them** — Assign GL accounts and tax codes grounded in how this vendor was coded before.
-   - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant
+   - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant · details: references/quickbooks.md
 3. **Check before paying** — Catch duplicates and invoices that do not match their purchase order and receipt.
-   - `duplicate-invoice-detection` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection
-   - `three-way-match` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/three-way-match
+   - `duplicate-invoice-detection` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection · details: references/quickbooks.md
+   - `three-way-match` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/three-way-match · details: references/quickbooks.md
 4. **Pay** — Send the payment. This moves real money — confirm every transfer.
-   - `stripe-pay` — runs on: stripe · by Stripe — the platform vendor's own skill · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-pay
-   - `stripe-directory` — runs on: stripe · by Stripe — the platform vendor's own skill · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-directory
+   - `stripe-pay` — runs on: stripe · by Stripe — the platform vendor's own skill · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-pay · details: references/stripe.md
+   - `stripe-directory` — runs on: stripe · by Stripe — the platform vendor's own skill · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-directory · details: references/stripe.md
    - Gap: No indexed skill pays bills through QuickBooks, Bill.com or a bank.
 
 ## expenses: Process expense reports and receipts
@@ -108,87 +108,87 @@ Asked as: "process vendor invoices" · "make sure we're not paying a bill twice"
 Asked as: "process expense reports" · "match receipts to card transactions" · "code employee expenses"
 
 1. **Capture receipts** — Turn receipts into structured records.
-   - `receipts` — runs on: pdf, images · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/claude-plugins-official/tree/main/plugins/receipts/skills/receipts
-   - `pdf` — runs on: pdf · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pdf
+   - `receipts` — runs on: pdf, images · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/claude-plugins-official/tree/main/plugins/receipts/skills/receipts · details: references/_any.md
+   - `pdf` — runs on: pdf · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pdf · details: references/_any.md
 2. **Process the report** — Code claims, match them to posted card transactions, and check reimbursement and clearing balances.
-   - `expense-report-processor` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/expense-report-processor
-   - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant
+   - `expense-report-processor` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/expense-report-processor · details: references/quickbooks.md
+   - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant · details: references/quickbooks.md
 
 ## accruals-and-adjustments: Book accruals and journal entries
 
 Asked as: "book month-end accruals" · "amortize prepaid insurance" · "write a journal entry for this"
 
 1. **Work out what to accrue** — Recurring accruals, reversals, prepaid amortization and deferrals for the period.
-   - `accruals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
+   - `accruals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 2. **Build the entry** — Construct and validate the entry against the real chart of accounts before it is posted.
-   - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
+   - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder · details: references/quickbooks.md
 3. **Review it** — Second pass over what was posted.
-   - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 
 ## financial-statements: Produce financial statements or a board pack
 
 Asked as: "build a P&L and balance sheet" · "prepare the board pack" · "explain the numbers to my client"
 
 1. **Make sure the balances tie** — Tie every balance-sheet account to a source before anything is published.
-   - `tie-out` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `tie-out` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 2. **Build the statements** — Balance sheet, income statement and cash flow with comparatives.
-   - `financial-statement-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder
+   - `financial-statement-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder · details: references/quickbooks.md
 3. **Explain the movements** — Variance commentary that names its driver.
-   - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
-   - `budget-vs-actuals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `budget-vs-actuals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 4. **Package it** — Assemble into the format the reader wants.
-   - `board-pack` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
-   - `dashboard` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
-   - `xlsx` — runs on: excel · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/xlsx
-   - `pptx` — runs on: powerpoint · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pptx
-   - `docx` — runs on: word · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/docx
+   - `board-pack` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `dashboard` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `xlsx` — runs on: excel · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/xlsx · details: references/_any.md
+   - `pptx` — runs on: powerpoint · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pptx · details: references/_any.md
+   - `docx` — runs on: word · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/docx · details: references/_any.md
 5. **Say it plainly** — Translate the result for a non-accountant.
-   - `explain-to-client` — runs on: any · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `explain-to-client` — runs on: any · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/_any.md
 
 ## budget-vs-actuals: Compare actuals to budget and explain variances
 
 Asked as: "budget vs actuals" · "why are expenses up this month" · "variance analysis"
 
 1. **Get the budget** — Read the budget from wherever it is kept.
-   - `gws-sheets-read` — runs on: google-sheets · by Google — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-read
-   - `xlsx` — runs on: excel · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/xlsx
+   - `gws-sheets-read` — runs on: google-sheets · by Google — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-read · details: references/google-sheets.md
+   - `xlsx` — runs on: excel · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/xlsx · details: references/_any.md
 2. **Compare and explain** — Variance table with timing separated from true variance, and commentary.
-   - `budget-vs-actuals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
-   - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `budget-vs-actuals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
+   - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 
 ## cash-forecast: Forecast cash
 
 Asked as: "13-week cash flow" · "will we run out of cash" · "build a forecast"
 
 1. **Project cash** — Week-by-week cash from open A/R, A/P, recurring items and bank balances.
-   - `cash-flow` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `cash-flow` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 2. **Forecast the P&L** — Rolling forecast where every line names its driver.
-   - `forecast` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `forecast` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 3. **Look at financing if cash runs short** — QuickBooks Capital loan and credit options.
-   - `qb-lending` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/lending
+   - `qb-lending` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/lending · details: references/quickbooks.md
 
 ## business-health: Check how the business is doing
 
 Asked as: "how is my business doing" · "compare us to our industry" · "give me a dashboard"
 
 1. **Health briefing** — Summary across the main reports.
-   - `qb-business-health-check` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/business-health-check
-   - `dashboard` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `qb-business-health-check` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/business-health-check · details: references/quickbooks.md
+   - `dashboard` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 2. **Benchmark** — Compare against industry peers.
-   - `qb-industry-benchmark` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/industry-benchmark
+   - `qb-industry-benchmark` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/industry-benchmark · details: references/quickbooks.md
 
 ## payroll: Run payroll tasks
 
 Asked as: "add a new employee to payroll" · "give someone a raise" · "why did payroll cost go up"
 
 1. **Onboard a new hire** — Set the employee up in payroll from their offer details.
-   - `qb-payroll-employee-onboarding` — runs on: quickbooks · by Intuit — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding
+   - `qb-payroll-employee-onboarding` — runs on: quickbooks · by Intuit — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding · details: references/quickbooks.md
 2. **Change pay** — View or change base pay.
-   - `qb-set-base-pay` — runs on: quickbooks · by Intuit — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/set-base-pay
+   - `qb-set-base-pay` — runs on: quickbooks · by Intuit — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/set-base-pay · details: references/quickbooks.md
 3. **Answer payroll questions** — Look up payroll setup and history.
-   - `qb-payroll-help` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help
+   - `qb-payroll-help` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help · details: references/quickbooks.md
 4. **Analyse payroll cost** — What drove a change in payroll spend.
-   - `qb-analyze-payroll-cost` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost
+   - `qb-analyze-payroll-cost` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost · details: references/quickbooks.md
 
 Gap: Payroll skills are indexed for QuickBooks Payroll only.
 
@@ -197,34 +197,34 @@ Gap: Payroll skills are indexed for QuickBooks Payroll only.
 Asked as: "turn this email into an invoice" · "create a quote" · "set up subscriptions billing"
 
 1. **Quote or invoice from a request** — Turn a customer's email or a deal into an estimate, quote or invoice for review.
-   - `qb-email-to-estimate-invoice` — runs on: quickbooks · by Intuit — the platform vendor's own skill · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/email-to-estimate-invoice
-   - `hs-quote-to-cash` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/quote-to-cash
+   - `qb-email-to-estimate-invoice` — runs on: quickbooks · by Intuit — the platform vendor's own skill · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/email-to-estimate-invoice · details: references/quickbooks.md
+   - `hs-quote-to-cash` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/quote-to-cash · details: references/hubspot.md
 2. **Bill on usage or subscription** — Metered and subscription billing design.
-   - `metronome` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/metronome
-   - `stripe-best-practices` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices
+   - `metronome` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/metronome · details: references/stripe.md
+   - `stripe-best-practices` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices · details: references/stripe.md
 
 ## new-client-setup: Set up books for a new client or company
 
 Asked as: "onboard a new client" · "set up my chart of accounts" · "connect QuickBooks"
 
 1. **Connect the ledger** — Get the accounting system connected and working.
-   - `qb-setup` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup
+   - `qb-setup` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup · details: references/quickbooks.md
 2. **Capture how the client works** — Profile, close calendar, materiality and reporting preferences.
-   - `onboard-client` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `onboard-client` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 3. **Settle the chart of accounts** — One clear purpose per account before the first close.
-   - `grill-my-coa` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `grill-my-coa` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable · details: references/quickbooks.md
 4. **Set up the document archive** — Where statements, workpapers and client documents live.
-   - `gws-drive` — runs on: google-drive · by Google — the platform vendor's own skill · WRITES-DIRECT · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-drive
+   - `gws-drive` — runs on: google-drive · by Google — the platform vendor's own skill · WRITES-DIRECT · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-drive · details: references/google-drive.md
 
 ## sales-pipeline: Report on the sales pipeline and customers
 
 Asked as: "pipeline report" · "which customers are at risk" · "clean up the CRM"
 
 1. **Clean the data** — Fix incomplete and duplicate records before reporting on them.
-   - `hs-crm-data-quality` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/crm-data-quality
-   - `hs-bulk-operations` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/bulk-operations
+   - `hs-crm-data-quality` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/crm-data-quality · details: references/hubspot.md
+   - `hs-bulk-operations` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/bulk-operations · details: references/hubspot.md
 2. **Report** — Pipeline snapshots and win/loss.
-   - `hs-sales-reporting` — runs on: hubspot · by HubSpot — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting
-   - `hs-deal-management` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/deal-management
+   - `hs-sales-reporting` — runs on: hubspot · by HubSpot — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting · details: references/hubspot.md
+   - `hs-deal-management` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/deal-management · details: references/hubspot.md
 3. **Retain customers** — Find inactive and at-risk customers and set follow-ups.
-   - `hs-customer-retention` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/customer-retention
+   - `hs-customer-retention` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/customer-retention · details: references/hubspot.md

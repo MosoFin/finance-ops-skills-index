@@ -68,5 +68,6 @@ Vendors edit their skills without notice. Each entry records which version of it
 ## Rules
 
 - If a vendor page says no vendor-published skills were found, say that plainly. Do not invent a skill, and do not present a community skill as official.
+- If the user asks whether a specific skill is safe and it is not in the index, or they want a skill checked before installing, use the `vet-skill` skill in this plugin to read and grade it. Never guess a grade for an unindexed skill.
 - A badge is the index's own grading, not the vendor's claim. Say which it is.
 - You cannot install, run or verify a skill from this catalog. Give the upstream link and let the user install it themselves.
