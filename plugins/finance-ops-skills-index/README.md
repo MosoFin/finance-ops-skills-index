@@ -6,7 +6,7 @@ Find the agent skills that software vendors publish for their own finance and bu
 
 ## What it does
 
-The plugin adds one skill, `finance-ops-skills`. Tell Claude a finance or operations goal — close the month, reconcile the bank, collect overdue invoices, forecast cash — and it first confirms which platforms you use, then answers with a plan: one graded skill per step that runs on those platforms, and the steps nothing in the index covers yet. It also answers whether skills exist for a platform and whether one is safe to use. Everything comes from a catalog bundled in the plugin: for each skill, the upstream link, who published it (the vendor itself, or a third party), its licence, and an independent grade — can it write to your books, can it move money, does it send your prompts to the vendor. Vendors with nothing published are listed as such rather than left out.
+The plugin adds one skill, `finance-ops-skills`. Tell Claude a finance or operations goal — close the month, reconcile the bank, collect overdue invoices, forecast cash — and it first confirms which platforms you use, then answers with a plan: one skill per step that runs on those platforms, and the steps nothing in the index covers yet. It also answers whether skills exist for a platform and whether one is safe to use. Everything comes from a catalog bundled in the plugin: for each skill, the upstream link, who published it (the vendor itself, or a third party), its licence, and what it can do — can it write to your books, can it move money, does it send your prompts to the vendor. Vendors with nothing published are listed as such rather than left out.
 
 Catalog as of **2026-10-01** · 67 skills · 28 vendors.
 

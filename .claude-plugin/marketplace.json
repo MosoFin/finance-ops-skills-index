@@ -4,12 +4,12 @@
     "name": "MosoFin",
     "url": "https://github.com/MosoFin"
   },
-  "description": "Graded agent skills for finance and business operations: which ones to use on your platforms, and which can write to your books or move money.",
+  "description": "Agent skills for finance and business operations: which ones to use on your platforms, and which can write to your books or move money.",
   "plugins": [
     {
       "name": "finance-ops-skills-index",
       "source": "./plugins/finance-ops-skills-index",
-      "description": "Which agent skills should I use for QuickBooks, Xero, Stripe or Shopify finance work? Name a goal — month-end close, bank recs, collections — and get a step-by-step plan of graded skills that run on your platforms, with a warning wherever a skill can write to your books or move money.",
+      "description": "Which agent skills should I use for QuickBooks, Xero, Stripe or Shopify finance work? Name a goal — month-end close, bank recs, collections — and get a step-by-step plan of skills that run on your platforms, with a warning wherever a skill can write to your books or move money.",
       "category": "finance",
       "tags": [
         "finance",
