@@ -566,6 +566,7 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "| \"Help me close September.\" | First: which accounting system and payment processor you use. Then the close step by step, a skill for each step that runs on them, and the gaps |",
         "| \"We're on Xero and Stripe. What should I use for month-end?\" | A close plan using only skills that work with Xero and Stripe, with the steps that have no Xero skill named as gaps |",
         "| \"We're on QuickBooks and customers pay late. Help me collect.\" | Build the aging, then send reminders, with the skill for each and a note that reminders go out to customers |",
+        "| \"Is this skill safe to connect to my books? https://github.com/…\" | The skill read and graded with the same rubric: write authority, money movement, external sending, red flags, each with a quote. Works for skills the index has not graded |",
         "| \"Has Xero published any official skills?\" | No vendor skills, and the third-party Apideck option labelled as such |",
         "| \"Which QuickBooks skills can post journal entries?\" | The matching skills, each with its write authority (read-only, proposes writes, writes direct) |",
         "| \"Is there a Stripe skill that can pay a supplier, and does it ask first?\" | `stripe-pay` and `stripe-directory`, marked as moving money, with their confirmation step |",
