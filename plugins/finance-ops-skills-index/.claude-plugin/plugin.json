@@ -2,8 +2,8 @@
   "name": "finance-ops-skills-index",
   "displayName": "Finance & Ops Skills Index",
   "icon": "./.claude-plugin/icon.png",
-  "version": "1.4.20261001",
-  "description": "Which agent skills should I use for QuickBooks, Xero, Stripe or Shopify finance work — and is this one safe? Get a step-by-step plan of graded skills for the close, bank recs and collections, or check any skill before installing: can it write to your books or move money?",
+  "version": "1.5.20261001",
+  "description": "Which agent skills should I use for QuickBooks, Xero, Stripe or Shopify finance work? Name a goal — month-end close, bank recs, collections — and get a step-by-step plan of graded skills that run on your platforms, with a warning wherever a skill can write to your books or move money.",
   "author": {
     "name": "MosoFin",
     "url": "https://github.com/MosoFin"
@@ -22,7 +22,6 @@
     "stripe",
     "shopify",
     "small-business",
-    "skill-security",
     "trust",
     "skills",
     "index"
