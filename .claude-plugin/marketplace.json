@@ -4,19 +4,22 @@
     "name": "MosoFin",
     "url": "https://github.com/MosoFin"
   },
-  "description": "An index of agent skills published by vendors of finance and business-operations software, with independent trust grades.",
+  "description": "Graded agent skills for finance and business operations: which ones to use for your platforms, and whether any skill is safe near your books or money.",
   "plugins": [
     {
       "name": "finance-ops-skills-index",
       "source": "./plugins/finance-ops-skills-index",
-      "description": "Tell it a finance goal — close the month, reconcile the bank, collect overdue invoices — and get a plan of graded agent skills that run on your accounting, payments and e-commerce platforms.",
+      "description": "Which agent skills should I use for QuickBooks, Xero, Stripe or Shopify finance work — and is this one safe? Get a step-by-step plan of graded skills for the close, bank recs and collections, or check any skill before installing: can it write to your books or move money?",
       "category": "finance",
       "tags": [
         "finance",
         "accounting",
-        "payments",
-        "ecommerce",
-        "skills-index"
+        "bookkeeping",
+        "quickbooks",
+        "xero",
+        "stripe",
+        "shopify",
+        "skill-security"
       ]
     }
   ]

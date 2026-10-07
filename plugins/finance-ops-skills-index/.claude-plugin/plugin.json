@@ -2,8 +2,8 @@
   "name": "finance-ops-skills-index",
   "displayName": "Finance & Ops Skills Index",
   "icon": "./.claude-plugin/icon.png",
-  "version": "1.3.20261001",
-  "description": "Tell it a finance goal — close the month, reconcile the bank, collect overdue invoices — and get a plan of graded agent skills that run on your accounting, payments and e-commerce platforms.",
+  "version": "1.4.20261001",
+  "description": "Which agent skills should I use for QuickBooks, Xero, Stripe or Shopify finance work — and is this one safe? Get a step-by-step plan of graded skills for the close, bank recs and collections, or check any skill before installing: can it write to your books or move money?",
   "author": {
     "name": "MosoFin",
     "url": "https://github.com/MosoFin"
@@ -14,12 +14,17 @@
   "keywords": [
     "finance",
     "accounting",
-    "payments",
-    "ecommerce",
-    "skills",
-    "index",
-    "reconciliation",
     "bookkeeping",
-    "month-end-close"
+    "month-end-close",
+    "reconciliation",
+    "quickbooks",
+    "xero",
+    "stripe",
+    "shopify",
+    "small-business",
+    "skill-security",
+    "trust",
+    "skills",
+    "index"
   ]
 }
