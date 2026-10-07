@@ -514,8 +514,8 @@ def index_page(data: dict, conn_meta: dict) -> str:
          "(https://skills.sh/MosoFin/finance-ops-skills-index)", "",
          meta["tagline"], "",
          "Ask Claude which skills to use for a finance job on QuickBooks, Xero, Stripe or "
-         "Shopify, or have it check any skill before you install it: can it write to your "
-         "books, can it move money, does it ask first.", ""]
+         "Shopify, and see which ones can write to your books or move money before you "
+         "install them.", ""]
     L += [
         f"**{len(skills)} skills** · **{len(graded)} graded** · "
         f"**{len(skills) - len(graded)} awaiting grading** · "
@@ -559,16 +559,14 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "It is also listed in Anthropic's plugin directory: search for **Finance & Ops Skills",
         "Index** under **Customize > Plugins**.",
         "",
-        "**Codex, Cursor, Gemini CLI, GitHub Copilot and 40+ other agents** — install the two",
-        "skills with the open [`skills`](https://github.com/vercel-labs/skills) installer:",
+        "**Codex, Cursor, Gemini CLI, GitHub Copilot and 40+ other agents** — install the",
+        "skill with the open [`skills`](https://github.com/vercel-labs/skills) installer:",
         "",
         "```bash",
         "npx skills add MosoFin/finance-ops-skills-index",
         "```",
         "",
-        "Install both skills together: `vet-skill` reads the catalog that ships with",
-        "`finance-ops-skills`.",
-        "",
+
         "### 2. Ask Claude",
         "",
         "Tell Claude what you want done, in plain language; you do not need to name the plugin.",
@@ -582,7 +580,6 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "| \"Help me close September.\" | First: which accounting system and payment processor you use. Then the close step by step, a skill for each step that runs on them, and the gaps |",
         "| \"We're on Xero and Stripe. What should I use for month-end?\" | A close plan using only skills that work with Xero and Stripe, with the steps that have no Xero skill named as gaps |",
         "| \"We're on QuickBooks and customers pay late. Help me collect.\" | Build the aging, then send reminders, with the skill for each and a note that reminders go out to customers |",
-        "| \"Is this skill safe to connect to my books? https://github.com/…\" | The skill read and graded with the same rubric: write authority, money movement, external sending, red flags, each with a quote. Works for skills the index has not graded |",
         "| \"Has Xero published any official skills?\" | No vendor skills, and the third-party Apideck option labelled as such |",
         "| \"Which QuickBooks skills can post journal entries?\" | The matching skills, each with its write authority (read-only, proposes writes, writes direct) |",
         "| \"Is there a Stripe skill that can pay a supplier, and does it ask first?\" | `stripe-pay` and `stripe-directory`, marked as moving money, with their confirmation step |",
