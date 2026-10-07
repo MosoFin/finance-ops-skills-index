@@ -36,6 +36,8 @@ In Claude Code:
 
 On claude.ai and in Cowork, add it from **Customize > Plugins**.
 
+In Codex, Cursor, Gemini CLI and other agents, install both skills with `npx skills add MosoFin/finance-ops-skills-index`.
+
 The plugin never installs a vendor skill for you. Follow the upstream link it gives you and install from the vendor.
 
 ## Data

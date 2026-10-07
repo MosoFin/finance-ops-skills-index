@@ -509,7 +509,13 @@ def index_page(data: dict, conn_meta: dict) -> str:
     checks = [str(s["last_checked"]) for s in skills if s.get("last_checked")]
     checked = max(checks) if checks else ""
 
-    L = [GENERATED, "", f"# {meta['title']}", "", meta["tagline"], ""]
+    L = [GENERATED, "", f"# {meta['title']}", "",
+         "[![skills.sh](https://skills.sh/b/MosoFin/finance-ops-skills-index)]"
+         "(https://skills.sh/MosoFin/finance-ops-skills-index)", "",
+         meta["tagline"], "",
+         "Ask Claude which skills to use for a finance job on QuickBooks, Xero, Stripe or "
+         "Shopify, or have it check any skill before you install it: can it write to your "
+         "books, can it move money, does it ask first.", ""]
     L += [
         f"**{len(skills)} skills** · **{len(graded)} graded** · "
         f"**{len(skills) - len(graded)} awaiting grading** · "
@@ -550,8 +556,18 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "",
         "**claude.ai and Cowork** — go to **Customize > Plugins > Add > Add marketplace**,",
         "enter `MosoFin/finance-ops-skills-index`, then add **Finance & Ops Skills Index**.",
-        "Once the plugin is listed in Anthropic's directory you can also find it by name",
-        "under **Customize > Plugins**.",
+        "It is also listed in Anthropic's plugin directory: search for **Finance & Ops Skills",
+        "Index** under **Customize > Plugins**.",
+        "",
+        "**Codex, Cursor, Gemini CLI, GitHub Copilot and 40+ other agents** — install the two",
+        "skills with the open [`skills`](https://github.com/vercel-labs/skills) installer:",
+        "",
+        "```bash",
+        "npx skills add MosoFin/finance-ops-skills-index",
+        "```",
+        "",
+        "Install both skills together: `vet-skill` reads the catalog that ships with",
+        "`finance-ops-skills`.",
         "",
         "### 2. Ask Claude",
         "",

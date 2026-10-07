@@ -31,6 +31,8 @@ Grade the instruction files: `SKILL.md`, and for a plugin its agent and command 
 
 Search `../finance-ops-skills/references/CATALOG.md` for the skill's id or upstream link. If it is there, open the vendor page that its line names (`details:`) and show the index's grade, its graded date and whether the grade is current. Then still do your own reading, and if your reading disagrees with the index, say the skill may have changed since it was graded.
 
+If that catalog file is not there, `vet-skill` was installed without its companion skill. Say "index not checked — install `finance-ops-skills` alongside this skill to compare with the index's grades", and carry on with Step 3.
+
 ## Step 3 — Grade it
 
 Read `references/RUBRIC.md`. For every badge, decide from the text alone:
