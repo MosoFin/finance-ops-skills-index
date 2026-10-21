@@ -5,20 +5,10 @@
 - Reachability: **costly** — Reachable only at material cost
 - Vertical: ecommerce
 - Vendor skills repository: https://github.com/woocommerce/agent-skills
-- Published there: 2 · indexed here: 1 · checked 2026-09-20
+- Published there: 2 · indexed here: 0 · checked 2026-09-20
 - Repository licence: unclear
-- Note: WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed. One third-party pointer is: Apideck's `woocommerce` skill, via Apideck's unified API, beta.
+- Note: WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed.
 
 ## Indexed skills
 
-### apideck-woocommerce
-
-- Publisher: Apideck — third party, not the platform's vendor
-- Stage 2 · status GRADED (graded 2026-10-01)
-- Grade current: yes
-- Graded version: SKILL.md sha256:d03373b9b59a297a · upstream commit 704bda32cc7b · checked 2026-10-01
-- Trust badges: READ-ONLY
-  - READ-ONLY: A developer reference: it explains the serviceId, entity mapping and caveats and shows example code. It runs nothing itself. The code it shows can create records in WooCommerce, and the skill gives no confirmation guidance for those writes — that is the integrator's job.
-- Licence: apache-2.0
-- Upstream: https://github.com/apideck-libraries/api-skills/tree/main/skills/woocommerce
-- Summary: Apideck's guide to reaching WooCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to WooCommerce access. The WooCommerce connector is marked beta by Apideck: expect partial coverage.
+None indexed. Do not invent one — say so and point to the vendor's own developer docs.

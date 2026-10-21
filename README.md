@@ -8,7 +8,7 @@ A graded, continuously-verified index of agent skills published by vendors of fi
 
 Ask Claude which skills to use for a finance job on QuickBooks, Xero, Stripe or Shopify, and see which ones can write to your books or move money before you install them.
 
-**67 skills** · **67 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-01
+**64 skills** · **64 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-01
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -67,7 +67,7 @@ index covers yet. For example:
 | "Help me close September." | First: which accounting system and payment processor you use. Then the close step by step, a skill for each step that runs on them, and the gaps |
 | "We're on Xero and Stripe. What should I use for month-end?" | A close plan using only skills that work with Xero and Stripe, with the steps that have no Xero skill named as gaps |
 | "We're on QuickBooks and customers pay late. Help me collect." | Build the aging, then send reminders, with the skill for each and a note that reminders go out to customers |
-| "Has Xero published any official skills?" | No vendor skills, and the third-party Apideck option labelled as such |
+| "Has Xero published any official skills?" | That Xero has published no skills of its own, said plainly rather than filled with a near match |
 | "Which QuickBooks skills can post journal entries?" | The matching skills, each with its write authority (read-only, proposes writes, writes direct) |
 | "Is there a Stripe skill that can pay a supplier, and does it ask first?" | `stripe-pay` and `stripe-directory`, marked as moving money, with their confirmation step |
 | "What should I use for sales by channel on Shopify, and what does it send back?" | Shopify's `shopify` skill, what its telemetry contains and how to opt out |
@@ -142,15 +142,6 @@ Ordered by when you need it, not alphabetically.
 
 *Before the books can be trusted*
 
-- **[BigCommerce (via Apideck)](skills/apideck-bigcommerce/README.md)** — Third party  
-  `GRADED` `READ-ONLY`  
-  Apideck's guide to reaching BigCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to BigCommerce access.
-- **[WooCommerce (via Apideck)](skills/apideck-woocommerce/README.md)** — Third party  
-  `GRADED` `READ-ONLY`  
-  Apideck's guide to reaching WooCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to WooCommerce access. The WooCommerce connector is marked beta by Apideck: expect partial coverage.
-- **[Xero (via Apideck)](skills/apideck-xero/README.md)** — Third party  
-  `GRADED` `READ-ONLY`  
-  Apideck's guide to reaching Xero through its Accounting unified API: invoices, bills, payments, manual journals, chart of accounts and P&L / balance-sheet reports, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to Xero access. Xero App Partner certification is required beyond the Core tier, and from 2026-03-02 the Journals API is gated to the Advanced tier.
 - **[Categorize Transactions](skills/categorize-transactions/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `EVIDENCE-GATED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `DETERMINISTIC-MATH` `POLICY-CAPTURING`  
   Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
@@ -489,7 +480,6 @@ for a grade.
 | [`stripe/ai`](https://github.com/stripe/ai) | 7 | first-party | `mit` | yes |
 | [`anthropics/skills`](https://github.com/anthropics/skills) | 5 | first-party | `proprietary-anthropic` | no — restricted |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 5 | first-party | `apache-2.0` | yes |
-| [`apideck-libraries/api-skills`](https://github.com/apideck-libraries/api-skills) | 3 | notable | `apache-2.0` | yes |
 | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | 2 | first-party | `apache-2.0` | yes |
 | [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | 1 | first-party | `mit` | yes |
 | [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) | 1 | first-party | `apache-2.0` | yes |

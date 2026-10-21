@@ -13,11 +13,11 @@ Catalog as of 2026-10-01. "Not current" counts entries whose grade describes an 
 | google-ads | advertising | roadmap | none | 0 | 0 |
 | square | payments | roadmap | none | 0 | 0 |
 | paypal | payments | roadmap | paypal/AI-Toolkit | 2 | 0 |
-| xero | accounting | roadmap | none | 1 | 0 |
+| xero | accounting | roadmap | none | 0 | 0 |
 | hubspot | crm | roadmap | HubSpot/agent-cli-skills | 7 | 0 |
 | klaviyo | marketing | roadmap | none | 0 | 0 |
 | amazon-sp | ecommerce | roadmap | amzn/ads-advanced-tools-docs | 0 | 0 |
-| bigcommerce | ecommerce | candidate | none | 1 | 0 |
+| bigcommerce | ecommerce | candidate | none | 0 | 0 |
 | ebay | ecommerce | candidate | none | 0 | 0 |
 | ecwid | ecommerce | candidate | none | 0 | 0 |
 | lightspeed-x | ecommerce | candidate | none | 0 | 0 |
@@ -26,7 +26,7 @@ Catalog as of 2026-10-01. "Not current" counts entries whose grade describes an 
 | harvest | professional | candidate | none | 0 | 0 |
 | jobber | fieldservice | candidate | none | 0 | 0 |
 | servicem8 | fieldservice | candidate | none | 0 | 0 |
-| woocommerce | ecommerce | costly | woocommerce/agent-skills | 1 | 0 |
+| woocommerce | ecommerce | costly | woocommerce/agent-skills | 0 | 0 |
 | servicetitan | fieldservice | costly | none | 0 | 0 |
 | housecallpro | fieldservice | costly | none | 0 | 0 |
 | clover | retail | costly | none | 0 | 0 |

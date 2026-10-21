@@ -25,9 +25,7 @@ None. [`bigcommerce`](https://github.com/bigcommerce) was probed on 2026-10-01 a
 
 ## Skills in this index that need it
 
-**2 · Data hygiene**
-
-- [BigCommerce (via Apideck)](../../skills/apideck-bigcommerce/README.md) — `GRADED` `READ-ONLY`
+None yet. Connecting this reaches data no indexed skill currently reads.
 
 ---
 

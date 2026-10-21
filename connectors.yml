@@ -183,7 +183,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-10-01"
     skills_note: >-
-      Nothing published by Square, and no Square skill in Apideck's third-party set either.
+      Nothing published by Square.
   paypal:
     status: roadmap
     family: A
@@ -223,9 +223,9 @@ connectors:
     github_org: XeroAPI
     skills_repo: none
     skills_published: 0
-    skills_indexed: 1
+    skills_indexed: 0
     skills_note: >-
-      No vendor-published skills. One third-party pointer is indexed: Apideck's `xero` skill, which reaches it through Apideck's unified API (notable authority, needs an Apideck account).
+      No vendor-published skills.
     skills_checked: "2026-10-01"
   hubspot:
     status: roadmap
@@ -301,9 +301,9 @@ connectors:
     github_org: bigcommerce
     skills_repo: none
     skills_published: 0
-    skills_indexed: 1
+    skills_indexed: 0
     skills_note: >-
-      No vendor-published skills. One third-party pointer is indexed: Apideck's `bigcommerce` skill, which reaches it through Apideck's unified API (notable authority, needs an Apideck account).
+      No vendor-published skills.
     skills_checked: "2026-10-01"
   ebay:
     status: candidate
@@ -426,9 +426,9 @@ connectors:
     skills_license: unclear
     skills_checked: "2026-09-20"
     skills_relevant: 0
-    skills_indexed: 1
+    skills_indexed: 0
     skills_note: >-
-      WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed. One third-party pointer is: Apideck's `woocommerce` skill, via Apideck's unified API, beta.
+      WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed.
   servicetitan:
     status: costly
     family: A

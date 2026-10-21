@@ -26,7 +26,7 @@ on it, not a permanent state.
 | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | `paypal` | 2 | 2 | 2 | `apache-2.0` | 2026-09-20 |
 | [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | `shopify` | 2 | 1 | 1 | `mit` | 2026-10-01 |
 | [`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs) | `amazon-sp` | 9 | 0 | 0 | `mit-0` | 2026-09-20 |
-| [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | `woocommerce` | 2 | 0 | 1 | `unclear` | 2026-09-20 |
+| [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | `woocommerce` | 2 | 0 | 0 | `unclear` | 2026-09-20 |
 | [`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit) | `excel` | 15 | 0 | 0 | `mit` | 2026-09-20 |
 
 - **[`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills)** — Seven are revenue operations. The rest are CRM workflow and support.
@@ -39,7 +39,7 @@ on it, not a permanent state.
 - **[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin)** — All ten are bookkeeping skills — the only vendor set that is.
 - **[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit)** — Both indexed.
 - **[`stripe/ai`](https://github.com/stripe/ai)** — The repo ships the same 10 skills under six provider directories; 10 unique. Seven are payments, Connect, billing, tax or paying vendors (stripe-directory). The other three build Stripe apps, provision infrastructure or upgrade SDKs.
-- **[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)** — WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed. One third-party pointer is: Apideck's `woocommerce` skill, via Apideck's unified API, beta.
+- **[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)** — WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed.
 
 ## Vendors that publish none
 

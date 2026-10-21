@@ -27,15 +27,13 @@ No registration exists and no revocation signal. Per-merchant key entry.
 
 - **2** skills published
 - **0** finance-relevant
-- **1** indexed here
+- **0** indexed here
 
-WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed. One third-party pointer is: Apideck's `woocommerce` skill, via Apideck's unified API, beta.
+WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed.
 
 ## Skills in this index that need it
 
-**2 · Data hygiene**
-
-- [WooCommerce (via Apideck)](../../skills/apideck-woocommerce/README.md) — `GRADED` `READ-ONLY`
+None yet. Connecting this reaches data no indexed skill currently reads.
 
 ---
 

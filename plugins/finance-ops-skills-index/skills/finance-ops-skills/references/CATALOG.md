@@ -34,12 +34,6 @@ _Tracks the period, runs nothing itself_
 
 _Before the books can be trusted_
 
-- `apideck-bigcommerce` — runs on: bigcommerce · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/bigcommerce
-  Apideck's guide to reaching BigCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to BigCommerce access.
-- `apideck-woocommerce` — runs on: woocommerce · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/woocommerce
-  Apideck's guide to reaching WooCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to WooCommerce access. The WooCommerce connector is marked beta by Apideck: expect partial coverage.
-- `apideck-xero` — runs on: xero · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/xero
-  Apideck's guide to reaching Xero through its Accounting unified API: invoices, bills, payments, manual journals, chart of accounts and P&L / balance-sheet reports, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to Xero access. Xero App Partner certification is required beyond the Core tier, and from 2026-03-02 the Journals API is gated to the Advanced tier.
 - `categorize-transactions` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
   Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
 - `expense-report-processor` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/expense-report-processor

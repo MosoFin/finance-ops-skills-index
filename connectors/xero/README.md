@@ -29,9 +29,7 @@ None. [`XeroAPI`](https://github.com/XeroAPI) was probed on 2026-10-01 and publi
 
 ## Skills in this index that need it
 
-**2 · Data hygiene**
-
-- [Xero (via Apideck)](../../skills/apideck-xero/README.md) — `GRADED` `READ-ONLY`
+None yet. Connecting this reaches data no indexed skill currently reads.
 
 ---
 

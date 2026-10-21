@@ -59,8 +59,8 @@ Asked as: "reconcile Stripe payouts" · "my Shopify deposits don't match sales" 
 3. **Gross up sales and book fees** — Record gross sales, processor fees and refunds rather than the net deposit.
    - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
 4. **Reach store data on other platforms** — Orders and payouts from stores without a vendor skill.
-   - `apideck-woocommerce` — runs on: woocommerce · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/woocommerce
-   - `apideck-bigcommerce` — runs on: bigcommerce · by Apideck — third party, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/apideck-libraries/api-skills/tree/main/skills/bigcommerce
+   - No indexed skill.
+   - Gap: No official skill or qualifying community repository reaches WooCommerce or BigCommerce store data yet.
 
 ## categorize-transactions: Catch up on bookkeeping and categorize transactions
 

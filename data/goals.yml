@@ -80,7 +80,8 @@ goals:
         skills: [journal-entry-builder]
       - step: Reach store data on other platforms
         does: Orders and payouts from stores without a vendor skill.
-        skills: [apideck-woocommerce, apideck-bigcommerce]
+        skills: []
+        gap: No official skill or qualifying community repository reaches WooCommerce or BigCommerce store data yet.
 
   categorize-transactions:
     title: Catch up on bookkeeping and categorize transactions
