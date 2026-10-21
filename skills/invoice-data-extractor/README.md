@@ -9,6 +9,7 @@ Extracts structured fields from vendor invoice PDFs and images, then validates e
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | quickbooks, pdf |

@@ -9,6 +9,7 @@ The skeptical second pair of eyes on everything posted this period — round num
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
 | Systems | quickbooks, csv |

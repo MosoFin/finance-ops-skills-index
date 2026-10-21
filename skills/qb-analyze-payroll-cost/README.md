@@ -9,6 +9,7 @@ Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay 
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
 | Systems | quickbooks |

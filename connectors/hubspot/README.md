@@ -25,11 +25,11 @@ Legacy public app creation was disabled in 2026 — new public apps require the 
 
 ## Official skills from the vendor
 
-[`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) · licence `apache-2.0` · probed 2026-09-20
+[`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) · licence `apache-2.0` · probed 2026-10-21
 
 - **15** skills published
 - **7** finance-relevant
-- **7** indexed here
+- **8** indexed here
 
 Seven are revenue operations. The rest are CRM workflow and support.
 
@@ -45,6 +45,7 @@ Seven are revenue operations. The rest are CRM workflow and support.
 
 - [deal-management](../../skills/hs-deal-management/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
 - [quote-to-cash](../../skills/hs-quote-to-cash/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`
+- [HubSpot Sales plugin](../../skills/hubspot-sales-plugin/README.md) — `GRADED` `WRITES-DIRECT`
 
 **6 · Report**
 

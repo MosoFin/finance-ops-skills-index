@@ -1,0 +1,37 @@
+id: xero-agent-toolkit
+title: Xero Agent Toolkit
+kind: toolkit
+origin: third-party
+authority: first-party
+stage: 0
+summary: Xero's example agents (LangChain, OpenAI Agents SDK, Google ADK) built on the Xero MCP Server.
+  For developers building their own Xero agent.
+tiers:
+- WRITES-DIRECT
+tier_notes:
+  WRITES-DIRECT: The examples connect to the Xero MCP Server and inherit its write tools, which have no
+    confirmation step.
+systems:
+- xero
+inputs:
+- name: Xero MCP Server credentials
+  required: true
+  source: Xero developer portal
+  fallback: none
+outputs:
+- name: example agent code
+  type: files
+  dest: the developer's project
+never: []
+upstream:
+  repo: XeroAPI/xero-agent-toolkit
+  path: ''
+  ref: main
+  file: README.md
+license: mit
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:8a6e7ccaf78b4951
+upstream_sha: fafae53b78c3
+last_checked: '2026-10-21'

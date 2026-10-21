@@ -1,0 +1,36 @@
+id: wc-stale-pr-audit
+title: WooCommerce stale PR audit
+kind: skill
+origin: third-party
+authority: first-party
+stage: 0
+summary: WooCommerce's maintainer skill for reviewing stale pull requests in WooCommerce's own repository.
+  Listed because WooCommerce publishes it; it is not a store-operations skill.
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: Produces a private checklist report about pull requests; it changes no store data.
+systems:
+- woocommerce
+inputs:
+- name: a cohort of WooCommerce pull requests
+  required: true
+  source: GitHub
+  fallback: none
+outputs:
+- name: audit report
+  type: markdown
+  dest: local file
+never: []
+upstream:
+  repo: woocommerce/agent-skills
+  path: skills/woocommerce-stale-pr-audit
+  ref: trunk
+  file: SKILL.md
+license: gpl-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:cd0a7051cedf6013
+upstream_sha: 89cc969d2273
+last_checked: '2026-10-21'

@@ -25,7 +25,7 @@ goals:
     steps:
       - step: Track the close
         does: Generate the period's checklist and see what is open, blocked or done.
-        skills: [month-end-close-checklist, close]
+        skills: [month-end-close-checklist, fs-month-end-closer, close]
       - step: Clean up uncategorized and miscoded transactions
         does: Clear suspense and uncategorized buckets before anything is reconciled.
         skills: [categorize-transactions, gl-coding-assistant]
@@ -40,7 +40,7 @@ goals:
         skills: [accruals, journal-entry-builder]
       - step: Review what was posted
         does: A skeptical second pass over the period's entries and balances.
-        skills: [je-review, tie-out, flux]
+        skills: [je-review, fs-gl-reconciler, tie-out, flux]
       - step: Produce the statements
         does: Balance sheet, income statement and cash flow with comparatives.
         skills: [financial-statement-builder, board-pack]
@@ -80,8 +80,8 @@ goals:
         skills: [journal-entry-builder]
       - step: Reach store data on other platforms
         does: Orders and payouts from stores without a vendor skill.
-        skills: []
-        gap: No official skill or qualifying community repository reaches WooCommerce or BigCommerce store data yet.
+        skills: [woocommerce-for-claude, square-mcp-server]
+        gap: No official skill or MCP server reaches BigCommerce store data; Mosofin's gateway connects it (docs.mosofin.com).
 
   categorize-transactions:
     title: Catch up on bookkeeping and categorize transactions
@@ -281,7 +281,7 @@ goals:
     steps:
       - step: Connect the ledger
         does: Get the accounting system connected and working.
-        skills: [qb-setup]
+        skills: [qb-setup, qbo-mcp-server, xero-mcp-server]
       - step: Capture how the client works
         does: Profile, close calendar, materiality and reporting preferences.
         skills: [onboard-client]

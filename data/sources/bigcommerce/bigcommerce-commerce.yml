@@ -1,0 +1,38 @@
+id: bigcommerce-commerce
+title: BigCommerce development plugin
+kind: plugin
+origin: third-party
+authority: community
+stage: 0
+summary: A community plugin of BigCommerce developer skills (REST and GraphQL APIs, orders, payments,
+  catalog, checkout, Stencil, app development). Not published by BigCommerce, which publishes no agent
+  skills; listed by owner decision with 39 stars.
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: Developer guidance and code generation; its hooks check commands and secrets. It does not
+    connect to a store by itself.
+systems:
+- bigcommerce
+inputs:
+- name: a BigCommerce development project
+  required: true
+  source: the developer
+  fallback: none
+outputs:
+- name: code and guidance
+  type: files
+  dest: the developer's project
+never: []
+upstream:
+  repo: OrcaQubits/agentic-commerce-skills-plugins
+  path: bigcommerce-commerce
+  ref: main
+  file: README.md
+license: unclear
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:e57cb469e0e14f93
+upstream_sha: 30cd25c74c8a
+last_checked: '2026-10-21'

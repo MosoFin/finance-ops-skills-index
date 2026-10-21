@@ -4,9 +4,20 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: ecommerce
-- **No vendor-published skills found** as of 2026-10-01.
-- Note: No vendor-published skills.
+- **No vendor-published skills found** as of 2026-10-21.
+- Note: No vendor-published skills or MCP server. One community developer plugin is indexed by owner decision (OrcaQubits bigcommerce-commerce, 39 stars). Store data is reached through the Mosofin gateway: see docs.mosofin.com for the BigCommerce configuration.
 
 ## Indexed skills
 
-None indexed. Do not invent one — say so and point to the vendor's own developer docs.
+### bigcommerce-commerce
+
+- Publisher: OrcaQubits — third party, not the platform's vendor
+- Type: plugin
+- Stage 0 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:e57cb469e0e14f93 · upstream commit 30cd25c74c8a · checked 2026-10-21
+- Trust badges: READ-ONLY
+  - READ-ONLY: Developer guidance and code generation; its hooks check commands and secrets. It does not connect to a store by itself.
+- Licence: unclear
+- Upstream: https://github.com/OrcaQubits/agentic-commerce-skills-plugins/tree/main/bigcommerce-commerce
+- Summary: A community plugin of BigCommerce developer skills (REST and GraphQL APIs, orders, payments, catalog, checkout, Stencil, app development). Not published by BigCommerce, which publishes no agent skills; listed by owner decision with 39 stars.

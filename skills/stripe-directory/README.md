@@ -9,6 +9,7 @@ Resolves an external provider, merchant or nonprofit and its documented way to b
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 7 — Forward-looking |
 | Systems | stripe |

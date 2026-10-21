@@ -9,6 +9,7 @@ Spreadsheet creation and manipulation — formulas, charts, data transformations
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | excel |

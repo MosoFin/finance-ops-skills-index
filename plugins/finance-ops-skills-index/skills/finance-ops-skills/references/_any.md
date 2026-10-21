@@ -11,6 +11,7 @@
 ### close
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 1 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -26,6 +27,7 @@
 ### docx
 
 - Publisher: Anthropic
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:8017469ea95fb7d2 · upstream commit fa0fa64bdc96 · checked 2026-09-20
@@ -41,6 +43,7 @@
 ### explain-to-client
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -53,9 +56,42 @@
 - Summary: Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
 - Never: Send anything to a client.
 
+### fs-gl-reconciler
+
+- Publisher: Anthropic
+- Type: agent
+- Stage 3 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:31f9ef51fdc0c750 · upstream commit 574ed3624aeb · checked 2026-10-21
+- Trust badges: READ-ONLY, HUMAN-APPROVAL, INJECTION-AWARE
+  - READ-ONLY: Produces a report; it states "No ledger posting" and adjustments need human approval outside the agent.
+  - HUMAN-APPROVAL: The exception report is routed for controller sign-off.
+  - INJECTION-AWARE: Custodian and counterparty statements are untrusted; their readers have no MCP access or write tools.
+- Licence: apache-2.0
+- Upstream: https://github.com/anthropics/financial-services/tree/main/plugins/agent-plugins/gl-reconciler
+- Summary: Anthropic's GL-to-subledger reconciliation agent: finds breaks over threshold, traces each to its cause, re-verifies, and drafts an exception report for sign-off. Reads through GL and subledger MCP servers you connect.
+- Never: Post a ledger adjustment.
+
+### fs-month-end-closer
+
+- Publisher: Anthropic
+- Type: agent
+- Stage 1 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:45eb684b988f046c · upstream commit 574ed3624aeb · checked 2026-10-21
+- Trust badges: PROPOSES-WRITES, HUMAN-APPROVAL, INJECTION-AWARE
+  - PROPOSES-WRITES: Drafts journal entries; it states "No GL posting" and posting needs controller approval outside the agent.
+  - HUMAN-APPROVAL: The close package is staged for controller sign-off.
+  - INJECTION-AWARE: Supporting invoices and vendor statements are treated as untrusted; the workers that read them have no MCP access and no write tools.
+- Licence: apache-2.0
+- Upstream: https://github.com/anthropics/financial-services/tree/main/plugins/agent-plugins/month-end-closer
+- Summary: Anthropic's month-end close agent: accrual schedules, roll-forwards tied to the GL, variance commentary, and a close package staged for controller sign-off. Reads the trial balance through a GL MCP server you connect.
+- Never: Post to the general ledger.
+
 ### pdf
 
 - Publisher: Anthropic
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:9f78b8359fbd4943 · upstream commit 1ed29a03dc85 · checked 2026-09-20
@@ -69,6 +105,7 @@
 ### pptx
 
 - Publisher: Anthropic
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:a7ff03e2c85b636f · upstream commit fa0fa64bdc96 · checked 2026-09-20
@@ -83,6 +120,7 @@
 ### receipts
 
 - Publisher: Anthropic
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:5b2f407ff4063972 · upstream commit 2476d52abc96 · checked 2026-09-20
@@ -98,6 +136,7 @@
 ### skill-creator
 
 - Publisher: Anthropic
+- Type: skill
 - Stage 0 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:dcd4803e61e913e6 · upstream commit b9e19e6f4477 · checked 2026-09-20
@@ -113,6 +152,7 @@
 ### xlsx
 
 - Publisher: Anthropic
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:6712b39718fe8150 · upstream commit fa0fa64bdc96 · checked 2026-09-20

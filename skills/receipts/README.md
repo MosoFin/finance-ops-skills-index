@@ -9,6 +9,7 @@ Anthropic's own plugin for turning receipts into structured records. The substan
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | pdf, images |

@@ -9,6 +9,7 @@ Build the product catalog, assemble quotes (line items + associations to deals),
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | hubspot |

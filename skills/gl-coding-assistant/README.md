@@ -9,6 +9,7 @@ Assigns GL accounts, expense categories, and tax codes against the real chart of
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | quickbooks |

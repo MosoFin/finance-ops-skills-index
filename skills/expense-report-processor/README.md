@@ -9,6 +9,7 @@ Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — 
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | quickbooks, csv |

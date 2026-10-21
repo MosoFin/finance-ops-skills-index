@@ -9,6 +9,7 @@ Guidance for authoring skills — structure, progressive disclosure, bundled res
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
 | Systems | any |

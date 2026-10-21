@@ -9,6 +9,7 @@ Pulls live A/R, builds and reconciles an aging, prioritizes collections, calcula
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | quickbooks |

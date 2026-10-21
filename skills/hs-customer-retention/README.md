@@ -9,6 +9,7 @@ Identify inactive/at-risk customers via CRM filters and create follow-up tasks a
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 7 — Forward-looking |
 | Systems | hubspot |

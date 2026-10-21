@@ -9,6 +9,7 @@ synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | quickbooks |

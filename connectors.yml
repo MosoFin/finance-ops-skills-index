@@ -66,11 +66,11 @@ connectors:
     skills_repo: intuit/quickbooks-claude-plugin
     skills_published: 10
     skills_license: apache-2.0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-21"
     skills_relevant: 10
-    skills_indexed: 10
+    skills_indexed: 11
     skills_note: >-
-      All ten are bookkeeping skills — the only vendor set that is.
+      All ten are bookkeeping skills — the only vendor set that is. Intuit also publishes the QuickBooks Online MCP Server (intuit/quickbooks-online-mcp-server, 145 tools, writes on by default), indexed as qbo-mcp-server.
   stripe:
     status: live
     family: A
@@ -178,12 +178,12 @@ connectors:
       dimension, or every store burns a quota seat. One connector covers
       restaurants, retail and dry cleaning. Marketplace listing not required.
     github_org: square
-    skills_repo: none
+    skills_repo: square/square-mcp-server
     skills_published: 0
-    skills_indexed: 0
-    skills_checked: "2026-10-01"
+    skills_indexed: 1
+    skills_checked: "2026-10-21"
     skills_note: >-
-      Nothing published by Square.
+      No skills, but Square publishes an official MCP server (square/square-mcp-server, beta) and runs a hosted one at mcp.squareup.com/mcp, which it recommends. Indexed as square-mcp-server.
   paypal:
     status: roadmap
     family: A
@@ -203,11 +203,11 @@ connectors:
     skills_repo: paypal/AI-Toolkit
     skills_published: 2
     skills_license: apache-2.0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-21"
     skills_relevant: 2
-    skills_indexed: 2
+    skills_indexed: 4
     skills_note: >-
-      Both indexed.
+      Both indexed, plus PayPal's agent-toolkit SDK and its older paypal-mcp-server. Both of those can process payments and refunds.
   xero:
     status: roadmap
     family: B
@@ -221,12 +221,12 @@ connectors:
     payouts: n/a
     note: "Rotating refresh tokens need atomic persistence — a lost write costs the grant."
     github_org: XeroAPI
-    skills_repo: none
+    skills_repo: XeroAPI/xero-mcp-server
     skills_published: 0
-    skills_indexed: 0
+    skills_indexed: 2
     skills_note: >-
-      No vendor-published skills.
-    skills_checked: "2026-10-01"
+      No vendor-published skills. Xero publishes an official MCP server (51 tools, including create-payment and manual journals, no confirmation step) and example agents (xero-agent-toolkit); both indexed.
+    skills_checked: "2026-10-21"
   hubspot:
     status: roadmap
     family: A
@@ -246,9 +246,9 @@ connectors:
     skills_repo: HubSpot/agent-cli-skills
     skills_published: 15
     skills_license: apache-2.0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-21"
     skills_relevant: 7
-    skills_indexed: 7
+    skills_indexed: 8
     skills_note: >-
       Seven are revenue operations. The rest are CRM workflow and support.
   klaviyo:
@@ -301,10 +301,10 @@ connectors:
     github_org: bigcommerce
     skills_repo: none
     skills_published: 0
-    skills_indexed: 0
+    skills_indexed: 1
     skills_note: >-
-      No vendor-published skills.
-    skills_checked: "2026-10-01"
+      No vendor-published skills or MCP server. One community developer plugin is indexed by owner decision (OrcaQubits bigcommerce-commerce, 39 stars). Store data is reached through the Mosofin gateway: see docs.mosofin.com for the BigCommerce configuration.
+    skills_checked: "2026-10-21"
   ebay:
     status: candidate
     family: A
@@ -423,12 +423,12 @@ connectors:
     github_org: woocommerce
     skills_repo: woocommerce/agent-skills
     skills_published: 2
-    skills_license: unclear
-    skills_checked: "2026-09-20"
-    skills_relevant: 0
-    skills_indexed: 0
+    skills_license: gpl-2.0
+    skills_checked: "2026-10-21"
+    skills_relevant: 2
+    skills_indexed: 4
     skills_note: >-
-      WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed.
+      WooCommerce's two published skills are developer tools (an Abilities API guide and a stale-PR audit); both are indexed by owner decision. For store data, WooCommerce publishes WooCommerce for Claude (woocommerce/woocommerce-claude), which is indexed, on top of WordPress's official MCP Adapter.
   servicetitan:
     status: costly
     family: A

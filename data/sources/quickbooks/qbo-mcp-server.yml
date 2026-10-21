@@ -1,0 +1,38 @@
+id: qbo-mcp-server
+title: QuickBooks Online MCP Server
+kind: mcp-server
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'Intuit''s official MCP server for QuickBooks Online: 145 tools to get, search, create, update
+  and delete 29 entity types (invoices, bills, bill payments, payments, journal entries, transfers and
+  more) plus 11 financial reports.'
+tiers:
+- WRITES-DIRECT
+tier_notes:
+  WRITES-DIRECT: Create, update and delete tools are on by default with no confirmation step. QUICKBOOKS_DISABLE_WRITE,
+    _UPDATE and _DELETE switch each category off; read tools are always available.
+systems:
+- quickbooks
+inputs:
+- name: QuickBooks OAuth 2.0 credentials
+  required: true
+  source: Intuit developer portal
+  fallback: none
+outputs:
+- name: QuickBooks records and reports
+  type: chat
+  dest: the MCP client; writes land in QuickBooks
+never: []
+upstream:
+  repo: intuit/quickbooks-online-mcp-server
+  path: ''
+  ref: main
+  file: README.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:1b9164e29332ceeb
+upstream_sha: 31a1dd5c3e17
+last_checked: '2026-10-21'

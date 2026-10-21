@@ -5,7 +5,7 @@
 For every connector on the roadmap: who owns it on GitHub, whether they publish
 agent skills of their own, and how many this index carries.
 
-**30 connectors tracked** · **9 vendor skill repositories** · **210 skills published** · **32 finance-relevant** · **19 vendors publish none**
+**30 connectors tracked** · **11 vendor skill repositories** · **210 skills published** · **34 finance-relevant** · **17 vendors publish none**
 
 *Published* is everything in the repo. *Relevant* is what belongs in a finance
 index — most vendor skills teach you to build on their platform, which is a
@@ -19,27 +19,31 @@ on it, not a permanent state.
 
 | Repository | Serves | Published | Relevant | Indexed | Licence | Checked |
 |---|---|---|---|---|---|---|
-| [`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) | `quickbooks` | 10 | 10 | 10 | `apache-2.0` | 2026-09-20 |
+| [`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) | `quickbooks` | 10 | 10 | 11 | `apache-2.0` | 2026-10-21 |
 | [`stripe/ai`](https://github.com/stripe/ai) | `stripe` | 60 | 7 | 7 | `mit` | 2026-09-20 |
-| [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) | `hubspot` | 15 | 7 | 7 | `apache-2.0` | 2026-09-20 |
+| [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) | `hubspot` | 15 | 7 | 8 | `apache-2.0` | 2026-10-21 |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | `gmail`, `google-drive`, `google-sheets` | 95 | 5 | 5 | `apache-2.0` | 2026-09-20 |
-| [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | `paypal` | 2 | 2 | 2 | `apache-2.0` | 2026-09-20 |
+| [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | `paypal` | 2 | 2 | 4 | `apache-2.0` | 2026-10-21 |
+| [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | `woocommerce` | 2 | 2 | 4 | `gpl-2.0` | 2026-10-21 |
 | [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | `shopify` | 2 | 1 | 1 | `mit` | 2026-10-01 |
+| [`square/square-mcp-server`](https://github.com/square/square-mcp-server) | `square` | 0 | 0 | 1 | `?` | 2026-10-21 |
+| [`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server) | `xero` | 0 | 0 | 2 | `?` | 2026-10-21 |
 | [`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs) | `amazon-sp` | 9 | 0 | 0 | `mit-0` | 2026-09-20 |
-| [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | `woocommerce` | 2 | 0 | 0 | `unclear` | 2026-09-20 |
 | [`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit) | `excel` | 15 | 0 | 0 | `mit` | 2026-09-20 |
 
 - **[`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills)** — Seven are revenue operations. The rest are CRM workflow and support.
 - **[`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit)** — The repo's .github/skills are Microsoft's internal development process — vibe-coding, governance remediation. Nothing to do with Excel.
 - **[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit)** — On 2026-09-25 Shopify moved its 21 per-surface skills to deprecated/ as stubs and replaced them with one consolidated `shopify` skill, which is indexed. The other active skill, `ucp`, is a buyer-side shopping agent for purchasing from merchants — not store operations — so it is not.
+- **[`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server)** — No vendor-published skills. Xero publishes an official MCP server (51 tools, including create-payment and manual journals, no confirmation step) and example agents (xero-agent-toolkit); both indexed.
 - **[`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs)** — The nine are Amazon Ads API migration guides — a different product from SP-API, and developer tooling rather than bookkeeping.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Triage only — this connector is not recommended anyway.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Drive itself. See google-sheets for the rest.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
-- **[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin)** — All ten are bookkeeping skills — the only vendor set that is.
-- **[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit)** — Both indexed.
+- **[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin)** — All ten are bookkeeping skills — the only vendor set that is. Intuit also publishes the QuickBooks Online MCP Server (intuit/quickbooks-online-mcp-server, 145 tools, writes on by default), indexed as qbo-mcp-server.
+- **[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit)** — Both indexed, plus PayPal's agent-toolkit SDK and its older paypal-mcp-server. Both of those can process payments and refunds.
+- **[`square/square-mcp-server`](https://github.com/square/square-mcp-server)** — No skills, but Square publishes an official MCP server (square/square-mcp-server, beta) and runs a hosted one at mcp.squareup.com/mcp, which it recommends. Indexed as square-mcp-server.
 - **[`stripe/ai`](https://github.com/stripe/ai)** — The repo ships the same 10 skills under six provider directories; 10 unique. Seven are payments, Connect, billing, tax or paying vendors (stripe-directory). The other three build Stripe apps, provision infrastructure or upgrade SDKs.
-- **[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)** — WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed.
+- **[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)** — WooCommerce's two published skills are developer tools (an Abilities API guide and a stale-PR audit); both are indexed by owner decision. For store data, WooCommerce publishes WooCommerce for Claude (woocommerce/woocommerce-claude), which is indexed, on top of WordPress's official MCP Adapter.
 
 ## Vendors that publish none
 
@@ -51,9 +55,7 @@ skills, MCP, a toolkit, a plugin, a CLI or an SDK.
 | `google-ads` | roadmap | [`googleads`](https://github.com/googleads) | 2026-09-20 |
 | `klaviyo` | roadmap | [`klaviyo`](https://github.com/klaviyo) | 2026-09-20 |
 | `meta-ads` | roadmap | [`facebook`](https://github.com/facebook) | 2026-09-20 |
-| `square` | roadmap | [`square`](https://github.com/square) | 2026-10-01 |
-| `xero` | roadmap | [`XeroAPI`](https://github.com/XeroAPI) | 2026-10-01 |
-| `bigcommerce` | candidate | [`bigcommerce`](https://github.com/bigcommerce) | 2026-10-01 |
+| `bigcommerce` | candidate | [`bigcommerce`](https://github.com/bigcommerce) | 2026-10-21 |
 | `clio` | candidate | [`clio`](https://github.com/clio) | 2026-09-20 |
 | `ebay` | candidate | [`eBay`](https://github.com/eBay) | 2026-09-20 |
 | `ecwid` | candidate | [`Ecwid`](https://github.com/Ecwid) | 2026-09-20 |

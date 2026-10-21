@@ -25,11 +25,19 @@ Entity is the merchant, never the location — locations are a reporting dimensi
 
 ## Official skills from the vendor
 
-None. [`square`](https://github.com/square) was probed on 2026-10-01 and publishes no agent skills — a dated fact, not a permanent state.
+[`square/square-mcp-server`](https://github.com/square/square-mcp-server) · licence `?` · probed 2026-10-21
+
+- **0** skills published
+- **0** finance-relevant
+- **1** indexed here
+
+No skills, but Square publishes an official MCP server (square/square-mcp-server, beta) and runs a hosted one at mcp.squareup.com/mcp, which it recommends. Indexed as square-mcp-server.
 
 ## Skills in this index that need it
 
-None yet. Connecting this reaches data no indexed skill currently reads.
+**3 · Reconcile**
+
+- [Square MCP Server](../../skills/square-mcp-server/README.md) — `GRADED` `WRITES-DIRECT` `MOVES-MONEY`
 
 ---
 

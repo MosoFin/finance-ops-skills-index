@@ -9,6 +9,7 @@ Shopify's consolidated skill, replacing the 21 per-surface skills it deprecated 
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | shopify |

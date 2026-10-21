@@ -9,6 +9,7 @@ Answer read-only QuickBooks Payroll lookup and setup questions using connected c
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
 | Systems | quickbooks |

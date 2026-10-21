@@ -9,6 +9,7 @@ Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks too
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
 | Systems | quickbooks |

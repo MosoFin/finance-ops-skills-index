@@ -9,6 +9,7 @@ Ten detection rules for duplicate and fraudulent AP invoices run against live bi
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
 | Systems | quickbooks |

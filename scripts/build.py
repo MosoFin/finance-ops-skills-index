@@ -82,6 +82,16 @@ AUTHORITY_LABEL = {
     "community": "Community",
 }
 
+# What the entry is. Most are skills; vendors also publish MCP servers (tools Claude
+# calls), plugins (skills plus a server), agents and SDK toolkits.
+KIND_LABEL = {
+    "skill": "Skill",
+    "mcp-server": "MCP server — tools Claude can call",
+    "plugin": "Plugin — skills bundled with a connection",
+    "agent": "Agent",
+    "toolkit": "Developer toolkit",
+}
+
 ORIGIN_LABEL = {
     "mosofin-workspace": "Mosofin workspace",
     "mosofin-published": "Mosofin published",
@@ -153,10 +163,9 @@ def is_stale(skill: dict, days: int) -> bool:
 def upstream_str(skill: dict) -> str:
     up = skill.get("upstream") or {}
     if "repo" in up:
-        return (
-            f"[`{up['repo']}/{up['path']}`]"
-            f"(https://github.com/{up['repo']}/tree/{up.get('ref', 'main')}/{up['path']})"
-        )
+        where = "/".join(x for x in (up["repo"], up.get("path")) if x)
+        tree = f"https://github.com/{up['repo']}/tree/{up.get('ref', 'main')}"
+        return f"[`{where}`]({tree}/{up['path']})" if up.get("path") else f"[`{where}`]({tree})"
     return f"`{up.get('local', 'unknown')}` (local)"
 
 
@@ -165,6 +174,7 @@ def skill_page(skill: dict, meta: dict) -> str:
 
     L += ["| | |", "|---|---|"]
     L += [f"| Origin | {ORIGIN_LABEL.get(skill['origin'], skill['origin'])} |"]
+    L += [f"| Type | {KIND_LABEL.get(skill.get('kind', 'skill'), skill.get('kind'))} |"]
     L += [f"| Authority | {AUTHORITY_LABEL.get(skill.get('authority', 'community'))} |"]
     L += [f"| Stage | {skill['stage']} — {meta['stages'][skill['stage']]['name']} |"]
     L += [f"| Systems | {', '.join(skill.get('systems') or ['—'])} |"]
@@ -530,7 +540,7 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "and one that proposes them look identical in a bullet list. In accounting they are",
         "not the same product.",
         "",
-        "**[Read the trust tiers →](docs/TRUST-TIERS.md)**",
+        "**[Read the trust tiers →](docs/TRUST-TIERS.md)** · **[How sources are chosen →](docs/SOURCING.md)**",
         "",
         "## How to use it",
         "",

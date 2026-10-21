@@ -9,6 +9,7 @@ benchmark the user's CONNECTED QuickBooks company against industry peers using t
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | quickbooks |

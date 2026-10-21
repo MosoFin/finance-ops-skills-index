@@ -9,6 +9,7 @@ A 13-week cash projection built from open A/R and A/P, recurring items mined fro
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 7 — Forward-looking |
 | Systems | quickbooks, csv |

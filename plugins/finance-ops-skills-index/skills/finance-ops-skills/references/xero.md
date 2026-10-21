@@ -4,9 +4,34 @@
 
 - Reachability: **roadmap** — Committed — registration runbook written
 - Vertical: accounting
-- **No vendor-published skills found** as of 2026-10-01.
-- Note: No vendor-published skills.
+- Vendor skills repository: https://github.com/XeroAPI/xero-mcp-server
+- Published there: 0 · indexed here: 2 · checked 2026-10-21
+- Note: No vendor-published skills. Xero publishes an official MCP server (51 tools, including create-payment and manual journals, no confirmation step) and example agents (xero-agent-toolkit); both indexed.
 
 ## Indexed skills
 
-None indexed. Do not invent one — say so and point to the vendor's own developer docs.
+### xero-agent-toolkit
+
+- Publisher: Xero — the platform vendor's own
+- Type: toolkit
+- Stage 0 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:8a6e7ccaf78b4951 · upstream commit fafae53b78c3 · checked 2026-10-21
+- Trust badges: WRITES-DIRECT
+  - WRITES-DIRECT: The examples connect to the Xero MCP Server and inherit its write tools, which have no confirmation step.
+- Licence: mit
+- Upstream: https://github.com/XeroAPI/xero-agent-toolkit/tree/main
+- Summary: Xero's example agents (LangChain, OpenAI Agents SDK, Google ADK) built on the Xero MCP Server. For developers building their own Xero agent.
+
+### xero-mcp-server
+
+- Publisher: Xero — the platform vendor's own
+- Type: mcp-server
+- Stage 3 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:40a3be8915579ad8 · upstream commit f24583c867df · checked 2026-10-21
+- Trust badges: WRITES-DIRECT
+  - WRITES-DIRECT: 25 of its tools create, update, delete or approve records, among them create-payment, create-bank-transaction, create-manual-journal and approve-payroll-timesheet. The README describes no confirmation step before a write.
+- Licence: mit
+- Upstream: https://github.com/XeroAPI/xero-mcp-server/tree/main
+- Summary: Xero's official MCP server: 51 tools over invoices, contacts, payments, bank transactions, manual journals, payroll timesheets and reports (P&L, balance sheet, trial balance, aged receivables and payables).

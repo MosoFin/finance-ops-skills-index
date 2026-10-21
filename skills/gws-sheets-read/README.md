@@ -9,6 +9,7 @@ Google Sheets: Read values from a spreadsheet.
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | google-sheets |

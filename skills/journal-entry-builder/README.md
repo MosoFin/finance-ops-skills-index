@@ -9,6 +9,7 @@ Constructs, formats, and validates journal entries against the real chart of acc
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
 | Systems | quickbooks |

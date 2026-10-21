@@ -2,7 +2,7 @@
 
 # Goals
 
-Catalog as of 2026-10-01. Each goal is broken into steps; each step lists the indexed skills that can do it, best general fit first. Keep only the candidates whose "runs on" matches a system the user has confirmed. `csv`, `pdf`, `excel` and the other file formats mean the skill works from an export, which any ledger can produce. `any` means it needs no connected system.
+Catalog as of 2026-10-21. Each goal is broken into steps; each step lists the indexed skills that can do it, best general fit first. Keep only the candidates whose "runs on" matches a system the user has confirmed. `csv`, `pdf`, `excel` and the other file formats mean the skill works from an export, which any ledger can produce. `any` means it needs no connected system.
 
 ## month-end-close: Close the books for a month
 
@@ -10,6 +10,7 @@ Asked as: "close September" · "run my month-end close" · "get the books ready 
 
 1. **Track the close** — Generate the period's checklist and see what is open, blocked or done.
    - `month-end-close-checklist` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/month-end-close-checklist
+   - `fs-month-end-closer` — runs on: any · by Anthropic · PROPOSES-WRITES · grade current · public — install from https://github.com/anthropics/financial-services/tree/main/plugins/agent-plugins/month-end-closer
    - `close` — runs on: any · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 2. **Clean up uncategorized and miscoded transactions** — Clear suspense and uncategorized buckets before anything is reconciled.
    - `categorize-transactions` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
@@ -26,6 +27,7 @@ Asked as: "close September" · "run my month-end close" · "get the books ready 
    - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
 6. **Review what was posted** — A skeptical second pass over the period's entries and balances.
    - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `fs-gl-reconciler` — runs on: any · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/financial-services/tree/main/plugins/agent-plugins/gl-reconciler
    - `tie-out` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
    - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 7. **Produce the statements** — Balance sheet, income statement and cash flow with comparatives.
@@ -49,18 +51,19 @@ Asked as: "reconcile my bank account" · "my bank balance doesn't match the book
 Asked as: "reconcile Stripe payouts" · "my Shopify deposits don't match sales" · "book PayPal fees correctly"
 
 1. **Understand how the processor reports money** — Learn which object holds gross, fees, refunds and the net payout, before matching anything.
-   - `stripe-best-practices` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices
-   - `stripe-docs` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs
-   - `paypal-best-practices` — runs on: paypal · by PayPal — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-best-practices
-   - `shopify` — runs on: shopify · by Shopify — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify
+   - `stripe-best-practices` — runs on: stripe · by Stripe — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices
+   - `stripe-docs` — runs on: stripe · by Stripe — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs
+   - `paypal-best-practices` — runs on: paypal · by PayPal — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-best-practices
+   - `shopify` — runs on: shopify · by Shopify — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify
 2. **Match payouts to bank deposits** — Tie each net payout to the deposit that landed in the bank.
    - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation
    - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
 3. **Gross up sales and book fees** — Record gross sales, processor fees and refunds rather than the net deposit.
    - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
 4. **Reach store data on other platforms** — Orders and payouts from stores without a vendor skill.
-   - No indexed skill.
-   - Gap: No official skill or qualifying community repository reaches WooCommerce or BigCommerce store data yet.
+   - `woocommerce-for-claude` — runs on: woocommerce · by WooCommerce — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/woocommerce/woocommerce-claude/tree/trunk
+   - `square-mcp-server` — runs on: square · by Square — the platform vendor's own · MOVES-MONEY · grade current · public — install from https://github.com/square/square-mcp-server/tree/main
+   - Gap: No official skill or MCP server reaches BigCommerce store data; Mosofin's gateway connects it (docs.mosofin.com).
 
 ## categorize-transactions: Catch up on bookkeeping and categorize transactions
 
@@ -82,9 +85,9 @@ Asked as: "chase overdue invoices" · "who owes me money" · "reduce my DSO"
    - `ar-aging-and-collections` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections
    - `aging-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 2. **Send reminders** — Remind customers with tone matched to how late they are. Check what it sends and when before using it.
-   - `qb-chase-overdue-invoices` — runs on: quickbooks · by Intuit — the platform vendor's own skill · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/chase-overdue-invoices
+   - `qb-chase-overdue-invoices` — runs on: quickbooks · by Intuit — the platform vendor's own · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/chase-overdue-invoices
 3. **Follow up from the inbox** — Find customer replies and promises to pay in email.
-   - `gws-gmail-triage` — runs on: gmail · by Google — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-gmail-triage
+   - `gws-gmail-triage` — runs on: gmail · by Google — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-gmail-triage
 
 ## pay-bills: Process and review bills before paying them
 
@@ -99,8 +102,8 @@ Asked as: "process vendor invoices" · "make sure we're not paying a bill twice"
    - `duplicate-invoice-detection` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection
    - `three-way-match` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/three-way-match
 4. **Pay** — Send the payment. This moves real money — confirm every transfer.
-   - `stripe-pay` — runs on: stripe · by Stripe — the platform vendor's own skill · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-pay
-   - `stripe-directory` — runs on: stripe · by Stripe — the platform vendor's own skill · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-directory
+   - `stripe-pay` — runs on: stripe · by Stripe — the platform vendor's own · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-pay
+   - `stripe-directory` — runs on: stripe · by Stripe — the platform vendor's own · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-directory
    - Gap: No indexed skill pays bills through QuickBooks, Bill.com or a bank.
 
 ## expenses: Process expense reports and receipts
@@ -150,7 +153,7 @@ Asked as: "build a P&L and balance sheet" · "prepare the board pack" · "explai
 Asked as: "budget vs actuals" · "why are expenses up this month" · "variance analysis"
 
 1. **Get the budget** — Read the budget from wherever it is kept.
-   - `gws-sheets-read` — runs on: google-sheets · by Google — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-read
+   - `gws-sheets-read` — runs on: google-sheets · by Google — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-read
    - `xlsx` — runs on: excel · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/xlsx
 2. **Compare and explain** — Variance table with timing separated from true variance, and commentary.
    - `budget-vs-actuals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
@@ -165,30 +168,30 @@ Asked as: "13-week cash flow" · "will we run out of cash" · "build a forecast"
 2. **Forecast the P&L** — Rolling forecast where every line names its driver.
    - `forecast` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 3. **Look at financing if cash runs short** — QuickBooks Capital loan and credit options.
-   - `qb-lending` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/lending
+   - `qb-lending` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/lending
 
 ## business-health: Check how the business is doing
 
 Asked as: "how is my business doing" · "compare us to our industry" · "give me a dashboard"
 
 1. **Health briefing** — Summary across the main reports.
-   - `qb-business-health-check` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/business-health-check
+   - `qb-business-health-check` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/business-health-check
    - `dashboard` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 2. **Benchmark** — Compare against industry peers.
-   - `qb-industry-benchmark` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/industry-benchmark
+   - `qb-industry-benchmark` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/industry-benchmark
 
 ## payroll: Run payroll tasks
 
 Asked as: "add a new employee to payroll" · "give someone a raise" · "why did payroll cost go up"
 
 1. **Onboard a new hire** — Set the employee up in payroll from their offer details.
-   - `qb-payroll-employee-onboarding` — runs on: quickbooks · by Intuit — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding
+   - `qb-payroll-employee-onboarding` — runs on: quickbooks · by Intuit — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding
 2. **Change pay** — View or change base pay.
-   - `qb-set-base-pay` — runs on: quickbooks · by Intuit — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/set-base-pay
+   - `qb-set-base-pay` — runs on: quickbooks · by Intuit — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/set-base-pay
 3. **Answer payroll questions** — Look up payroll setup and history.
-   - `qb-payroll-help` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help
+   - `qb-payroll-help` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help
 4. **Analyse payroll cost** — What drove a change in payroll spend.
-   - `qb-analyze-payroll-cost` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost
+   - `qb-analyze-payroll-cost` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost
 
 Gap: Payroll skills are indexed for QuickBooks Payroll only.
 
@@ -197,34 +200,36 @@ Gap: Payroll skills are indexed for QuickBooks Payroll only.
 Asked as: "turn this email into an invoice" · "create a quote" · "set up subscriptions billing"
 
 1. **Quote or invoice from a request** — Turn a customer's email or a deal into an estimate, quote or invoice for review.
-   - `qb-email-to-estimate-invoice` — runs on: quickbooks · by Intuit — the platform vendor's own skill · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/email-to-estimate-invoice
-   - `hs-quote-to-cash` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/quote-to-cash
+   - `qb-email-to-estimate-invoice` — runs on: quickbooks · by Intuit — the platform vendor's own · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/email-to-estimate-invoice
+   - `hs-quote-to-cash` — runs on: hubspot · by HubSpot — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/quote-to-cash
 2. **Bill on usage or subscription** — Metered and subscription billing design.
-   - `metronome` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/metronome
-   - `stripe-best-practices` — runs on: stripe · by Stripe — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices
+   - `metronome` — runs on: stripe · by Stripe — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/metronome
+   - `stripe-best-practices` — runs on: stripe · by Stripe — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices
 
 ## new-client-setup: Set up books for a new client or company
 
 Asked as: "onboard a new client" · "set up my chart of accounts" · "connect QuickBooks"
 
 1. **Connect the ledger** — Get the accounting system connected and working.
-   - `qb-setup` — runs on: quickbooks · by Intuit — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup
+   - `qb-setup` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup
+   - `qbo-mcp-server` — runs on: quickbooks · by Intuit — the platform vendor's own · WRITES-DIRECT · grade current · public — install from https://github.com/intuit/quickbooks-online-mcp-server/tree/main
+   - `xero-mcp-server` — runs on: xero · by Xero — the platform vendor's own · WRITES-DIRECT · grade current · public — install from https://github.com/XeroAPI/xero-mcp-server/tree/main
 2. **Capture how the client works** — Profile, close calendar, materiality and reporting preferences.
    - `onboard-client` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 3. **Settle the chart of accounts** — One clear purpose per account before the first close.
    - `grill-my-coa` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 4. **Set up the document archive** — Where statements, workpapers and client documents live.
-   - `gws-drive` — runs on: google-drive · by Google — the platform vendor's own skill · WRITES-DIRECT · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-drive
+   - `gws-drive` — runs on: google-drive · by Google — the platform vendor's own · WRITES-DIRECT · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-drive
 
 ## sales-pipeline: Report on the sales pipeline and customers
 
 Asked as: "pipeline report" · "which customers are at risk" · "clean up the CRM"
 
 1. **Clean the data** — Fix incomplete and duplicate records before reporting on them.
-   - `hs-crm-data-quality` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/crm-data-quality
-   - `hs-bulk-operations` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/bulk-operations
+   - `hs-crm-data-quality` — runs on: hubspot · by HubSpot — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/crm-data-quality
+   - `hs-bulk-operations` — runs on: hubspot · by HubSpot — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/bulk-operations
 2. **Report** — Pipeline snapshots and win/loss.
-   - `hs-sales-reporting` — runs on: hubspot · by HubSpot — the platform vendor's own skill · READ-ONLY · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting
-   - `hs-deal-management` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/deal-management
+   - `hs-sales-reporting` — runs on: hubspot · by HubSpot — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting
+   - `hs-deal-management` — runs on: hubspot · by HubSpot — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/deal-management
 3. **Retain customers** — Find inactive and at-risk customers and set follow-ups.
-   - `hs-customer-retention` — runs on: hubspot · by HubSpot — the platform vendor's own skill · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/customer-retention
+   - `hs-customer-retention` — runs on: hubspot · by HubSpot — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/customer-retention

@@ -9,6 +9,7 @@ Plans, runs, or audits a monthly close against a Mosofin workspace — scopes th
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 1 — Orchestration |
 | Systems | quickbooks |

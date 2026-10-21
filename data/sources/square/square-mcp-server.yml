@@ -1,0 +1,39 @@
+id: square-mcp-server
+title: Square MCP Server
+kind: mcp-server
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'Square''s official MCP server (beta), generated from Square''s API: payments, refunds, orders,
+  invoices, catalog, inventory, customers, disputes and more. Square recommends its hosted server at mcp.squareup.com/mcp
+  with OAuth sign-in.'
+tiers:
+- WRITES-DIRECT
+- MOVES-MONEY
+tier_notes:
+  WRITES-DIRECT: Write calls are allowed unless DISALLOW_WRITES=true is set; no confirmation step is described.
+  MOVES-MONEY: Covers the payments, refunds and checkout APIs, so it can take payments and issue refunds.
+systems:
+- square
+inputs:
+- name: Square OAuth sign-in (hosted) or access token (local)
+  required: true
+  source: Square account
+  fallback: none
+outputs:
+- name: Square API results
+  type: chat
+  dest: the MCP client; writes land in Square
+never: []
+upstream:
+  repo: square/square-mcp-server
+  path: ''
+  ref: main
+  file: README.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:6d4fc98d46321047
+upstream_sha: b276734fe2f1
+last_checked: '2026-10-21'

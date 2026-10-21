@@ -25,19 +25,21 @@ Log in with PayPal, not Partner Referrals — the latter creates new seller acco
 
 ## Official skills from the vendor
 
-[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) · licence `apache-2.0` · probed 2026-09-20
+[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) · licence `apache-2.0` · probed 2026-10-21
 
 - **2** skills published
 - **2** finance-relevant
-- **2** indexed here
+- **4** indexed here
 
-Both indexed.
+Both indexed, plus PayPal's agent-toolkit SDK and its older paypal-mcp-server. Both of those can process payments and refunds.
 
 ## Skills in this index that need it
 
 **3 · Reconcile**
 
+- [PayPal Agent Toolkit](../../skills/paypal-agent-toolkit/README.md) — `GRADED` `WRITES-DIRECT` `MOVES-MONEY`
 - [paypal-best-practices](../../skills/paypal-best-practices/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
+- [PayPal MCP Server](../../skills/paypal-mcp-server/README.md) — `GRADED` `WRITES-DIRECT` `MOVES-MONEY`
 - [paypal-routing](../../skills/paypal-routing/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
 
 ---
