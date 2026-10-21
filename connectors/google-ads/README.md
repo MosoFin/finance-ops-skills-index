@@ -25,11 +25,19 @@ Explorer tier covers production accounts with no review, so this need not block 
 
 ## Official skills from the vendor
 
-None. [`googleads`](https://github.com/googleads) was probed on 2026-09-20 and publishes no agent skills — a dated fact, not a permanent state.
+[`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp) · licence `?` · probed 2026-10-21
+
+- **1** skills published
+- **0** finance-relevant
+- **1** indexed here
+
+No skills, but Google publishes an official read-only MCP server for the Google Ads API (googleads/google-ads-mcp), indexed as google-ads-mcp. It adds a usage-data header to API calls.
 
 ## Skills in this index that need it
 
-None yet. Connecting this reaches data no indexed skill currently reads.
+**6 · Report**
+
+- [Google Ads MCP Server](../../skills/google-ads-mcp/README.md) — `GRADED` `READ-ONLY` `SENDS-TELEMETRY`
 
 ---
 

@@ -8,7 +8,7 @@ A graded, continuously-verified index of agent skills published by vendors of fi
 
 Ask Claude which skills to use for a finance job on QuickBooks, Xero, Stripe or Shopify, and see which ones can write to your books or move money before you install them.
 
-**78 skills** · **78 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-21
+**82 skills** · **82 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-21
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -201,6 +201,9 @@ Ordered by when you need it, not alphabetically.
 - **[Aging Review](skills/aging-review/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND` `AUDIT-TRAIL`  
   Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and credit-balance items, then drafts collections notes and a proposed payment run. Cross-foots the aging to the ledger before any of it is believed.
+- **[Amazon month-end close](skills/amz-finance-month-end-closer/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Amazon's own skill for closing a seller's Amazon month: pulls the month's activity, overlapping settlements, carried balances and payout statuses, reconciles them, checks payouts against bank deposits the seller pastes in, and writes an accountant-ready summary.
 - **[A/R Aging and Collections](skills/ar-aging-and-collections/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `CLIENT-FACING` `NO-AUTO-SEND` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
@@ -309,6 +312,9 @@ Ordered by when you need it, not alphabetically.
 
 *Make the close legible to someone else*
 
+- **[Amazon seller analytics](skills/amz-seller-analytics/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `INJECTION-AWARE`  
+  Amazon's own skill for a seller's sales, traffic and inventory-health questions, answered from the Selling Partner connector's analytics tools in plain language.
 - **[Board Pack](skills/board-pack/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND`  
   Assembles the period's existing close artifacts into a board or management pack. Synthesis, not creation — missing artifacts are listed as gaps with the skill that produces each, never improvised around.
@@ -327,6 +333,9 @@ Ordered by when you need it, not alphabetically.
 - **[Financial Statement Builder](skills/financial-statement-builder/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
+- **[Google Ads MCP Server](skills/google-ads-mcp/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `SENDS-TELEMETRY`  
+  Google's official MCP server for the Google Ads API: query campaigns, spend and performance with Google Ads Query Language, read resource metadata, and list accessible accounts. Read-only; it changes no campaigns or budgets.
 - **[Google Sheets (gws-sheets)](skills/gws-sheets/README.md)** — Third party  
   `GRADED` `WRITES-DIRECT`  
   Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers and hand-built budgets actually live.
@@ -359,6 +368,9 @@ Ordered by when you need it, not alphabetically.
 
 *After the period is shut*
 
+- **[Amazon stockout prevention](skills/amz-stockout-prevention/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Amazon's own skill for FBA inventory health: days of cover from sales velocity, inbound-shipment gaps and restocking, with any price change drafted for the seller to approve.
 - **[Cash Flow](skills/cash-flow/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `PROVENANCE-STAMPED` `MATERIALITY-AWARE` `HUMAN-APPROVAL`  
   A 13-week cash projection built from open A/R and A/P, recurring items mined from history, and bank balances — opening balance tied to the bank before a single week is projected. Every projected line carries its basis.
@@ -442,6 +454,7 @@ reader to discover.
 | `jobber` | A | `oauth3` | — | — | n/a | — |
 | `lightspeed-x` | A | `oauth3` | — | — | partial | — |
 | `servicem8` | A | `oauth3` | — | — | n/a | — |
+| `tiktok-shop` | A | `oauth3` | — | — | — | — |
 
 - **`bigcommerce`** — Survey priority 2 — cleanest registration found; mirrors the Shopify code.
 - **`clio`** — Survey priority 3. Two separate APIs — confirm which carries billing.
@@ -449,6 +462,7 @@ reader to discover.
 - **`etsy`** — Two sequential review queues — file the Personal App early.
 - **`jobber`** — Survey priority 4. Field service has no processor fallback — embedded payments mean the platform API is the only path to the money. GraphQL only.
 - **`lightspeed-x`** — Rotating refresh tokens — same atomic-persistence care as Xero.
+- **`tiktok-shop`** — Added at the owner's request; registration not yet assessed.
 
 #### costly — Reachable only at material cost
 
@@ -522,6 +536,7 @@ for a grade.
 | [`stripe/ai`](https://github.com/stripe/ai) | 7 | first-party | `mit` | yes |
 | [`anthropics/skills`](https://github.com/anthropics/skills) | 5 | first-party | `proprietary-anthropic` | no — restricted |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 5 | first-party | `apache-2.0` | yes |
+| [`amzn/selling-partner-agentic-toolkit`](https://github.com/amzn/selling-partner-agentic-toolkit) | 3 | first-party | `apache-2.0` | yes |
 | [`anthropics/financial-services`](https://github.com/anthropics/financial-services) | 2 | first-party | `apache-2.0` | yes |
 | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | 2 | first-party | `apache-2.0` | yes |
 | [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | 2 | first-party | `gpl-2.0` | no — copyleft |
@@ -532,6 +547,7 @@ for a grade.
 | [`XeroAPI/xero-agent-toolkit`](https://github.com/XeroAPI/xero-agent-toolkit) | 1 | first-party | `mit` | yes |
 | [`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server) | 1 | first-party | `mit` | yes |
 | [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) | 1 | first-party | `apache-2.0` | yes |
+| [`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp) | 1 | first-party | `apache-2.0` | yes |
 | [`intuit/quickbooks-online-mcp-server`](https://github.com/intuit/quickbooks-online-mcp-server) | 1 | first-party | `apache-2.0` | yes |
 | [`paypal/agent-toolkit`](https://github.com/paypal/agent-toolkit) | 1 | first-party | `apache-2.0` | yes |
 | [`paypal/paypal-mcp-server`](https://github.com/paypal/paypal-mcp-server) | 1 | first-party | `unclear` | no — restricted |

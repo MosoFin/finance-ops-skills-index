@@ -10,13 +10,14 @@ Catalog as of 2026-10-21. "Not current" counts entries whose grade describes an 
 | stripe | payments | live | stripe/ai | 7 | 0 |
 | shopify | ecommerce | code-complete | Shopify/Shopify-AI-Toolkit | 1 | 0 |
 | meta-ads | advertising | roadmap | none | 0 | 0 |
-| google-ads | advertising | roadmap | none | 0 | 0 |
+| google-ads | advertising | roadmap | googleads/google-ads-mcp | 1 | 0 |
 | square | payments | roadmap | square/square-mcp-server | 1 | 0 |
 | paypal | payments | roadmap | paypal/AI-Toolkit | 4 | 0 |
 | xero | accounting | roadmap | XeroAPI/xero-mcp-server | 2 | 0 |
 | hubspot | crm | roadmap | HubSpot/agent-cli-skills | 8 | 0 |
 | klaviyo | marketing | roadmap | none | 0 | 0 |
-| amazon-sp | ecommerce | roadmap | amzn/ads-advanced-tools-docs | 0 | 0 |
+| amazon-sp | ecommerce | roadmap | amzn/selling-partner-agentic-toolkit | 3 | 0 |
+| tiktok-shop | ecommerce | candidate | none | 0 | 0 |
 | bigcommerce | ecommerce | candidate | none | 1 | 0 |
 | ebay | ecommerce | candidate | none | 0 | 0 |
 | ecwid | ecommerce | candidate | none | 0 | 0 |

@@ -5,7 +5,7 @@
 For every connector on the roadmap: who owns it on GitHub, whether they publish
 agent skills of their own, and how many this index carries.
 
-**30 connectors tracked** · **11 vendor skill repositories** · **210 skills published** · **34 finance-relevant** · **17 vendors publish none**
+**31 connectors tracked** · **12 vendor skill repositories** · **214 skills published** · **37 finance-relevant** · **17 vendors publish none**
 
 *Published* is everything in the repo. *Relevant* is what belongs in a finance
 index — most vendor skills teach you to build on their platform, which is a
@@ -23,19 +23,21 @@ on it, not a permanent state.
 | [`stripe/ai`](https://github.com/stripe/ai) | `stripe` | 60 | 7 | 7 | `mit` | 2026-09-20 |
 | [`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills) | `hubspot` | 15 | 7 | 8 | `apache-2.0` | 2026-10-21 |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | `gmail`, `google-drive`, `google-sheets` | 95 | 5 | 5 | `apache-2.0` | 2026-09-20 |
+| [`amzn/selling-partner-agentic-toolkit`](https://github.com/amzn/selling-partner-agentic-toolkit) | `amazon-sp` | 12 | 3 | 3 | `apache-2.0` | 2026-10-21 |
 | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | `paypal` | 2 | 2 | 4 | `apache-2.0` | 2026-10-21 |
 | [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | `woocommerce` | 2 | 2 | 4 | `gpl-2.0` | 2026-10-21 |
 | [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | `shopify` | 2 | 1 | 1 | `mit` | 2026-10-01 |
+| [`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp) | `google-ads` | 1 | 0 | 1 | `?` | 2026-10-21 |
 | [`square/square-mcp-server`](https://github.com/square/square-mcp-server) | `square` | 0 | 0 | 1 | `?` | 2026-10-21 |
 | [`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server) | `xero` | 0 | 0 | 2 | `?` | 2026-10-21 |
-| [`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs) | `amazon-sp` | 9 | 0 | 0 | `mit-0` | 2026-09-20 |
 | [`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit) | `excel` | 15 | 0 | 0 | `mit` | 2026-09-20 |
 
 - **[`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills)** — Seven are revenue operations. The rest are CRM workflow and support.
 - **[`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit)** — The repo's .github/skills are Microsoft's internal development process — vibe-coding, governance remediation. Nothing to do with Excel.
 - **[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit)** — On 2026-09-25 Shopify moved its 21 per-surface skills to deprecated/ as stubs and replaced them with one consolidated `shopify` skill, which is indexed. The other active skill, `ucp`, is a buyer-side shopping agent for purchasing from merchants — not store operations — so it is not.
 - **[`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server)** — No vendor-published skills. Xero publishes an official MCP server (51 tools, including create-payment and manual journals, no confirmation step) and example agents (xero-agent-toolkit); both indexed.
-- **[`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs)** — The nine are Amazon Ads API migration guides — a different product from SP-API, and developer tooling rather than bookkeeping.
+- **[`amzn/selling-partner-agentic-toolkit`](https://github.com/amzn/selling-partner-agentic-toolkit)** — Amazon's official Selling Partner agentic toolkit: 12 skills on Amazon's hosted connector (sellingpartner-ai.amazon.com/mcp), with every write drafted for approval. The three finance and inventory skills are indexed (month-end close, seller analytics, stockout prevention); the rest cover listings, FBA inbound, user invites and support cases.
+- **[`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp)** — No skills, but Google publishes an official read-only MCP server for the Google Ads API (googleads/google-ads-mcp), indexed as google-ads-mcp. It adds a usage-data header to API calls.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Triage only — this connector is not recommended anyway.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Drive itself. See google-sheets for the rest.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
@@ -52,9 +54,8 @@ skills, MCP, a toolkit, a plugin, a CLI or an SDK.
 
 | Connector | Status | GitHub org | Checked |
 |---|---|---|---|
-| `google-ads` | roadmap | [`googleads`](https://github.com/googleads) | 2026-09-20 |
 | `klaviyo` | roadmap | [`klaviyo`](https://github.com/klaviyo) | 2026-09-20 |
-| `meta-ads` | roadmap | [`facebook`](https://github.com/facebook) | 2026-09-20 |
+| `meta-ads` | roadmap | [`facebook`](https://github.com/facebook) | 2026-10-21 |
 | `bigcommerce` | candidate | [`bigcommerce`](https://github.com/bigcommerce) | 2026-10-21 |
 | `clio` | candidate | [`clio`](https://github.com/clio) | 2026-09-20 |
 | `ebay` | candidate | [`eBay`](https://github.com/eBay) | 2026-09-20 |
@@ -64,6 +65,7 @@ skills, MCP, a toolkit, a plugin, a CLI or an SDK.
 | `jobber` | candidate | [`GetJobber`](https://github.com/GetJobber) | 2026-09-20 |
 | `lightspeed-x` | candidate | [`lightspeedhq`](https://github.com/lightspeedhq) | 2026-09-20 |
 | `servicem8` | candidate | [`ServiceM8`](https://github.com/ServiceM8) | 2026-09-20 |
+| `tiktok-shop` | candidate | [`tiktok`](https://github.com/tiktok) | 2026-10-21 |
 | `clover` | costly | [`clover`](https://github.com/clover) | 2026-09-20 |
 | `housecallpro` | costly | *no public org at the obvious name* | 2026-09-20 |
 | `servicetitan` | costly | [`servicetitan`](https://github.com/servicetitan) | 2026-09-20 |

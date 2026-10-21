@@ -4,8 +4,23 @@
 
 - Reachability: **roadmap** — Committed — registration runbook written
 - Vertical: advertising
-- **No vendor-published skills found** as of 2026-09-20.
+- Vendor skills repository: https://github.com/googleads/google-ads-mcp
+- Published there: 1 · indexed here: 1 · checked 2026-10-21
+- Note: No skills, but Google publishes an official read-only MCP server for the Google Ads API (googleads/google-ads-mcp), indexed as google-ads-mcp. It adds a usage-data header to API calls.
 
 ## Indexed skills
 
-None indexed. Do not invent one — say so and point to the vendor's own developer docs.
+### google-ads-mcp
+
+- Publisher: Google — the platform vendor's own
+- Type: mcp-server
+- Stage 6 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:0478463b93ef9ff5 · upstream commit 9a78cbdceeba · checked 2026-10-21
+- Trust badges: READ-ONLY, SENDS-TELEMETRY
+  - READ-ONLY: Its three tools are search, get_resource_metadata and list_accessible_customers; none creates, edits or deletes anything.
+  - SENDS-TELEMETRY: Adds a header to every Google Ads API call so Google can collect usage data.
+- Licence: apache-2.0
+- Upstream: https://github.com/googleads/google-ads-mcp/tree/main
+- Summary: Google's official MCP server for the Google Ads API: query campaigns, spend and performance with Google Ads Query Language, read resource metadata, and list accessible accounts. Read-only; it changes no campaigns or budgets.
+- Never: Create, edit or delete a campaign, ad group, ad or budget.

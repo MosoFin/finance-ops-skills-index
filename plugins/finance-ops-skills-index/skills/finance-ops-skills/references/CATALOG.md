@@ -75,6 +75,8 @@ _Tie the books to the outside world_
 
 - `aging-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and credit-balance items, then drafts collections notes and a proposed payment run. Cross-foots the aging to the ledger before any of it is believed.
+- `amz-finance-month-end-closer` — runs on: amazon-sp · by Amazon — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/amzn/selling-partner-agentic-toolkit/tree/main/skills/finance-month-end-closer
+  Amazon's own skill for closing a seller's Amazon month: pulls the month's activity, overlapping settlements, carried balances and payout statuses, reconciles them, checks payouts against bank deposits the seller pastes in, and writes an accountant-ready summary.
 - `ar-aging-and-collections` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections
   Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
 - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
@@ -152,6 +154,8 @@ _The skeptical second pass_
 
 _Make the close legible to someone else_
 
+- `amz-seller-analytics` — runs on: amazon-sp · by Amazon — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/amzn/selling-partner-agentic-toolkit/tree/main/skills/seller-analytics
+  Amazon's own skill for a seller's sales, traffic and inventory-health questions, answered from the Selling Partner connector's analytics tools in plain language.
 - `board-pack` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   Assembles the period's existing close artifacts into a board or management pack. Synthesis, not creation — missing artifacts are listed as gaps with the skill that produces each, never improvised around.
 - `budget-vs-actuals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
@@ -164,6 +168,8 @@ _Make the close legible to someone else_
   Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
 - `financial-statement-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder
   Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
+- `google-ads-mcp` — runs on: google-ads · by Google — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/googleads/google-ads-mcp/tree/main
+  Google's official MCP server for the Google Ads API: query campaigns, spend and performance with Google Ads Query Language, read resource metadata, and list accessible accounts. Read-only; it changes no campaigns or budgets.
 - `gws-sheets` — runs on: google-sheets · by Google — the platform vendor's own · WRITES-DIRECT · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets
   Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers and hand-built budgets actually live.
 - `gws-sheets-append` — runs on: google-sheets · by Google — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-append
@@ -187,6 +193,8 @@ _Make the close legible to someone else_
 
 _After the period is shut_
 
+- `amz-stockout-prevention` — runs on: amazon-sp · by Amazon — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/amzn/selling-partner-agentic-toolkit/tree/main/skills/stockout-prevention
+  Amazon's own skill for FBA inventory health: days of cover from sales velocity, inbound-shipment gaps and restocking, with any price change drafted for the seller to approve.
 - `cash-flow` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   A 13-week cash projection built from open A/R and A/P, recurring items mined from history, and bank balances — opening balance tied to the bank before a single week is projected. Every projected line carries its basis.
 - `forecast` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable

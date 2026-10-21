@@ -80,8 +80,26 @@ goals:
         skills: [journal-entry-builder]
       - step: Reach store data on other platforms
         does: Orders and payouts from stores without a vendor skill.
-        skills: [woocommerce-for-claude, square-mcp-server]
+        skills: [amz-finance-month-end-closer, woocommerce-for-claude, square-mcp-server]
         gap: No official skill or MCP server reaches BigCommerce store data; Mosofin's gateway connects it (docs.mosofin.com).
+
+  ad-spend:
+    title: Check what ad spend is returning
+    asks:
+      - are my Google ads paying off
+      - how much did we spend on ads last month
+      - what's my return on ad spend
+    steps:
+      - step: Pull spend and results
+        does: Read campaign spend, clicks and conversions from the ad platform.
+        skills: [google-ads-mcp]
+        gap: No official, trackable Meta Ads or TikTok Ads server is indexed yet; Meta's official server is hosted only.
+      - step: Tie spend to the books
+        does: Compare ad spend against what was billed and booked to the advertising account.
+        skills: [budget-vs-actuals, flux]
+      - step: Tie spend to sales
+        does: Set spend against the orders it drove on the store.
+        skills: [amz-seller-analytics, woocommerce-for-claude]
 
   categorize-transactions:
     title: Catch up on bookkeeping and categorize transactions

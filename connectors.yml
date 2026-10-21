@@ -140,7 +140,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-21"
+    skills_note: >-
+      No skills or MCP server on GitHub. Meta runs an official hosted Ads MCP server at mcp.facebook.com/ads, in free open beta since April 2026 according to several third-party guides; Meta's own documentation could not be reached to confirm it, and with no repository it cannot be tracked here. Community servers that meet the 100-star, two-week rule (Ryze's google-ads-meta-ads-mcp, Pipeboard's meta-ads-mcp) are hosted paid services and await an owner decision.
   google-ads:
     status: roadmap
     family: B
@@ -158,10 +160,12 @@ connectors:
       expire after 7 days — publish before debugging. Separate Cloud projects
       for dev and prod are Google policy, not preference.
     github_org: googleads
-    skills_repo: none
-    skills_published: 0
-    skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_repo: googleads/google-ads-mcp
+    skills_published: 1
+    skills_indexed: 1
+    skills_checked: "2026-10-21"
+    skills_note: >-
+      No skills, but Google publishes an official read-only MCP server for the Google Ads API (googleads/google-ads-mcp), indexed as google-ads-mcp. It adds a usage-data header to API calls.
   square:
     status: roadmap
     family: A
@@ -280,14 +284,29 @@ connectors:
     payouts: "yes"
     note: "Longest lead time on the roadmap — file first, build while the clock runs."
     github_org: amzn
-    skills_repo: amzn/ads-advanced-tools-docs
-    skills_published: 9
-    skills_license: mit-0
-    skills_checked: "2026-09-20"
-    skills_relevant: 0
-    skills_indexed: 0
+    skills_repo: amzn/selling-partner-agentic-toolkit
+    skills_published: 12
+    skills_license: apache-2.0
+    skills_checked: "2026-10-21"
+    skills_relevant: 3
+    skills_indexed: 3
     skills_note: >-
-      The nine are Amazon Ads API migration guides — a different product from SP-API, and developer tooling rather than bookkeeping.
+      Amazon's official Selling Partner agentic toolkit: 12 skills on Amazon's hosted connector (sellingpartner-ai.amazon.com/mcp), with every write drafted for approval. The three finance and inventory skills are indexed (month-end close, seller analytics, stockout prevention); the rest cover listings, FBA inbound, user invites and support cases.
+
+  tiktok-shop:
+    status: candidate
+    family: A
+    source: owner request (2026-10-21)
+    auth: oauth3
+    vertical: ecommerce
+    note: "Added at the owner's request; registration not yet assessed."
+    github_org: tiktok
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-21"
+    skills_note: >-
+      No official MCP server or agent skills: TikTok publishes only SDKs (tiktok-business-api-sdk) and TikTok Shop API sample apps. The only community repository over 100 stars with a recent commit, xixihhhh/clipforge, makes short sales videos and does not read shop orders or settlements, so nothing is recommended.
 
   # ===== Evaluated, not committed =========================================
   bigcommerce:

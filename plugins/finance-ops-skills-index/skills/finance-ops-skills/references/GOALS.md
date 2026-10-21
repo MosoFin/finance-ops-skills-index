@@ -61,9 +61,24 @@ Asked as: "reconcile Stripe payouts" · "my Shopify deposits don't match sales" 
 3. **Gross up sales and book fees** — Record gross sales, processor fees and refunds rather than the net deposit.
    - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
 4. **Reach store data on other platforms** — Orders and payouts from stores without a vendor skill.
+   - `amz-finance-month-end-closer` — runs on: amazon-sp · by Amazon — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/amzn/selling-partner-agentic-toolkit/tree/main/skills/finance-month-end-closer
    - `woocommerce-for-claude` — runs on: woocommerce · by WooCommerce — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/woocommerce/woocommerce-claude/tree/trunk
    - `square-mcp-server` — runs on: square · by Square — the platform vendor's own · MOVES-MONEY · grade current · public — install from https://github.com/square/square-mcp-server/tree/main
    - Gap: No official skill or MCP server reaches BigCommerce store data; Mosofin's gateway connects it (docs.mosofin.com).
+
+## ad-spend: Check what ad spend is returning
+
+Asked as: "are my Google ads paying off" · "how much did we spend on ads last month" · "what's my return on ad spend"
+
+1. **Pull spend and results** — Read campaign spend, clicks and conversions from the ad platform.
+   - `google-ads-mcp` — runs on: google-ads · by Google — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/googleads/google-ads-mcp/tree/main
+   - Gap: No official, trackable Meta Ads or TikTok Ads server is indexed yet; Meta's official server is hosted only.
+2. **Tie spend to the books** — Compare ad spend against what was billed and booked to the advertising account.
+   - `budget-vs-actuals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+3. **Tie spend to sales** — Set spend against the orders it drove on the store.
+   - `amz-seller-analytics` — runs on: amazon-sp · by Amazon — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/amzn/selling-partner-agentic-toolkit/tree/main/skills/seller-analytics
+   - `woocommerce-for-claude` — runs on: woocommerce · by WooCommerce — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/woocommerce/woocommerce-claude/tree/trunk
 
 ## categorize-transactions: Catch up on bookkeeping and categorize transactions
 

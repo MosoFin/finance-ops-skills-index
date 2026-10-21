@@ -1,0 +1,46 @@
+id: amz-finance-month-end-closer
+title: Amazon month-end close
+kind: skill
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'Amazon''s own skill for closing a seller''s Amazon month: pulls the month''s activity, overlapping
+  settlements, carried balances and payout statuses, reconciles them, checks payouts against bank deposits
+  the seller pastes in, and writes an accountant-ready summary.'
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: '"Read-and-explain only: it posts no entries, changes no accounting records, and never files,
+    submits, pays, or moves money."'
+  EVIDENCE-GATED: Every figure comes from the connector's response or sums of its values; it refuses to
+    close a month that is still open rather than explaining it away.
+systems:
+- amazon-sp
+inputs:
+- name: Amazon Selling Partner connector (Seller Central OAuth)
+  required: true
+  source: sellingpartner-ai.amazon.com/mcp
+  fallback: none
+- name: bank deposit details
+  required: false
+  source: the seller pastes them
+  fallback: payouts stay unconfirmed
+outputs:
+- name: month reconciliation and accountant summary
+  type: chat
+  dest: the conversation
+never:
+- Post an entry, file, submit, pay or move money.
+upstream:
+  repo: amzn/selling-partner-agentic-toolkit
+  path: skills/finance-month-end-closer
+  ref: main
+  file: SKILL.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:c463eaa4c34e9eac
+upstream_sha: 8d90d3b7c153
+last_checked: '2026-10-21'

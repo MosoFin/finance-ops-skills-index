@@ -1,0 +1,41 @@
+id: google-ads-mcp
+title: Google Ads MCP Server
+kind: mcp-server
+origin: third-party
+authority: first-party
+stage: 6
+summary: 'Google''s official MCP server for the Google Ads API: query campaigns, spend and performance
+  with Google Ads Query Language, read resource metadata, and list accessible accounts. Read-only; it
+  changes no campaigns or budgets.'
+tiers:
+- READ-ONLY
+- SENDS-TELEMETRY
+tier_notes:
+  READ-ONLY: Its three tools are search, get_resource_metadata and list_accessible_customers; none creates,
+    edits or deletes anything.
+  SENDS-TELEMETRY: Adds a header to every Google Ads API call so Google can collect usage data.
+systems:
+- google-ads
+inputs:
+- name: Google Ads developer token and OAuth credentials
+  required: true
+  source: Google Ads API Center and a Google Cloud project
+  fallback: none
+outputs:
+- name: ad performance and spend data
+  type: chat
+  dest: the MCP client
+never:
+- Create, edit or delete a campaign, ad group, ad or budget.
+upstream:
+  repo: googleads/google-ads-mcp
+  path: ''
+  ref: main
+  file: README.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:0478463b93ef9ff5
+upstream_sha: 9a78cbdceeba
+last_checked: '2026-10-21'

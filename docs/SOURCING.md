@@ -68,3 +68,7 @@ daily, so a change to it expires the entry exactly as a changed `SKILL.md` does.
 | 2026-10-21 | HubSpot | Added HubSpot's Sales plugin. `HubSpot/mcp-server` skipped: the repository is empty. |
 | 2026-10-21 | PayPal | Added PayPal's agent toolkit and MCP server next to its AI-Toolkit plugin. |
 | 2026-10-21 | Cross-platform | Added Anthropic's Month-End Closer and GL Reconciler agents. |
+| 2026-10-21 | Google Ads | Added Google's official read-only `googleads/google-ads-mcp`. |
+| 2026-10-21 | Amazon Seller | Added three skills from Amazon's official `amzn/selling-partner-agentic-toolkit`: month-end close, seller analytics, stockout prevention. |
+| 2026-10-21 | Meta Ads | Nothing official on GitHub. Meta's hosted Ads MCP noted in the vendor page. Community candidates that pass step 2 (Ryze, Pipeboard) are paid hosted services; awaiting owner decision. |
+| 2026-10-21 | TikTok Shop | Added as a platform. Nothing official; the only community repo passing step 2 (`xixihhhh/clipforge`) makes videos and does not read shop data, so it is a named gap. |
