@@ -9,6 +9,7 @@ Google's official Gmail triage skill. Pairs with aging-review, where the collect
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | gmail |

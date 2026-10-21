@@ -4,9 +4,22 @@
 
 - Reachability: **roadmap** — Committed — registration runbook written
 - Vertical: payments
-- **No vendor-published skills found** as of 2026-10-01.
-- Note: Nothing published by Square, and no Square skill in Apideck's third-party set either.
+- Vendor skills repository: https://github.com/square/square-mcp-server
+- Published there: 0 · indexed here: 1 · checked 2026-10-21
+- Note: No skills, but Square publishes an official MCP server (square/square-mcp-server, beta) and runs a hosted one at mcp.squareup.com/mcp, which it recommends. Indexed as square-mcp-server.
 
 ## Indexed skills
 
-None indexed. Do not invent one — say so and point to the vendor's own developer docs.
+### square-mcp-server
+
+- Publisher: Square — the platform vendor's own
+- Type: mcp-server
+- Stage 3 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:6d4fc98d46321047 · upstream commit b276734fe2f1 · checked 2026-10-21
+- Trust badges: WRITES-DIRECT, MOVES-MONEY
+  - WRITES-DIRECT: Write calls are allowed unless DISALLOW_WRITES=true is set; no confirmation step is described.
+  - MOVES-MONEY: Covers the payments, refunds and checkout APIs, so it can take payments and issue refunds.
+- Licence: apache-2.0
+- Upstream: https://github.com/square/square-mcp-server/tree/main
+- Summary: Square's official MCP server (beta), generated from Square's API: payments, refunds, orders, invoices, catalog, inventory, customers, disputes and more. Square recommends its hosted server at mcp.squareup.com/mcp with OAuth sign-in.

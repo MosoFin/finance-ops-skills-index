@@ -25,17 +25,27 @@ Longest lead time on the roadmap — file first, build while the clock runs.
 
 ## Official skills from the vendor
 
-[`amzn/ads-advanced-tools-docs`](https://github.com/amzn/ads-advanced-tools-docs) · licence `mit-0` · probed 2026-09-20
+[`amzn/selling-partner-agentic-toolkit`](https://github.com/amzn/selling-partner-agentic-toolkit) · licence `apache-2.0` · probed 2026-10-21
 
-- **9** skills published
-- **0** finance-relevant
-- **0** indexed here
+- **12** skills published
+- **3** finance-relevant
+- **3** indexed here
 
-The nine are Amazon Ads API migration guides — a different product from SP-API, and developer tooling rather than bookkeeping.
+Amazon's official Selling Partner agentic toolkit: 12 skills on Amazon's hosted connector (sellingpartner-ai.amazon.com/mcp), with every write drafted for approval. The three finance and inventory skills are indexed (month-end close, seller analytics, stockout prevention); the rest cover listings, FBA inbound, user invites and support cases.
 
 ## Skills in this index that need it
 
-None yet. Connecting this reaches data no indexed skill currently reads.
+**3 · Reconcile**
+
+- [Amazon month-end close](../../skills/amz-finance-month-end-closer/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED`
+
+**6 · Report**
+
+- [Amazon seller analytics](../../skills/amz-seller-analytics/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `INJECTION-AWARE`
+
+**7 · Forward-looking**
+
+- [Amazon stockout prevention](../../skills/amz-stockout-prevention/README.md) — `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`
 
 ---
 

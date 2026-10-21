@@ -13,7 +13,8 @@
 
 ### gws-gmail-triage
 
-- Publisher: Google — the platform vendor's own skill
+- Publisher: Google — the platform vendor's own
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:48b0512b3ffa718a · upstream commit 705fb0ecac6f · checked 2026-09-20

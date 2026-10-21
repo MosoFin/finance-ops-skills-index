@@ -5,15 +5,16 @@
 - Reachability: **live** — Connected today
 - Vertical: accounting
 - Vendor skills repository: https://github.com/intuit/quickbooks-claude-plugin
-- Published there: 10 · indexed here: 34 · checked 2026-09-20
+- Published there: 10 · indexed here: 35 · checked 2026-10-21
 - Repository licence: apache-2.0
-- Note: All ten are bookkeeping skills — the only vendor set that is.
+- Note: All ten are bookkeeping skills — the only vendor set that is. Intuit also publishes the QuickBooks Online MCP Server (intuit/quickbooks-online-mcp-server, 145 tools, writes on by default), indexed as qbo-mcp-server.
 
 ## Indexed skills
 
 ### accruals
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 4 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -29,6 +30,7 @@
 ### aging-review
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -44,6 +46,7 @@
 ### ar-aging-and-collections
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:c381b58714db19ba · upstream commit ac12d064e857 · checked 2026-09-20
@@ -60,6 +63,7 @@
 ### bank-rec
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -75,6 +79,7 @@
 ### bank-reconciliation
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:31a56e737c65229c · upstream commit ac12d064e857 · checked 2026-09-20
@@ -92,6 +97,7 @@
 ### board-pack
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -107,6 +113,7 @@
 ### budget-vs-actuals
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -121,6 +128,7 @@
 ### cash-flow
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 7 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -136,6 +144,7 @@
 ### categorize-transactions
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -151,6 +160,7 @@
 ### dashboard
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -166,6 +176,7 @@
 ### duplicate-invoice-detection
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 5 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:5594c83387a77ab5 · upstream commit ac12d064e857 · checked 2026-09-20
@@ -182,6 +193,7 @@
 ### expense-report-processor
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:d6c63a0d1e2b9d3f · upstream commit ac12d064e857 · checked 2026-09-20
@@ -198,6 +210,7 @@
 ### financial-statement-builder
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:0edd578122d3c364 · upstream commit ac12d064e857 · checked 2026-09-20
@@ -214,6 +227,7 @@
 ### flux
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 5 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -229,6 +243,7 @@
 ### forecast
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 7 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -243,6 +258,7 @@
 ### gl-coding-assistant
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:b0709543fe75304e · upstream commit ac12d064e857 · checked 2026-09-20
@@ -258,6 +274,7 @@
 ### grill-my-coa
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 0 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -272,6 +289,7 @@
 ### invoice-data-extractor
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2e056d89c2ac2261 · upstream commit ac12d064e857 · checked 2026-09-20
@@ -287,6 +305,7 @@
 ### je-review
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 5 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -301,6 +320,7 @@
 ### journal-entry-builder
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 4 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2e205addcb3b2e1a · upstream commit ac12d064e857 · checked 2026-09-20
@@ -317,6 +337,7 @@
 ### month-end-close-checklist
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 1 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2fec514402ed928d · upstream commit ac12d064e857 · checked 2026-09-20
@@ -335,6 +356,7 @@
 ### onboard-client
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 0 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only
@@ -349,7 +371,8 @@
 
 ### qb-analyze-payroll-cost
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 5 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:fff521688da6d362 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
@@ -364,7 +387,8 @@
 
 ### qb-business-health-check
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:6812bfc72086e284 · upstream commit c8daa17a64d4 · checked 2026-09-20
@@ -380,7 +404,8 @@
 
 ### qb-chase-overdue-invoices
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:1f57d78c39b05bb2 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
@@ -395,7 +420,8 @@
 
 ### qb-email-to-estimate-invoice
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:b246cf48095e1acf · upstream commit 6db49c4f8ed3 · checked 2026-09-20
@@ -411,7 +437,8 @@
 
 ### qb-industry-benchmark
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:aa7605287cc45023 · upstream commit c8daa17a64d4 · checked 2026-09-20
@@ -425,7 +452,8 @@
 
 ### qb-lending
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 7 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:c2e057c1891d72bb · upstream commit bb30cbdf7b5b · checked 2026-09-20
@@ -440,7 +468,8 @@
 
 ### qb-payroll-employee-onboarding
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 4 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:1de324182880658b · upstream commit 6db49c4f8ed3 · checked 2026-09-20
@@ -456,7 +485,8 @@
 
 ### qb-payroll-help
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 4 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:a5f2bd5e101a3c67 · upstream commit 6db49c4f8ed3 · checked 2026-09-20
@@ -471,7 +501,8 @@
 
 ### qb-set-base-pay
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 4 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:7beb7d6f2a0a36db · upstream commit 6db49c4f8ed3 · checked 2026-09-20
@@ -486,7 +517,8 @@
 
 ### qb-setup
 
-- Publisher: Intuit — the platform vendor's own skill
+- Publisher: Intuit — the platform vendor's own
+- Type: skill
 - Stage 0 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:03711cad3c3fb8f9 · upstream commit 21067205c10c · checked 2026-09-20
@@ -498,9 +530,23 @@
 - Summary: Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
 - Never: Suggest `claude mcp add` for QuickBooks — a locally added server shadows the claude.ai connector and cannot authenticate, since Intuit rejects the localhost redirect.
 
+### qbo-mcp-server
+
+- Publisher: Intuit — the platform vendor's own
+- Type: mcp-server
+- Stage 3 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:1b9164e29332ceeb · upstream commit 31a1dd5c3e17 · checked 2026-10-21
+- Trust badges: WRITES-DIRECT
+  - WRITES-DIRECT: Create, update and delete tools are on by default with no confirmation step. QUICKBOOKS_DISABLE_WRITE, _UPDATE and _DELETE switch each category off; read tools are always available.
+- Licence: apache-2.0
+- Upstream: https://github.com/intuit/quickbooks-online-mcp-server/tree/main
+- Summary: Intuit's official MCP server for QuickBooks Online: 145 tools to get, search, create, update and delete 29 entity types (invoices, bills, bill payments, payments, journal entries, transfers and more) plus 11 financial reports.
+
 ### three-way-match
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 5 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:2a4e014df4600db4 · upstream commit ac12d064e857 · checked 2026-09-20
@@ -517,6 +563,7 @@
 ### tie-out
 
 - Publisher: Mosofin — independent, not the platform's vendor
+- Type: skill
 - Stage 5 · status GRADED (graded 2026-09-18)
 - Grade current: yes
 - Graded version: Mosofin's own skill — re-graded on the staleness clock only

@@ -9,6 +9,7 @@ Daily briefings, pipeline snapshots, and win/loss analysis from the terminal —
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | hubspot |

@@ -25,13 +25,23 @@ Rotating refresh tokens need atomic persistence — a lost write costs the grant
 
 ## Official skills from the vendor
 
-None. [`XeroAPI`](https://github.com/XeroAPI) was probed on 2026-10-01 and publishes no agent skills — a dated fact, not a permanent state.
+[`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server) · licence `?` · probed 2026-10-21
+
+- **0** skills published
+- **0** finance-relevant
+- **2** indexed here
+
+No vendor-published skills. Xero publishes an official MCP server (51 tools, including create-payment and manual journals, no confirmation step) and example agents (xero-agent-toolkit); both indexed.
 
 ## Skills in this index that need it
 
-**2 · Data hygiene**
+**0 · Setup**
 
-- [Xero (via Apideck)](../../skills/apideck-xero/README.md) — `GRADED` `READ-ONLY`
+- [Xero Agent Toolkit](../../skills/xero-agent-toolkit/README.md) — `GRADED` `WRITES-DIRECT`
+
+**3 · Reconcile**
+
+- [Xero MCP Server](../../skills/xero-mcp-server/README.md) — `GRADED` `WRITES-DIRECT`
 
 ---
 

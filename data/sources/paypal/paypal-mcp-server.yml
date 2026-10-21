@@ -1,0 +1,39 @@
+id: paypal-mcp-server
+title: PayPal MCP Server
+kind: mcp-server
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'PayPal''s MCP server: invoices, orders, payments, refunds, disputes, subscriptions, products
+  and shipment tracking. Last updated October 2025; PayPal''s AI-Toolkit plugin is its newer route.'
+tiers:
+- WRITES-DIRECT
+- MOVES-MONEY
+tier_notes:
+  WRITES-DIRECT: Tools such as create_invoice, update_subscription and create_product run without a described
+    confirmation step.
+  MOVES-MONEY: pay_order processes payment and create_refund refunds a captured payment.
+systems:
+- paypal
+inputs:
+- name: PayPal access token
+  required: true
+  source: PayPal developer portal
+  fallback: none
+outputs:
+- name: PayPal API results
+  type: chat
+  dest: the MCP client; writes land in PayPal
+never: []
+upstream:
+  repo: paypal/paypal-mcp-server
+  path: ''
+  ref: main
+  file: README.md
+license: unclear
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:2844526907527f18
+upstream_sha: 6b1ced271959
+last_checked: '2026-10-21'

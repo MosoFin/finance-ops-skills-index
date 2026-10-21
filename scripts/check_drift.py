@@ -101,6 +101,11 @@ def _get(url: str, raw: bool = False, _attempt: int = 0):
         raise Fatal(f"network error for {url}: {e}") from e
 
 
+def _join(path: str, name: str) -> str:
+    """A file inside an entry's folder; an empty path means the repository root."""
+    return f"{path}/{name}" if path else name
+
+
 def latest_sha(repo: str, path: str, ref: str) -> str | int:
     r = _get(f"{API}/repos/{repo}/commits?path={path}&sha={ref}&per_page=1")
     if isinstance(r, int):
@@ -108,15 +113,21 @@ def latest_sha(repo: str, path: str, ref: str) -> str | int:
     return r[0]["sha"] if r else 404
 
 
-def body_hash(repo: str, path: str, ref: str) -> str | int:
-    r = _get(f"{RAW}/{repo}/{ref}/{path}/SKILL.md", raw=True)
+def body_hash(repo: str, path: str, ref: str, name: str = "SKILL.md") -> str | int:
+    """Hash of the file a grade was given against.
+
+    For a skill that is its SKILL.md. An MCP server, plugin or agent has no
+    SKILL.md, so its entry names the file that carries its instructions or its
+    tool list (upstream.file), usually README.md or agents/<name>.md.
+    """
+    r = _get(f"{RAW}/{repo}/{ref}/{_join(path, name)}", raw=True)
     if isinstance(r, int):
         return r
     return "sha256:" + hashlib.sha256(r).hexdigest()[:16]
 
 
 def license_hash(repo: str, path: str, ref: str) -> str | None:
-    r = _get(f"{RAW}/{repo}/{ref}/{path}/LICENSE.txt", raw=True)
+    r = _get(f"{RAW}/{repo}/{ref}/{_join(path, 'LICENSE.txt')}", raw=True)
     if isinstance(r, int):
         return None
     return "sha256:" + hashlib.sha256(r).hexdigest()[:16]
@@ -186,9 +197,10 @@ def main() -> int:
             continue
 
         time.sleep(PACE)
-        bh = body_hash(repo, path, ref)
+        graded_file = up.get("file", "SKILL.md")
+        bh = body_hash(repo, path, ref, graded_file)
         if isinstance(bh, int):
-            fatal.append(f"{sid}: SKILL.md unreadable at {repo}/{path} (HTTP {bh})")
+            fatal.append(f"{sid}: {graded_file} unreadable at {repo}/{_join(path, graded_file)} (HTTP {bh})")
             continue
 
         lh = license_hash(repo, path, ref)
@@ -202,7 +214,7 @@ def main() -> int:
                 risky = [b for b in HIGH_RISK if b in (s.get("tiers") or [])]
                 changed.append(
                     (f"[{', '.join(risky)}] " if risky else "") +
-                    f"{sid}: SKILL.md changed upstream "
+                    f"{sid}: {graded_file} changed upstream "
                     f"({s['skill_md_hash']} -> {bh}) — grade expired, re-read "
                     f"https://github.com/{repo}/commits/{ref}/{path}"
                 )

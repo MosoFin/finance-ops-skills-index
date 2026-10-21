@@ -9,6 +9,7 @@ Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Pay
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
 | Systems | quickbooks |

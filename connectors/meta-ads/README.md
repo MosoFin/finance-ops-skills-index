@@ -25,7 +25,7 @@ Business Verification and App Review are separate queues — file both in week 1
 
 ## Official skills from the vendor
 
-None. [`facebook`](https://github.com/facebook) was probed on 2026-09-20 and publishes no agent skills — a dated fact, not a permanent state.
+None. [`facebook`](https://github.com/facebook) was probed on 2026-10-21 and publishes no agent skills — a dated fact, not a permanent state.
 
 ## Skills in this index that need it
 

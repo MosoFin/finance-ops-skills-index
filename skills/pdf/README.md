@@ -9,6 +9,7 @@ Extract text, tables, and metadata from PDFs; merge and annotate. Relevant where
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | pdf |

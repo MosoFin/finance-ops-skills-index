@@ -1,0 +1,44 @@
+id: fs-month-end-closer
+title: Month-End Closer
+kind: agent
+origin: third-party
+authority: first-party
+stage: 1
+summary: 'Anthropic''s month-end close agent: accrual schedules, roll-forwards tied to the GL, variance
+  commentary, and a close package staged for controller sign-off. Reads the trial balance through a GL
+  MCP server you connect.'
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- INJECTION-AWARE
+tier_notes:
+  PROPOSES-WRITES: Drafts journal entries; it states "No GL posting" and posting needs controller approval
+    outside the agent.
+  HUMAN-APPROVAL: The close package is staged for controller sign-off.
+  INJECTION-AWARE: Supporting invoices and vendor statements are treated as untrusted; the workers that
+    read them have no MCP access and no write tools.
+systems:
+- any
+inputs:
+- name: a GL MCP server for the entity
+  required: true
+  source: your ledger
+  fallback: none
+outputs:
+- name: close package
+  type: workpapers
+  dest: staged for controller review
+never:
+- Post to the general ledger.
+upstream:
+  repo: anthropics/financial-services
+  path: plugins/agent-plugins/month-end-closer
+  ref: main
+  file: agents/month-end-closer.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:45eb684b988f046c
+upstream_sha: 574ed3624aeb
+last_checked: '2026-10-21'

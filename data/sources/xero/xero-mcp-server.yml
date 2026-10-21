@@ -1,0 +1,39 @@
+id: xero-mcp-server
+title: Xero MCP Server
+kind: mcp-server
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'Xero''s official MCP server: 51 tools over invoices, contacts, payments, bank transactions,
+  manual journals, payroll timesheets and reports (P&L, balance sheet, trial balance, aged receivables
+  and payables).'
+tiers:
+- WRITES-DIRECT
+tier_notes:
+  WRITES-DIRECT: 25 of its tools create, update, delete or approve records, among them create-payment,
+    create-bank-transaction, create-manual-journal and approve-payroll-timesheet. The README describes
+    no confirmation step before a write.
+systems:
+- xero
+inputs:
+- name: Xero custom connection or bearer token
+  required: true
+  source: Xero developer portal
+  fallback: none
+outputs:
+- name: Xero records and reports
+  type: chat
+  dest: the MCP client; writes land in Xero
+never: []
+upstream:
+  repo: XeroAPI/xero-mcp-server
+  path: ''
+  ref: main
+  file: README.md
+license: mit
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:40a3be8915579ad8
+upstream_sha: f24583c867df
+last_checked: '2026-10-21'

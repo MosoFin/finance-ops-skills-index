@@ -9,6 +9,7 @@ Stripe's integration guide: Checkout Sessions vs PaymentIntents, Connect, billin
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | stripe |

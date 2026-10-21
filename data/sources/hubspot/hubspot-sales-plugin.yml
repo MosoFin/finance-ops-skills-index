@@ -1,0 +1,38 @@
+id: hubspot-sales-plugin
+title: HubSpot Sales plugin
+kind: plugin
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'HubSpot''s official Claude plugin on its hosted MCP server (mcp.hubspot.com): contact lookup,
+  call prep, daily brief, follow-up drafting, call logging, contact import and pipeline overview.'
+tiers:
+- WRITES-DIRECT
+tier_notes:
+  WRITES-DIRECT: The main skill makes quick field updates and reports the change afterwards. Contact import
+    and call logging show a confirmation before writing.
+systems:
+- hubspot
+inputs:
+- name: HubSpot account sign-in
+  required: true
+  source: mcp.hubspot.com
+  fallback: none
+outputs:
+- name: CRM answers and record updates
+  type: chat
+  dest: the conversation; writes land in HubSpot
+never:
+- Guess a deal stage when more than one could fit; it asks instead.
+upstream:
+  repo: HubSpot/hubspot-mcp-plugins
+  path: HubSpot-Sales
+  ref: main
+  file: skills/hubspot/SKILL.md
+license: unclear
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:3e93875426e90300
+upstream_sha: 032d294bc915
+last_checked: '2026-10-21'

@@ -82,7 +82,7 @@ design, and it is the one that survives an audit conversation.
 A grade is a claim about a specific version of a file. When upstream changes the file,
 the claim expires.
 
-`scripts/check_drift.py` hashes each pointed-to `SKILL.md` daily. A changed body flips
+`scripts/check_drift.py` hashes each pointed-to `SKILL.md` daily (for an MCP server, plugin, agent or toolkit, the file named in its `upstream.file`; see [SOURCING.md](SOURCING.md)). A changed body flips
 the entry to `NEEDS-RE-GRADING` on `main` at once, and opens an issue linking the
 upstream diff, with `MOVES-MONEY` and `WRITES-DIRECT` entries listed first. **The bot
 never re-grades** — it only tells a person their judgment expired. Expiring a grade only

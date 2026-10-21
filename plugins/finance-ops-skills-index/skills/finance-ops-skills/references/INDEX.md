@@ -2,21 +2,22 @@
 
 # Vendors in this index
 
-Catalog as of 2026-10-01. "Not current" counts entries whose grade describes an older version of the skill, or was made too long ago; the vendor page names them.
+Catalog as of 2026-10-21. "Not current" counts entries whose grade describes an older version of the skill, or was made too long ago; the vendor page names them.
 
 | Vendor | Vertical | Reachability | Vendor skills repo | Indexed | Not current |
 | - | - | - | - | - | - |
-| quickbooks | accounting | live | intuit/quickbooks-claude-plugin | 34 | 0 |
+| quickbooks | accounting | live | intuit/quickbooks-claude-plugin | 35 | 0 |
 | stripe | payments | live | stripe/ai | 7 | 0 |
 | shopify | ecommerce | code-complete | Shopify/Shopify-AI-Toolkit | 1 | 0 |
 | meta-ads | advertising | roadmap | none | 0 | 0 |
-| google-ads | advertising | roadmap | none | 0 | 0 |
-| square | payments | roadmap | none | 0 | 0 |
-| paypal | payments | roadmap | paypal/AI-Toolkit | 2 | 0 |
-| xero | accounting | roadmap | none | 1 | 0 |
-| hubspot | crm | roadmap | HubSpot/agent-cli-skills | 7 | 0 |
+| google-ads | advertising | roadmap | googleads/google-ads-mcp | 1 | 0 |
+| square | payments | roadmap | square/square-mcp-server | 1 | 0 |
+| paypal | payments | roadmap | paypal/AI-Toolkit | 4 | 0 |
+| xero | accounting | roadmap | XeroAPI/xero-mcp-server | 2 | 0 |
+| hubspot | crm | roadmap | HubSpot/agent-cli-skills | 8 | 0 |
 | klaviyo | marketing | roadmap | none | 0 | 0 |
-| amazon-sp | ecommerce | roadmap | amzn/ads-advanced-tools-docs | 0 | 0 |
+| amazon-sp | ecommerce | roadmap | amzn/selling-partner-agentic-toolkit | 3 | 0 |
+| tiktok-shop | ecommerce | candidate | none | 0 | 0 |
 | bigcommerce | ecommerce | candidate | none | 1 | 0 |
 | ebay | ecommerce | candidate | none | 0 | 0 |
 | ecwid | ecommerce | candidate | none | 0 | 0 |
@@ -26,7 +27,7 @@ Catalog as of 2026-10-01. "Not current" counts entries whose grade describes an 
 | harvest | professional | candidate | none | 0 | 0 |
 | jobber | fieldservice | candidate | none | 0 | 0 |
 | servicem8 | fieldservice | candidate | none | 0 | 0 |
-| woocommerce | ecommerce | costly | woocommerce/agent-skills | 1 | 0 |
+| woocommerce | ecommerce | costly | woocommerce/agent-skills | 4 | 0 |
 | servicetitan | fieldservice | costly | none | 0 | 0 |
 | housecallpro | fieldservice | costly | none | 0 | 0 |
 | clover | retail | costly | none | 0 | 0 |
@@ -34,4 +35,4 @@ Catalog as of 2026-10-01. "Not current" counts entries whose grade describes an 
 | ncr-voyix | retail | gated | none | 0 | 0 |
 | gmail | workspace | not-recommended | googleworkspace/cli | 1 | 0 |
 | ehr | medical | declined | none | 0 | 0 |
-| _any | files | local | — | 8 | 0 |
+| _any | files | local | — | 10 | 0 |

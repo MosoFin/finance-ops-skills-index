@@ -1,6 +1,6 @@
 ---
 name: finance-ops-skills
-description: Recommends agent skills for finance and business-operations goals — month-end close, bank reconciliation, categorizing transactions, chasing overdue invoices, paying bills, expense reports, accruals and journal entries, financial statements and board packs, budget vs actuals, cash forecasts, payroll, invoicing, reconciling Stripe/PayPal/Shopify payouts, CRM pipeline reporting. Use when the user wants to get one of these done with an agent, asks which skill or plugin to use, asks whether skills exist for QuickBooks, Xero, Stripe, PayPal, Square, Shopify, WooCommerce, BigCommerce, HubSpot or similar software, or asks whether a skill is safe to let near their books or money. Load it as soon as the user states such a goal, before asking them anything — it says which platforms to confirm and then recommends. Read-only; it never installs or runs the skills it recommends.
+description: Recommends agent skills for finance and business-operations goals — month-end close, bank reconciliation, categorizing transactions, chasing overdue invoices, paying bills, expense reports, accruals and journal entries, financial statements and board packs, budget vs actuals, cash forecasts, payroll, invoicing, reconciling Stripe/PayPal/Shopify payouts, CRM pipeline reporting. Use when the user wants to get one of these done with an agent, asks which skill or plugin to use, asks whether skills exist for QuickBooks, Xero, Stripe, PayPal, Square, Shopify, WooCommerce, BigCommerce, Amazon Seller Central, TikTok Shop, Google Ads, Meta Ads, HubSpot or similar software, or asks whether a skill is safe to let near their books or money. Load it as soon as the user states such a goal, before asking them anything — it says which platforms to confirm and then recommends. Read-only; it never installs or runs the skills it recommends.
 license: MIT
 ---
 
@@ -49,7 +49,7 @@ If no candidate passes, the step is a gap. Say "no indexed skill covers this for
 Start with the platforms you are recommending for, so the user can correct them. Then, for each step in order:
 
 - the step and what it achieves, in one line
-- the recommended skill, its publisher exactly as the "Publisher" or "by" line gives it, and its upstream link. Call a skill the vendor's own only when that line says so: a Mosofin or Apideck skill that runs on QuickBooks or Xero was not made by Intuit or Xero.
+- the recommended skill, its publisher exactly as the "Publisher" or "by" line gives it, and its upstream link. Call a skill the vendor's own only when that line says so: a Mosofin skill that runs on QuickBooks was not made by Intuit.
 - its write authority: READ-ONLY, PROPOSES-WRITES, WRITES-DIRECT, or MOVES-MONEY. Put MOVES-MONEY and WRITES-DIRECT first in the line, and say what confirmation it asks for.
 - any warning: grade not current, sends telemetry, workspace only
 

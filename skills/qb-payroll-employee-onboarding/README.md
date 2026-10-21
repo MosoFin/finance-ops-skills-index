@@ -9,6 +9,7 @@ Onboard a new hire into QuickBooks Payroll from user-provided details or onboard
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
 | Systems | quickbooks |

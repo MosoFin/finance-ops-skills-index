@@ -9,6 +9,7 @@ Translates a result, statement, or decision into plain language pitched at the c
 | | |
 |---|---|
 | Origin | Mosofin workspace |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | any |

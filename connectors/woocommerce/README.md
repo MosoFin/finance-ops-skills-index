@@ -23,19 +23,25 @@ No registration exists and no revocation signal. Per-merchant key entry.
 
 ## Official skills from the vendor
 
-[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) · licence `unclear` · probed 2026-09-20
+[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) · licence `gpl-2.0` · probed 2026-10-21
 
 - **2** skills published
-- **0** finance-relevant
-- **1** indexed here
+- **2** finance-relevant
+- **4** indexed here
 
-WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed. One third-party pointer is: Apideck's `woocommerce` skill, via Apideck's unified API, beta.
+WooCommerce's two published skills are developer tools (an Abilities API guide and a stale-PR audit); both are indexed by owner decision. For store data, WooCommerce publishes WooCommerce for Claude (woocommerce/woocommerce-claude), which is indexed, on top of WordPress's official MCP Adapter.
 
 ## Skills in this index that need it
 
-**2 · Data hygiene**
+**0 · Setup**
 
-- [WooCommerce (via Apideck)](../../skills/apideck-woocommerce/README.md) — `GRADED` `READ-ONLY`
+- [WooCommerce Abilities API implement](../../skills/wc-abilities-api-implement/README.md) — `GRADED` `READ-ONLY`
+- [WooCommerce stale PR audit](../../skills/wc-stale-pr-audit/README.md) — `GRADED` `READ-ONLY`
+- [WordPress MCP Adapter](../../skills/wordpress-mcp-adapter/README.md) — `GRADED` `WRITES-DIRECT`
+
+**6 · Report**
+
+- [WooCommerce for Claude](../../skills/woocommerce-for-claude/README.md) — `GRADED` `READ-ONLY` `PII-MINIMISING` `HUMAN-APPROVAL`
 
 ---
 

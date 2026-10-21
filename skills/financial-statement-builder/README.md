@@ -9,6 +9,7 @@ Builds Balance Sheet, Income Statement, and Statement of Cash Flows with compara
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | quickbooks |

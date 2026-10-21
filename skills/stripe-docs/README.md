@@ -9,6 +9,7 @@ Use when the user or agent needs to read, search, or look up Stripe documentatio
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
 | Systems | stripe |

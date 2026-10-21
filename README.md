@@ -8,7 +8,7 @@ A graded, continuously-verified index of agent skills published by vendors of fi
 
 Ask Claude which skills to use for a finance job on QuickBooks, Xero, Stripe or Shopify, and see which ones can write to your books or move money before you install them.
 
-**67 skills** · **67 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-01
+**82 skills** · **82 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-21
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -18,7 +18,7 @@ Other skill directories grade nothing. A skill that silently posts journal entri
 and one that proposes them look identical in a bullet list. In accounting they are
 not the same product.
 
-**[Read the trust tiers →](docs/TRUST-TIERS.md)**
+**[Read the trust tiers →](docs/TRUST-TIERS.md)** · **[How sources are chosen →](docs/SOURCING.md)**
 
 ## How to use it
 
@@ -67,7 +67,7 @@ index covers yet. For example:
 | "Help me close September." | First: which accounting system and payment processor you use. Then the close step by step, a skill for each step that runs on them, and the gaps |
 | "We're on Xero and Stripe. What should I use for month-end?" | A close plan using only skills that work with Xero and Stripe, with the steps that have no Xero skill named as gaps |
 | "We're on QuickBooks and customers pay late. Help me collect." | Build the aging, then send reminders, with the skill for each and a note that reminders go out to customers |
-| "Has Xero published any official skills?" | No vendor skills, and the third-party Apideck option labelled as such |
+| "Has Xero published any official skills?" | That Xero has published no skills of its own, said plainly rather than filled with a near match |
 | "Which QuickBooks skills can post journal entries?" | The matching skills, each with its write authority (read-only, proposes writes, writes direct) |
 | "Is there a Stripe skill that can pay a supplier, and does it ask first?" | `stripe-pay` and `stripe-directory`, marked as moving money, with their confirmation step |
 | "What should I use for sales by channel on Shopify, and what does it send back?" | Shopify's `shopify` skill, what its telemetry contains and how to opt out |
@@ -108,6 +108,9 @@ Ordered by when you need it, not alphabetically.
 
 *Once per client, before any close*
 
+- **[BigCommerce development plugin](skills/bigcommerce-commerce/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  A community plugin of BigCommerce developer skills (REST and GraphQL APIs, orders, payments, catalog, checkout, Stencil, app development). Not published by BigCommerce, which publishes no agent skills; listed by owner decision with 39 stars.
 - **[Grill My COA](skills/grill-my-coa/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `POLICY-CAPTURING`  
   Relentless interview about your chart of accounts until every account has one clear purpose and every recurring transaction has exactly one home. Queries the ledger instead of asking whenever the ledger can answer.
@@ -126,6 +129,18 @@ Ordered by when you need it, not alphabetically.
 - **[stripe-docs](skills/stripe-docs/README.md)** — Third party  
   `GRADED` `READ-ONLY`  
   Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
+- **[WooCommerce Abilities API implement](skills/wc-abilities-api-implement/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  WooCommerce's developer skill for registering WordPress Abilities API capabilities in a WooCommerce extension. For developers building store integrations, not for running a store's books.
+- **[WooCommerce stale PR audit](skills/wc-stale-pr-audit/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  WooCommerce's maintainer skill for reviewing stale pull requests in WooCommerce's own repository. Listed because WooCommerce publishes it; it is not a store-operations skill.
+- **[WordPress MCP Adapter](skills/wordpress-mcp-adapter/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT`  
+  The official WordPress package that exposes a site's registered abilities as MCP tools. WooCommerce for Claude builds on the same layer; what it can do depends entirely on which abilities a site makes public.
+- **[Xero Agent Toolkit](skills/xero-agent-toolkit/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT`  
+  Xero's example agents (LangChain, OpenAI Agents SDK, Google ADK) built on the Xero MCP Server. For developers building their own Xero agent.
 
 ### 1 · Orchestration
 
@@ -134,6 +149,9 @@ Ordered by when you need it, not alphabetically.
 - **[Close](skills/close/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `STATEFUL` `AUDIT-TRAIL` `HUMAN-APPROVAL` `TIE-CHECKED`  
   A stateful month-end checklist for one period. Generates tasks from the client's close calendar, tracks status across sessions, and names the skill that fits the next open task. Tracks and suggests — it runs nothing and posts nothing.
+- **[Month-End Closer](skills/fs-month-end-closer/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `INJECTION-AWARE`  
+  Anthropic's month-end close agent: accrual schedules, roll-forwards tied to the GL, variance commentary, and a close package staged for controller sign-off. Reads the trial balance through a GL MCP server you connect.
 - **[Month-End Close Checklist](skills/month-end-close-checklist/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `TIE-CHECKED` `MATERIALITY-AWARE` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `STATEFUL`  
   Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the checklist from the entity's actual chart of accounts, pre-populates the status of every task that leaves ledger evidence, and runs a final tie-out including inter-period continuity.
@@ -142,15 +160,6 @@ Ordered by when you need it, not alphabetically.
 
 *Before the books can be trusted*
 
-- **[BigCommerce (via Apideck)](skills/apideck-bigcommerce/README.md)** — Third party  
-  `GRADED` `READ-ONLY`  
-  Apideck's guide to reaching BigCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to BigCommerce access.
-- **[WooCommerce (via Apideck)](skills/apideck-woocommerce/README.md)** — Third party  
-  `GRADED` `READ-ONLY`  
-  Apideck's guide to reaching WooCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to WooCommerce access. The WooCommerce connector is marked beta by Apideck: expect partial coverage.
-- **[Xero (via Apideck)](skills/apideck-xero/README.md)** — Third party  
-  `GRADED` `READ-ONLY`  
-  Apideck's guide to reaching Xero through its Accounting unified API: invoices, bills, payments, manual journals, chart of accounts and P&L / balance-sheet reports, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to Xero access. Xero App Partner certification is required beyond the Core tier, and from 2026-03-02 the Journals API is gated to the Advanced tier.
 - **[Categorize Transactions](skills/categorize-transactions/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `EVIDENCE-GATED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `DETERMINISTIC-MATH` `POLICY-CAPTURING`  
   Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
@@ -192,6 +201,9 @@ Ordered by when you need it, not alphabetically.
 - **[Aging Review](skills/aging-review/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND` `AUDIT-TRAIL`  
   Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and credit-balance items, then drafts collections notes and a proposed payment run. Cross-foots the aging to the ledger before any of it is believed.
+- **[Amazon month-end close](skills/amz-finance-month-end-closer/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Amazon's own skill for closing a seller's Amazon month: pulls the month's activity, overlapping settlements, carried balances and payout statuses, reconciles them, checks payouts against bank deposits the seller pastes in, and writes an accountant-ready summary.
 - **[A/R Aging and Collections](skills/ar-aging-and-collections/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `CLIENT-FACING` `NO-AUTO-SEND` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
@@ -201,6 +213,9 @@ Ordered by when you need it, not alphabetically.
 - **[Bank Reconciliation](skills/bank-reconciliation/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
+- **[GL Reconciler](skills/fs-gl-reconciler/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `INJECTION-AWARE`  
+  Anthropic's GL-to-subledger reconciliation agent: finds breaks over threshold, traces each to its cause, re-verifies, and drafts an exception report for sign-off. Reads through GL and subledger MCP servers you connect.
 - **[Gmail triage (gws-gmail-triage)](skills/gws-gmail-triage/README.md)** — Third party  
   `GRADED` `READ-ONLY`  
   Google's official Gmail triage skill. Pairs with aging-review, where the collections follow-up and the client's reply both arrive by mail.
@@ -210,15 +225,30 @@ Ordered by when you need it, not alphabetically.
 - **[quote-to-cash](skills/hs-quote-to-cash/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Build the product catalog, assemble quotes (line items + associations to deals), and track invoices and subscriptions through to revenue.
+- **[HubSpot Sales plugin](skills/hubspot-sales-plugin/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT`  
+  HubSpot's official Claude plugin on its hosted MCP server (mcp.hubspot.com): contact lookup, call prep, daily brief, follow-up drafting, call logging, contact import and pipeline overview.
+- **[PayPal Agent Toolkit](skills/paypal-agent-toolkit/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT` `MOVES-MONEY`  
+  PayPal's SDK for agent frameworks (OpenAI Agents SDK, LangChain, Vercel AI SDK, MCP): invoices, orders, payments, refunds, subscriptions, products and shipment tracking as callable tools.
 - **[paypal-best-practices](skills/paypal-best-practices/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   PayPal integration guidance, code examples, and best practices. Use for checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane, payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal architecture decision or code generation question.
+- **[PayPal MCP Server](skills/paypal-mcp-server/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT` `MOVES-MONEY`  
+  PayPal's MCP server: invoices, orders, payments, refunds, disputes, subscriptions, products and shipment tracking. Last updated October 2025; PayPal's AI-Toolkit plugin is its newer route.
 - **[paypal-routing](skills/paypal-routing/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes PayPal developer questions to the right command or reference file.
 - **[chase-overdue-invoices](skills/qb-chase-overdue-invoices/README.md)** — Third party  
   `GRADED` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
+- **[QuickBooks Online MCP Server](skills/qbo-mcp-server/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT`  
+  Intuit's official MCP server for QuickBooks Online: 145 tools to get, search, create, update and delete 29 entity types (invoices, bills, bill payments, payments, journal entries, transfers and more) plus 11 financial reports.
+- **[Square MCP Server](skills/square-mcp-server/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT` `MOVES-MONEY`  
+  Square's official MCP server (beta), generated from Square's API: payments, refunds, orders, invoices, catalog, inventory, customers, disputes and more. Square recommends its hosted server at mcp.squareup.com/mcp with OAuth sign-in.
 - **[stripe-best-practices](skills/stripe-best-practices/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Stripe's integration guide: Checkout Sessions vs PaymentIntents, Connect, billing and subscriptions, Stripe Tax registrations, Treasury financial accounts, deprecated-API migration and key handling. Routes each question to a Stripe-hosted reference file before any code is written.
@@ -231,6 +261,9 @@ Ordered by when you need it, not alphabetically.
 - **[Stripe Pay](skills/stripe-pay/README.md)** — Third party  
   `GRADED` `MOVES-MONEY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
+- **[Xero MCP Server](skills/xero-mcp-server/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT`  
+  Xero's official MCP server: 51 tools over invoices, contacts, payments, bank transactions, manual journals, payroll timesheets and reports (P&L, balance sheet, trial balance, aged receivables and payables).
 
 ### 4 · Adjust
 
@@ -279,6 +312,9 @@ Ordered by when you need it, not alphabetically.
 
 *Make the close legible to someone else*
 
+- **[Amazon seller analytics](skills/amz-seller-analytics/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED` `INJECTION-AWARE`  
+  Amazon's own skill for a seller's sales, traffic and inventory-health questions, answered from the Selling Partner connector's analytics tools in plain language.
 - **[Board Pack](skills/board-pack/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND`  
   Assembles the period's existing close artifacts into a board or management pack. Synthesis, not creation — missing artifacts are listed as gaps with the skill that produces each, never improvised around.
@@ -297,6 +333,9 @@ Ordered by when you need it, not alphabetically.
 - **[Financial Statement Builder](skills/financial-statement-builder/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
+- **[Google Ads MCP Server](skills/google-ads-mcp/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `SENDS-TELEMETRY`  
+  Google's official MCP server for the Google Ads API: query campaigns, spend and performance with Google Ads Query Language, read resource metadata, and list accessible accounts. Read-only; it changes no campaigns or budgets.
 - **[Google Sheets (gws-sheets)](skills/gws-sheets/README.md)** — Third party  
   `GRADED` `WRITES-DIRECT`  
   Google's official Workspace CLI skill for Sheets. Where most schedules, tie-out workpapers and hand-built budgets actually live.
@@ -318,6 +357,9 @@ Ordered by when you need it, not alphabetically.
 - **[industry-benchmark](skills/qb-industry-benchmark/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `PROVENANCE-STAMPED`  
   benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
+- **[WooCommerce for Claude](skills/woocommerce-for-claude/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `PII-MINIMISING` `HUMAN-APPROVAL`  
+  WooCommerce's own plugin that turns a store into an MCP endpoint for Claude: revenue, orders, refunds, coupons, tax and product analytics from WooCommerce's analytics tables, plus workflow skills such as failed-order triage and payment-method review.
 - **[xlsx](skills/xlsx/README.md)** — Third party  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED`  
   Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
@@ -326,6 +368,9 @@ Ordered by when you need it, not alphabetically.
 
 *After the period is shut*
 
+- **[Amazon stockout prevention](skills/amz-stockout-prevention/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Amazon's own skill for FBA inventory health: days of cover from sales velocity, inbound-shipment gaps and restocking, with any price change drafted for the seller to approve.
 - **[Cash Flow](skills/cash-flow/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `PROVENANCE-STAMPED` `MATERIALITY-AWARE` `HUMAN-APPROVAL`  
   A 13-week cash projection built from open A/R and A/P, recurring items mined from history, and bank balances — opening balance tied to the bank before a single week is projected. Every projected line carries its basis.
@@ -409,6 +454,7 @@ reader to discover.
 | `jobber` | A | `oauth3` | — | — | n/a | — |
 | `lightspeed-x` | A | `oauth3` | — | — | partial | — |
 | `servicem8` | A | `oauth3` | — | — | n/a | — |
+| `tiktok-shop` | A | `oauth3` | — | — | — | — |
 
 - **`bigcommerce`** — Survey priority 2 — cleanest registration found; mirrors the Shopify code.
 - **`clio`** — Survey priority 3. Two separate APIs — confirm which carries billing.
@@ -416,6 +462,7 @@ reader to discover.
 - **`etsy`** — Two sequential review queues — file the Personal App early.
 - **`jobber`** — Survey priority 4. Field service has no processor fallback — embedded payments mean the platform API is the only path to the money. GraphQL only.
 - **`lightspeed-x`** — Rotating refresh tokens — same atomic-persistence care as Xero.
+- **`tiktok-shop`** — Added at the owner's request; registration not yet assessed.
 
 #### costly — Reachable only at material cost
 
@@ -489,10 +536,23 @@ for a grade.
 | [`stripe/ai`](https://github.com/stripe/ai) | 7 | first-party | `mit` | yes |
 | [`anthropics/skills`](https://github.com/anthropics/skills) | 5 | first-party | `proprietary-anthropic` | no — restricted |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 5 | first-party | `apache-2.0` | yes |
-| [`apideck-libraries/api-skills`](https://github.com/apideck-libraries/api-skills) | 3 | notable | `apache-2.0` | yes |
+| [`amzn/selling-partner-agentic-toolkit`](https://github.com/amzn/selling-partner-agentic-toolkit) | 3 | first-party | `apache-2.0` | yes |
+| [`anthropics/financial-services`](https://github.com/anthropics/financial-services) | 2 | first-party | `apache-2.0` | yes |
 | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | 2 | first-party | `apache-2.0` | yes |
+| [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | 2 | first-party | `gpl-2.0` | no — copyleft |
+| [`HubSpot/hubspot-mcp-plugins`](https://github.com/HubSpot/hubspot-mcp-plugins) | 1 | first-party | `unclear` | no — restricted |
+| [`OrcaQubits/agentic-commerce-skills-plugins`](https://github.com/OrcaQubits/agentic-commerce-skills-plugins) | 1 | community | `unclear` | no — restricted |
 | [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | 1 | first-party | `mit` | yes |
+| [`WordPress/mcp-adapter`](https://github.com/WordPress/mcp-adapter) | 1 | first-party | `gpl-2.0` | no — copyleft |
+| [`XeroAPI/xero-agent-toolkit`](https://github.com/XeroAPI/xero-agent-toolkit) | 1 | first-party | `mit` | yes |
+| [`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server) | 1 | first-party | `mit` | yes |
 | [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) | 1 | first-party | `apache-2.0` | yes |
+| [`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp) | 1 | first-party | `apache-2.0` | yes |
+| [`intuit/quickbooks-online-mcp-server`](https://github.com/intuit/quickbooks-online-mcp-server) | 1 | first-party | `apache-2.0` | yes |
+| [`paypal/agent-toolkit`](https://github.com/paypal/agent-toolkit) | 1 | first-party | `apache-2.0` | yes |
+| [`paypal/paypal-mcp-server`](https://github.com/paypal/paypal-mcp-server) | 1 | first-party | `unclear` | no — restricted |
+| [`square/square-mcp-server`](https://github.com/square/square-mcp-server) | 1 | first-party | `apache-2.0` | yes |
+| [`woocommerce/woocommerce-claude`](https://github.com/woocommerce/woocommerce-claude) | 1 | first-party | `gpl-3.0` | no — copyleft |
 
 Eleven of the connectors above have owners who publish agent skills themselves —
 Intuit, Stripe, Shopify, PayPal, HubSpot, WooCommerce, Amazon, Google and Microsoft

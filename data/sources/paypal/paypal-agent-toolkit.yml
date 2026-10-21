@@ -1,0 +1,39 @@
+id: paypal-agent-toolkit
+title: PayPal Agent Toolkit
+kind: toolkit
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'PayPal''s SDK for agent frameworks (OpenAI Agents SDK, LangChain, Vercel AI SDK, MCP): invoices,
+  orders, payments, refunds, subscriptions, products and shipment tracking as callable tools.'
+tiers:
+- WRITES-DIRECT
+- MOVES-MONEY
+tier_notes:
+  WRITES-DIRECT: Create, update and delete tools are switched on per category in code, with no confirmation
+    step described.
+  MOVES-MONEY: pay_order processes payment for an order and create_refund refunds a captured payment.
+systems:
+- paypal
+inputs:
+- name: PayPal access token
+  required: true
+  source: PayPal developer portal
+  fallback: none
+outputs:
+- name: PayPal API results
+  type: chat
+  dest: the agent; writes land in PayPal
+never: []
+upstream:
+  repo: paypal/agent-toolkit
+  path: ''
+  ref: main
+  file: README.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:b0339435661fb90b
+upstream_sha: a3aa963960ca
+last_checked: '2026-10-21'

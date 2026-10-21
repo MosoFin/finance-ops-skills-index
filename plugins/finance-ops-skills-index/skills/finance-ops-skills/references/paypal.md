@@ -5,15 +5,30 @@
 - Reachability: **roadmap** — Committed — registration runbook written
 - Vertical: payments
 - Vendor skills repository: https://github.com/paypal/AI-Toolkit
-- Published there: 2 · indexed here: 2 · checked 2026-09-20
+- Published there: 2 · indexed here: 4 · checked 2026-10-21
 - Repository licence: apache-2.0
-- Note: Both indexed.
+- Note: Both indexed, plus PayPal's agent-toolkit SDK and its older paypal-mcp-server. Both of those can process payments and refunds.
 
 ## Indexed skills
 
+### paypal-agent-toolkit
+
+- Publisher: PayPal — the platform vendor's own
+- Type: toolkit
+- Stage 3 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:b0339435661fb90b · upstream commit a3aa963960ca · checked 2026-10-21
+- Trust badges: WRITES-DIRECT, MOVES-MONEY
+  - WRITES-DIRECT: Create, update and delete tools are switched on per category in code, with no confirmation step described.
+  - MOVES-MONEY: pay_order processes payment for an order and create_refund refunds a captured payment.
+- Licence: apache-2.0
+- Upstream: https://github.com/paypal/agent-toolkit/tree/main
+- Summary: PayPal's SDK for agent frameworks (OpenAI Agents SDK, LangChain, Vercel AI SDK, MCP): invoices, orders, payments, refunds, subscriptions, products and shipment tracking as callable tools.
+
 ### paypal-best-practices
 
-- Publisher: PayPal — the platform vendor's own skill
+- Publisher: PayPal — the platform vendor's own
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:09dc881c8ee7d471 · upstream commit a9c0586fe495 · checked 2026-09-20
@@ -25,9 +40,24 @@
 - Summary: PayPal integration guidance, code examples, and best practices. Use for checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane, payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal architecture decision or code generation question.
 - Never: Hardcode credentials in generated code. | Mix the three Fastlane variants. | Recommend NVP/SOAP, v1/payments, Hosted Fields or Adaptive Payments. | Create orders client-side. | Execute API calls the MCP tools should handle.
 
+### paypal-mcp-server
+
+- Publisher: PayPal — the platform vendor's own
+- Type: mcp-server
+- Stage 3 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:2844526907527f18 · upstream commit 6b1ced271959 · checked 2026-10-21
+- Trust badges: WRITES-DIRECT, MOVES-MONEY
+  - WRITES-DIRECT: Tools such as create_invoice, update_subscription and create_product run without a described confirmation step.
+  - MOVES-MONEY: pay_order processes payment and create_refund refunds a captured payment.
+- Licence: unclear
+- Upstream: https://github.com/paypal/paypal-mcp-server/tree/main
+- Summary: PayPal's MCP server: invoices, orders, payments, refunds, disputes, subscriptions, products and shipment tracking. Last updated October 2025; PayPal's AI-Toolkit plugin is its newer route.
+
 ### paypal-routing
 
-- Publisher: PayPal — the platform vendor's own skill
+- Publisher: PayPal — the platform vendor's own
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:3c99aba0118d4733 · upstream commit c93cbfe5b0b1 · checked 2026-09-20

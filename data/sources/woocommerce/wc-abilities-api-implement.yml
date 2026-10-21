@@ -1,0 +1,36 @@
+id: wc-abilities-api-implement
+title: WooCommerce Abilities API implement
+kind: skill
+origin: third-party
+authority: first-party
+stage: 0
+summary: WooCommerce's developer skill for registering WordPress Abilities API capabilities in a WooCommerce
+  extension. For developers building store integrations, not for running a store's books.
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: Guides code changes in an extension repository; it does not touch store or ledger data.
+systems:
+- woocommerce
+inputs:
+- name: a WooCommerce extension codebase
+  required: true
+  source: the developer's repository
+  fallback: none
+outputs:
+- name: extension code and contract tests
+  type: files
+  dest: the extension repository
+never: []
+upstream:
+  repo: woocommerce/agent-skills
+  path: skills/abilities-api-implement
+  ref: trunk
+  file: SKILL.md
+license: gpl-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:9a6d930bda8616aa
+upstream_sha: 89cc969d2273
+last_checked: '2026-10-21'

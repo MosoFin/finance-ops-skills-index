@@ -24,13 +24,13 @@ realm_id is not globally unique; uniqueness is (tenant, connector_key, external_
 
 ## Official skills from the vendor
 
-[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) · licence `apache-2.0` · probed 2026-09-20
+[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin) · licence `apache-2.0` · probed 2026-10-21
 
 - **10** skills published
 - **10** finance-relevant
-- **10** indexed here
+- **11** indexed here
 
-All ten are bookkeeping skills — the only vendor set that is.
+All ten are bookkeeping skills — the only vendor set that is. Intuit also publishes the QuickBooks Online MCP Server (intuit/quickbooks-online-mcp-server, 145 tools, writes on by default), indexed as qbo-mcp-server.
 
 ## Skills in this index that need it
 
@@ -59,6 +59,7 @@ All ten are bookkeeping skills — the only vendor set that is.
 - [Bank Rec](../../skills/bank-rec/README.md) — `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 - [Bank Reconciliation](../../skills/bank-reconciliation/README.md) — `GRADED` `READ-ONLY` `EVIDENCE-GATED` `TIE-CHECKED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`
 - [chase-overdue-invoices](../../skills/qb-chase-overdue-invoices/README.md) — `GRADED` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`
+- [QuickBooks Online MCP Server](../../skills/qbo-mcp-server/README.md) — `GRADED` `WRITES-DIRECT`
 
 **4 · Adjust**
 

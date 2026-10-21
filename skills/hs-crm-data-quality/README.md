@@ -9,6 +9,7 @@ Find incomplete records, normalize field values in bulk, dedupe with `hubspot ob
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | hubspot |

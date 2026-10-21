@@ -5,7 +5,7 @@
 - Reachability: **roadmap** — Committed — registration runbook written
 - Vertical: crm
 - Vendor skills repository: https://github.com/HubSpot/agent-cli-skills
-- Published there: 15 · indexed here: 7 · checked 2026-09-20
+- Published there: 15 · indexed here: 8 · checked 2026-10-21
 - Repository licence: apache-2.0
 - Note: Seven are revenue operations. The rest are CRM workflow and support.
 
@@ -13,7 +13,8 @@
 
 ### hs-bulk-operations
 
-- Publisher: HubSpot — the platform vendor's own skill
+- Publisher: HubSpot — the platform vendor's own
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:02cc417abc0ab9b4 · upstream commit ed4123453010 · checked 2026-09-20
@@ -29,7 +30,8 @@
 
 ### hs-crm-data-quality
 
-- Publisher: HubSpot — the platform vendor's own skill
+- Publisher: HubSpot — the platform vendor's own
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:5c51e00fb3addfb8 · upstream commit 5b773165f0c8 · checked 2026-09-20
@@ -44,7 +46,8 @@
 
 ### hs-crm-lookup
 
-- Publisher: HubSpot — the platform vendor's own skill
+- Publisher: HubSpot — the platform vendor's own
+- Type: skill
 - Stage 2 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:579bd26b13828ebc · upstream commit 5b773165f0c8 · checked 2026-09-20
@@ -58,7 +61,8 @@
 
 ### hs-customer-retention
 
-- Publisher: HubSpot — the platform vendor's own skill
+- Publisher: HubSpot — the platform vendor's own
+- Type: skill
 - Stage 7 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:9965f44f3042b8c0 · upstream commit 5b773165f0c8 · checked 2026-09-20
@@ -73,7 +77,8 @@
 
 ### hs-deal-management
 
-- Publisher: HubSpot — the platform vendor's own skill
+- Publisher: HubSpot — the platform vendor's own
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:de039e2299446039 · upstream commit 5b773165f0c8 · checked 2026-09-20
@@ -88,7 +93,8 @@
 
 ### hs-quote-to-cash
 
-- Publisher: HubSpot — the platform vendor's own skill
+- Publisher: HubSpot — the platform vendor's own
+- Type: skill
 - Stage 3 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:96d3ead568ea7602 · upstream commit 5b773165f0c8 · checked 2026-09-20
@@ -103,7 +109,8 @@
 
 ### hs-sales-reporting
 
-- Publisher: HubSpot — the platform vendor's own skill
+- Publisher: HubSpot — the platform vendor's own
+- Type: skill
 - Stage 6 · status GRADED (graded 2026-09-21)
 - Grade current: yes
 - Graded version: SKILL.md sha256:f842a04872f7307f · upstream commit 5b773165f0c8 · checked 2026-09-20
@@ -114,3 +121,17 @@
 - Upstream: https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting
 - Summary: Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.
 - Never: Aggregate a result of exactly 100 rows without paginating first. | Do arithmetic on a property value without converting it from string. | Hardcode portal-specific stage IDs.
+
+### hubspot-sales-plugin
+
+- Publisher: HubSpot — the platform vendor's own
+- Type: plugin
+- Stage 3 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:3e93875426e90300 · upstream commit 032d294bc915 · checked 2026-10-21
+- Trust badges: WRITES-DIRECT
+  - WRITES-DIRECT: The main skill makes quick field updates and reports the change afterwards. Contact import and call logging show a confirmation before writing.
+- Licence: unclear
+- Upstream: https://github.com/HubSpot/hubspot-mcp-plugins/tree/main/HubSpot-Sales
+- Summary: HubSpot's official Claude plugin on its hosted MCP server (mcp.hubspot.com): contact lookup, call prep, daily brief, follow-up drafting, call logging, contact import and pipeline overview.
+- Never: Guess a deal stage when more than one could fit; it asks instead.

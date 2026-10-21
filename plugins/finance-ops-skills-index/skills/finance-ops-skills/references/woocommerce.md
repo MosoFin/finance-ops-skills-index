@@ -5,20 +5,64 @@
 - Reachability: **costly** — Reachable only at material cost
 - Vertical: ecommerce
 - Vendor skills repository: https://github.com/woocommerce/agent-skills
-- Published there: 2 · indexed here: 1 · checked 2026-09-20
-- Repository licence: unclear
-- Note: WooCommerce's two published skills are the repository's own automation (a stale-PR audit and an Abilities API guide), so neither is indexed. One third-party pointer is: Apideck's `woocommerce` skill, via Apideck's unified API, beta.
+- Published there: 2 · indexed here: 4 · checked 2026-10-21
+- Repository licence: gpl-2.0
+- Note: WooCommerce's two published skills are developer tools (an Abilities API guide and a stale-PR audit); both are indexed by owner decision. For store data, WooCommerce publishes WooCommerce for Claude (woocommerce/woocommerce-claude), which is indexed, on top of WordPress's official MCP Adapter.
 
 ## Indexed skills
 
-### apideck-woocommerce
+### wc-abilities-api-implement
 
-- Publisher: Apideck — third party, not the platform's vendor
-- Stage 2 · status GRADED (graded 2026-10-01)
+- Publisher: WooCommerce — the platform vendor's own
+- Type: skill
+- Stage 0 · status GRADED (graded 2026-10-21)
 - Grade current: yes
-- Graded version: SKILL.md sha256:d03373b9b59a297a · upstream commit 704bda32cc7b · checked 2026-10-01
+- Graded version: SKILL.md sha256:9a6d930bda8616aa · upstream commit 89cc969d2273 · checked 2026-10-21
 - Trust badges: READ-ONLY
-  - READ-ONLY: A developer reference: it explains the serviceId, entity mapping and caveats and shows example code. It runs nothing itself. The code it shows can create records in WooCommerce, and the skill gives no confirmation guidance for those writes — that is the integrator's job.
-- Licence: apache-2.0
-- Upstream: https://github.com/apideck-libraries/api-skills/tree/main/skills/woocommerce
-- Summary: Apideck's guide to reaching WooCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to WooCommerce access. The WooCommerce connector is marked beta by Apideck: expect partial coverage.
+  - READ-ONLY: Guides code changes in an extension repository; it does not touch store or ledger data.
+- Licence: gpl-2.0
+- Upstream: https://github.com/woocommerce/agent-skills/tree/trunk/skills/abilities-api-implement
+- Summary: WooCommerce's developer skill for registering WordPress Abilities API capabilities in a WooCommerce extension. For developers building store integrations, not for running a store's books.
+
+### wc-stale-pr-audit
+
+- Publisher: WooCommerce — the platform vendor's own
+- Type: skill
+- Stage 0 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:cd0a7051cedf6013 · upstream commit 89cc969d2273 · checked 2026-10-21
+- Trust badges: READ-ONLY
+  - READ-ONLY: Produces a private checklist report about pull requests; it changes no store data.
+- Licence: gpl-2.0
+- Upstream: https://github.com/woocommerce/agent-skills/tree/trunk/skills/woocommerce-stale-pr-audit
+- Summary: WooCommerce's maintainer skill for reviewing stale pull requests in WooCommerce's own repository. Listed because WooCommerce publishes it; it is not a store-operations skill.
+
+### woocommerce-for-claude
+
+- Publisher: WooCommerce — the platform vendor's own
+- Type: plugin
+- Stage 6 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:4df9beacae7a8b0a · upstream commit 39714fb0cb95 · checked 2026-10-21
+- Trust badges: READ-ONLY, PII-MINIMISING, HUMAN-APPROVAL
+  - READ-ONLY: Its tools are analytics reads (totals, breakdowns, series, rows). Setup creates a read-only REST API key by default; the merchant can switch it to read and write.
+  - PII-MINIMISING: Analytics answers are aggregated by design; individual names, emails and addresses are not surfaced, and row results are pseudonymised.
+  - HUMAN-APPROVAL: A query over more than 365 days stops for approval after showing a cost estimate.
+- Licence: gpl-3.0
+- Upstream: https://github.com/woocommerce/woocommerce-claude/tree/trunk
+- Summary: WooCommerce's own plugin that turns a store into an MCP endpoint for Claude: revenue, orders, refunds, coupons, tax and product analytics from WooCommerce's analytics tables, plus workflow skills such as failed-order triage and payment-method review.
+- Never: Surface individual customer names, emails or addresses in analytics answers.
+
+### wordpress-mcp-adapter
+
+- Publisher: WordPress — the platform vendor's own
+- Type: mcp-server
+- Stage 0 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:7c922f1ad17154a0 · upstream commit a10f814f2d39 · checked 2026-10-21
+- Trust badges: WRITES-DIRECT
+  - WRITES-DIRECT: Executes whatever abilities a site registers and marks public, with per-ability permission checks but no built-in confirmation step. Abilities are private by default, so nothing is exposed until the site owner opts in.
+- Licence: gpl-2.0
+- Upstream: https://github.com/WordPress/mcp-adapter/tree/trunk
+- Summary: The official WordPress package that exposes a site's registered abilities as MCP tools. WooCommerce for Claude builds on the same layer; what it can do depends entirely on which abilities a site makes public.
+- Never: Expose an ability the site has not marked public.

@@ -4,19 +4,20 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: ecommerce
-- **No vendor-published skills found** as of 2026-10-01.
-- Note: No vendor-published skills. One third-party pointer is indexed: Apideck's `bigcommerce` skill, which reaches it through Apideck's unified API (notable authority, needs an Apideck account).
+- **No vendor-published skills found** as of 2026-10-21.
+- Note: No vendor-published skills or MCP server. One community developer plugin is indexed by owner decision (OrcaQubits bigcommerce-commerce, 39 stars). Store data is reached through the Mosofin gateway: see docs.mosofin.com for the BigCommerce configuration.
 
 ## Indexed skills
 
-### apideck-bigcommerce
+### bigcommerce-commerce
 
-- Publisher: Apideck — third party, not the platform's vendor
-- Stage 2 · status GRADED (graded 2026-10-01)
+- Publisher: OrcaQubits — third party, not the platform's vendor
+- Type: plugin
+- Stage 0 · status GRADED (graded 2026-10-21)
 - Grade current: yes
-- Graded version: SKILL.md sha256:3b6c73dea3ef0a24 · upstream commit 704bda32cc7b · checked 2026-10-01
+- Graded version: SKILL.md sha256:e57cb469e0e14f93 · upstream commit 30cd25c74c8a · checked 2026-10-21
 - Trust badges: READ-ONLY
-  - READ-ONLY: A developer reference: it explains the serviceId, entity mapping and caveats and shows example code. It runs nothing itself. The code it shows can create records in BigCommerce, and the skill gives no confirmation guidance for those writes — that is the integrator's job.
-- Licence: apache-2.0
-- Upstream: https://github.com/apideck-libraries/api-skills/tree/main/skills/bigcommerce
-- Summary: Apideck's guide to reaching BigCommerce through its Ecommerce unified API: orders, products, customers and stores, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to BigCommerce access.
+  - READ-ONLY: Developer guidance and code generation; its hooks check commands and secrets. It does not connect to a store by itself.
+- Licence: unclear
+- Upstream: https://github.com/OrcaQubits/agentic-commerce-skills-plugins/tree/main/bigcommerce-commerce
+- Summary: A community plugin of BigCommerce developer skills (REST and GraphQL APIs, orders, payments, catalog, checkout, Stencil, app development). Not published by BigCommerce, which publishes no agent skills; listed by owner decision with 39 stars.

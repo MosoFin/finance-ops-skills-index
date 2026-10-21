@@ -1,0 +1,40 @@
+id: wordpress-mcp-adapter
+title: WordPress MCP Adapter
+kind: mcp-server
+origin: third-party
+authority: first-party
+stage: 0
+summary: The official WordPress package that exposes a site's registered abilities as MCP tools. WooCommerce
+  for Claude builds on the same layer; what it can do depends entirely on which abilities a site makes
+  public.
+tiers:
+- WRITES-DIRECT
+tier_notes:
+  WRITES-DIRECT: Executes whatever abilities a site registers and marks public, with per-ability permission
+    checks but no built-in confirmation step. Abilities are private by default, so nothing is exposed
+    until the site owner opts in.
+systems:
+- woocommerce
+inputs:
+- name: a WordPress site with abilities registered and marked public
+  required: true
+  source: site plugins
+  fallback: none — no tools are exposed
+outputs:
+- name: tool results
+  type: chat
+  dest: the MCP client
+never:
+- Expose an ability the site has not marked public.
+upstream:
+  repo: WordPress/mcp-adapter
+  path: ''
+  ref: trunk
+  file: README.md
+license: gpl-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:7c922f1ad17154a0
+upstream_sha: a10f814f2d39
+last_checked: '2026-10-21'

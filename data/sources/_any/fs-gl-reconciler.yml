@@ -1,0 +1,44 @@
+id: fs-gl-reconciler
+title: GL Reconciler
+kind: agent
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'Anthropic''s GL-to-subledger reconciliation agent: finds breaks over threshold, traces each
+  to its cause, re-verifies, and drafts an exception report for sign-off. Reads through GL and subledger
+  MCP servers you connect.'
+tiers:
+- READ-ONLY
+- HUMAN-APPROVAL
+- INJECTION-AWARE
+tier_notes:
+  READ-ONLY: Produces a report; it states "No ledger posting" and adjustments need human approval outside
+    the agent.
+  HUMAN-APPROVAL: The exception report is routed for controller sign-off.
+  INJECTION-AWARE: Custodian and counterparty statements are untrusted; their readers have no MCP access
+    or write tools.
+systems:
+- any
+inputs:
+- name: GL and subledger MCP servers
+  required: true
+  source: your ledger and subledger
+  fallback: none
+outputs:
+- name: exception report
+  type: workpapers
+  dest: routed for sign-off
+never:
+- Post a ledger adjustment.
+upstream:
+  repo: anthropics/financial-services
+  path: plugins/agent-plugins/gl-reconciler
+  ref: main
+  file: agents/gl-reconciler.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:31f9ef51fdc0c750
+upstream_sha: 574ed3624aeb
+last_checked: '2026-10-21'

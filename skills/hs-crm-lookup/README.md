@@ -9,6 +9,7 @@ Find a specific CRM record by ID, email, domain, or name fragment, and traverse 
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | hubspot |

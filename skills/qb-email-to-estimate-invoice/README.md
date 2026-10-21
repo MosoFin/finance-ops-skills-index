@@ -9,6 +9,7 @@ Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | quickbooks |

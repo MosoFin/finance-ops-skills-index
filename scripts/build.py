@@ -82,6 +82,16 @@ AUTHORITY_LABEL = {
     "community": "Community",
 }
 
+# What the entry is. Most are skills; vendors also publish MCP servers (tools Claude
+# calls), plugins (skills plus a server), agents and SDK toolkits.
+KIND_LABEL = {
+    "skill": "Skill",
+    "mcp-server": "MCP server — tools Claude can call",
+    "plugin": "Plugin — skills bundled with a connection",
+    "agent": "Agent",
+    "toolkit": "Developer toolkit",
+}
+
 ORIGIN_LABEL = {
     "mosofin-workspace": "Mosofin workspace",
     "mosofin-published": "Mosofin published",
@@ -153,10 +163,9 @@ def is_stale(skill: dict, days: int) -> bool:
 def upstream_str(skill: dict) -> str:
     up = skill.get("upstream") or {}
     if "repo" in up:
-        return (
-            f"[`{up['repo']}/{up['path']}`]"
-            f"(https://github.com/{up['repo']}/tree/{up.get('ref', 'main')}/{up['path']})"
-        )
+        where = "/".join(x for x in (up["repo"], up.get("path")) if x)
+        tree = f"https://github.com/{up['repo']}/tree/{up.get('ref', 'main')}"
+        return f"[`{where}`]({tree}/{up['path']})" if up.get("path") else f"[`{where}`]({tree})"
     return f"`{up.get('local', 'unknown')}` (local)"
 
 
@@ -165,6 +174,7 @@ def skill_page(skill: dict, meta: dict) -> str:
 
     L += ["| | |", "|---|---|"]
     L += [f"| Origin | {ORIGIN_LABEL.get(skill['origin'], skill['origin'])} |"]
+    L += [f"| Type | {KIND_LABEL.get(skill.get('kind', 'skill'), skill.get('kind'))} |"]
     L += [f"| Authority | {AUTHORITY_LABEL.get(skill.get('authority', 'community'))} |"]
     L += [f"| Stage | {skill['stage']} — {meta['stages'][skill['stage']]['name']} |"]
     L += [f"| Systems | {', '.join(skill.get('systems') or ['—'])} |"]
@@ -530,7 +540,7 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "and one that proposes them look identical in a bullet list. In accounting they are",
         "not the same product.",
         "",
-        "**[Read the trust tiers →](docs/TRUST-TIERS.md)**",
+        "**[Read the trust tiers →](docs/TRUST-TIERS.md)** · **[How sources are chosen →](docs/SOURCING.md)**",
         "",
         "## How to use it",
         "",
@@ -580,7 +590,7 @@ def index_page(data: dict, conn_meta: dict) -> str:
         "| \"Help me close September.\" | First: which accounting system and payment processor you use. Then the close step by step, a skill for each step that runs on them, and the gaps |",
         "| \"We're on Xero and Stripe. What should I use for month-end?\" | A close plan using only skills that work with Xero and Stripe, with the steps that have no Xero skill named as gaps |",
         "| \"We're on QuickBooks and customers pay late. Help me collect.\" | Build the aging, then send reminders, with the skill for each and a note that reminders go out to customers |",
-        "| \"Has Xero published any official skills?\" | No vendor skills, and the third-party Apideck option labelled as such |",
+        "| \"Has Xero published any official skills?\" | That Xero has published no skills of its own, said plainly rather than filled with a near match |",
         "| \"Which QuickBooks skills can post journal entries?\" | The matching skills, each with its write authority (read-only, proposes writes, writes direct) |",
         "| \"Is there a Stripe skill that can pay a supplier, and does it ask first?\" | `stripe-pay` and `stripe-directory`, marked as moving money, with their confirmation step |",
         "| \"What should I use for sales by channel on Shopify, and what does it send back?\" | Shopify's `shopify` skill, what its telemetry contains and how to opt out |",

@@ -1,0 +1,44 @@
+id: woocommerce-for-claude
+title: WooCommerce for Claude
+kind: plugin
+origin: third-party
+authority: first-party
+stage: 6
+summary: 'WooCommerce''s own plugin that turns a store into an MCP endpoint for Claude: revenue, orders,
+  refunds, coupons, tax and product analytics from WooCommerce''s analytics tables, plus workflow skills
+  such as failed-order triage and payment-method review.'
+tiers:
+- READ-ONLY
+- PII-MINIMISING
+- HUMAN-APPROVAL
+tier_notes:
+  READ-ONLY: Its tools are analytics reads (totals, breakdowns, series, rows). Setup creates a read-only
+    REST API key by default; the merchant can switch it to read and write.
+  PII-MINIMISING: Analytics answers are aggregated by design; individual names, emails and addresses are
+    not surfaced, and row results are pseudonymised.
+  HUMAN-APPROVAL: A query over more than 365 days stops for approval after showing a cost estimate.
+systems:
+- woocommerce
+inputs:
+- name: WooCommerce store (8.0+) with the plugin installed
+  required: true
+  source: self-hosted WordPress
+  fallback: none
+outputs:
+- name: store analytics answers
+  type: chat
+  dest: the conversation
+never:
+- Surface individual customer names, emails or addresses in analytics answers.
+upstream:
+  repo: woocommerce/woocommerce-claude
+  path: ''
+  ref: trunk
+  file: README.md
+license: gpl-3.0
+mirror: false
+last_graded: '2026-10-21'
+status: GRADED
+skill_md_hash: sha256:4df9beacae7a8b0a
+upstream_sha: 39714fb0cb95
+last_checked: '2026-10-21'

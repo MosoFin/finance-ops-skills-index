@@ -4,19 +4,34 @@
 
 - Reachability: **roadmap** — Committed — registration runbook written
 - Vertical: accounting
-- **No vendor-published skills found** as of 2026-10-01.
-- Note: No vendor-published skills. One third-party pointer is indexed: Apideck's `xero` skill, which reaches it through Apideck's unified API (notable authority, needs an Apideck account).
+- Vendor skills repository: https://github.com/XeroAPI/xero-mcp-server
+- Published there: 0 · indexed here: 2 · checked 2026-10-21
+- Note: No vendor-published skills. Xero publishes an official MCP server (51 tools, including create-payment and manual journals, no confirmation step) and example agents (xero-agent-toolkit); both indexed.
 
 ## Indexed skills
 
-### apideck-xero
+### xero-agent-toolkit
 
-- Publisher: Apideck — third party, not the platform's vendor
-- Stage 2 · status GRADED (graded 2026-10-01)
+- Publisher: Xero — the platform vendor's own
+- Type: toolkit
+- Stage 0 · status GRADED (graded 2026-10-21)
 - Grade current: yes
-- Graded version: SKILL.md sha256:2668a6c7928f0c13 · upstream commit ff0e8fccc3ff · checked 2026-10-01
-- Trust badges: READ-ONLY
-  - READ-ONLY: A developer reference: it explains the serviceId, entity mapping and caveats and shows example code. It runs nothing itself. The code it shows can create records in Xero, and the skill gives no confirmation guidance for those writes — that is the integrator's job.
-- Licence: apache-2.0
-- Upstream: https://github.com/apideck-libraries/api-skills/tree/main/skills/xero
-- Summary: Apideck's guide to reaching Xero through its Accounting unified API: invoices, bills, payments, manual journals, chart of accounts and P&L / balance-sheet reports, with auth, rate-limit and coverage caveats. Every call routes through Apideck, so it needs an Apideck account in addition to Xero access. Xero App Partner certification is required beyond the Core tier, and from 2026-03-02 the Journals API is gated to the Advanced tier.
+- Graded version: SKILL.md sha256:8a6e7ccaf78b4951 · upstream commit fafae53b78c3 · checked 2026-10-21
+- Trust badges: WRITES-DIRECT
+  - WRITES-DIRECT: The examples connect to the Xero MCP Server and inherit its write tools, which have no confirmation step.
+- Licence: mit
+- Upstream: https://github.com/XeroAPI/xero-agent-toolkit/tree/main
+- Summary: Xero's example agents (LangChain, OpenAI Agents SDK, Google ADK) built on the Xero MCP Server. For developers building their own Xero agent.
+
+### xero-mcp-server
+
+- Publisher: Xero — the platform vendor's own
+- Type: mcp-server
+- Stage 3 · status GRADED (graded 2026-10-21)
+- Grade current: yes
+- Graded version: SKILL.md sha256:40a3be8915579ad8 · upstream commit f24583c867df · checked 2026-10-21
+- Trust badges: WRITES-DIRECT
+  - WRITES-DIRECT: 25 of its tools create, update, delete or approve records, among them create-payment, create-bank-transaction, create-manual-journal and approve-payroll-timesheet. The README describes no confirmation step before a write.
+- Licence: mit
+- Upstream: https://github.com/XeroAPI/xero-mcp-server/tree/main
+- Summary: Xero's official MCP server: 51 tools over invoices, contacts, payments, bank transactions, manual journals, payroll timesheets and reports (P&L, balance sheet, trial balance, aged receivables and payables).

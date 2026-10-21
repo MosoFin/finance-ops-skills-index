@@ -9,6 +9,7 @@ PayPal integration guidance, code examples, and best practices. Use for checkout
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | paypal |

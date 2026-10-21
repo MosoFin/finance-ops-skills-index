@@ -8,7 +8,7 @@ index run once it is connected.
 
 ## live — Connected today
 
-- **[quickbooks](quickbooks/README.md)** — `oauth3` · 34 skills in this index
+- **[quickbooks](quickbooks/README.md)** — `oauth3` · 35 skills in this index
 - **[stripe](stripe/README.md)** — `oauth3` · 7 skills in this index
 
 ## code-complete — Built; blocked on credentials or review, not engineering
@@ -17,14 +17,14 @@ index run once it is connected.
 
 ## roadmap — Committed — registration runbook written
 
-- **[amazon-sp](amazon-sp/README.md)** — `oauth3` · Weeks–months · 0 skills in this index
-- **[google-ads](google-ads/README.md)** — `oauth3` · Explorer often instant; Basic ~5 days · 0 skills in this index
-- **[hubspot](hubspot/README.md)** — `oauth3` · Self-serve · 7 skills in this index
+- **[amazon-sp](amazon-sp/README.md)** — `oauth3` · Weeks–months · 3 skills in this index
+- **[google-ads](google-ads/README.md)** — `oauth3` · Explorer often instant; Basic ~5 days · 1 skill in this index
+- **[hubspot](hubspot/README.md)** — `oauth3` · Self-serve · 8 skills in this index
 - **[klaviyo](klaviyo/README.md)** — `oauth3` · Self-serve; review only to be listed · 0 skills in this index
 - **[meta-ads](meta-ads/README.md)** — `oauth3` · 1–3 weeks, two independent queues · 0 skills in this index
-- **[paypal](paypal/README.md)** — `oauth3` · None — self-serve · 2 skills in this index
-- **[square](square/README.md)** — `oauth3` · Sandbox instant · 0 skills in this index
-- **[xero](xero/README.md)** — `oauth3` · Self-serve · 1 skill in this index
+- **[paypal](paypal/README.md)** — `oauth3` · None — self-serve · 4 skills in this index
+- **[square](square/README.md)** — `oauth3` · Sandbox instant · 1 skill in this index
+- **[xero](xero/README.md)** — `oauth3` · Self-serve · 2 skills in this index
 
 ## candidate — Evaluated, not yet committed
 
@@ -37,13 +37,14 @@ index run once it is connected.
 - **[jobber](jobber/README.md)** — `oauth3` · 0 skills in this index
 - **[lightspeed-x](lightspeed-x/README.md)** — `oauth3` · 0 skills in this index
 - **[servicem8](servicem8/README.md)** — `oauth3` · 0 skills in this index
+- **[tiktok-shop](tiktok-shop/README.md)** — `oauth3` · 0 skills in this index
 
 ## costly — Reachable only at material cost
 
 - **[clover](clover/README.md)** — `oauth3` · 0 skills in this index
 - **[housecallpro](housecallpro/README.md)** — `merchant-keys` · 0 skills in this index
 - **[servicetitan](servicetitan/README.md)** — `merchant-keys` · 0 skills in this index
-- **[woocommerce](woocommerce/README.md)** — `merchant-keys` · 1 skill in this index
+- **[woocommerce](woocommerce/README.md)** — `merchant-keys` · 4 skills in this index
 
 ## gated — Partner agreement required before technical evaluation
 

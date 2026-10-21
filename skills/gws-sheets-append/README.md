@@ -9,6 +9,7 @@ Append rows to a sheet without rewriting it — the safe write for logging close
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
 | Systems | google-sheets |

@@ -9,6 +9,7 @@ Reconciles a cash GL to bank statements for a period. Builds the complete book s
 | | |
 |---|---|
 | Origin | Mosofin published |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | quickbooks |

@@ -9,6 +9,7 @@ Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, paginati
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
 | Systems | hubspot |

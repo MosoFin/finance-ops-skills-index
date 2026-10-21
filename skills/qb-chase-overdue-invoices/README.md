@@ -9,6 +9,7 @@ Send payment reminders for invoices with tone matched to aging. ALWAYS use this 
 | | |
 |---|---|
 | Origin | Third party |
+| Type | Skill |
 | Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
 | Systems | quickbooks |
