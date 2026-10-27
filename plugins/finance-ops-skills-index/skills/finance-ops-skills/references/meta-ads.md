@@ -6,6 +6,7 @@
 - Vertical: advertising
 - **No vendor-published skills found** as of 2026-10-21.
 - Note: No skills or MCP server on GitHub. Meta runs an official hosted Ads MCP server at mcp.facebook.com/ads, in free open beta since April 2026 according to several third-party guides; Meta's own documentation could not be reached to confirm it, and with no repository it cannot be tracked here. Community servers that meet the 100-star, two-week rule (Ryze's google-ads-meta-ads-mcp, Pipeboard's meta-ads-mcp) are hosted paid services and await an owner decision.
+- Vendor-hosted MCP server: https://mcp.facebook.com/ads (run by Meta, not on GitHub, so not tracked for changes). Meta Ads MCP (open beta, free). Reported by several third-party guides since April 2026; Meta's own page could not be reached to confirm it.
 
 ## Indexed skills
 

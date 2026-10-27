@@ -7,6 +7,7 @@
 - Vendor skills repository: https://github.com/square/square-mcp-server
 - Published there: 0 · indexed here: 1 · checked 2026-10-21
 - Note: No skills, but Square publishes an official MCP server (square/square-mcp-server, beta) and runs a hosted one at mcp.squareup.com/mcp, which it recommends. Indexed as square-mcp-server.
+- Vendor-hosted MCP server: https://mcp.squareup.com/mcp (run by Square, not on GitHub, so not tracked for changes). Square's hosted server with OAuth sign-in, which Square recommends over running square-mcp-server yourself.
 
 ## Indexed skills
 

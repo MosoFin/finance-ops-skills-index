@@ -6,13 +6,14 @@
 
 Xero's official MCP server: 51 tools over invoices, contacts, payments, bank transactions, manual journals, payroll timesheets and reports (P&L, balance sheet, trial balance, aged receivables and payables).
 
+**What it can do:** Changes records without asking first.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Xero — the platform vendor's own |
 | Type | MCP server — tools Claude can call |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | xero |
+| Works with | [Xero](../../connectors/xero/README.md) |
 | Source | [`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server/tree/main) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
@@ -34,7 +35,9 @@ Xero's official MCP server: 51 tools over invoices, contacts, payments, bank tra
 |---|---|---|
 | Xero records and reports | chat | the MCP client; writes land in Xero |
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -42,15 +45,9 @@ Xero's official MCP server: 51 tools over invoices, contacts, payments, bank tra
 
 - `xero` — Rotating refresh tokens need atomic persistence — a lost write costs the grant.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+An MCP server, not a skill: any app that can connect to MCP servers can use it, including Claude Code, Claude.ai, Claude Desktop and Cursor.
 
 ---
 

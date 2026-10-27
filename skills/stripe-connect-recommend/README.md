@@ -6,13 +6,14 @@
 
 Use this skill when the user asks about Stripe Connect configuration, charge patterns, Dashboard access, or how to get started with Connect, is building a marketplace, platform, multi-vendor store, gig platform, or subscription platform, needs to pay out sellers, vendors, or providers, mentions split payments, revenue sharing, multi-party payments, or similar payment distribution concepts, provides a company URL or business description for a recommendation, builds SaaS that routes money between parties (for example, POS, booking, invoicing — not operational SaaS without payment routing), asks about onboarding or KYC for merchants, sellers, and vendors, mentions connected account Dashboard or responsibility configurations, or asks about payment flows, white-label payments, or embedded payments.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Stripe — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | stripe |
+| Works with | [Stripe](../../connectors/stripe/README.md) |
 | Source | [`stripe/ai/providers/claude/plugin/skills/connect-recommend`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/connect-recommend) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
@@ -44,7 +45,9 @@ Use this skill when the user asks about Stripe Connect configuration, charge pat
 - Ask permission for a low-cost action such as reading a reference file.
 - End a turn without offering the user a next step.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

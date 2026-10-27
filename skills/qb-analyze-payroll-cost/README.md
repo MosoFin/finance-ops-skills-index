@@ -6,13 +6,14 @@
 
 Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-claude-plugin/skills/analyze-payroll-cost`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay 
 - Give legal, tax or compliance advice.
 - Answer from generic payroll knowledge rather than returned data.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

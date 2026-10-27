@@ -6,13 +6,14 @@
 
 Clears uncategorized buckets using the client's own COA rules — never guesses. Every proposal carries a one-word basis (rule / history / unsure), and an "unsure" left uncategorized is the correct outcome.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/categorize-transactions` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -46,7 +47,9 @@ Clears uncategorized buckets using the client's own COA rules — never guesses.
 
 - Propose a category on vibes when no rule and no history exist.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Google Sheets: Read values from a spreadsheet.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Google — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | google-sheets |
+| Works with | [Google Sheets](../../connectors/google-sheets/README.md) |
 | Source | [`googleworkspace/cli/skills/gws-sheets-read`](https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-read) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -41,7 +42,9 @@ Google Sheets: Read values from a spreadsheet.
 - Modify the spreadsheet.
 - Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade covers this file only; the safety rules it defers to are unreviewed.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

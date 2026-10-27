@@ -6,13 +6,14 @@
 
 Amazon's own skill for closing a seller's Amazon month: pulls the month's activity, overlapping settlements, carried balances and payout statuses, reconciles them, checks payouts against bank deposits the seller pastes in, and writes an accountant-ready summary.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Amazon — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | amazon-sp |
+| Works with | [Amazon Seller Central](../../connectors/amazon-sp/README.md) |
 | Source | [`amzn/selling-partner-agentic-toolkit/skills/finance-month-end-closer`](https://github.com/amzn/selling-partner-agentic-toolkit/tree/main/skills/finance-month-end-closer) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -40,7 +41,9 @@ Amazon's own skill for closing a seller's Amazon month: pulls the month's activi
 
 - Post an entry, file, submit, pay or move money.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

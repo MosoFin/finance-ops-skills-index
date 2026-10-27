@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import datetime as dt
 import pathlib
+import re
 import sys
 
 import yaml
@@ -170,14 +171,17 @@ def upstream_str(skill: dict) -> str:
 
 
 def skill_page(skill: dict, meta: dict) -> str:
-    L = [GENERATED, "", f"# {skill['title']}", "", badges(skill), "", skill["summary"].strip(), ""]
+    L = [GENERATED, "", f"# {skill['title']}", "", badges(skill), "", skill["summary"].strip(), "",
+         f"**What it can do:** {can_do(skill)}.", ""]
 
     L += ["| | |", "|---|---|"]
-    L += [f"| Origin | {ORIGIN_LABEL.get(skill['origin'], skill['origin'])} |"]
+    L += [f"| Publisher | {esc(publisher_of(skill)[1])} |"]
     L += [f"| Type | {KIND_LABEL.get(skill.get('kind', 'skill'), skill.get('kind'))} |"]
-    L += [f"| Authority | {AUTHORITY_LABEL.get(skill.get('authority', 'community'))} |"]
     L += [f"| Stage | {skill['stage']} — {meta['stages'][skill['stage']]['name']} |"]
-    L += [f"| Systems | {', '.join(skill.get('systems') or ['—'])} |"]
+    sysl = [f"[{esc(display_name(s, meta.get('connectors', {}).get(s, {})))}](../../connectors/{s}/README.md)"
+            if s in meta.get("connectors", {}) and s not in NOT_A_SOURCE else s
+            for s in (skill.get("systems") or [])]
+    L += [f"| Works with | {', '.join(sysl) or '—'} |"]
     L += [f"| Source | {upstream_str(skill)} |"]
     L += [f"| License | `{skill.get('license', 'unknown')}` |"]
     L += [f"| Mirrored here | {'yes' if skill.get('mirror') else 'no — pointer only'} |"]
@@ -221,7 +225,9 @@ def skill_page(skill: dict, meta: dict) -> str:
     cstat = meta.get("statuses", {})
     rows = [(sys_, conn.get(sys_, {})) for sys_ in (skill.get("systems") or [])]
     if rows:
-        L += ["## Data reachability", "", "| System | Status | Auth | Settlement data |", "|---|---|---|---|"]
+        L += ["## Mosofin connection status", "",
+              "How far Mosofin's own connector to each system has got. This is separate from the tool above.", "",
+              "| System | Status | Auth | Settlement data |", "|---|---|---|---|"]
         for name, c in rows:
             st = c.get("status", "unknown")
             L += [
@@ -238,6 +244,18 @@ def skill_page(skill: dict, meta: dict) -> str:
         notes = [f"- `{n}` — {c['note']}" for n, c in rows if c.get("note")]
         if notes:
             L += notes + [""]
+
+    kind = skill.get("kind", "skill")
+    if kind != "skill":
+        L += ["## Where it runs", "", {
+            "mcp-server": "An MCP server, not a skill: any app that can connect to MCP servers can use it, "
+                          "including Claude Code, Claude.ai, Claude Desktop and Cursor.",
+            "plugin": "A Claude plugin: install it in Claude Code, or in Claude.ai and Cowork from Customize > Plugins.",
+            "agent": "A Claude agent plugin: install it in Claude Code or Cowork, or run it through the Claude Managed Agents API.",
+            "toolkit": "A developer library: it is built into your own agent's code rather than installed in an app.",
+        }.get(kind, ""), "", "---", "",
+              "[← back to the index](../../README.md) · [trust tiers](../../docs/TRUST-TIERS.md)", ""]
+        return "\n".join(L)
 
     L += ["## Host compatibility", ""]
     L += ["| " + " | ".join(PLATFORMS) + " |", "|" + "---|" * len(PLATFORMS)]
@@ -335,97 +353,174 @@ def publisher_rows(skills: list) -> list[str]:
 
 
 # File formats are not data sources; they get no page.
+
+# ---------------------------------------------------------------- explainer helpers
+# Plain-language versions of the badges that decide whether a reader can trust a tool
+# near their books. The badges stay on every page; these sentences say what they mean.
+CAN_DO = [
+    ("MOVES-MONEY", "Can move money"),
+    ("WRITES-DIRECT", "Changes records without asking first"),
+    ("PROPOSES-WRITES", "Changes records only after you approve"),
+    ("SENDS-EXTERNALLY", "Sends messages outside the business"),
+    ("READ-ONLY", "Only reads; changes nothing"),
+]
+
+
+def can_do(skill: dict) -> str:
+    tiers = set(skill.get("tiers") or [])
+    said = [text for badge, text in CAN_DO if badge in tiers]
+    if "SENDS-TELEMETRY" in tiers:
+        said.append("sends usage data to its publisher")
+    return "; ".join(said) if said else "Not yet assessed"
+
+
+def publisher_of(skill: dict) -> tuple[str, str]:
+    """(group, label): who publishes it, for grouping a platform's options."""
+    from build_plugin import _publisher
+    label = _publisher(skill)
+    if "vendor's own" in label:
+        return "vendor", label
+    if label.startswith("Mosofin"):
+        return "mosofin", label
+    if label.startswith("Anthropic"):
+        return "anthropic", label
+    return "community", label
+
+
+def display_name(cid: str, c: dict) -> str:
+    return c.get("name") or cid
+
+
+def option_line(sk: dict, link_root: str = "../../skills") -> list[str]:
+    up = sk.get("upstream") or {}
+    bits = [KIND_LABEL.get(sk.get("kind", "skill"), "Skill").split(" — ")[0], can_do(sk)]
+    need = next((i for i in (sk.get("inputs") or []) if i.get("required")), None)
+    if need:
+        bits.append(f"needs {esc(need['name'])}")
+    if "repo" in up:
+        tree = f"https://github.com/{up['repo']}/tree/{up.get('ref', 'main')}"
+        bits.append(f"[source]({tree}/{up['path']})" if up.get("path") else f"[source]({tree})")
+    elif sk.get("origin") == "mosofin-workspace":
+        bits.append("Mosofin workspace only, not publicly installable")
+    first = re.split(r"(?<=[.!?])\s", " ".join(str(sk.get("summary", "")).split()), maxsplit=1)[0]
+    return [f"- **[{esc(sk['title'])}]({link_root}/{sk['id']}/README.md)** — " + " · ".join(bits),
+            f"  {esc(first)}"]
+
 NOT_A_SOURCE = {"csv", "pdf", "word", "powerpoint", "images", "any"}
 
 
 def connector_page(cid: str, c: dict, conn: dict, skills: list, stages: dict) -> str:
-    """One page per data source: how to reach it, and what runs once you have."""
+    """One explainer per platform: what to use with an agent, and how far it can act."""
     cs = conn["statuses"]
-    users = [s for s in skills if cid in (s.get("systems") or [])]
+    name = display_name(cid, c)
+    # Ready-to-use tools first; a developer toolkit is for building your own agent.
+    rank = {"plugin": 0, "skill": 1, "mcp-server": 1, "agent": 1, "toolkit": 2}
+    users = sorted((s for s in skills if cid in (s.get("systems") or [])),
+                   key=lambda s: (rank.get(s.get("kind", "skill"), 1), s["title"].lower()))
+    groups: dict = {}
+    for sk in users:
+        g, label = publisher_of(sk)
+        groups.setdefault(g, []).append(sk)
+    vendor = (publisher_of(groups["vendor"][0])[1].split(" — ")[0] if groups.get("vendor") else name)
 
-    L = [GENERATED, "", f"# {cid}", "",
-         f"`{c.get('status')}` `family-{c.get('family', 'none')}` `{c.get('auth', '—')}`", ""]
-    L += [f"**{cs.get(c.get('status'), '')}**", ""]
+    hosted = c.get("hosted_mcp") or {}
+    L = [GENERATED, "", f"# {name}", "",
+         f"{esc(VERTICAL_LABEL.get(c.get('vertical'), str(c.get('vertical', '')).capitalize()))} · options checked "
+         f"{c.get('skills_checked', '—')} · [how sources are chosen](../../docs/SOURCING.md)", ""]
+    if groups.get("vendor"):
+        L += [f"**{vendor} publishes its own tools for AI agents. Start with those.**", ""]
+    elif hosted:
+        L += [f"**{hosted.get('vendor', name)} runs its own hosted server for AI agents. Start with that.**", ""]
+    elif users:
+        L += [f"**{name} publishes nothing for AI agents. The options below come from other publishers.**", ""]
+    else:
+        L += [f"**Nothing to recommend for {name} yet.**", ""]
+    if c.get("skills_note"):
+        L += [esc(" ".join(str(c["skills_note"]).split())), ""]
+    if hosted:
+        L += ["## Hosted by the vendor", "",
+              f"- **{esc(hosted['url'])}** — connect it in Claude as a custom connector (remote MCP server) "
+              f"and sign in with your {name} account. {esc(hosted.get('note', ''))}",
+              "  Not on GitHub, so this index cannot watch it for changes.", ""]
 
+    sections = [
+        ("vendor", f"From {vendor}"),
+        ("mosofin", "From Mosofin (independent, not the vendor)"),
+        ("anthropic", "From Anthropic (works with any system)"),
+        ("community", "From other publishers"),
+    ]
+    if users:
+        L += ["## What to use", ""]
+        for key, title in sections:
+            if groups.get(key):
+                L += [f"### {title}", ""]
+                for sk in groups[key]:
+                    L += option_line(sk)
+                L += [""]
+    else:
+        org = c.get("github_org")
+        if org and org not in ("none-found", "none"):
+            L += [f"[`{org}`](https://github.com/{org}) on GitHub publishes no skills or MCP server "
+                  f"for agents as of {c.get('skills_checked', '—')}. That is a dated fact, not a permanent one.", ""]
+
+    L += ["## Mosofin connection status", "",
+          "How far Mosofin's own connector to this platform has got. This is separate from the tools above.", ""]
     L += ["| | |", "|---|---|"]
     rows = [
         ("Status", f"{c.get('status')} — {cs.get(c.get('status'), '')}"),
-        ("connector_key", f"`{c['connector_key']}`" if c.get("connector_key") else None),
-        ("Family", c.get("family")),
-        ("Auth model", f"`{c.get('auth')}` — {conn['auth_models'].get(c.get('auth'), '')}"),
-        ("Entity", c.get("entity")),
+        ("Sign-in", conn["auth_models"].get(c.get("auth"), c.get("auth"))),
+        ("Account unit", c.get("entity")),
         ("Token", c.get("token")),
         ("Lead time", c.get("lead_time")),
         ("Settlement data", c.get("payouts")),
-        ("Vertical", c.get("vertical")),
-        ("Assessed in", c.get("source")),
     ]
     for k, v in rows:
         if v:
             L.append(f"| {k} | {esc(v)} |")
     L += [""]
-
     if c.get("note"):
-        L += ["## What to watch", "", esc(" ".join(c["note"].split())), ""]
+        L += [f"**What to watch:** {esc(' '.join(str(c['note']).split()))}", ""]
 
-    repo = c.get("skills_repo")
-    L += ["## Official skills from the vendor", ""]
-    if repo and repo != "none":
-        L += [f"[`{repo}`](https://github.com/{repo}) · licence `{c.get('skills_license', '?')}` "
-              f"· probed {c.get('skills_checked', '—')}", "",
-              f"- **{c.get('skills_published', 0)}** skills published",
-              f"- **{c.get('skills_relevant', 0)}** finance-relevant",
-              f"- **{c.get('skills_indexed', 0)}** indexed here", ""]
-        if c.get("skills_note"):
-            L += [esc(" ".join(c["skills_note"].split())), ""]
-    elif c.get("github_org") == "none-found":
-        L += ["No public GitHub organisation at the obvious name. Not probed further.", ""]
-    else:
-        org = c.get("github_org")
-        L += [f"None. [`{org}`](https://github.com/{org}) was probed on "
-              f"{c.get('skills_checked', '—')} and publishes no agent skills — a dated fact, "
-              f"not a permanent state.", ""]
-
-    L += ["## Skills in this index that need it", ""]
-    if users:
-        by_stage: dict = {}
-        for sk in users:
-            by_stage.setdefault(sk["stage"], []).append(sk)
-        for st in sorted(by_stage):
-            L += [f"**{st} · {stages[st]['name']}**", ""]
-            for sk in sorted(by_stage[st], key=lambda x: x["id"]):
-                L.append(f"- [{sk['title']}](../../skills/{sk['id']}/README.md) — "
-                         f"`{sk['status']}`" +
-                         ("".join(f" `{t}`" for t in (sk.get("tiers") or []))))
-            L.append("")
-    else:
-        L += ["None yet. Connecting this reaches data no indexed skill currently reads.", ""]
-
-    L += ["---", "", "[← all connectors](../README.md) · "
+    L += ["---", "", "[← all platforms](../README.md) · "
           "[the index](../../README.md) · [tracker](../../docs/CONNECTOR-TRACKER.md)", ""]
     return "\n".join(L)
 
 
+VERTICAL_ORDER = ["accounting", "payments", "ecommerce", "advertising", "crm", "marketing",
+                  "workspace", "destination", "professional", "fieldservice", "retail",
+                  "restaurants", "medical"]
+VERTICAL_LABEL = {"accounting": "Accounting", "payments": "Payments", "ecommerce": "Stores and marketplaces",
+                  "advertising": "Advertising", "crm": "CRM", "marketing": "Marketing",
+                  "workspace": "Email", "destination": "Spreadsheets and files",
+                  "professional": "Professional services", "fieldservice": "Field service",
+                  "retail": "Retail point of sale", "restaurants": "Restaurants", "medical": "Medical"}
+
+
 def connectors_index(conn: dict, skills: list) -> str:
-    """Directory page for connectors/."""
-    cs = conn["statuses"]
-    L = [GENERATED, "", "# Data sources", "",
-         "One page per system Mosofin connects or has assessed — how to reach it, what it",
-         "costs to reach, whether its vendor publishes skills, and which skills in this",
-         "index run once it is connected.", ""]
-    for status in STATUS_ORDER:
-        rows = sorted((n, c) for n, c in conn["connectors"].items()
-                      if c.get("status") == status and n not in NOT_A_SOURCE)
-        if not rows:
+    """Directory of platform explainers, grouped by what the software does."""
+    L = [GENERATED, "", "# Platforms", "",
+         "One page per piece of software: what to use with an AI agent, who publishes it,",
+         "and whether it can change your records or move money.", ""]
+    by_v: dict = {}
+    for n, c in conn["connectors"].items():
+        if n in NOT_A_SOURCE:
             continue
-        L += [f"## {status} — {cs.get(status, '')}", ""]
-        for n, c in rows:
-            used = sum(1 for s in skills if n in (s.get("systems") or []))
-            bits = [f"`{c.get('auth', '—')}`"]
-            if c.get("lead_time"):
-                bits.append(esc(c["lead_time"]))
-            bits.append(f"{used} skill{'s' if used != 1 else ''} in this index")
-            L.append(f"- **[{n}]({n}/README.md)** — " + " · ".join(bits))
+        by_v.setdefault(c.get("vertical", "other"), []).append((n, c))
+    for v in VERTICAL_ORDER + sorted(set(by_v) - set(VERTICAL_ORDER)):
+        if v not in by_v:
+            continue
+        L += [f"## {VERTICAL_LABEL.get(v, v.capitalize())}", ""]
+        for n, c in sorted(by_v[v], key=lambda x: display_name(*x).lower()):
+            users = [s for s in skills if n in (s.get("systems") or [])]
+            own = sum(1 for s in users if publisher_of(s)[0] == "vendor")
+            if own:
+                verdict = f"{own} from the vendor"
+            elif users:
+                verdict = "nothing from the vendor; other publishers only"
+            else:
+                verdict = "nothing to recommend yet"
+            L.append(f"- **[{esc(display_name(n, c))}]({n}/README.md)** — {len(users)} "
+                     f"option{'s' if len(users) != 1 else ''} · {verdict}")
         L += [""]
     L += ["---", "", "[← the index](../README.md)", ""]
     return "\n".join(L)

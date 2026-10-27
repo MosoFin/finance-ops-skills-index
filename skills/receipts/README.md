@@ -6,13 +6,14 @@
 
 Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Anthropic |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | pdf, images |
+| Works with | pdf, images |
 | Source | [`anthropics/claude-plugins-official/plugins/receipts/skills/receipts`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/receipts/skills/receipts) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -43,7 +44,9 @@ Anthropic's own plugin for turning receipts into structured records. The substan
 
 - Read the raw .jsonl transcripts directly — the miner has already extracted what matters, and re-reading them would burn a large number of tokens to no benefit.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

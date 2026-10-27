@@ -6,13 +6,14 @@
 
 Find incomplete records, normalize field values in bulk, dedupe with `hubspot objects merge`, and audit custom properties. Builds on `bulk- operations` for JSONL piping and dry-run/digest/confirm.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | HubSpot — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | hubspot |
+| Works with | [HubSpot](../../connectors/hubspot/README.md) |
 | Source | [`HubSpot/agent-cli-skills/crm-data-quality`](https://github.com/HubSpot/agent-cli-skills/tree/main/crm-data-quality) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -45,7 +46,9 @@ Find incomplete records, normalize field values in bulk, dedupe with `hubspot ob
 - Guess a property name.
 - Skip the pagination loop above 100 results.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Xero's example agents (LangChain, OpenAI Agents SDK, Google ADK) built on the Xero MCP Server. For developers building their own Xero agent.
 
+**What it can do:** Changes records without asking first.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Xero — the platform vendor's own |
 | Type | Developer toolkit |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
-| Systems | xero |
+| Works with | [Xero](../../connectors/xero/README.md) |
 | Source | [`XeroAPI/xero-agent-toolkit`](https://github.com/XeroAPI/xero-agent-toolkit/tree/main) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
@@ -34,7 +35,9 @@ Xero's example agents (LangChain, OpenAI Agents SDK, Google ADK) built on the Xe
 |---|---|---|
 | example agent code | files | the developer's project |
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -42,15 +45,9 @@ Xero's example agents (LangChain, OpenAI Agents SDK, Google ADK) built on the Xe
 
 - `xero` — Rotating refresh tokens need atomic persistence — a lost write costs the grant.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+A developer library: it is built into your own agent's code rather than installed in an app.
 
 ---
 

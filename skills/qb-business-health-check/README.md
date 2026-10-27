@@ -6,13 +6,14 @@
 
 synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-claude-plugin/skills/business-health-check`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/business-health-check) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -48,7 +49,9 @@ synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks
 - Invent a number a tool did not return.
 - Read a negative A/R bucket as collections risk — it is a cleanup, credit or payment-application flag.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

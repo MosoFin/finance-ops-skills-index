@@ -6,13 +6,14 @@
 
 PayPal's SDK for agent frameworks (OpenAI Agents SDK, LangChain, Vercel AI SDK, MCP): invoices, orders, payments, refunds, subscriptions, products and shipment tracking as callable tools.
 
+**What it can do:** Can move money; Changes records without asking first.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | PayPal — the platform vendor's own |
 | Type | Developer toolkit |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | paypal |
+| Works with | [PayPal](../../connectors/paypal/README.md) |
 | Source | [`paypal/agent-toolkit`](https://github.com/paypal/agent-toolkit/tree/main) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -35,7 +36,9 @@ PayPal's SDK for agent frameworks (OpenAI Agents SDK, LangChain, Vercel AI SDK, 
 |---|---|---|
 | PayPal API results | chat | the agent; writes land in PayPal |
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -43,15 +46,9 @@ PayPal's SDK for agent frameworks (OpenAI Agents SDK, LangChain, Vercel AI SDK, 
 
 - `paypal` — Log in with PayPal, not Partner Referrals — the latter creates new seller accounts. Transaction Search must be ticked or the scope is silently absent from the granted token.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+A developer library: it is built into your own agent's code rather than installed in an app.
 
 ---
 

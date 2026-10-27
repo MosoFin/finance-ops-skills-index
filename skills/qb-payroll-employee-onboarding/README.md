@@ -6,13 +6,14 @@
 
 Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-claude-plugin/skills/payroll-employee-onboarding`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -49,7 +50,9 @@ Onboard a new hire into QuickBooks Payroll from user-provided details or onboard
 - Claim write support for gender, birth date, direct deposit, tax setup, benefits or deductions.
 - Report success before read-back confirms it.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

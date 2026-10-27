@@ -6,13 +6,14 @@
 
 Use this skill when the user asks what information a Stripe Connect connected account must provide for verification, onboarding, KYC, or account requirements; when they need to compare requirements between connected-account setups; or when they ask which verification fields, documents, or business details are required for a particular platform country, account country, business type, dashboard, service agreement, or capability.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Stripe — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | stripe |
+| Works with | [Stripe](../../connectors/stripe/README.md) |
 | Source | [`stripe/ai/providers/claude/plugin/skills/connect-required-verification-information`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/connect-required-verification-information) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
@@ -45,7 +46,9 @@ Use this skill when the user asks what information a Stripe Connect connected ac
 - Stop at a plain free-form prompt where a multiple-choice question is required.
 - Re-ask something the user already answered.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Period-over-period variance analysis as a disciplined loop — isolate, drill, hypothesise, verify, explain. Commentary is earned from transactions, never invented from account names.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/flux` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -48,7 +49,9 @@ Period-over-period variance analysis as a disciplined loop — isolate, drill, h
 - Explain a variance from the account name.
 - Post a correction found during drilling.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Anthropic |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | pdf |
+| Works with | pdf |
 | Source | [`anthropics/skills/skills/pdf`](https://github.com/anthropics/skills/tree/main/skills/pdf) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
@@ -40,7 +41,9 @@ Extract text, tables, and metadata from PDFs; merge and annotate. Relevant where
 
 - Reach for the reference material only when the task is advanced — FORMS.md is required reading before filling a form.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

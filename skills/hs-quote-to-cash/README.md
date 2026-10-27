@@ -6,13 +6,14 @@
 
 Build the product catalog, assemble quotes (line items + associations to deals), and track invoices and subscriptions through to revenue.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | HubSpot — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | hubspot |
+| Works with | [HubSpot](../../connectors/hubspot/README.md) |
 | Source | [`HubSpot/agent-cli-skills/quote-to-cash`](https://github.com/HubSpot/agent-cli-skills/tree/main/quote-to-cash) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -46,7 +47,9 @@ Build the product catalog, assemble quotes (line items + associations to deals),
 - Write an enum value without verifying it first.
 - Imply a CLI-created quote is anything but a draft — approval routing, share links, PDF generation and invoice creation need the HubSpot UI.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

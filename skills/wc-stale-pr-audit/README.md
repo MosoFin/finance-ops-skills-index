@@ -6,13 +6,14 @@
 
 WooCommerce's maintainer skill for reviewing stale pull requests in WooCommerce's own repository. Listed because WooCommerce publishes it; it is not a store-operations skill.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | WooCommerce — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
-| Systems | woocommerce |
+| Works with | [WooCommerce](../../connectors/woocommerce/README.md) |
 | Source | [`woocommerce/agent-skills/skills/woocommerce-stale-pr-audit`](https://github.com/woocommerce/agent-skills/tree/trunk/skills/woocommerce-stale-pr-audit) |
 | License | `gpl-2.0` |
 | Mirrored here | no — pointer only |
@@ -34,7 +35,9 @@ WooCommerce's maintainer skill for reviewing stale pull requests in WooCommerce'
 |---|---|---|
 | audit report | markdown | local file |
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

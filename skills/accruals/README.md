@@ -6,13 +6,14 @@
 
 Proposes and reviews accruals, prepaid amortization, and deferrals for a period — recurring accruals, reversals due, missing accruals from open bills, schedule releases. Accrual basis only; stops on cash basis.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/accruals` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -48,7 +49,9 @@ Proposes and reviews accruals, prepaid amortization, and deferrals for a period 
 
 - Invent an amount when the basis is missing — ask instead.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

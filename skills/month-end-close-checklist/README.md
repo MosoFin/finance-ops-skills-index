@@ -6,13 +6,14 @@
 
 Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the checklist from the entity's actual chart of accounts, pre-populates the status of every task that leaves ledger evidence, and runs a final tie-out including inter-period continuity.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 1 — Orchestration |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`MosoFin/mosofin-finance-skills/skills/month-end-close-checklist`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/month-end-close-checklist) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -49,7 +50,9 @@ Plans, runs, or audits a monthly close against a Mosofin workspace — scopes th
 - Perform an individual close task — a specific reconciliation, accrual or entry belongs to its own skill.
 - Mark a task complete on anything but evidence.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

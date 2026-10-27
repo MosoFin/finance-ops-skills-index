@@ -8,6 +8,7 @@
 - Published there: 15 · indexed here: 8 · checked 2026-10-21
 - Repository licence: apache-2.0
 - Note: Seven are revenue operations. The rest are CRM workflow and support.
+- Vendor-hosted MCP server: https://mcp.hubspot.com (run by HubSpot, not on GitHub, so not tracked for changes). HubSpot's hosted MCP server, which its Sales plugin connects to.
 
 ## Indexed skills
 

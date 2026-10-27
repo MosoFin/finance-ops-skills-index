@@ -6,13 +6,14 @@
 
 The skeptical second pair of eyes on everything posted this period — round numbers, unusual account pairings, entries above materiality without support, broken reversal patterns, back-dated postings, related-party entries.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/je-review` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -45,7 +46,9 @@ The skeptical second pair of eyes on everything posted this period — round num
 
 - Post a correcting entry.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

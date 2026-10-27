@@ -6,13 +6,14 @@
 
 Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | quickbooks, pdf |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), pdf |
 | Source | [`MosoFin/mosofin-finance-skills/skills/invoice-data-extractor`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/invoice-data-extractor) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -44,7 +45,9 @@ Extracts structured fields from vendor invoice PDFs and images, then validates e
 - Post the entry — pair with journal-entry-builder, and a person posts it.
 - Do OCR alone without extracting meaning.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Payroll. Use when the user asks to see current pay, give a raise (absolute, increment, or percentage), reduce or adjust pay, switch between salary and hourly, change pay frequency, or update weekly contracted time for one or more named employees. Reads the current contract first, requires explicit confirmation before writing, then verifies the change using qbo_payroll_search_employee, qbo_payroll_get_employee_contract_details, and qbo_payroll_save_employee_contract_details.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-claude-plugin/skills/set-base-pay`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/set-base-pay) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ Set, view, or change employee base pay (salary or hourly rate) in QuickBooks Pay
 - Apply a field it cannot save, such as an effective date, without saying so.
 - Process more than ten named employees in one batch.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

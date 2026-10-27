@@ -6,13 +6,14 @@
 
 Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-claude-plugin/skills/setup`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -41,7 +42,9 @@ Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks too
 
 - Suggest `claude mcp add` for QuickBooks — a locally added server shadows the claude.ai connector and cannot authenticate, since Intuit rejects the localhost redirect.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

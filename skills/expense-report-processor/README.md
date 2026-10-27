@@ -6,13 +6,14 @@
 
 Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — codes against the real chart of accounts, matches claims against already-posted transactions, and checks reimbursement and card-clearing balances.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | [`MosoFin/mosofin-finance-skills/skills/expense-report-processor`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/expense-report-processor) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -46,7 +47,9 @@ Processes T&E expense reports from Concur, Expensify, Brex, Pleo and others — 
 - Post the reimbursement or the GL entry.
 - Handle vendor invoices or petty cash — those are separate skills.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

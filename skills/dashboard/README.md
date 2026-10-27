@@ -6,13 +6,14 @@
 
 One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every figure traces to a source and no figure is computed by the model. Tufte-style restraint, inline SVG charts, provenance footer per panel.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/dashboard` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every fig
 - Invent a KPI definition.
 - Ship a figure that failed its tie-check.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

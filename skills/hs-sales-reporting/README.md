@@ -6,13 +6,14 @@
 
 Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | HubSpot — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | hubspot |
+| Works with | [HubSpot](../../connectors/hubspot/README.md) |
 | Source | [`HubSpot/agent-cli-skills/sales-reporting`](https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -45,7 +46,9 @@ Daily briefings, pipeline snapshots, and win/loss analysis from the terminal —
 - Do arithmetic on a property value without converting it from string.
 - Hardcode portal-specific stage IDs.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

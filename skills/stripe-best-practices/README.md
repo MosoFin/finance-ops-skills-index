@@ -6,13 +6,14 @@
 
 Stripe's integration guide: Checkout Sessions vs PaymentIntents, Connect, billing and subscriptions, Stripe Tax registrations, Treasury financial accounts, deprecated-API migration and key handling. Routes each question to a Stripe-hosted reference file before any code is written.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Stripe — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | stripe |
+| Works with | [Stripe](../../connectors/stripe/README.md) |
 | Source | [`stripe/ai/providers/claude/plugin/skills/stripe-best-practices`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-best-practices) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
@@ -44,7 +45,9 @@ Stripe's integration guide: Checkout Sessions vs PaymentIntents, Connect, billin
 - Use the deprecated global API-key pattern.
 - Recommend a secret key where a restricted key will do.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

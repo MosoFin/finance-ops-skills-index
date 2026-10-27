@@ -6,13 +6,14 @@
 
 Builds a BvA table with scripted variance math, separates timing from true variance, and drafts commentary with the full-year implication computed rather than estimated.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/budget-vs-actuals` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -46,7 +47,9 @@ Builds a BvA table with scripted variance math, separates timing from true varia
 
 - Recompute a cell the script produced.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

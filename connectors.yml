@@ -50,6 +50,7 @@ connectors:
 
   # ===== Live =============================================================
   quickbooks:
+    name: "QuickBooks"
     status: live
     family: A
     source: runbook
@@ -72,6 +73,11 @@ connectors:
     skills_note: >-
       All ten are bookkeeping skills — the only vendor set that is. Intuit also publishes the QuickBooks Online MCP Server (intuit/quickbooks-online-mcp-server, 145 tools, writes on by default), indexed as qbo-mcp-server.
   stripe:
+    name: "Stripe"
+    hosted_mcp:
+      vendor: "Stripe"
+      url: "https://mcp.stripe.com"
+      note: "Stripe's hosted MCP server, named in the stripe/ai README."
     status: live
     family: A
     source: runbook
@@ -96,6 +102,7 @@ connectors:
 
   # ===== Built, awaiting review ===========================================
   shopify:
+    name: "Shopify"
     status: code-complete
     family: A
     source: runbook
@@ -122,6 +129,11 @@ connectors:
 
   # ===== Committed roadmap ================================================
   meta-ads:
+    name: "Meta Ads"
+    hosted_mcp:
+      vendor: "Meta"
+      url: "https://mcp.facebook.com/ads"
+      note: "Meta Ads MCP (open beta, free). Reported by several third-party guides since April 2026; Meta's own page could not be reached to confirm it."
     status: roadmap
     family: B
     source: runbook
@@ -144,6 +156,7 @@ connectors:
     skills_note: >-
       No skills or MCP server on GitHub. Meta runs an official hosted Ads MCP server at mcp.facebook.com/ads, in free open beta since April 2026 according to several third-party guides; Meta's own documentation could not be reached to confirm it, and with no repository it cannot be tracked here. Community servers that meet the 100-star, two-week rule (Ryze's google-ads-meta-ads-mcp, Pipeboard's meta-ads-mcp) are hosted paid services and await an owner decision.
   google-ads:
+    name: "Google Ads"
     status: roadmap
     family: B
     source: runbook
@@ -167,6 +180,11 @@ connectors:
     skills_note: >-
       No skills, but Google publishes an official read-only MCP server for the Google Ads API (googleads/google-ads-mcp), indexed as google-ads-mcp. It adds a usage-data header to API calls.
   square:
+    name: "Square"
+    hosted_mcp:
+      vendor: "Square"
+      url: "https://mcp.squareup.com/mcp"
+      note: "Square's hosted server with OAuth sign-in, which Square recommends over running square-mcp-server yourself."
     status: roadmap
     family: A
     source: runbook
@@ -189,6 +207,7 @@ connectors:
     skills_note: >-
       No skills, but Square publishes an official MCP server (square/square-mcp-server, beta) and runs a hosted one at mcp.squareup.com/mcp, which it recommends. Indexed as square-mcp-server.
   paypal:
+    name: "PayPal"
     status: roadmap
     family: A
     source: runbook
@@ -213,6 +232,7 @@ connectors:
     skills_note: >-
       Both indexed, plus PayPal's agent-toolkit SDK and its older paypal-mcp-server. Both of those can process payments and refunds.
   xero:
+    name: "Xero"
     status: roadmap
     family: B
     source: runbook
@@ -232,6 +252,11 @@ connectors:
       No vendor-published skills. Xero publishes an official MCP server (51 tools, including create-payment and manual journals, no confirmation step) and example agents (xero-agent-toolkit); both indexed.
     skills_checked: "2026-10-21"
   hubspot:
+    name: "HubSpot"
+    hosted_mcp:
+      vendor: "HubSpot"
+      url: "https://mcp.hubspot.com"
+      note: "HubSpot's hosted MCP server, which its Sales plugin connects to."
     status: roadmap
     family: A
     source: runbook
@@ -256,6 +281,7 @@ connectors:
     skills_note: >-
       Seven are revenue operations. The rest are CRM workflow and support.
   klaviyo:
+    name: "Klaviyo"
     status: roadmap
     family: A
     source: runbook
@@ -272,6 +298,11 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   amazon-sp:
+    name: "Amazon Seller Central"
+    hosted_mcp:
+      vendor: "Amazon"
+      url: "https://sellingpartner-ai.amazon.com/mcp"
+      note: "Amazon's Selling Partner connector, signed in through Seller Central; the toolkit's skills run on it."
     status: roadmap
     family: A
     source: runbook
@@ -294,6 +325,7 @@ connectors:
       Amazon's official Selling Partner agentic toolkit: 12 skills on Amazon's hosted connector (sellingpartner-ai.amazon.com/mcp), with every write drafted for approval. The three finance and inventory skills are indexed (month-end close, seller analytics, stockout prevention); the rest cover listings, FBA inbound, user invites and support cases.
 
   tiktok-shop:
+    name: "TikTok Shop"
     status: candidate
     family: A
     source: owner request (2026-10-21)
@@ -310,6 +342,7 @@ connectors:
 
   # ===== Evaluated, not committed =========================================
   bigcommerce:
+    name: "BigCommerce"
     status: candidate
     family: A
     source: survey
@@ -325,6 +358,7 @@ connectors:
       No vendor-published skills or MCP server. One community developer plugin is indexed by owner decision (OrcaQubits bigcommerce-commerce, 39 stars). Store data is reached through the Mosofin gateway: see docs.mosofin.com for the BigCommerce configuration.
     skills_checked: "2026-10-21"
   ebay:
+    name: "eBay"
     status: candidate
     family: A
     source: survey
@@ -338,6 +372,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   ecwid:
+    name: "Ecwid"
     status: candidate
     family: A
     source: survey
@@ -350,6 +385,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   lightspeed-x:
+    name: "Lightspeed Retail (X-Series)"
     status: candidate
     family: A
     source: survey
@@ -363,6 +399,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   etsy:
+    name: "Etsy"
     status: candidate
     family: A
     source: survey
@@ -376,6 +413,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   clio:
+    name: "Clio"
     status: candidate
     family: A
     source: survey
@@ -389,6 +427,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   harvest:
+    name: "Harvest"
     status: candidate
     family: A
     source: survey
@@ -401,6 +440,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   jobber:
+    name: "Jobber"
     status: candidate
     family: A
     source: survey
@@ -416,6 +456,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   servicem8:
+    name: "ServiceM8"
     status: candidate
     family: A
     source: survey
@@ -430,6 +471,7 @@ connectors:
 
   # ===== Reachable only at cost ===========================================
   woocommerce:
+    name: "WooCommerce"
     status: costly
     family: A
     source: runbook
@@ -449,6 +491,7 @@ connectors:
     skills_note: >-
       WooCommerce's two published skills are developer tools (an Abilities API guide and a stale-PR audit); both are indexed by owner decision. For store data, WooCommerce publishes WooCommerce for Claude (woocommerce/woocommerce-claude), which is indexed, on top of WordPress's official MCP Adapter.
   servicetitan:
+    name: "ServiceTitan"
     status: costly
     family: A
     source: survey
@@ -462,6 +505,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   housecallpro:
+    name: "Housecall Pro"
     status: costly
     family: A
     source: survey
@@ -475,6 +519,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   clover:
+    name: "Clover"
     status: costly
     family: A
     source: survey
@@ -490,6 +535,7 @@ connectors:
 
   # ===== Gated, advised against, declined =================================
   toast:
+    name: "Toast"
     status: gated
     family: none
     source: survey
@@ -503,6 +549,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   ncr-voyix:
+    name: "NCR Voyix"
     status: gated
     family: none
     source: survey
@@ -515,6 +562,7 @@ connectors:
     skills_indexed: 0
     skills_checked: "2026-09-20"
   gmail:
+    name: "Gmail"
     status: not-recommended
     family: none
     source: runbook
@@ -537,6 +585,7 @@ connectors:
     skills_note: >-
       Triage only — this connector is not recommended anyway.
   ehr:
+    name: "Electronic health records"
     status: declined
     family: none
     source: survey
@@ -550,6 +599,7 @@ connectors:
 
   # ===== Destinations and files ===========================================
   google-sheets:
+    name: "Google Sheets"
     status: local
     family: none
     source: runbook
@@ -567,6 +617,7 @@ connectors:
     skills_note: >-
       Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
   excel:
+    name: "Excel"
     status: local
     family: none
     source: runbook
@@ -584,6 +635,7 @@ connectors:
     skills_note: >-
       The repo's .github/skills are Microsoft's internal development process — vibe-coding, governance remediation. Nothing to do with Excel.
   google-drive:
+    name: "Google Drive"
     status: local
     family: none
     source: runbook

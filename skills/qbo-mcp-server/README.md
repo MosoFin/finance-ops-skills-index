@@ -6,13 +6,14 @@
 
 Intuit's official MCP server for QuickBooks Online: 145 tools to get, search, create, update and delete 29 entity types (invoices, bills, bill payments, payments, journal entries, transfers and more) plus 11 financial reports.
 
+**What it can do:** Changes records without asking first.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | MCP server — tools Claude can call |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-online-mcp-server`](https://github.com/intuit/quickbooks-online-mcp-server/tree/main) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -34,7 +35,9 @@ Intuit's official MCP server for QuickBooks Online: 145 tools to get, search, cr
 |---|---|---|
 | QuickBooks records and reports | chat | the MCP client; writes land in QuickBooks |
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -42,15 +45,9 @@ Intuit's official MCP server for QuickBooks Online: 145 tools to get, search, cr
 
 - `quickbooks` — realm_id is not globally unique; uniqueness is (tenant, connector_key, external_datasource_id). Every other connector inherits this rule.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+An MCP server, not a skill: any app that can connect to MCP servers can use it, including Claude Code, Claude.ai, Claude Desktop and Cursor.
 
 ---
 

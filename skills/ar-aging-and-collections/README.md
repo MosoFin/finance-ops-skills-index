@@ -6,13 +6,14 @@
 
 Pulls live A/R, builds and reconciles an aging, prioritizes collections, calculates receivables metrics (DSO), and drafts review-only reminders. Not for cash application, write-offs, invoice creation, or sending.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`MosoFin/mosofin-finance-skills/skills/ar-aging-and-collections`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/ar-aging-and-collections) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ Pulls live A/R, builds and reconciles an aging, prioritizes collections, calcula
 - Apply a payment or write off a balance.
 - Invent a dispute, promise, late fee or legal step.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

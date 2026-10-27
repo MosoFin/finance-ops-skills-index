@@ -6,13 +6,14 @@
 
 Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, pagination, dry-run/digest/confirm for destructive ops, and `hubspot history` for recovery. Every other skill builds on this one.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | HubSpot — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | hubspot |
+| Works with | [HubSpot](../../connectors/hubspot/README.md) |
 | Source | [`HubSpot/agent-cli-skills/bulk-operations`](https://github.com/HubSpot/agent-cli-skills/tree/main/bulk-operations) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -46,7 +47,9 @@ Foundation patterns for the `hubspot` CLI — JSONL piping, batch read, paginati
 - Run a destructive operation without the dry-run and confirm escalation.
 - Trust this file over `hubspot --help`.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
