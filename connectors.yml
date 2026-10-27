@@ -283,6 +283,10 @@ connectors:
       Seven are revenue operations. The rest are CRM workflow and support.
   klaviyo:
     name: "Klaviyo"
+    hosted_mcp:
+      vendor: "Klaviyo"
+      url: "https://mcp.klaviyo.com/mcp"
+      note: "Can create and schedule campaigns and send messages; a read-only mode is offered at sign-in."
     status: roadmap
     family: A
     source: runbook
@@ -297,7 +301,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from Klaviyo. Klaviyo runs its own hosted MCP server, which can create, schedule and send campaigns unless you sign in read-only.
   amazon-sp:
     name: "Amazon Seller Central"
     hosted_mcp:
@@ -368,10 +374,12 @@ connectors:
     payouts: "yes"
     note: "Finances API exposes payouts, fees and refunds outright."
     github_org: eBay
-    skills_repo: none
-    skills_published: 0
-    skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_repo: eBay/npm-public-api-mcp
+    skills_published: 1
+    skills_indexed: 1
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      eBay publishes its own read-only MCP server for its public APIs (eBay/npm-public-api-mcp), which is indexed. eBay/claudePlugins is developer tooling for eBay's own engineers, not seller data.
   ecwid:
     name: "Ecwid"
     status: candidate
@@ -384,7 +392,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Ecwid: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
   lightspeed-x:
     name: "Lightspeed Retail (X-Series)"
     status: candidate
@@ -398,7 +408,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Lightspeed: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
   etsy:
     name: "Etsy"
     status: candidate
@@ -412,7 +424,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from Etsy. Etsy runs a hosted server (mcp.api.etsycloud.com/mcp) that, as far as can be confirmed, only searches Etsy's developer documentation; no Etsy tool reads shop data.
   clio:
     name: "Clio"
     status: candidate
@@ -426,9 +440,15 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Clio: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
   harvest:
     name: "Harvest"
+    hosted_mcp:
+      vendor: "Harvest"
+      url: "https://api.harvestapp.com/mcp"
+      note: "Reads projects and time, and can create and edit time entries."
     status: candidate
     family: A
     source: survey
@@ -439,9 +459,15 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from Harvest. Harvest runs its own hosted MCP server, which can write time entries.
   jobber:
     name: "Jobber"
+    hosted_mcp:
+      vendor: "Jobber"
+      url: "https://mcp.getjobber.com/mcp"
+      note: "Reads jobs, invoices and clients, and can create clients, requests and quotes."
     status: candidate
     family: A
     source: survey
@@ -455,9 +481,15 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Jobber runs its own hosted MCP server, which can create clients, requests and quotes. Jobber's only GitHub repository for agents (GetJobber/grok-bot-mcp, 0 stars) is not recommended: it ships a client secret in plain text.
   servicem8:
     name: "ServiceM8"
+    hosted_mcp:
+      vendor: "ServiceM8"
+      url: "https://api.servicem8.com/mcp"
+      note: "What it can change is not documented publicly."
     status: candidate
     family: A
     source: survey
@@ -468,7 +500,346 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from ServiceM8. ServiceM8 runs its own hosted MCP server.
+
+  # ===== Listed for their agent tools ====================================
+  netsuite:
+    name: "NetSuite"
+    hosted_mcp:
+      vendor: "Oracle NetSuite"
+      url: "https://<ACCOUNT_ID>.suitetalk.api.netsuite.com/services/mcp/v1/all"
+      note: "The NetSuite AI Connector; replace <ACCOUNT_ID> with your account id. Address taken from Oracle's documentation, unconfirmed."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: accounting
+    github_org: oracle
+    skills_repo: oracle/netsuite-suitecloud-sdk
+    skills_published: 10
+    skills_license: upl-1.0
+    skills_indexed: 2
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Oracle publishes NetSuite agent skills and Claude plugins in oracle/netsuite-suitecloud-sdk (364 stars). Two finance skills are indexed: the Finance Analyst skill and the SuiteSkills finance runbooks. Both are read-only by default and need your explicit authorisation for any change; none moves money. The other eight skills are for SuiteCloud developers.
+
+  zoho-books:
+    name: "Zoho Books"
+    hosted_mcp:
+      vendor: "Zoho"
+      url: "https://books.zohomcp.com/mcp/message"
+      note: "Zoho's global Books server, named in Zoho's own plugin. Can create invoices, bills and journals and record payments."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: accounting
+    github_org: zoho
+    skills_repo: zoho/zohobooks-antigravity-plugin
+    skills_published: 17
+    skills_license: proprietary
+    skills_indexed: 1
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Zoho publishes its own Zoho Books plugin, built for Google Antigravity rather than Claude; it is indexed because it shows what the hosted server can do. In Claude, connect Zoho's hosted Books server directly. The plugin confirms every create, update, email and match with you first.
+
+  myob:
+    name: "MYOB"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: accounting
+    github_org: MYOB-Technology
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from MYOB, and no community repository passes the sourcing rule. MYOB announced in August 2026 that it is rolling out to the Claude and ChatGPT app directories; look for it in Claude's connector directory. No server address was published.
+
+  freshbooks:
+    name: "FreshBooks"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: accounting
+    github_org: freshbooks
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from FreshBooks: no skills, MCP server or hosted server, and no community repository passes the sourcing rule (the largest has 3 stars).
+
+  sage:
+    name: "Sage"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: accounting
+    github_org: Sage
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from Sage for its accounting products; Sage's only skills are for its Carbon design system. Sage describes an MCP server for Sage Intacct (the AI Gateway) but publishes no address. No community repository about Sage accounting passes the sourcing rule.
+
+  wave:
+    name: "Wave"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: accounting
+    github_org: none-found
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Wave: no GitHub organisation, no hosted server, and no community repository passes the sourcing rule (the largest has 23 stars).
+
+  gusto:
+    name: "Gusto"
+    hosted_mcp:
+      vendor: "Gusto"
+      url: "https://mcp.api.gusto.com"
+      note: "Gusto's hosted MCP server."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: payroll
+    github_org: Gusto
+    skills_repo: Gusto/gusto-cli
+    skills_published: 3
+    skills_license: apache-2.0
+    skills_indexed: 3
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Gusto's own command-line tool (Gusto/gusto-cli) bundles three skills, all indexed: payroll prep and timesheet sync, which stop at a draft payroll you approve in Gusto, and a read-only payroll cash forecast. Agent writes need --confirm.
+
+  rippling:
+    name: "Rippling"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: payroll
+    github_org: Rippling
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from Rippling. Rippling runs an official hosted MCP server, but its address is shown only inside Rippling, so it is not listed here.
+
+  adp:
+    name: "ADP"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: payroll
+    github_org: none-found
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from ADP: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
+
+  paychex:
+    name: "Paychex"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: payroll
+    github_org: paychex
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Paychex: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
+
+  deel:
+    name: "Deel"
+    hosted_mcp:
+      vendor: "Deel"
+      url: "https://api.letsdeel.com/mcp"
+      note: "What it can change is not documented publicly."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: payroll
+    github_org: letsdeel
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Deel runs its own hosted MCP server. On GitHub, letsdeel/deel-cli is a general command-line client for Deel's API with no agent skills, and deel-public/deel-public-mcp could not be confirmed as Deel's and can issue off-cycle payments, so neither is indexed.
+
+  ramp:
+    name: "Ramp"
+    hosted_mcp:
+      vendor: "Ramp"
+      url: "https://mcp.ramp.com/mcp"
+      note: "Ramp's hosted MCP server; the indexed skills also run on it."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: spend
+    github_org: ramp-public
+    skills_repo: ramp-public/skills
+    skills_published: 29
+    skills_license: mit
+    skills_indexed: 5
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Ramp publishes 29 agent skills (ramp-public/skills) and a command-line tool. Indexed: spend analysis, spend audit, bill review, expense completion, and the CLI. The skills ask before changing anything; the CLI can approve bills and reimbursements, and can sign in read-only. Travel booking and agent-purchase skills are not indexed.
+
+  brex:
+    name: "Brex"
+    hosted_mcp:
+      vendor: "Brex"
+      url: "https://api.brex.com/mcp"
+      note: "Beta. What it can change is not documented publicly."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: spend
+    github_org: brexhq
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from Brex. Brex runs its own hosted MCP server, in beta.
+
+  expensify:
+    name: "Expensify"
+    hosted_mcp:
+      vendor: "Expensify"
+      url: "https://www.expensify.com/mcp"
+      note: "Read-only."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: spend
+    github_org: Expensify
+    skills_repo: Expensify/expensify-plugin
+    skills_published: 2
+    skills_license: mit
+    skills_indexed: 2
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Expensify's own Claude plugin (Expensify/expensify-plugin) has two read-only skills, both indexed: a spend brief and a flux analysis. They run on Expensify's hosted server, which is also read-only.
+
+  bill-com:
+    name: "BILL"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: spend
+    github_org: none-found
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from BILL (Bill.com). BILL's developer site lists an MCP server for searching its documentation; nothing that reads or pays bills.
+
+  navan:
+    name: "Navan"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: spend
+    github_org: none-found
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing on GitHub from Navan. Navan has announced an MCP server but published no address.
+
+  mercury:
+    name: "Mercury"
+    hosted_mcp:
+      vendor: "Mercury"
+      url: "https://mcp.mercury.com/mcp"
+      note: "Payment and transfer requests need approval inside Mercury; category and transaction updates apply straight away."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: banking
+    github_org: MercuryTechnologies
+    skills_repo: MercuryTechnologies/mercury-skills
+    skills_published: 9
+    skills_indexed: 4
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Mercury publishes nine agent skills and a command-line tool. Indexed: cash reconciliation, journal entry prep and transaction categorisation, which ask before any write, and the CLI, which can send payments with no confirmation step described. The skills repository has no licence file.
+
+  airwallex:
+    name: "Airwallex"
+    hosted_mcp:
+      vendor: "Airwallex"
+      url: "https://mcp.airwallex.com/mcp"
+      note: "Airwallex's hosted MCP server; the AgentOS plugin runs on it."
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: banking
+    github_org: airwallex
+    skills_repo: airwallex/airwallex-marketplace
+    skills_published: 5
+    skills_license: apache-2.0
+    skills_indexed: 1
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Airwallex's own Claude plugin, AgentOS (beta), is indexed. It creates invoices, beneficiaries and cards after confirming each write, and reports cash and FX exposure. It refuses transfers and currency conversions; those stay in the Airwallex dashboard.
+
+  plaid:
+    name: "Plaid"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: banking
+    github_org: plaid
+    skills_repo: plaid/ai-coding-toolkit
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Plaid's GitHub toolkit (plaid/ai-coding-toolkit) is for developers building Plaid integrations and works only on sandbox data, so it is not indexed. Plaid's hosted servers (api.dashboard.plaid.com/mcp and data-partner.mcp.plaid.com/mcp) serve developers and data partners, not a business's own bank data.
+
+  wise:
+    name: "Wise"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: banking
+    github_org: transferwise
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Wise: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
+
+  relay:
+    name: "Relay"
+    status: listed
+    family: A
+    source: "agent-tools review (2026-10-27)"
+    vertical: banking
+    github_org: none-found
+    skills_repo: none
+    skills_published: 0
+    skills_indexed: 0
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Relay: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
 
   # ===== Reachable only at cost ===========================================
   woocommerce:
@@ -504,7 +875,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from ServiceTitan: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
   housecallpro:
     name: "Housecall Pro"
     status: costly
@@ -518,7 +891,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Housecall Pro: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
   clover:
     name: "Clover"
     status: costly
@@ -532,7 +907,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Clover: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
 
   # ===== Gated, advised against, declined =================================
   toast:
@@ -548,7 +925,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from Toast: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
   ncr-voyix:
     name: "NCR Voyix"
     status: gated
@@ -561,7 +940,9 @@ connectors:
     skills_repo: none
     skills_published: 0
     skills_indexed: 0
-    skills_checked: "2026-09-20"
+    skills_checked: "2026-10-27"
+    skills_note: >-
+      Nothing from NCR Voyix: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
   gmail:
     name: "Gmail"
     status: not-recommended

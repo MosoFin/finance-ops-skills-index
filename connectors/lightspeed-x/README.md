@@ -2,11 +2,13 @@
 
 # Lightspeed Retail (X-Series)
 
-Stores and marketplaces · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Stores and marketplaces · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
 **Nothing to recommend for Lightspeed Retail (X-Series) yet.**
 
-[`lightspeedhq`](https://github.com/lightspeedhq) on GitHub publishes no skills or MCP server for agents as of 2026-09-20. That is a dated fact, not a permanent one.
+Nothing from Lightspeed: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
+
+[`lightspeedhq`](https://github.com/lightspeedhq) on GitHub publishes no skills or MCP server for agents as of 2026-10-27. That is a dated fact, not a permanent one.
 
 ## Mosofin connection status
 

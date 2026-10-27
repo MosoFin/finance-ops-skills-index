@@ -2,7 +2,7 @@
 
 # Catalog by close stage
 
-Catalog as of 2026-10-21. Use this when the user's goal is not in GOALS.md. Full details for each skill are on its vendor page.
+Catalog as of 2026-10-27. Use this when the user's goal is not in GOALS.md. Full details for each skill are on its vendor page.
 
 ## 0 · Setup
 
@@ -14,10 +14,14 @@ _Once per client, before any close_
   Relentless interview about your chart of accounts until every account has one clear purpose and every recurring transaction has exactly one home. Queries the ledger instead of asking whenever the ledger can answer.
 - `gws-drive` — runs on: google-drive · by Google — the platform vendor's own · WRITES-DIRECT · grade current · public — install from https://github.com/googleworkspace/cli/tree/main/skills/gws-drive
   Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
+- `mercury-cli` — runs on: mercury · by Mercury — the platform vendor's own · MOVES-MONEY · grade current · public — install from https://github.com/MercuryTechnologies/mercury-cli/tree/main
+  Mercury's own command-line tool for its API, usable by an agent: accounts, transactions, cards, recipients, invoices, statements and payments.
 - `onboard-client` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   Interviews you about a company and scaffolds the client workspace every other finance skill reads — profile, glossary, chart-of-accounts rulebook, close calendar, materiality thresholds, report preferences.
 - `qb-setup` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup
   Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
+- `ramp-cli` — runs on: ramp · by Ramp — the platform vendor's own · WRITES-DIRECT · grade current · public — install from https://github.com/ramp-public/ramp-cli/tree/main
+  Ramp's own command-line tool for its developer API, built for agents: expenses, bills, reimbursements, requests, cards and travel. Can sign in read-only.
 - `skill-creator` — runs on: any · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/skill-creator
   Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
 - `stripe-docs` — runs on: stripe · by Stripe — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs
@@ -35,12 +39,16 @@ _Once per client, before any close_
 
 _Tracks the period, runs nothing itself_
 
+- `airwallex-agentos` — runs on: airwallex · by Airwallex — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/airwallex/airwallex-marketplace/tree/master/plugins/airwallex-agentos
+  Airwallex's own Claude plugin (beta): creates invoices and subscriptions from contracts, sets up supplier beneficiaries from invoices, issues corporate cards, and reports multi-currency cash and FX exposure. It cannot send transfers or convert currency; those stay in the Airwallex dashboard.
 - `close` — runs on: any · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   A stateful month-end checklist for one period. Generates tasks from the client's close calendar, tracks status across sessions, and names the skill that fits the next open task. Tracks and suggests — it runs nothing and posts nothing.
 - `fs-month-end-closer` — runs on: any · by Anthropic · PROPOSES-WRITES · grade current · public — install from https://github.com/anthropics/financial-services/tree/main/plugins/agent-plugins/month-end-closer
   Anthropic's month-end close agent: accrual schedules, roll-forwards tied to the GL, variance commentary, and a close package staged for controller sign-off. Reads the trial balance through a GL MCP server you connect.
 - `month-end-close-checklist` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/month-end-close-checklist
   Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the checklist from the entity's actual chart of accounts, pre-populates the status of every task that leaves ledger evidence, and runs a final tie-out including inter-period continuity.
+- `zoho-books-plugin` — runs on: zoho-books · by Zoho — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/zoho/zohobooks-antigravity-plugin/tree/main
+  Zoho's own plugin for Zoho Books: 17 skills and 7 agents covering invoicing, bills, banking, journals, vendor payments and credits, on Zoho's hosted Books MCP server. Built for Google Antigravity, not Claude; in Claude, connect the same hosted server.
 
 ## 2 · Data hygiene
 
@@ -60,10 +68,14 @@ _Before the books can be trusted_
   Find a specific CRM record by ID, email, domain, or name fragment, and traverse associations for the full account picture.
 - `invoice-data-extractor` — runs on: quickbooks, pdf · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/invoice-data-extractor
   Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
+- `mercury-autocategorize-transactions` — runs on: mercury · by Mercury — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/MercuryTechnologies/mercury-skills/tree/main/skills/mercury-autocategorize-transactions
+  Mercury's own skill that suggests expense categories for uncategorized Mercury transactions and applies the ones you approve. The repository has no licence file.
 - `pdf` — runs on: pdf · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pdf
   Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
 - `qb-email-to-estimate-invoice` — runs on: quickbooks · by Intuit — the platform vendor's own · SENDS-EXTERNALLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/email-to-estimate-invoice
   Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
+- `ramp-complete-expenses` — runs on: ramp · by Ramp — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/ramp-public/skills/tree/main/skills/ramp-complete-expenses
+  Ramp's own skill for fixing expenses that need receipts, memos, accounting categories or attendees, including requested revisions.
 - `receipts` — runs on: pdf, images · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/claude-plugins-official/tree/main/plugins/receipts/skills/receipts
   Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
 - `shopify` — runs on: shopify · by Shopify — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify
@@ -93,6 +105,8 @@ _Tie the books to the outside world_
   Build the product catalog, assemble quotes (line items + associations to deals), and track invoices and subscriptions through to revenue.
 - `hubspot-sales-plugin` — runs on: hubspot · by HubSpot — the platform vendor's own · WRITES-DIRECT · grade current · public — install from https://github.com/HubSpot/hubspot-mcp-plugins/tree/main/HubSpot-Sales
   HubSpot's official Claude plugin on its hosted MCP server (mcp.hubspot.com): contact lookup, call prep, daily brief, follow-up drafting, call logging, contact import and pipeline overview.
+- `mercury-cash-reconciliation` — runs on: mercury · by Mercury — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/MercuryTechnologies/mercury-skills/tree/main/skills/mercury-cash-reconciliation
+  Mercury's own skill for the bank side of a cash GL reconciliation: pulls an account's period activity from Mercury and lays it out for a reconciliation workbook. The repository has no licence file.
 - `paypal-agent-toolkit` — runs on: paypal · by PayPal — the platform vendor's own · MOVES-MONEY · grade current · public — install from https://github.com/paypal/agent-toolkit/tree/main
   PayPal's SDK for agent frameworks (OpenAI Agents SDK, LangChain, Vercel AI SDK, MCP): invoices, orders, payments, refunds, subscriptions, products and shipment tracking as callable tools.
 - `paypal-best-practices` — runs on: paypal · by PayPal — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-best-practices
@@ -124,8 +138,14 @@ _Move amounts into the period they belong to_
 
 - `accruals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
   Proposes and reviews accruals, prepaid amortization, and deferrals for a period — recurring accruals, reversals due, missing accruals from open bills, schedule releases. Accrual basis only; stops on cash basis.
+- `gusto-payroll-prep` — runs on: gusto · by Gusto — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/Gusto/gusto-cli/tree/main/src/skills/payroll-prep
+  Gusto's own skill that loads a pay period's hours, tips, commission, bonus and reimbursements from your spreadsheet or POS export onto the draft payroll and calculates it for review. It never runs payroll; you approve in Gusto.
+- `gusto-timesheet-sync` — runs on: gusto · by Gusto — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/Gusto/gusto-cli/tree/main/src/skills/timesheet-sync
+  Gusto's own skill that records a pay period's hours as Gusto time sheets and syncs them into the draft payroll. Stops at the draft.
 - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
   Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
+- `mercury-journal-entry-prep` — runs on: mercury · by Mercury — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/MercuryTechnologies/mercury-skills/tree/main/skills/mercury-journal-entry-prep
+  Mercury's own skill for AP accrual and cash-reclass entries sourced from Mercury transactions, laid out for a NetSuite journal import. Posting stays with you. The repository has no licence file.
 - `qb-payroll-employee-onboarding` — runs on: quickbooks · by Intuit — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding
   Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
 - `qb-payroll-help` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help
@@ -139,12 +159,20 @@ _The skeptical second pass_
 
 - `duplicate-invoice-detection` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection
   Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
+- `expensify-flux-analysis` — runs on: expensify · by Expensify — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/Expensify/expensify-plugin/tree/main/skills/flux-analysis
+  Expensify's own skill comparing spend across two periods, naming the biggest movers by category and vendor.
 - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   Period-over-period variance analysis as a disciplined loop — isolate, drill, hypothesise, verify, explain. Commentary is earned from transactions, never invented from account names.
 - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   The skeptical second pair of eyes on everything posted this period — round numbers, unusual account pairings, entries above materiality without support, broken reversal patterns, back-dated postings, related-party entries.
+- `netsuite-suiteskills-finance` — runs on: netsuite · by Oracle NetSuite — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/oracle/netsuite-suitecloud-sdk/tree/master/packages/ai-plugins/common/skills/suiteskills/netsuite-suiteskills-finance
+  Oracle NetSuite's own finance runbooks for the NetSuite AI Connector: period close status, journal entry review, flux, cash and liquidity, collections, vendor credit matching, payment proposals and bank reconciliation priorities. Part of the netsuite-suiteskills plugin.
 - `qb-analyze-payroll-cost` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost
   Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
+- `ramp-manage-bills` — runs on: ramp · by Ramp — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/ramp-public/skills/tree/main/skills/ramp-manage-bills
+  Ramp's own skill for finding and inspecting vendor bills (draft, submitted, awaiting approval). Approving and paying stay elsewhere.
+- `ramp-spend-audit` — runs on: ramp · by Ramp — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/ramp-public/skills/tree/main/skills/ramp-spend-audit
+  Ramp's own skill for finding duplicate software, fragmented vendor payments, unused funds and oversized limits in Ramp.
 - `three-way-match` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/three-way-match
   Matches purchase orders, goods receipts, and vendor invoices line by line across the full population where the workspace holds POs and item receipts. Proposes only — pays nothing, releases nothing.
 - `tie-out` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
@@ -164,6 +192,10 @@ _Make the close legible to someone else_
   One self-contained HTML file — P&L trends, cash, A/R, KPIs — where every figure traces to a source and no figure is computed by the model. Tufte-style restraint, inline SVG charts, provenance footer per panel.
 - `docx` — runs on: word · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/docx
   Create, edit, and analyze Word documents with tracked changes and comments — the format most review notes and engagement letters still travel in.
+- `ebay-api-mcp` — runs on: ebay · by eBay — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/eBay/npm-public-api-mcp/tree/main
+  eBay's own MCP server for its public REST and GraphQL APIs: discover endpoints and read marketplace and, with a user token, seller account data. Read-only.
+- `expensify-spend-brief` — runs on: expensify · by Expensify — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/Expensify/expensify-plugin/tree/main/skills/spend-brief
+  Expensify's own skill for a plain-English spend summary for a period: totals by category, person and vendor, with anomalies flagged.
 - `explain-to-client` — runs on: any · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
 - `financial-statement-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder
@@ -178,12 +210,16 @@ _Make the close legible to someone else_
   Google Sheets: Read values from a spreadsheet.
 - `hs-sales-reporting` — runs on: hubspot · by HubSpot — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/sales-reporting
   Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.
+- `netsuite-finance-analyst` — runs on: netsuite · by Oracle NetSuite — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/oracle/netsuite-suitecloud-sdk/tree/master/packages/agent-skills/netsuite-finance-analyst
+  Oracle NetSuite's own finance-analysis skill: statements, budget versus actuals, AR and AP aging, close status, journal entry review and board or CFO summaries from NetSuite data. Read-only unless you explicitly ask for a change.
 - `pptx` — runs on: powerpoint · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pptx
   Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
 - `qb-business-health-check` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/business-health-check
   synthesize a QuickBooks business health briefing from multiple Intuit QuickBooks app reports. Use when the user asks broad questions such as "how's my business doing?", "give me the big picture", "what should I be worried about?", "summarize my financials", "anything unusual this month?", or wants one conversational view of profit and loss, cash flow, balance sheet, receivables aging, and sales performance without opening separate reports.
 - `qb-industry-benchmark` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/industry-benchmark
   benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
+- `ramp-spend-analysis` — runs on: ramp · by Ramp — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/ramp-public/skills/tree/main/skills/ramp-spend-analysis
+  Ramp's own skill for spend by vendor, category or team over a date range, with card and bill spend kept separate.
 - `woocommerce-for-claude` — runs on: woocommerce · by WooCommerce — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/woocommerce/woocommerce-claude/tree/trunk
   WooCommerce's own plugin that turns a store into an MCP endpoint for Claude: revenue, orders, refunds, coupons, tax and product analytics from WooCommerce's analytics tables, plus workflow skills such as failed-order triage and payment-method review.
 - `xlsx` — runs on: excel · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/xlsx
@@ -199,6 +235,8 @@ _After the period is shut_
   A 13-week cash projection built from open A/R and A/P, recurring items mined from history, and bank balances — opening balance tied to the bank before a single week is projected. Every projected line carries its basis.
 - `forecast` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
   A rolling forecast where actual months are locked and every forecast line names its driver — run-rate, growth, contract, seasonal, or manual with a stated reason. Assumption changes are logged as decision records.
+- `gusto-cash-forecasting` — runs on: gusto · by Gusto — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/Gusto/gusto-cli/tree/main/src/skills/cash-forecasting
+  Gusto's own skill projecting upcoming payroll cash needs from past payrolls, the general ledger and the pay schedule, split into wages, taxes, benefits and bank debits.
 - `hs-customer-retention` — runs on: hubspot · by HubSpot — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/HubSpot/agent-cli-skills/tree/main/customer-retention
   Identify inactive/at-risk customers via CRM filters and create follow-up tasks at scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
 - `metronome` — runs on: stripe · by Stripe — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/metronome

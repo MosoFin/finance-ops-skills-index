@@ -1,0 +1,37 @@
+id: ramp-cli
+title: Ramp CLI
+kind: toolkit
+origin: third-party
+authority: first-party
+stage: 0
+summary: 'Ramp''s own command-line tool for its developer API, built for agents: expenses, bills, reimbursements,
+  requests, cards and travel. Can sign in read-only.'
+tiers:
+- WRITES-DIRECT
+tier_notes:
+  WRITES-DIRECT: Commands include bills approve, reimbursements approve, requests approve and transactions
+    edit. A read-only sign-in is available (ramp auth login --read-only).
+systems:
+- ramp
+inputs:
+- name: Ramp sign-in (OAuth) or API key
+  required: true
+  source: your Ramp account
+  fallback: none
+outputs:
+- name: Ramp API results
+  type: chat
+  dest: the terminal
+never: []
+upstream:
+  repo: ramp-public/ramp-cli
+  path: ''
+  ref: main
+  file: README.md
+license: mit
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:34955ef086851d3f
+upstream_sha: 076a5a57adfb
+last_checked: '2026-10-27'

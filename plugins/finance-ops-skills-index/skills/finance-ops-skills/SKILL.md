@@ -1,6 +1,6 @@
 ---
 name: finance-ops-skills
-description: Recommends agent skills for finance and business-operations goals — month-end close, bank reconciliation, categorizing transactions, chasing overdue invoices, paying bills, expense reports, accruals and journal entries, financial statements and board packs, budget vs actuals, cash forecasts, payroll, invoicing, reconciling Stripe/PayPal/Shopify/Amazon payouts, ad spend, CRM pipeline reporting. Use when the user wants to get one of these done with an agent, asks which skill or plugin to use, asks whether an official skill, connector, MCP server or plugin exists for QuickBooks, Xero, Stripe, PayPal, Square, Shopify, WooCommerce, BigCommerce, Amazon Seller Central, TikTok Shop, Google Ads, Meta Ads, HubSpot or similar software, or asks whether a skill is safe to let near their books or money. Load it as soon as the user states such a goal, before asking them anything — it says which platforms to confirm and then recommends. Read-only; it never installs or runs the skills it recommends.
+description: Recommends agent skills for finance and operations goals — month-end close, bank reconciliation, categorizing transactions, chasing overdue invoices, paying bills, expense reports, accruals and journal entries, financial statements and board packs, budget vs actuals, cash forecasts, payroll, invoicing, reconciling Stripe/PayPal/Shopify/Amazon payouts, ad spend, CRM pipeline reporting. Use when the user wants one of these done with an agent, asks which skill or plugin to use, asks what official skills, MCP servers or plugins exist for QuickBooks, Xero, NetSuite, Zoho Books, Stripe, PayPal, Square, Shopify, WooCommerce, BigCommerce, Amazon Seller Central, TikTok Shop, Google Ads, Meta Ads, HubSpot, Gusto, Ramp, Expensify, Mercury, Airwallex or similar software, or asks whether a skill is safe near their books or money. Load it as soon as the user states such a goal, before asking anything; it says which platforms to confirm, then recommends. Read-only; it never installs or runs the skills it recommends.
 license: MIT
 ---
 
@@ -15,11 +15,13 @@ Answer only from the reference files, never from memory. The skills belong to th
 Every skill in the index runs on specific systems. A skill for the wrong ledger is not a near match, it is wrong. So before naming any skill:
 
 1. Work out which of these the goal depends on:
-   - **Ledger / accounting**: QuickBooks, Xero, other
+   - **Ledger / accounting**: QuickBooks, Xero, NetSuite, Zoho Books, other
    - **Payments**: Stripe, PayPal, Square, other
    - **Store**: Shopify, WooCommerce, BigCommerce, Amazon, Etsy, other
    - **CRM**: HubSpot, other
    - **Payroll**: QuickBooks Payroll, Gusto, other
+   - **Spend and bills**: Ramp, Expensify, Brex, BILL, other
+   - **Bank**: Mercury, Airwallex, a traditional bank, other
    - **Where files live**: Google Drive or Sheets, Excel, PDFs or CSV exports
 2. Take a platform as confirmed only if the user named it in this conversation, or it is plainly visible in what they shared (a QuickBooks export, a Stripe payout report). Never assume one because it is common. QuickBooks is the most indexed, which is not a reason to assume the user is on it.
 3. If a platform the goal depends on is not confirmed, ask before recommending. Ask once, about only the systems this goal needs, and offer the likely options. For example, for a bank reconciliation: "Which accounting system are your books in — QuickBooks, Xero or something else? And do you have a bank feed, or statements as PDF or CSV?"

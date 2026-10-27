@@ -1,0 +1,40 @@
+id: ramp-spend-audit
+title: Ramp spend audit
+kind: skill
+origin: third-party
+authority: first-party
+stage: 5
+summary: Ramp's own skill for finding duplicate software, fragmented vendor payments, unused funds and
+  oversized limits in Ramp.
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: Can change fund limits and locks once approved; it makes no vendor-side changes.
+  HUMAN-APPROVAL: '"Start read-only. Do not create, update, lock, unlock, or otherwise change a fund until
+    the customer approves the exact change."'
+systems:
+- ramp
+inputs:
+- name: Ramp CLI or Ramp's MCP server, signed in
+  required: true
+  source: your Ramp account
+  fallback: none
+outputs:
+- name: audit findings and proposed changes
+  type: chat
+  dest: the conversation
+never:
+- Cancel a subscription or change anything at a vendor.
+upstream:
+  repo: ramp-public/skills
+  path: skills/ramp-spend-audit
+  ref: main
+  file: SKILL.md
+license: mit
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:f47e83f408a50fc7
+upstream_sha: 9237ead472e1
+last_checked: '2026-10-27'

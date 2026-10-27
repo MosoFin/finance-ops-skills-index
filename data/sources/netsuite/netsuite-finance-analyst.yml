@@ -1,0 +1,41 @@
+id: netsuite-finance-analyst
+title: NetSuite Finance Analyst
+kind: skill
+origin: third-party
+authority: first-party
+stage: 6
+summary: 'Oracle NetSuite''s own finance-analysis skill: statements, budget versus actuals, AR and AP
+  aging, close status, journal entry review and board or CFO summaries from NetSuite data. Read-only unless
+  you explicitly ask for a change.'
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: '"Defaults to read-only analysis unless the user explicitly authorizes a record mutation."'
+  HUMAN-APPROVAL: '"Never create or update NetSuite records unless the user explicitly asks for a mutation
+    and confirms the target record, period, subsidiary, and accounting impact."'
+systems:
+- netsuite
+inputs:
+- name: NetSuite AI Connector (NetSuite's MCP server)
+  required: true
+  source: your NetSuite account, signed in with OAuth
+  fallback: none
+outputs:
+- name: finance analysis and narrative
+  type: chat
+  dest: the conversation
+never:
+- Create or update a record without confirmed target, period, subsidiary and accounting impact.
+upstream:
+  repo: oracle/netsuite-suitecloud-sdk
+  path: packages/agent-skills/netsuite-finance-analyst
+  ref: master
+  file: SKILL.md
+license: upl-1.0
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:657144020dec3c7f
+upstream_sha: c438202fefae
+last_checked: '2026-10-27'

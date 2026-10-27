@@ -4,7 +4,9 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: professional
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-27.
+- Note: Nothing on GitHub from Harvest. Harvest runs its own hosted MCP server, which can write time entries.
+- Vendor-hosted MCP server: https://api.harvestapp.com/mcp (run by Harvest, not on GitHub, so not tracked for changes). Reads projects and time, and can create and edit time entries.
 
 ## Indexed skills
 

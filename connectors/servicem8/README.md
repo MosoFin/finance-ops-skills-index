@@ -2,11 +2,18 @@
 
 # ServiceM8
 
-Field service · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Field service · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
-**Nothing to recommend for ServiceM8 yet.**
+**ServiceM8 runs its own hosted server for AI agents. Start with that.**
 
-[`ServiceM8`](https://github.com/ServiceM8) on GitHub publishes no skills or MCP server for agents as of 2026-09-20. That is a dated fact, not a permanent one.
+Nothing on GitHub from ServiceM8. ServiceM8 runs its own hosted MCP server.
+
+## Hosted by the vendor
+
+- **https://api.servicem8.com/mcp** — connect it in Claude as a custom connector (remote MCP server) and sign in with your ServiceM8 account. What it can change is not documented publicly.
+  Not on GitHub, so this index cannot watch it for changes.
+
+[`ServiceM8`](https://github.com/ServiceM8) on GitHub publishes no skills or MCP server for agents as of 2026-10-27. That is a dated fact, not a permanent one.
 
 ## Mosofin connection status
 

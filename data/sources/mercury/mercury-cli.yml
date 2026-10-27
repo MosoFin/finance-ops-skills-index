@@ -1,0 +1,39 @@
+id: mercury-cli
+title: Mercury CLI
+kind: toolkit
+origin: third-party
+authority: first-party
+stage: 0
+summary: 'Mercury''s own command-line tool for its API, usable by an agent: accounts, transactions, cards,
+  recipients, invoices, statements and payments.'
+tiers:
+- MOVES-MONEY
+- WRITES-DIRECT
+tier_notes:
+  MOVES-MONEY: '"Send payments and transfer funds between accounts (mercury payments)". No confirmation
+    step is described in the README.'
+  WRITES-DIRECT: Updates transactions and manages cards, recipients, customers and invoices.
+systems:
+- mercury
+inputs:
+- name: Mercury API token
+  required: true
+  source: your Mercury account
+  fallback: none
+outputs:
+- name: Mercury API results
+  type: chat
+  dest: the terminal
+never: []
+upstream:
+  repo: MercuryTechnologies/mercury-cli
+  path: ''
+  ref: main
+  file: README.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:e6c4787f45102eab
+upstream_sha: 6f9be1d7697f
+last_checked: '2026-10-27'

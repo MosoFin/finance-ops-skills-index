@@ -25,10 +25,10 @@ goals:
     steps:
       - step: Track the close
         does: Generate the period's checklist and see what is open, blocked or done.
-        skills: [month-end-close-checklist, fs-month-end-closer, close]
+        skills: [month-end-close-checklist, fs-month-end-closer, close, netsuite-suiteskills-finance]
       - step: Clean up uncategorized and miscoded transactions
         does: Clear suspense and uncategorized buckets before anything is reconciled.
-        skills: [categorize-transactions, gl-coding-assistant]
+        skills: [categorize-transactions, gl-coding-assistant, mercury-autocategorize-transactions]
       - step: Reconcile every bank and card account
         does: Tie each cash and card account to its statement for the period.
         skills: [bank-reconciliation, bank-rec]
@@ -40,7 +40,7 @@ goals:
         skills: [accruals, journal-entry-builder]
       - step: Review what was posted
         does: A skeptical second pass over the period's entries and balances.
-        skills: [je-review, fs-gl-reconciler, tie-out, flux]
+        skills: [je-review, fs-gl-reconciler, tie-out, flux, netsuite-finance-analyst]
       - step: Produce the statements
         does: Balance sheet, income statement and cash flow with comparatives.
         skills: [financial-statement-builder, board-pack]
@@ -57,7 +57,7 @@ goals:
         skills: [pdf]
       - step: Match statement lines to the ledger
         does: Match, list what is unmatched on each side, and prove the reconciled balance.
-        skills: [bank-reconciliation, bank-rec]
+        skills: [bank-reconciliation, bank-rec, mercury-cash-reconciliation]
       - step: Fix what does not match
         does: Draft the correcting entries for review before anything is posted.
         skills: [journal-entry-builder]
@@ -113,7 +113,7 @@ goals:
         skills: [grill-my-coa]
       - step: Categorize
         does: Propose an account for each transaction, grounded in the entity's own history and rules.
-        skills: [categorize-transactions, gl-coding-assistant]
+        skills: [categorize-transactions, gl-coding-assistant, mercury-autocategorize-transactions]
       - step: Review the result
         does: Check what was coded this period for unusual pairings and round numbers.
         skills: [je-review]
@@ -150,7 +150,7 @@ goals:
         skills: [gl-coding-assistant]
       - step: Check before paying
         does: Catch duplicates and invoices that do not match their purchase order and receipt.
-        skills: [duplicate-invoice-detection, three-way-match]
+        skills: [duplicate-invoice-detection, three-way-match, ramp-manage-bills]
       - step: Pay
         does: Send the payment. This moves real money — confirm every transfer.
         skills: [stripe-pay, stripe-directory]
@@ -165,10 +165,10 @@ goals:
     steps:
       - step: Capture receipts
         does: Turn receipts into structured records.
-        skills: [receipts, pdf]
+        skills: [receipts, pdf, ramp-complete-expenses]
       - step: Process the report
         does: Code claims, match them to posted card transactions, and check reimbursement and clearing balances.
-        skills: [expense-report-processor, gl-coding-assistant]
+        skills: [expense-report-processor, gl-coding-assistant, ramp-complete-expenses]
 
   accruals-and-adjustments:
     title: Book accruals and journal entries
@@ -182,7 +182,7 @@ goals:
         skills: [accruals]
       - step: Build the entry
         does: Construct and validate the entry against the real chart of accounts before it is posted.
-        skills: [journal-entry-builder]
+        skills: [journal-entry-builder, mercury-journal-entry-prep]
       - step: Review it
         does: Second pass over what was posted.
         skills: [je-review]
@@ -222,7 +222,7 @@ goals:
         skills: [gws-sheets-read, xlsx]
       - step: Compare and explain
         does: Variance table with timing separated from true variance, and commentary.
-        skills: [budget-vs-actuals, flux]
+        skills: [budget-vs-actuals, flux, expensify-flux-analysis, ramp-spend-analysis]
 
   cash-forecast:
     title: Forecast cash
@@ -233,7 +233,7 @@ goals:
     steps:
       - step: Project cash
         does: Week-by-week cash from open A/R, A/P, recurring items and bank balances.
-        skills: [cash-flow]
+        skills: [cash-flow, gusto-cash-forecasting]
       - step: Forecast the P&L
         does: Rolling forecast where every line names its driver.
         skills: [forecast]
@@ -262,6 +262,9 @@ goals:
       - give someone a raise
       - why did payroll cost go up
     steps:
+      - step: Prepare this period's payroll
+        does: Load hours, tips, commission and bonus onto the draft payroll and calculate it for review. Payroll is approved in the payroll system, never by the skill.
+        skills: [gusto-payroll-prep, gusto-timesheet-sync]
       - step: Onboard a new hire
         does: Set the employee up in payroll from their offer details.
         skills: [qb-payroll-employee-onboarding]
@@ -273,8 +276,8 @@ goals:
         skills: [qb-payroll-help]
       - step: Analyse payroll cost
         does: What drove a change in payroll spend.
-        skills: [qb-analyze-payroll-cost]
-    gap: Payroll skills are indexed for QuickBooks Payroll only.
+        skills: [qb-analyze-payroll-cost, gusto-cash-forecasting]
+    gap: Payroll skills are indexed for QuickBooks Payroll and Gusto only. ADP, Paychex and Rippling publish none; Deel and Rippling run hosted servers.
 
   invoice-customers:
     title: Quote and invoice customers

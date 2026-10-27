@@ -1,0 +1,43 @@
+id: airwallex-agentos
+title: Airwallex AgentOS
+kind: plugin
+origin: third-party
+authority: first-party
+stage: 1
+summary: 'Airwallex''s own Claude plugin (beta): creates invoices and subscriptions from contracts, sets
+  up supplier beneficiaries from invoices, issues corporate cards, and reports multi-currency cash and
+  FX exposure. It cannot send transfers or convert currency; those stay in the Airwallex dashboard.'
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: 'Creates invoices, subscriptions, beneficiaries, cardholders and cards. Transfers,
+    payouts and FX conversions are refused: "I can''t execute ... through this tool — that needs to be
+    done in the Airwallex Dashboard."'
+  HUMAN-APPROVAL: Defaults to sandbox; "Show the full payload to the user and get confirmation before
+    every write", and confirms the environment before any production write.
+systems:
+- airwallex
+inputs:
+- name: Airwallex CLI or Airwallex's MCP server, signed in
+  required: true
+  source: your Airwallex account
+  fallback: none
+outputs:
+- name: Airwallex records and cash reports
+  type: chat
+  dest: Airwallex
+never:
+- Send a transfer, payout or FX conversion.
+upstream:
+  repo: airwallex/airwallex-marketplace
+  path: plugins/airwallex-agentos
+  ref: master
+  file: README.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:9acda7bd99c9182c
+upstream_sha: '877551077786'
+last_checked: '2026-10-27'

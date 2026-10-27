@@ -2,11 +2,13 @@
 
 # Ecwid
 
-Stores and marketplaces · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Stores and marketplaces · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
 **Nothing to recommend for Ecwid yet.**
 
-[`Ecwid`](https://github.com/Ecwid) on GitHub publishes no skills or MCP server for agents as of 2026-09-20. That is a dated fact, not a permanent one.
+Nothing from Ecwid: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
+
+[`Ecwid`](https://github.com/Ecwid) on GitHub publishes no skills or MCP server for agents as of 2026-10-27. That is a dated fact, not a permanent one.
 
 ## Mosofin connection status
 

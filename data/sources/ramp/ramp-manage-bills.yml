@@ -1,0 +1,37 @@
+id: ramp-manage-bills
+title: Ramp bill review
+kind: skill
+origin: third-party
+authority: first-party
+stage: 5
+summary: Ramp's own skill for finding and inspecting vendor bills (draft, submitted, awaiting approval).
+  Approving and paying stay elsewhere.
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: '"These are read-only commands. For approvals, use ramp-approval-dashboard."'
+systems:
+- ramp
+inputs:
+- name: Ramp CLI or Ramp's MCP server, signed in
+  required: true
+  source: your Ramp account
+  fallback: none
+outputs:
+- name: bill details
+  type: chat
+  dest: the conversation
+never:
+- Approve or pay a bill.
+upstream:
+  repo: ramp-public/skills
+  path: skills/ramp-manage-bills
+  ref: main
+  file: SKILL.md
+license: mit
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:df68294c5c1945af
+upstream_sha: 9237ead472e1
+last_checked: '2026-10-27'

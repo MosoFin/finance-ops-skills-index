@@ -72,3 +72,17 @@ daily, so a change to it expires the entry exactly as a changed `SKILL.md` does.
 | 2026-10-21 | Amazon Seller | Added three skills from Amazon's official `amzn/selling-partner-agentic-toolkit`: month-end close, seller analytics, stockout prevention. |
 | 2026-10-21 | Meta Ads | Nothing official on GitHub. Meta's hosted Ads MCP noted in the vendor page. Community candidates that pass step 2 (Ryze, Pipeboard) are paid hosted services; awaiting owner decision. |
 | 2026-10-21 | TikTok Shop | Added as a platform. Nothing official; the only community repo passing step 2 (`xixihhhh/clipforge`) makes videos and does not read shop data, so it is a named gap. |
+| 2026-10-27 | NetSuite | Added Oracle's Finance Analyst skill and SuiteSkills finance runbooks from `oracle/netsuite-suitecloud-sdk`. NetSuite AI Connector address from Oracle's documentation, unconfirmed. |
+| 2026-10-27 | Zoho Books | Added Zoho's own Books plugin (built for Google Antigravity) and Zoho's hosted Books server. |
+| 2026-10-27 | MYOB, FreshBooks, Sage, Wave | Nothing official on GitHub, no community repository passes step 2. MYOB's Claude rollout and Sage's Intacct server are announced without an address. |
+| 2026-10-27 | Gusto | Added the three skills bundled in Gusto's own CLI (`Gusto/gusto-cli`); payroll is drafted, never run. |
+| 2026-10-27 | Rippling, Deel, ADP, Paychex | No official repositories indexed. Deel's hosted server listed; Rippling's address is shown only in-product; `deel-public/deel-public-mcp` not confirmed as Deel's and can issue off-cycle payments, so skipped. |
+| 2026-10-27 | Ramp | Added four finance skills from `ramp-public/skills` and the Ramp CLI (approves bills and reimbursements). Travel and agent-purchase skills not indexed. |
+| 2026-10-27 | Expensify | Added both skills from Expensify's own plugin; both read-only. |
+| 2026-10-27 | Brex, BILL, Navan | Nothing official on GitHub. Brex's hosted server (beta) listed; BILL's is documentation only; Navan's is announced without an address. |
+| 2026-10-27 | Mercury | Added three skills from `MercuryTechnologies/mercury-skills` (no licence file) and the Mercury CLI, which can send payments. |
+| 2026-10-27 | Airwallex | Added Airwallex's own AgentOS plugin; it refuses transfers and FX conversions. |
+| 2026-10-27 | Plaid, Wise, Relay | Plaid's toolkit is sandbox-only developer tooling, not indexed. Nothing from Wise or Relay. |
+| 2026-10-27 | eBay | Added eBay's own read-only API MCP server. |
+| 2026-10-27 | Etsy, Klaviyo, Harvest, Jobber, ServiceM8 | Vendor-hosted servers recorded. Jobber's GitHub repository skipped: it ships a client secret in plain text. Etsy's server searches documentation only. |
+| 2026-10-27 | Ecwid, Lightspeed, Clover, Clio, ServiceTitan, Housecall Pro, Toast, NCR Voyix | Re-checked; nothing official, no community repository passes step 2. |

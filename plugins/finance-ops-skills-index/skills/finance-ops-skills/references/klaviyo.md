@@ -4,7 +4,9 @@
 
 - Reachability: **roadmap** — Committed — registration runbook written
 - Vertical: marketing
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-27.
+- Note: Nothing on GitHub from Klaviyo. Klaviyo runs its own hosted MCP server, which can create, schedule and send campaigns unless you sign in read-only.
+- Vendor-hosted MCP server: https://mcp.klaviyo.com/mcp (run by Klaviyo, not on GitHub, so not tracked for changes). Can create and schedule campaigns and send messages; a read-only mode is offered at sign-in.
 
 ## Indexed skills
 

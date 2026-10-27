@@ -2,9 +2,11 @@
 
 # Housecall Pro
 
-Field service · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Field service · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
 **Nothing to recommend for Housecall Pro yet.**
+
+Nothing from Housecall Pro: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
 
 ## Mosofin connection status
 

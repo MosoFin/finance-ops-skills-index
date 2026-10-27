@@ -2,11 +2,18 @@
 
 # Klaviyo
 
-Marketing · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Marketing · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
-**Nothing to recommend for Klaviyo yet.**
+**Klaviyo runs its own hosted server for AI agents. Start with that.**
 
-[`klaviyo`](https://github.com/klaviyo) on GitHub publishes no skills or MCP server for agents as of 2026-09-20. That is a dated fact, not a permanent one.
+Nothing on GitHub from Klaviyo. Klaviyo runs its own hosted MCP server, which can create, schedule and send campaigns unless you sign in read-only.
+
+## Hosted by the vendor
+
+- **https://mcp.klaviyo.com/mcp** — connect it in Claude as a custom connector (remote MCP server) and sign in with your Klaviyo account. Can create and schedule campaigns and send messages; a read-only mode is offered at sign-in.
+  Not on GitHub, so this index cannot watch it for changes.
+
+[`klaviyo`](https://github.com/klaviyo) on GitHub publishes no skills or MCP server for agents as of 2026-10-27. That is a dated fact, not a permanent one.
 
 ## Mosofin connection status
 

@@ -2,9 +2,11 @@
 
 # NCR Voyix
 
-Retail point of sale · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Retail point of sale · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
 **Nothing to recommend for NCR Voyix yet.**
+
+Nothing from NCR Voyix: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
 
 ## Mosofin connection status
 

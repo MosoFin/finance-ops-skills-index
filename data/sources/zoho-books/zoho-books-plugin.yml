@@ -1,0 +1,41 @@
+id: zoho-books-plugin
+title: Zoho Books plugin (for Antigravity)
+kind: plugin
+origin: third-party
+authority: first-party
+stage: 1
+summary: 'Zoho''s own plugin for Zoho Books: 17 skills and 7 agents covering invoicing, bills, banking,
+  journals, vendor payments and credits, on Zoho''s hosted Books MCP server. Built for Google Antigravity,
+  not Claude; in Claude, connect the same hosted server.'
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: Creates invoices, bills, journals and bank matches, and records customer and vendor
+    payments in the books.
+  HUMAN-APPROVAL: '"Create/update/email/match actions are confirmed with you before they run. Delete actions
+    always require explicit confirmation of the named record."'
+systems:
+- zoho-books
+inputs:
+- name: Zoho Books MCP server, signed in
+  required: true
+  source: books.zohomcp.com/mcp/message
+  fallback: none
+outputs:
+- name: Zoho Books records
+  type: chat
+  dest: Zoho Books
+never: []
+upstream:
+  repo: zoho/zohobooks-antigravity-plugin
+  path: ''
+  ref: main
+  file: README.md
+license: proprietary
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:c40b677dda5cf4e5
+upstream_sha: b93595b51186
+last_checked: '2026-10-27'

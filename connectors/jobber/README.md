@@ -2,11 +2,18 @@
 
 # Jobber
 
-Field service · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Field service · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
-**Nothing to recommend for Jobber yet.**
+**Jobber runs its own hosted server for AI agents. Start with that.**
 
-[`GetJobber`](https://github.com/GetJobber) on GitHub publishes no skills or MCP server for agents as of 2026-09-20. That is a dated fact, not a permanent one.
+Jobber runs its own hosted MCP server, which can create clients, requests and quotes. Jobber's only GitHub repository for agents (GetJobber/grok-bot-mcp, 0 stars) is not recommended: it ships a client secret in plain text.
+
+## Hosted by the vendor
+
+- **https://mcp.getjobber.com/mcp** — connect it in Claude as a custom connector (remote MCP server) and sign in with your Jobber account. Reads jobs, invoices and clients, and can create clients, requests and quotes.
+  Not on GitHub, so this index cannot watch it for changes.
+
+[`GetJobber`](https://github.com/GetJobber) on GitHub publishes no skills or MCP server for agents as of 2026-10-27. That is a dated fact, not a permanent one.
 
 ## Mosofin connection status
 

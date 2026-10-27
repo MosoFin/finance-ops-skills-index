@@ -4,7 +4,8 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: ecommerce
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-27.
+- Note: Nothing from Lightspeed: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
 
 ## Indexed skills
 

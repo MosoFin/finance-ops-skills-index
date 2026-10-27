@@ -1,0 +1,38 @@
+id: ebay-api-mcp
+title: eBay API MCP Server
+kind: mcp-server
+origin: third-party
+authority: first-party
+stage: 6
+summary: 'eBay''s own MCP server for its public REST and GraphQL APIs: discover endpoints and read marketplace
+  and, with a user token, seller account data. Read-only.'
+tiers:
+- READ-ONLY
+tier_notes:
+  READ-ONLY: '"REST APIs: Only GET requests are supported (read operations only)." "Designed for safe,
+    read-only access to production eBay data."'
+systems:
+- ebay
+inputs:
+- name: eBay developer Client ID and Client Secret, plus a user token for seller data
+  required: true
+  source: developer.ebay.com
+  fallback: none
+outputs:
+- name: eBay API results
+  type: chat
+  dest: the MCP client
+never:
+- Create, change or delete anything on eBay.
+upstream:
+  repo: eBay/npm-public-api-mcp
+  path: ''
+  ref: main
+  file: README.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:7bbeea73e2a064c1
+upstream_sha: 4baa7051a5f9
+last_checked: '2026-10-27'

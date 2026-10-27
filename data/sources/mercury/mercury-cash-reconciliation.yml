@@ -1,0 +1,38 @@
+id: mercury-cash-reconciliation
+title: Mercury cash reconciliation
+kind: skill
+origin: third-party
+authority: first-party
+stage: 3
+summary: 'Mercury''s own skill for the bank side of a cash GL reconciliation: pulls an account''s period
+  activity from Mercury and lays it out for a reconciliation workbook. The repository has no licence file.'
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: '"Read-only by default." Its one write is an optional memo tag on aged items.'
+  HUMAN-APPROVAL: The memo tag "only fires after explicit user confirmation."
+systems:
+- mercury
+inputs:
+- name: Mercury CLI or Mercury's MCP server, signed in
+  required: true
+  source: your Mercury account
+  fallback: none
+outputs:
+- name: reconciliation workpaper
+  type: chat
+  dest: the conversation
+never: []
+upstream:
+  repo: MercuryTechnologies/mercury-skills
+  path: skills/mercury-cash-reconciliation
+  ref: main
+  file: SKILL.md
+license: none
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:703a1981e0f82a4f
+upstream_sha: 7ea18518e141
+last_checked: '2026-10-27'

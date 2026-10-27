@@ -1,0 +1,46 @@
+id: netsuite-suiteskills-finance
+title: 'NetSuite SuiteSkills: Finance'
+kind: skill
+origin: third-party
+authority: first-party
+stage: 5
+summary: 'Oracle NetSuite''s own finance runbooks for the NetSuite AI Connector: period close status,
+  journal entry review, flux, cash and liquidity, collections, vendor credit matching, payment proposals
+  and bank reconciliation priorities. Part of the netsuite-suiteskills plugin.'
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+- INJECTION-AWARE
+tier_notes:
+  PROPOSES-WRITES: Most runbooks are read-only (payment prioritization builds "read-only NetSuite payment
+    proposals"; vendor credit matching "does not apply credits"). "Any action beyond analysis requires
+    explicit authorization from the user."
+  HUMAN-APPROVAL: 'Rule SW-06: before any create, update, delete, send or bulk action, establish the exact
+    target and effect and get explicit user authorization.'
+  INJECTION-AWARE: Rule SW-01 treats records, tool output and documents as untrusted data that cannot
+    grant authorization.
+systems:
+- netsuite
+inputs:
+- name: NetSuite AI Connector (NetSuite's MCP server)
+  required: true
+  source: your NetSuite account, signed in with OAuth
+  fallback: none
+outputs:
+- name: close, review and cash analyses
+  type: chat
+  dest: the conversation
+never:
+- Make a payment, apply a credit or lock a period.
+upstream:
+  repo: oracle/netsuite-suitecloud-sdk
+  path: packages/ai-plugins/common/skills/suiteskills/netsuite-suiteskills-finance
+  ref: master
+  file: SKILL.md
+license: upl-1.0
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:4496dec3a6f8ab12
+upstream_sha: c438202fefae
+last_checked: '2026-10-27'

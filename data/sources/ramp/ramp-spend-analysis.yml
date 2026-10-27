@@ -1,0 +1,39 @@
+id: ramp-spend-analysis
+title: Ramp spend analysis
+kind: skill
+origin: third-party
+authority: first-party
+stage: 6
+summary: Ramp's own skill for spend by vendor, category or team over a date range, with card and bill
+  spend kept separate.
+tiers:
+- READ-ONLY
+- EVIDENCE-GATED
+tier_notes:
+  READ-ONLY: Searches and reads transactions and bills; it changes nothing.
+  EVIDENCE-GATED: '"Never treat a search result''s bill amount as paid-in-period spend"; paid totals need
+    payment-allocation evidence.'
+systems:
+- ramp
+inputs:
+- name: Ramp CLI or Ramp's MCP server, signed in
+  required: true
+  source: your Ramp account
+  fallback: none
+outputs:
+- name: spend report
+  type: chat
+  dest: the conversation
+never: []
+upstream:
+  repo: ramp-public/skills
+  path: skills/ramp-spend-analysis
+  ref: main
+  file: SKILL.md
+license: mit
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:336c98c5f6279f4d
+upstream_sha: 9237ead472e1
+last_checked: '2026-10-27'

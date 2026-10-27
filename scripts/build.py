@@ -516,6 +516,8 @@ def connectors_index(conn: dict, skills: list) -> str:
             own = sum(1 for s in users if publisher_of(s)[0] == "vendor")
             if own:
                 verdict = f"{own} from the vendor"
+            elif c.get("hosted_mcp"):
+                verdict = "the vendor's hosted server" + ("; other publishers too" if users else "")
             elif users:
                 verdict = "nothing from the vendor; other publishers only"
             else:
