@@ -43,6 +43,7 @@ statuses:
   gated: "Partner agreement required before technical evaluation"
   not-recommended: "Assessed and advised against"
   declined: "Deliberately not pursued"
+  listed: "Listed for its AI agent tools; a Mosofin connection has not been assessed"
   local: "Not a connector — files or destinations"
 
 # Family A = one account per grant. Family B = one grant, many entities behind a picker.

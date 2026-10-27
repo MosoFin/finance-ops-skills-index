@@ -286,7 +286,7 @@ def skill_page(skill: dict, meta: dict) -> str:
 
 STATUS_ORDER = [
     "live", "code-complete", "roadmap", "candidate",
-    "costly", "gated", "not-recommended", "declined", "local",
+    "costly", "gated", "not-recommended", "declined", "listed", "local",
 ]
 
 
@@ -486,10 +486,11 @@ def connector_page(cid: str, c: dict, conn: dict, skills: list, stages: dict) ->
     return "\n".join(L)
 
 
-VERTICAL_ORDER = ["accounting", "payments", "ecommerce", "advertising", "crm", "marketing",
+VERTICAL_ORDER = ["accounting", "payroll", "spend", "banking", "payments", "ecommerce", "advertising", "crm", "marketing",
                   "workspace", "destination", "professional", "fieldservice", "retail",
                   "restaurants", "medical"]
-VERTICAL_LABEL = {"accounting": "Accounting", "payments": "Payments", "ecommerce": "Stores and marketplaces",
+VERTICAL_LABEL = {"accounting": "Accounting", "payroll": "Payroll and HR", "spend": "Spend, expenses and bills",
+                  "banking": "Banking and money movement", "payments": "Payments", "ecommerce": "Stores and marketplaces",
                   "advertising": "Advertising", "crm": "CRM", "marketing": "Marketing",
                   "workspace": "Email", "destination": "Spreadsheets and files",
                   "professional": "Professional services", "fieldservice": "Field service",
