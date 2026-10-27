@@ -1,0 +1,41 @@
+id: mercury-autocategorize-transactions
+title: Mercury transaction categorization
+kind: skill
+origin: third-party
+authority: first-party
+stage: 2
+summary: Mercury's own skill that suggests expense categories for uncategorized Mercury transactions and
+  applies the ones you approve. The repository has no licence file.
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: Writes categories to Mercury transactions, only from the organisation's own category
+    list.
+  HUMAN-APPROVAL: '"Updates are written one transaction at a time and always require user confirmation
+    before any write."'
+systems:
+- mercury
+inputs:
+- name: Mercury CLI or Mercury's MCP server, signed in
+  required: true
+  source: your Mercury account
+  fallback: none
+outputs:
+- name: categorized transactions
+  type: chat
+  dest: Mercury
+never:
+- Invent a category or write without approval.
+upstream:
+  repo: MercuryTechnologies/mercury-skills
+  path: skills/mercury-autocategorize-transactions
+  ref: main
+  file: SKILL.md
+license: none
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:81c1b3c2ce189c8a
+upstream_sha: 7ea18518e141
+last_checked: '2026-10-27'

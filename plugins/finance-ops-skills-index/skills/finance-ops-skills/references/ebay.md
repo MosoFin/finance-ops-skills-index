@@ -4,8 +4,22 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: ecommerce
-- **No vendor-published skills found** as of 2026-09-20.
+- Vendor skills repository: https://github.com/eBay/npm-public-api-mcp
+- Published there: 1 · indexed here: 1 · checked 2026-10-27
+- Note: eBay publishes its own read-only MCP server for its public APIs (eBay/npm-public-api-mcp), which is indexed. eBay/claudePlugins is developer tooling for eBay's own engineers, not seller data.
 
 ## Indexed skills
 
-None indexed. Do not invent one — say so and point to the vendor's own developer docs.
+### ebay-api-mcp
+
+- Publisher: eBay — the platform vendor's own
+- Type: mcp-server
+- Stage 6 · status GRADED (graded 2026-10-27)
+- Grade current: yes
+- Graded version: SKILL.md sha256:7bbeea73e2a064c1 · upstream commit 4baa7051a5f9 · checked 2026-10-27
+- Trust badges: READ-ONLY
+  - READ-ONLY: "REST APIs: Only GET requests are supported (read operations only)." "Designed for safe, read-only access to production eBay data."
+- Licence: apache-2.0
+- Upstream: https://github.com/eBay/npm-public-api-mcp/tree/main
+- Summary: eBay's own MCP server for its public REST and GraphQL APIs: discover endpoints and read marketplace and, with a user token, seller account data. Read-only.
+- Never: Create, change or delete anything on eBay.

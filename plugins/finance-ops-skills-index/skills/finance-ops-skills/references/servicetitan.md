@@ -4,7 +4,8 @@
 
 - Reachability: **costly** — Reachable only at material cost
 - Vertical: fieldservice
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-27.
+- Note: Nothing from ServiceTitan: no skills, MCP server or hosted server, and no community repository passes the sourcing rule.
 
 ## Indexed skills
 

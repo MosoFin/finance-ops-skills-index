@@ -1,0 +1,41 @@
+id: gusto-timesheet-sync
+title: Gusto timesheet sync
+kind: skill
+origin: third-party
+authority: first-party
+stage: 4
+summary: Gusto's own skill that records a pay period's hours as Gusto time sheets and syncs them into
+  the draft payroll. Stops at the draft.
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: Creates approved time sheets and syncs them to the draft payroll; "it never processes
+    or submits payroll."
+  HUMAN-APPROVAL: Confirms each worker's hours with you first, previews with --dry-run, and sends only
+    with --confirm.
+systems:
+- gusto
+inputs:
+- name: Gusto CLI, signed in (gusto auth login)
+  required: true
+  source: your Gusto account
+  fallback: none
+outputs:
+- name: time sheets on the draft payroll
+  type: chat
+  dest: Gusto
+never:
+- Process or submit payroll.
+upstream:
+  repo: Gusto/gusto-cli
+  path: src/skills/timesheet-sync
+  ref: main
+  file: SKILL.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:ea8bea7d1a335d42
+upstream_sha: d72a7e90d828
+last_checked: '2026-10-27'

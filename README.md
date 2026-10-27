@@ -8,7 +8,7 @@ A graded, continuously-verified index of agent skills published by vendors of fi
 
 Ask Claude which skills to use for a finance job on QuickBooks, Xero, Stripe or Shopify, and see which ones can write to your books or move money before you install them.
 
-**82 skills** · **82 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-21
+**101 skills** · **101 graded** · **0 awaiting grading** · **0 need re-grading** · **0 stale** · pointers last checked 2026-10-27
 
 Every entry is graded for what happens when it is wrong: whether it can write to
 your ledger, whether its numbers are computed or asserted, whether it ends in a
@@ -117,12 +117,18 @@ Ordered by when you need it, not alphabetically.
 - **[Google Drive (gws-drive)](skills/gws-drive/README.md)** — Third party  
   `GRADED` `WRITES-DIRECT`  
   Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
+- **[Mercury CLI](skills/mercury-cli/README.md)** — Third party  
+  `GRADED` `MOVES-MONEY` `WRITES-DIRECT`  
+  Mercury's own command-line tool for its API, usable by an agent: accounts, transactions, cards, recipients, invoices, statements and payments.
 - **[Onboard Client](skills/onboard-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   Interviews you about a company and scaffolds the client workspace every other finance skill reads — profile, glossary, chart-of-accounts rulebook, close calendar, materiality thresholds, report preferences.
 - **[setup](skills/qb-setup/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
+- **[Ramp CLI](skills/ramp-cli/README.md)** — Third party  
+  `GRADED` `WRITES-DIRECT`  
+  Ramp's own command-line tool for its developer API, built for agents: expenses, bills, reimbursements, requests, cards and travel. Can sign in read-only.
 - **[skill-creator](skills/skill-creator/README.md)** — Third party  
   `GRADED` `READ-ONLY` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
@@ -146,6 +152,9 @@ Ordered by when you need it, not alphabetically.
 
 *Tracks the period, runs nothing itself*
 
+- **[Airwallex AgentOS](skills/airwallex-agentos/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Airwallex's own Claude plugin (beta): creates invoices and subscriptions from contracts, sets up supplier beneficiaries from invoices, issues corporate cards, and reports multi-currency cash and FX exposure. It cannot send transfers or convert currency; those stay in the Airwallex dashboard.
 - **[Close](skills/close/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `STATEFUL` `AUDIT-TRAIL` `HUMAN-APPROVAL` `TIE-CHECKED`  
   A stateful month-end checklist for one period. Generates tasks from the client's close calendar, tracks status across sessions, and names the skill that fits the next open task. Tracks and suggests — it runs nothing and posts nothing.
@@ -155,6 +164,9 @@ Ordered by when you need it, not alphabetically.
 - **[Month-End Close Checklist](skills/month-end-close-checklist/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `TIE-CHECKED` `MATERIALITY-AWARE` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `STATEFUL`  
   Plans, runs, or audits a monthly close against a Mosofin workspace — scopes the checklist from the entity's actual chart of accounts, pre-populates the status of every task that leaves ledger evidence, and runs a final tie-out including inter-period continuity.
+- **[Zoho Books plugin (for Antigravity)](skills/zoho-books-plugin/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Zoho's own plugin for Zoho Books: 17 skills and 7 agents covering invoicing, bills, banking, journals, vendor payments and credits, on Zoho's hosted Books MCP server. Built for Google Antigravity, not Claude; in Claude, connect the same hosted server.
 
 ### 2 · Data hygiene
 
@@ -181,12 +193,18 @@ Ordered by when you need it, not alphabetically.
 - **[Invoice Data Extractor](skills/invoice-data-extractor/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Extracts structured fields from vendor invoice PDFs and images, then validates each against the vendor master, posted transaction history, and the Bill-To entity — catching duplicates before they are paid.
+- **[Mercury transaction categorization](skills/mercury-autocategorize-transactions/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Mercury's own skill that suggests expense categories for uncategorized Mercury transactions and applies the ones you approve. The repository has no licence file.
 - **[pdf](skills/pdf/README.md)** — Third party  
   `GRADED` `READ-ONLY`  
   Extract text, tables, and metadata from PDFs; merge and annotate. Relevant wherever statements, bills, or lender documents arrive as PDFs.
 - **[email-to-estimate-invoice](skills/qb-email-to-estimate-invoice/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `SENDS-EXTERNALLY` `CLIENT-FACING` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
+- **[Ramp expense completion](skills/ramp-complete-expenses/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Ramp's own skill for fixing expenses that need receipts, memos, accounting categories or attendees, including requested revisions.
 - **[Receipts](skills/receipts/README.md)** — Third party  
   `GRADED` `READ-ONLY` `PII-MINIMISING` `PROVENANCE-STAMPED`  
   Anthropic's own plugin for turning receipts into structured records. The substantiation end of expense work, upstream of coding and posting.
@@ -228,6 +246,9 @@ Ordered by when you need it, not alphabetically.
 - **[HubSpot Sales plugin](skills/hubspot-sales-plugin/README.md)** — Third party  
   `GRADED` `WRITES-DIRECT`  
   HubSpot's official Claude plugin on its hosted MCP server (mcp.hubspot.com): contact lookup, call prep, daily brief, follow-up drafting, call logging, contact import and pipeline overview.
+- **[Mercury cash reconciliation](skills/mercury-cash-reconciliation/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Mercury's own skill for the bank side of a cash GL reconciliation: pulls an account's period activity from Mercury and lays it out for a reconciliation workbook. The repository has no licence file.
 - **[PayPal Agent Toolkit](skills/paypal-agent-toolkit/README.md)** — Third party  
   `GRADED` `WRITES-DIRECT` `MOVES-MONEY`  
   PayPal's SDK for agent frameworks (OpenAI Agents SDK, LangChain, Vercel AI SDK, MCP): invoices, orders, payments, refunds, subscriptions, products and shipment tracking as callable tools.
@@ -272,9 +293,18 @@ Ordered by when you need it, not alphabetically.
 - **[Accruals](skills/accruals/README.md)** — Mosofin workspace  
   `GRADED` `PROPOSES-WRITES` `DETERMINISTIC-MATH` `TIE-CHECKED` `HUMAN-APPROVAL` `MATERIALITY-AWARE` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   Proposes and reviews accruals, prepaid amortization, and deferrals for a period — recurring accruals, reversals due, missing accruals from open bills, schedule releases. Accrual basis only; stops on cash basis.
+- **[Gusto payroll prep](skills/gusto-payroll-prep/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Gusto's own skill that loads a pay period's hours, tips, commission, bonus and reimbursements from your spreadsheet or POS export onto the draft payroll and calculates it for review. It never runs payroll; you approve in Gusto.
+- **[Gusto timesheet sync](skills/gusto-timesheet-sync/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Gusto's own skill that records a pay period's hours as Gusto time sheets and syncs them into the draft payroll. Stops at the draft.
 - **[Journal Entry Builder](skills/journal-entry-builder/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
+- **[Mercury journal entry prep](skills/mercury-journal-entry-prep/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Mercury's own skill for AP accrual and cash-reclass entries sourced from Mercury transactions, laid out for a NetSuite journal import. Posting stays with you. The repository has no licence file.
 - **[payroll-employee-onboarding](skills/qb-payroll-employee-onboarding/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED` `PII-MINIMISING`  
   Onboard a new hire into QuickBooks Payroll from user-provided details or onboarding source files such as offer letters and employee rosters. Use when the user wants to add a new payroll employee, onboard a new employee so they can be paid, deduplicate a new hire before creation, assign an existing payroll work location, set initial contract/base pay during onboarding, or review payroll-readiness gaps. Requires confirmation before write actions and reports remaining setup to finish in QuickBooks Payroll. Do not use for existing-employee pay changes outside onboarding, payroll runs, taxes, direct deposit, benefits, deductions, time off, or compliance advice.
@@ -292,15 +322,27 @@ Ordered by when you need it, not alphabetically.
 - **[Duplicate Invoice Detection](skills/duplicate-invoice-detection/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL` `PII-MINIMISING`  
   Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
+- **[Expensify flux analysis](skills/expensify-flux-analysis/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Expensify's own skill comparing spend across two periods, naming the biggest movers by category and vendor.
 - **[Flux](skills/flux/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Period-over-period variance analysis as a disciplined loop — isolate, drill, hypothesise, verify, explain. Commentary is earned from transactions, never invented from account names.
 - **[JE Review](skills/je-review/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `MATERIALITY-AWARE` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   The skeptical second pair of eyes on everything posted this period — round numbers, unusual account pairings, entries above materiality without support, broken reversal patterns, back-dated postings, related-party entries.
+- **[NetSuite SuiteSkills: Finance](skills/netsuite-suiteskills-finance/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `INJECTION-AWARE`  
+  Oracle NetSuite's own finance runbooks for the NetSuite AI Connector: period close status, journal entry review, flux, cash and liquidity, collections, vendor credit matching, payment proposals and bank reconciliation priorities. Part of the netsuite-suiteskills plugin.
 - **[analyze-payroll-cost](skills/qb-analyze-payroll-cost/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `PROVENANCE-STAMPED`  
   Analyze QuickBooks Payroll cost, payroll spend changes, top-paid employees, pay item drivers, and practical payroll cost-control ideas using connected payroll run, employee, payslip, paycheck, and company context data. Use when the user asks why payroll expense increased or decreased, who was paid the most, what drove payroll spend, how to reduce payroll spend, how current payroll compares with a prior period, or whether overtime, headcount, pay rates, employer taxes such as SUI, benefits, employer contributions, reimbursements, bonuses, commissions, allowances, or pay-item mix affected payroll cost. Read only; use available payroll tools and do not invent payroll facts.
+- **[Ramp bill review](skills/ramp-manage-bills/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Ramp's own skill for finding and inspecting vendor bills (draft, submitted, awaiting approval). Approving and paying stay elsewhere.
+- **[Ramp spend audit](skills/ramp-spend-audit/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Ramp's own skill for finding duplicate software, fragmented vendor payments, unused funds and oversized limits in Ramp.
 - **[Three-Way Match](skills/three-way-match/README.md)** — Mosofin published  
   `GRADED` `READ-ONLY` `TIE-CHECKED` `EVIDENCE-GATED` `PROVENANCE-STAMPED` `HUMAN-APPROVAL` `AUDIT-TRAIL`  
   Matches purchase orders, goods receipts, and vendor invoices line by line across the full population where the workspace holds POs and item receipts. Proposes only — pays nothing, releases nothing.
@@ -327,6 +369,12 @@ Ordered by when you need it, not alphabetically.
 - **[docx](skills/docx/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `AUDIT-TRAIL`  
   Create, edit, and analyze Word documents with tracked changes and comments — the format most review notes and engagement letters still travel in.
+- **[eBay API MCP Server](skills/ebay-api-mcp/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  eBay's own MCP server for its public REST and GraphQL APIs: discover endpoints and read marketplace and, with a user token, seller account data. Read-only.
+- **[Expensify spend brief](skills/expensify-spend-brief/README.md)** — Third party  
+  `GRADED` `READ-ONLY`  
+  Expensify's own skill for a plain-English spend summary for a period: totals by category, person and vendor, with anomalies flagged.
 - **[Explain To Client](skills/explain-to-client/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `DETERMINISTIC-MATH` `HUMAN-APPROVAL` `CLIENT-FACING` `NO-AUTO-SEND`  
   Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
@@ -348,6 +396,9 @@ Ordered by when you need it, not alphabetically.
 - **[sales-reporting](skills/hs-sales-reporting/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Daily briefings, pipeline snapshots, and win/loss analysis from the terminal — closing-this-week, open pipeline by stage/owner, and closed- won vs closed-lost over a period.
+- **[NetSuite Finance Analyst](skills/netsuite-finance-analyst/README.md)** — Third party  
+  `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL`  
+  Oracle NetSuite's own finance-analysis skill: statements, budget versus actuals, AR and AP aging, close status, journal entry review and board or CFO summaries from NetSuite data. Read-only unless you explicitly ask for a change.
 - **[pptx](skills/pptx/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
   Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
@@ -357,6 +408,9 @@ Ordered by when you need it, not alphabetically.
 - **[industry-benchmark](skills/qb-industry-benchmark/README.md)** — Third party  
   `GRADED` `READ-ONLY` `EVIDENCE-GATED` `HUMAN-APPROVAL` `PROVENANCE-STAMPED`  
   benchmark the user's CONNECTED QuickBooks company against industry peers using their QuickBooks financial data. Use only when the numbers come from the user's connected QuickBooks account — "how does my business compare to similar businesses", "are my margins healthy", "am I spending too much", "benchmark my QuickBooks company". Do NOT use for industry research, for questions about which industries are most profitable in a location, for expected profit for a business type, or when the user supplies their own figures — those are answered by the Intuit QuickBooks benchmarking tools directly.
+- **[Ramp spend analysis](skills/ramp-spend-analysis/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `EVIDENCE-GATED`  
+  Ramp's own skill for spend by vendor, category or team over a date range, with card and bill spend kept separate.
 - **[WooCommerce for Claude](skills/woocommerce-for-claude/README.md)** — Third party  
   `GRADED` `READ-ONLY` `PII-MINIMISING` `HUMAN-APPROVAL`  
   WooCommerce's own plugin that turns a store into an MCP endpoint for Claude: revenue, orders, refunds, coupons, tax and product analytics from WooCommerce's analytics tables, plus workflow skills such as failed-order triage and payment-method review.
@@ -377,6 +431,9 @@ Ordered by when you need it, not alphabetically.
 - **[Forecast](skills/forecast/README.md)** — Mosofin workspace  
   `GRADED` `READ-ONLY` `DETERMINISTIC-MATH` `TIE-CHECKED` `EVIDENCE-GATED` `HUMAN-APPROVAL` `POLICY-CAPTURING` `AUDIT-TRAIL`  
   A rolling forecast where actual months are locked and every forecast line names its driver — run-rate, growth, contract, seasonal, or manual with a stated reason. Assumption changes are logged as decision records.
+- **[Gusto payroll cash forecast](skills/gusto-cash-forecasting/README.md)** — Third party  
+  `GRADED` `READ-ONLY` `INJECTION-AWARE`  
+  Gusto's own skill projecting upcoming payroll cash needs from past payrolls, the general ledger and the pay schedule, split into wages, taxes, benefits and bank debits.
 - **[customer-retention](skills/hs-customer-retention/README.md)** — Third party  
   `GRADED` `PROPOSES-WRITES` `HUMAN-APPROVAL` `EVIDENCE-GATED`  
   Identify inactive/at-risk customers via CRM filters and create follow-up tasks at scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
@@ -503,6 +560,32 @@ reader to discover.
 
 - **`ehr`** — PHI means a BAA with every practice, plus HIPAA audit logging and breach obligations that outlive the connector. Connect the processor and the ledger instead.
 
+#### listed — Listed for its AI agent tools; a Mosofin connection has not been assessed
+
+| Connector | Family | Auth | Entity | Token | Settlement | Lead time |
+|---|---|---|---|---|---|---|
+| `adp` | A | `—` | — | — | — | — |
+| `airwallex` | A | `—` | — | — | — | — |
+| `bill-com` | A | `—` | — | — | — | — |
+| `brex` | A | `—` | — | — | — | — |
+| `deel` | A | `—` | — | — | — | — |
+| `expensify` | A | `—` | — | — | — | — |
+| `freshbooks` | A | `—` | — | — | — | — |
+| `gusto` | A | `—` | — | — | — | — |
+| `mercury` | A | `—` | — | — | — | — |
+| `myob` | A | `—` | — | — | — | — |
+| `navan` | A | `—` | — | — | — | — |
+| `netsuite` | A | `—` | — | — | — | — |
+| `paychex` | A | `—` | — | — | — | — |
+| `plaid` | A | `—` | — | — | — | — |
+| `ramp` | A | `—` | — | — | — | — |
+| `relay` | A | `—` | — | — | — | — |
+| `rippling` | A | `—` | — | — | — | — |
+| `sage` | A | `—` | — | — | — | — |
+| `wave` | A | `—` | — | — | — | — |
+| `wise` | A | `—` | — | — | — | — |
+| `zoho-books` | A | `—` | — | — | — | — |
+
 Sources: [Connector App Registration](https://claude.ai/artifact/QuroGDp5nbNQfGGPJGFYHD) (verified 2026-09-06) — the committed
 roadmap, with connector keys, entities and token strategies; and
 [Vertical Connector Survey](https://claude.ai/artifact/2vuysmUi7A59t7dXiVuzNA) (researched 2026-09-08) — the evaluated
@@ -536,23 +619,33 @@ for a grade.
 | [`stripe/ai`](https://github.com/stripe/ai) | 7 | first-party | `mit` | yes |
 | [`anthropics/skills`](https://github.com/anthropics/skills) | 5 | first-party | `proprietary-anthropic` | no — restricted |
 | [`googleworkspace/cli`](https://github.com/googleworkspace/cli) | 5 | first-party | `apache-2.0` | yes |
+| [`ramp-public/skills`](https://github.com/ramp-public/skills) | 4 | first-party | `mit` | yes |
+| [`Gusto/gusto-cli`](https://github.com/Gusto/gusto-cli) | 3 | first-party | `apache-2.0` | yes |
+| [`MercuryTechnologies/mercury-skills`](https://github.com/MercuryTechnologies/mercury-skills) | 3 | first-party | `none` | no — restricted |
 | [`amzn/selling-partner-agentic-toolkit`](https://github.com/amzn/selling-partner-agentic-toolkit) | 3 | first-party | `apache-2.0` | yes |
+| [`Expensify/expensify-plugin`](https://github.com/Expensify/expensify-plugin) | 2 | first-party | `mit` | yes |
 | [`anthropics/financial-services`](https://github.com/anthropics/financial-services) | 2 | first-party | `apache-2.0` | yes |
+| [`oracle/netsuite-suitecloud-sdk`](https://github.com/oracle/netsuite-suitecloud-sdk) | 2 | first-party | `upl-1.0` | no — restricted |
 | [`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit) | 2 | first-party | `apache-2.0` | yes |
 | [`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills) | 2 | first-party | `gpl-2.0` | no — copyleft |
 | [`HubSpot/hubspot-mcp-plugins`](https://github.com/HubSpot/hubspot-mcp-plugins) | 1 | first-party | `unclear` | no — restricted |
+| [`MercuryTechnologies/mercury-cli`](https://github.com/MercuryTechnologies/mercury-cli) | 1 | first-party | `apache-2.0` | yes |
 | [`OrcaQubits/agentic-commerce-skills-plugins`](https://github.com/OrcaQubits/agentic-commerce-skills-plugins) | 1 | community | `unclear` | no — restricted |
 | [`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit) | 1 | first-party | `mit` | yes |
 | [`WordPress/mcp-adapter`](https://github.com/WordPress/mcp-adapter) | 1 | first-party | `gpl-2.0` | no — copyleft |
 | [`XeroAPI/xero-agent-toolkit`](https://github.com/XeroAPI/xero-agent-toolkit) | 1 | first-party | `mit` | yes |
 | [`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server) | 1 | first-party | `mit` | yes |
+| [`airwallex/airwallex-marketplace`](https://github.com/airwallex/airwallex-marketplace) | 1 | first-party | `apache-2.0` | yes |
 | [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) | 1 | first-party | `apache-2.0` | yes |
+| [`eBay/npm-public-api-mcp`](https://github.com/eBay/npm-public-api-mcp) | 1 | first-party | `apache-2.0` | yes |
 | [`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp) | 1 | first-party | `apache-2.0` | yes |
 | [`intuit/quickbooks-online-mcp-server`](https://github.com/intuit/quickbooks-online-mcp-server) | 1 | first-party | `apache-2.0` | yes |
 | [`paypal/agent-toolkit`](https://github.com/paypal/agent-toolkit) | 1 | first-party | `apache-2.0` | yes |
 | [`paypal/paypal-mcp-server`](https://github.com/paypal/paypal-mcp-server) | 1 | first-party | `unclear` | no — restricted |
+| [`ramp-public/ramp-cli`](https://github.com/ramp-public/ramp-cli) | 1 | first-party | `mit` | yes |
 | [`square/square-mcp-server`](https://github.com/square/square-mcp-server) | 1 | first-party | `apache-2.0` | yes |
 | [`woocommerce/woocommerce-claude`](https://github.com/woocommerce/woocommerce-claude) | 1 | first-party | `gpl-3.0` | no — copyleft |
+| [`zoho/zohobooks-antigravity-plugin`](https://github.com/zoho/zohobooks-antigravity-plugin) | 1 | first-party | `proprietary` | no — restricted |
 
 Eleven of the connectors above have owners who publish agent skills themselves —
 Intuit, Stripe, Shopify, PayPal, HubSpot, WooCommerce, Amazon, Google and Microsoft

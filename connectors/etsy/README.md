@@ -2,11 +2,13 @@
 
 # Etsy
 
-Stores and marketplaces · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Stores and marketplaces · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
 **Nothing to recommend for Etsy yet.**
 
-[`etsy`](https://github.com/etsy) on GitHub publishes no skills or MCP server for agents as of 2026-09-20. That is a dated fact, not a permanent one.
+Nothing on GitHub from Etsy. Etsy runs a hosted server (mcp.api.etsycloud.com/mcp) that, as far as can be confirmed, only searches Etsy's developer documentation; no Etsy tool reads shop data.
+
+[`etsy`](https://github.com/etsy) on GitHub publishes no skills or MCP server for agents as of 2026-10-27. That is a dated fact, not a permanent one.
 
 ## Mosofin connection status
 

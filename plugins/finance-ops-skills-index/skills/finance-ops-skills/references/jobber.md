@@ -4,7 +4,9 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: fieldservice
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-27.
+- Note: Jobber runs its own hosted MCP server, which can create clients, requests and quotes. Jobber's only GitHub repository for agents (GetJobber/grok-bot-mcp, 0 stars) is not recommended: it ships a client secret in plain text.
+- Vendor-hosted MCP server: https://mcp.getjobber.com/mcp (run by Jobber, not on GitHub, so not tracked for changes). Reads jobs, invoices and clients, and can create clients, requests and quotes.
 
 ## Indexed skills
 

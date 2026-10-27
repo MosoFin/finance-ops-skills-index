@@ -4,7 +4,8 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: ecommerce
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-27.
+- Note: Nothing on GitHub from Etsy. Etsy runs a hosted server (mcp.api.etsycloud.com/mcp) that, as far as can be confirmed, only searches Etsy's developer documentation; no Etsy tool reads shop data.
 
 ## Indexed skills
 

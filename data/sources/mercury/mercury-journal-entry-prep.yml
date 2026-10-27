@@ -1,0 +1,40 @@
+id: mercury-journal-entry-prep
+title: Mercury journal entry prep
+kind: skill
+origin: third-party
+authority: first-party
+stage: 4
+summary: Mercury's own skill for AP accrual and cash-reclass entries sourced from Mercury transactions,
+  laid out for a NetSuite journal import. Posting stays with you. The repository has no licence file.
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: 'Produces entry data only: "NetSuite import, approval routing, and posting stay in
+    your finance close process." Its one write is an optional memo tag in Mercury.'
+  HUMAN-APPROVAL: The memo tag "only fires after explicit user confirmation."
+systems:
+- mercury
+inputs:
+- name: Mercury CLI or Mercury's MCP server, signed in
+  required: true
+  source: your Mercury account
+  fallback: none
+outputs:
+- name: journal entry blocks
+  type: chat
+  dest: the conversation
+never:
+- Post an entry to the ledger.
+upstream:
+  repo: MercuryTechnologies/mercury-skills
+  path: skills/mercury-journal-entry-prep
+  ref: main
+  file: SKILL.md
+license: none
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:d92c23b580a7ce17
+upstream_sha: 7ea18518e141
+last_checked: '2026-10-27'

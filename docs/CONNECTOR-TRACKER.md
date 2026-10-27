@@ -5,7 +5,7 @@
 For every connector on the roadmap: who owns it on GitHub, whether they publish
 agent skills of their own, and how many this index carries.
 
-**31 connectors tracked** · **12 vendor skill repositories** · **214 skills published** · **37 finance-relevant** · **17 vendors publish none**
+**52 connectors tracked** · **21 vendor skill repositories** · **290 skills published** · **37 finance-relevant** · **29 vendors publish none**
 
 *Published* is everything in the repo. *Relevant* is what belongs in a finance
 index — most vendor skills teach you to build on their platform, which is a
@@ -30,22 +30,40 @@ on it, not a permanent state.
 | [`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp) | `google-ads` | 1 | 0 | 1 | `?` | 2026-10-21 |
 | [`square/square-mcp-server`](https://github.com/square/square-mcp-server) | `square` | 0 | 0 | 1 | `?` | 2026-10-21 |
 | [`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server) | `xero` | 0 | 0 | 2 | `?` | 2026-10-21 |
+| [`eBay/npm-public-api-mcp`](https://github.com/eBay/npm-public-api-mcp) | `ebay` | 1 | 0 | 1 | `?` | 2026-10-27 |
+| [`oracle/netsuite-suitecloud-sdk`](https://github.com/oracle/netsuite-suitecloud-sdk) | `netsuite` | 10 | 0 | 2 | `upl-1.0` | 2026-10-27 |
+| [`zoho/zohobooks-antigravity-plugin`](https://github.com/zoho/zohobooks-antigravity-plugin) | `zoho-books` | 17 | 0 | 1 | `proprietary` | 2026-10-27 |
+| [`Gusto/gusto-cli`](https://github.com/Gusto/gusto-cli) | `gusto` | 3 | 0 | 3 | `apache-2.0` | 2026-10-27 |
+| [`ramp-public/skills`](https://github.com/ramp-public/skills) | `ramp` | 29 | 0 | 5 | `mit` | 2026-10-27 |
+| [`Expensify/expensify-plugin`](https://github.com/Expensify/expensify-plugin) | `expensify` | 2 | 0 | 2 | `mit` | 2026-10-27 |
+| [`MercuryTechnologies/mercury-skills`](https://github.com/MercuryTechnologies/mercury-skills) | `mercury` | 9 | 0 | 4 | `?` | 2026-10-27 |
+| [`airwallex/airwallex-marketplace`](https://github.com/airwallex/airwallex-marketplace) | `airwallex` | 5 | 0 | 1 | `apache-2.0` | 2026-10-27 |
+| [`plaid/ai-coding-toolkit`](https://github.com/plaid/ai-coding-toolkit) | `plaid` | 0 | 0 | 0 | `?` | 2026-10-27 |
 | [`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit) | `excel` | 15 | 0 | 0 | `mit` | 2026-09-20 |
 
+- **[`Expensify/expensify-plugin`](https://github.com/Expensify/expensify-plugin)** — Expensify's own Claude plugin (Expensify/expensify-plugin) has two read-only skills, both indexed: a spend brief and a flux analysis. They run on Expensify's hosted server, which is also read-only.
+- **[`Gusto/gusto-cli`](https://github.com/Gusto/gusto-cli)** — Gusto's own command-line tool (Gusto/gusto-cli) bundles three skills, all indexed: payroll prep and timesheet sync, which stop at a draft payroll you approve in Gusto, and a read-only payroll cash forecast. Agent writes need --confirm.
 - **[`HubSpot/agent-cli-skills`](https://github.com/HubSpot/agent-cli-skills)** — Seven are revenue operations. The rest are CRM workflow and support.
+- **[`MercuryTechnologies/mercury-skills`](https://github.com/MercuryTechnologies/mercury-skills)** — Mercury publishes nine agent skills and a command-line tool. Indexed: cash reconciliation, journal entry prep and transaction categorisation, which ask before any write, and the CLI, which can send payments with no confirmation step described. The skills repository has no licence file.
 - **[`OfficeDev/microsoft-365-agents-toolkit`](https://github.com/OfficeDev/microsoft-365-agents-toolkit)** — The repo's .github/skills are Microsoft's internal development process — vibe-coding, governance remediation. Nothing to do with Excel.
 - **[`Shopify/Shopify-AI-Toolkit`](https://github.com/Shopify/Shopify-AI-Toolkit)** — On 2026-09-25 Shopify moved its 21 per-surface skills to deprecated/ as stubs and replaced them with one consolidated `shopify` skill, which is indexed. The other active skill, `ucp`, is a buyer-side shopping agent for purchasing from merchants — not store operations — so it is not.
 - **[`XeroAPI/xero-mcp-server`](https://github.com/XeroAPI/xero-mcp-server)** — No vendor-published skills. Xero publishes an official MCP server (51 tools, including create-payment and manual journals, no confirmation step) and example agents (xero-agent-toolkit); both indexed.
+- **[`airwallex/airwallex-marketplace`](https://github.com/airwallex/airwallex-marketplace)** — Airwallex's own Claude plugin, AgentOS (beta), is indexed. It creates invoices, beneficiaries and cards after confirming each write, and reports cash and FX exposure. It refuses transfers and currency conversions; those stay in the Airwallex dashboard.
 - **[`amzn/selling-partner-agentic-toolkit`](https://github.com/amzn/selling-partner-agentic-toolkit)** — Amazon's official Selling Partner agentic toolkit: 12 skills on Amazon's hosted connector (sellingpartner-ai.amazon.com/mcp), with every write drafted for approval. The three finance and inventory skills are indexed (month-end close, seller analytics, stockout prevention); the rest cover listings, FBA inbound, user invites and support cases.
+- **[`eBay/npm-public-api-mcp`](https://github.com/eBay/npm-public-api-mcp)** — eBay publishes its own read-only MCP server for its public APIs (eBay/npm-public-api-mcp), which is indexed. eBay/claudePlugins is developer tooling for eBay's own engineers, not seller data.
 - **[`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp)** — No skills, but Google publishes an official read-only MCP server for the Google Ads API (googleads/google-ads-mcp), indexed as google-ads-mcp. It adds a usage-data header to API calls.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Triage only — this connector is not recommended anyway.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Drive itself. See google-sheets for the rest.
 - **[`googleworkspace/cli`](https://github.com/googleworkspace/cli)** — Sheets read, append and Drive. The other ninety cover Workspace surfaces outside finance.
 - **[`intuit/quickbooks-claude-plugin`](https://github.com/intuit/quickbooks-claude-plugin)** — All ten are bookkeeping skills — the only vendor set that is. Intuit also publishes the QuickBooks Online MCP Server (intuit/quickbooks-online-mcp-server, 145 tools, writes on by default), indexed as qbo-mcp-server.
+- **[`oracle/netsuite-suitecloud-sdk`](https://github.com/oracle/netsuite-suitecloud-sdk)** — Oracle publishes NetSuite agent skills and Claude plugins in oracle/netsuite-suitecloud-sdk (364 stars). Two finance skills are indexed: the Finance Analyst skill and the SuiteSkills finance runbooks. Both are read-only by default and need your explicit authorisation for any change; none moves money. The other eight skills are for SuiteCloud developers.
 - **[`paypal/AI-Toolkit`](https://github.com/paypal/AI-Toolkit)** — Both indexed, plus PayPal's agent-toolkit SDK and its older paypal-mcp-server. Both of those can process payments and refunds.
+- **[`plaid/ai-coding-toolkit`](https://github.com/plaid/ai-coding-toolkit)** — Plaid's GitHub toolkit (plaid/ai-coding-toolkit) is for developers building Plaid integrations and works only on sandbox data, so it is not indexed. Plaid's hosted servers (api.dashboard.plaid.com/mcp and data-partner.mcp.plaid.com/mcp) serve developers and data partners, not a business's own bank data.
+- **[`ramp-public/skills`](https://github.com/ramp-public/skills)** — Ramp publishes 29 agent skills (ramp-public/skills) and a command-line tool. Indexed: spend analysis, spend audit, bill review, expense completion, and the CLI. The skills ask before changing anything; the CLI can approve bills and reimbursements, and can sign in read-only. Travel booking and agent-purchase skills are not indexed.
 - **[`square/square-mcp-server`](https://github.com/square/square-mcp-server)** — No skills, but Square publishes an official MCP server (square/square-mcp-server, beta) and runs a hosted one at mcp.squareup.com/mcp, which it recommends. Indexed as square-mcp-server.
 - **[`stripe/ai`](https://github.com/stripe/ai)** — The repo ships the same 10 skills under six provider directories; 10 unique. Seven are payments, Connect, billing, tax or paying vendors (stripe-directory). The other three build Stripe apps, provision infrastructure or upgrade SDKs.
 - **[`woocommerce/agent-skills`](https://github.com/woocommerce/agent-skills)** — WooCommerce's two published skills are developer tools (an Abilities API guide and a stale-PR audit); both are indexed by owner decision. For store data, WooCommerce publishes WooCommerce for Claude (woocommerce/woocommerce-claude), which is indexed, on top of WordPress's official MCP Adapter.
+- **[`zoho/zohobooks-antigravity-plugin`](https://github.com/zoho/zohobooks-antigravity-plugin)** — Zoho publishes its own Zoho Books plugin, built for Google Antigravity rather than Claude; it is indexed because it shows what the hosted server can do. In Claude, connect Zoho's hosted Books server directly. The plugin confirms every create, update, email and match with you first.
 
 ## Vendors that publish none
 
@@ -54,23 +72,35 @@ skills, MCP, a toolkit, a plugin, a CLI or an SDK.
 
 | Connector | Status | GitHub org | Checked |
 |---|---|---|---|
-| `klaviyo` | roadmap | [`klaviyo`](https://github.com/klaviyo) | 2026-09-20 |
+| `klaviyo` | roadmap | [`klaviyo`](https://github.com/klaviyo) | 2026-10-27 |
 | `meta-ads` | roadmap | [`facebook`](https://github.com/facebook) | 2026-10-21 |
 | `bigcommerce` | candidate | [`bigcommerce`](https://github.com/bigcommerce) | 2026-10-21 |
-| `clio` | candidate | [`clio`](https://github.com/clio) | 2026-09-20 |
-| `ebay` | candidate | [`eBay`](https://github.com/eBay) | 2026-09-20 |
-| `ecwid` | candidate | [`Ecwid`](https://github.com/Ecwid) | 2026-09-20 |
-| `etsy` | candidate | [`etsy`](https://github.com/etsy) | 2026-09-20 |
-| `harvest` | candidate | [`harvesthq`](https://github.com/harvesthq) | 2026-09-20 |
-| `jobber` | candidate | [`GetJobber`](https://github.com/GetJobber) | 2026-09-20 |
-| `lightspeed-x` | candidate | [`lightspeedhq`](https://github.com/lightspeedhq) | 2026-09-20 |
-| `servicem8` | candidate | [`ServiceM8`](https://github.com/ServiceM8) | 2026-09-20 |
+| `clio` | candidate | [`clio`](https://github.com/clio) | 2026-10-27 |
+| `ecwid` | candidate | [`Ecwid`](https://github.com/Ecwid) | 2026-10-27 |
+| `etsy` | candidate | [`etsy`](https://github.com/etsy) | 2026-10-27 |
+| `harvest` | candidate | [`harvesthq`](https://github.com/harvesthq) | 2026-10-27 |
+| `jobber` | candidate | [`GetJobber`](https://github.com/GetJobber) | 2026-10-27 |
+| `lightspeed-x` | candidate | [`lightspeedhq`](https://github.com/lightspeedhq) | 2026-10-27 |
+| `servicem8` | candidate | [`ServiceM8`](https://github.com/ServiceM8) | 2026-10-27 |
 | `tiktok-shop` | candidate | [`tiktok`](https://github.com/tiktok) | 2026-10-21 |
-| `clover` | costly | [`clover`](https://github.com/clover) | 2026-09-20 |
-| `housecallpro` | costly | *no public org at the obvious name* | 2026-09-20 |
-| `servicetitan` | costly | [`servicetitan`](https://github.com/servicetitan) | 2026-09-20 |
-| `ncr-voyix` | gated | *no public org at the obvious name* | 2026-09-20 |
-| `toast` | gated | [`toasttab`](https://github.com/toasttab) | 2026-09-20 |
+| `clover` | costly | [`clover`](https://github.com/clover) | 2026-10-27 |
+| `housecallpro` | costly | *no public org at the obvious name* | 2026-10-27 |
+| `servicetitan` | costly | [`servicetitan`](https://github.com/servicetitan) | 2026-10-27 |
+| `ncr-voyix` | gated | *no public org at the obvious name* | 2026-10-27 |
+| `toast` | gated | [`toasttab`](https://github.com/toasttab) | 2026-10-27 |
+| `adp` | listed | *no public org at the obvious name* | 2026-10-27 |
+| `bill-com` | listed | *no public org at the obvious name* | 2026-10-27 |
+| `brex` | listed | [`brexhq`](https://github.com/brexhq) | 2026-10-27 |
+| `deel` | listed | [`letsdeel`](https://github.com/letsdeel) | 2026-10-27 |
+| `freshbooks` | listed | [`freshbooks`](https://github.com/freshbooks) | 2026-10-27 |
+| `myob` | listed | [`MYOB-Technology`](https://github.com/MYOB-Technology) | 2026-10-27 |
+| `navan` | listed | *no public org at the obvious name* | 2026-10-27 |
+| `paychex` | listed | [`paychex`](https://github.com/paychex) | 2026-10-27 |
+| `relay` | listed | *no public org at the obvious name* | 2026-10-27 |
+| `rippling` | listed | [`Rippling`](https://github.com/Rippling) | 2026-10-27 |
+| `sage` | listed | [`Sage`](https://github.com/Sage) | 2026-10-27 |
+| `wave` | listed | *no public org at the obvious name* | 2026-10-27 |
+| `wise` | listed | [`transferwise`](https://github.com/transferwise) | 2026-10-27 |
 
 ## Relevant but not yet indexed
 

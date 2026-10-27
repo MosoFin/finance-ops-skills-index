@@ -1,0 +1,45 @@
+id: gusto-payroll-prep
+title: Gusto payroll prep
+kind: skill
+origin: third-party
+authority: first-party
+stage: 4
+summary: Gusto's own skill that loads a pay period's hours, tips, commission, bonus and reimbursements
+  from your spreadsheet or POS export onto the draft payroll and calculates it for review. It never runs
+  payroll; you approve in Gusto.
+tiers:
+- PROPOSES-WRITES
+- HUMAN-APPROVAL
+tier_notes:
+  PROPOSES-WRITES: 'Writes onto a draft payroll only: "it never processes or submits payroll."'
+  HUMAN-APPROVAL: Reviews the column mapping and per-employee values with you before writing, and the
+    CLI blocks agent writes until re-run with --confirm.
+systems:
+- gusto
+inputs:
+- name: Gusto CLI, signed in (gusto auth login)
+  required: true
+  source: your Gusto account
+  fallback: none
+- name: the period's hours and pay inputs
+  required: true
+  source: a CSV or POS export
+  fallback: none
+outputs:
+- name: calculated draft payroll
+  type: chat
+  dest: Gusto
+never:
+- Process or submit payroll.
+upstream:
+  repo: Gusto/gusto-cli
+  path: src/skills/payroll-prep
+  ref: main
+  file: SKILL.md
+license: apache-2.0
+mirror: false
+last_graded: '2026-10-27'
+status: GRADED
+skill_md_hash: sha256:208505a355ab4a1e
+upstream_sha: d72a7e90d828
+last_checked: '2026-10-27'

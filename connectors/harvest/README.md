@@ -2,11 +2,18 @@
 
 # Harvest
 
-Professional services · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Professional services · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
-**Nothing to recommend for Harvest yet.**
+**Harvest runs its own hosted server for AI agents. Start with that.**
 
-[`harvesthq`](https://github.com/harvesthq) on GitHub publishes no skills or MCP server for agents as of 2026-09-20. That is a dated fact, not a permanent one.
+Nothing on GitHub from Harvest. Harvest runs its own hosted MCP server, which can write time entries.
+
+## Hosted by the vendor
+
+- **https://api.harvestapp.com/mcp** — connect it in Claude as a custom connector (remote MCP server) and sign in with your Harvest account. Reads projects and time, and can create and edit time entries.
+  Not on GitHub, so this index cannot watch it for changes.
+
+[`harvesthq`](https://github.com/harvesthq) on GitHub publishes no skills or MCP server for agents as of 2026-10-27. That is a dated fact, not a permanent one.
 
 ## Mosofin connection status
 

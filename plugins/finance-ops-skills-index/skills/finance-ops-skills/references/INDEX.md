@@ -2,7 +2,7 @@
 
 # Vendors in this index
 
-Catalog as of 2026-10-21. "Not current" counts entries whose grade describes an older version of the skill, or was made too long ago; the vendor page names them.
+Catalog as of 2026-10-27. "Not current" counts entries whose grade describes an older version of the skill, or was made too long ago; the vendor page names them.
 
 | Vendor | Vertical | Reachability | Vendor skills repo | Indexed | Not current |
 | - | - | - | - | - | - |
@@ -19,7 +19,7 @@ Catalog as of 2026-10-21. "Not current" counts entries whose grade describes an 
 | amazon-sp | ecommerce | roadmap | amzn/selling-partner-agentic-toolkit | 3 | 0 |
 | tiktok-shop | ecommerce | candidate | none | 0 | 0 |
 | bigcommerce | ecommerce | candidate | none | 1 | 0 |
-| ebay | ecommerce | candidate | none | 0 | 0 |
+| ebay | ecommerce | candidate | eBay/npm-public-api-mcp | 1 | 0 |
 | ecwid | ecommerce | candidate | none | 0 | 0 |
 | lightspeed-x | ecommerce | candidate | none | 0 | 0 |
 | etsy | ecommerce | candidate | none | 0 | 0 |
@@ -27,6 +27,27 @@ Catalog as of 2026-10-21. "Not current" counts entries whose grade describes an 
 | harvest | professional | candidate | none | 0 | 0 |
 | jobber | fieldservice | candidate | none | 0 | 0 |
 | servicem8 | fieldservice | candidate | none | 0 | 0 |
+| netsuite | accounting | listed | oracle/netsuite-suitecloud-sdk | 2 | 0 |
+| zoho-books | accounting | listed | zoho/zohobooks-antigravity-plugin | 1 | 0 |
+| myob | accounting | listed | none | 0 | 0 |
+| freshbooks | accounting | listed | none | 0 | 0 |
+| sage | accounting | listed | none | 0 | 0 |
+| wave | accounting | listed | none | 0 | 0 |
+| gusto | payroll | listed | Gusto/gusto-cli | 3 | 0 |
+| rippling | payroll | listed | none | 0 | 0 |
+| adp | payroll | listed | none | 0 | 0 |
+| paychex | payroll | listed | none | 0 | 0 |
+| deel | payroll | listed | none | 0 | 0 |
+| ramp | spend | listed | ramp-public/skills | 5 | 0 |
+| brex | spend | listed | none | 0 | 0 |
+| expensify | spend | listed | Expensify/expensify-plugin | 2 | 0 |
+| bill-com | spend | listed | none | 0 | 0 |
+| navan | spend | listed | none | 0 | 0 |
+| mercury | banking | listed | MercuryTechnologies/mercury-skills | 4 | 0 |
+| airwallex | banking | listed | airwallex/airwallex-marketplace | 1 | 0 |
+| plaid | banking | listed | plaid/ai-coding-toolkit | 0 | 0 |
+| wise | banking | listed | none | 0 | 0 |
+| relay | banking | listed | none | 0 | 0 |
 | woocommerce | ecommerce | costly | woocommerce/agent-skills | 4 | 0 |
 | servicetitan | fieldservice | costly | none | 0 | 0 |
 | housecallpro | fieldservice | costly | none | 0 | 0 |

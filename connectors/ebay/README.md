@@ -2,11 +2,18 @@
 
 # eBay
 
-Stores and marketplaces · options checked 2026-09-20 · [how sources are chosen](../../docs/SOURCING.md)
+Stores and marketplaces · options checked 2026-10-27 · [how sources are chosen](../../docs/SOURCING.md)
 
-**Nothing to recommend for eBay yet.**
+**eBay publishes its own tools for AI agents. Start with those.**
 
-[`eBay`](https://github.com/eBay) on GitHub publishes no skills or MCP server for agents as of 2026-09-20. That is a dated fact, not a permanent one.
+eBay publishes its own read-only MCP server for its public APIs (eBay/npm-public-api-mcp), which is indexed. eBay/claudePlugins is developer tooling for eBay's own engineers, not seller data.
+
+## What to use
+
+### From eBay
+
+- **[eBay API MCP Server](../../skills/ebay-api-mcp/README.md)** — MCP server · Only reads; changes nothing · needs eBay developer Client ID and Client Secret, plus a user token for seller data · [source](https://github.com/eBay/npm-public-api-mcp/tree/main)
+  eBay's own MCP server for its public REST and GraphQL APIs: discover endpoints and read marketplace and, with a user token, seller account data.
 
 ## Mosofin connection status
 

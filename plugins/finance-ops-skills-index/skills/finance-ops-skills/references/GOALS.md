@@ -2,7 +2,7 @@
 
 # Goals
 
-Catalog as of 2026-10-21. Each goal is broken into steps; each step lists the indexed skills that can do it, best general fit first. Keep only the candidates whose "runs on" matches a system the user has confirmed. `csv`, `pdf`, `excel` and the other file formats mean the skill works from an export, which any ledger can produce. `any` means it needs no connected system.
+Catalog as of 2026-10-27. Each goal is broken into steps; each step lists the indexed skills that can do it, best general fit first. Keep only the candidates whose "runs on" matches a system the user has confirmed. `csv`, `pdf`, `excel` and the other file formats mean the skill works from an export, which any ledger can produce. `any` means it needs no connected system.
 
 ## month-end-close: Close the books for a month
 
@@ -12,9 +12,11 @@ Asked as: "close September" · "run my month-end close" · "get the books ready 
    - `month-end-close-checklist` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/month-end-close-checklist
    - `fs-month-end-closer` — runs on: any · by Anthropic · PROPOSES-WRITES · grade current · public — install from https://github.com/anthropics/financial-services/tree/main/plugins/agent-plugins/month-end-closer
    - `close` — runs on: any · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `netsuite-suiteskills-finance` — runs on: netsuite · by Oracle NetSuite — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/oracle/netsuite-suitecloud-sdk/tree/master/packages/ai-plugins/common/skills/suiteskills/netsuite-suiteskills-finance
 2. **Clean up uncategorized and miscoded transactions** — Clear suspense and uncategorized buckets before anything is reconciled.
    - `categorize-transactions` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
    - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant
+   - `mercury-autocategorize-transactions` — runs on: mercury · by Mercury — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/MercuryTechnologies/mercury-skills/tree/main/skills/mercury-autocategorize-transactions
 3. **Reconcile every bank and card account** — Tie each cash and card account to its statement for the period.
    - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation
    - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
@@ -30,6 +32,7 @@ Asked as: "close September" · "run my month-end close" · "get the books ready 
    - `fs-gl-reconciler` — runs on: any · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/financial-services/tree/main/plugins/agent-plugins/gl-reconciler
    - `tie-out` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
    - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `netsuite-finance-analyst` — runs on: netsuite · by Oracle NetSuite — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/oracle/netsuite-suitecloud-sdk/tree/master/packages/agent-skills/netsuite-finance-analyst
 7. **Produce the statements** — Balance sheet, income statement and cash flow with comparatives.
    - `financial-statement-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder
    - `board-pack` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
@@ -43,6 +46,7 @@ Asked as: "reconcile my bank account" · "my bank balance doesn't match the book
 2. **Match statement lines to the ledger** — Match, list what is unmatched on each side, and prove the reconciled balance.
    - `bank-reconciliation` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation
    - `bank-rec` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
+   - `mercury-cash-reconciliation` — runs on: mercury · by Mercury — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/MercuryTechnologies/mercury-skills/tree/main/skills/mercury-cash-reconciliation
 3. **Fix what does not match** — Draft the correcting entries for review before anything is posted.
    - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
 
@@ -89,6 +93,7 @@ Asked as: "categorize my transactions" · "clean up uncategorized expenses" · "
 2. **Categorize** — Propose an account for each transaction, grounded in the entity's own history and rules.
    - `categorize-transactions` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
    - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant
+   - `mercury-autocategorize-transactions` — runs on: mercury · by Mercury — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/MercuryTechnologies/mercury-skills/tree/main/skills/mercury-autocategorize-transactions
 3. **Review the result** — Check what was coded this period for unusual pairings and round numbers.
    - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 
@@ -116,6 +121,7 @@ Asked as: "process vendor invoices" · "make sure we're not paying a bill twice"
 3. **Check before paying** — Catch duplicates and invoices that do not match their purchase order and receipt.
    - `duplicate-invoice-detection` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection
    - `three-way-match` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/three-way-match
+   - `ramp-manage-bills` — runs on: ramp · by Ramp — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/ramp-public/skills/tree/main/skills/ramp-manage-bills
 4. **Pay** — Send the payment. This moves real money — confirm every transfer.
    - `stripe-pay` — runs on: stripe · by Stripe — the platform vendor's own · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-pay
    - `stripe-directory` — runs on: stripe · by Stripe — the platform vendor's own · MOVES-MONEY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-directory
@@ -128,9 +134,11 @@ Asked as: "process expense reports" · "match receipts to card transactions" · 
 1. **Capture receipts** — Turn receipts into structured records.
    - `receipts` — runs on: pdf, images · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/claude-plugins-official/tree/main/plugins/receipts/skills/receipts
    - `pdf` — runs on: pdf · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/pdf
+   - `ramp-complete-expenses` — runs on: ramp · by Ramp — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/ramp-public/skills/tree/main/skills/ramp-complete-expenses
 2. **Process the report** — Code claims, match them to posted card transactions, and check reimbursement and clearing balances.
    - `expense-report-processor` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/expense-report-processor
    - `gl-coding-assistant` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant
+   - `ramp-complete-expenses` — runs on: ramp · by Ramp — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/ramp-public/skills/tree/main/skills/ramp-complete-expenses
 
 ## accruals-and-adjustments: Book accruals and journal entries
 
@@ -140,6 +148,7 @@ Asked as: "book month-end accruals" · "amortize prepaid insurance" · "write a 
    - `accruals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · PROPOSES-WRITES · grade current · Mosofin workspace only — not publicly installable
 2. **Build the entry** — Construct and validate the entry against the real chart of accounts before it is posted.
    - `journal-entry-builder` — runs on: quickbooks · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · public — install from https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder
+   - `mercury-journal-entry-prep` — runs on: mercury · by Mercury — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/MercuryTechnologies/mercury-skills/tree/main/skills/mercury-journal-entry-prep
 3. **Review it** — Second pass over what was posted.
    - `je-review` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 
@@ -173,6 +182,8 @@ Asked as: "budget vs actuals" · "why are expenses up this month" · "variance a
 2. **Compare and explain** — Variance table with timing separated from true variance, and commentary.
    - `budget-vs-actuals` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
    - `flux` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `expensify-flux-analysis` — runs on: expensify · by Expensify — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/Expensify/expensify-plugin/tree/main/skills/flux-analysis
+   - `ramp-spend-analysis` — runs on: ramp · by Ramp — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/ramp-public/skills/tree/main/skills/ramp-spend-analysis
 
 ## cash-forecast: Forecast cash
 
@@ -180,6 +191,7 @@ Asked as: "13-week cash flow" · "will we run out of cash" · "build a forecast"
 
 1. **Project cash** — Week-by-week cash from open A/R, A/P, recurring items and bank balances.
    - `cash-flow` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
+   - `gusto-cash-forecasting` — runs on: gusto · by Gusto — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/Gusto/gusto-cli/tree/main/src/skills/cash-forecasting
 2. **Forecast the P&L** — Rolling forecast where every line names its driver.
    - `forecast` — runs on: quickbooks, csv · by Mosofin — independent, not the platform's vendor · READ-ONLY · grade current · Mosofin workspace only — not publicly installable
 3. **Look at financing if cash runs short** — QuickBooks Capital loan and credit options.
@@ -199,16 +211,20 @@ Asked as: "how is my business doing" · "compare us to our industry" · "give me
 
 Asked as: "add a new employee to payroll" · "give someone a raise" · "why did payroll cost go up"
 
-1. **Onboard a new hire** — Set the employee up in payroll from their offer details.
+1. **Prepare this period's payroll** — Load hours, tips, commission and bonus onto the draft payroll and calculate it for review. Payroll is approved in the payroll system, never by the skill.
+   - `gusto-payroll-prep` — runs on: gusto · by Gusto — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/Gusto/gusto-cli/tree/main/src/skills/payroll-prep
+   - `gusto-timesheet-sync` — runs on: gusto · by Gusto — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/Gusto/gusto-cli/tree/main/src/skills/timesheet-sync
+2. **Onboard a new hire** — Set the employee up in payroll from their offer details.
    - `qb-payroll-employee-onboarding` — runs on: quickbooks · by Intuit — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-employee-onboarding
-2. **Change pay** — View or change base pay.
+3. **Change pay** — View or change base pay.
    - `qb-set-base-pay` — runs on: quickbooks · by Intuit — the platform vendor's own · PROPOSES-WRITES · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/set-base-pay
-3. **Answer payroll questions** — Look up payroll setup and history.
+4. **Answer payroll questions** — Look up payroll setup and history.
    - `qb-payroll-help` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help
-4. **Analyse payroll cost** — What drove a change in payroll spend.
+5. **Analyse payroll cost** — What drove a change in payroll spend.
    - `qb-analyze-payroll-cost` — runs on: quickbooks · by Intuit — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/analyze-payroll-cost
+   - `gusto-cash-forecasting` — runs on: gusto · by Gusto — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/Gusto/gusto-cli/tree/main/src/skills/cash-forecasting
 
-Gap: Payroll skills are indexed for QuickBooks Payroll only.
+Gap: Payroll skills are indexed for QuickBooks Payroll and Gusto only. ADP, Paychex and Rippling publish none; Deel and Rippling run hosted servers.
 
 ## invoice-customers: Quote and invoice customers
 

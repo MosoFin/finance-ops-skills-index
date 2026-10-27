@@ -4,7 +4,9 @@
 
 - Reachability: **candidate** — Evaluated, not yet committed
 - Vertical: fieldservice
-- **No vendor-published skills found** as of 2026-09-20.
+- **No vendor-published skills found** as of 2026-10-27.
+- Note: Nothing on GitHub from ServiceM8. ServiceM8 runs its own hosted MCP server.
+- Vendor-hosted MCP server: https://api.servicem8.com/mcp (run by ServiceM8, not on GitHub, so not tracked for changes). What it can change is not documented publicly.
 
 ## Indexed skills
 

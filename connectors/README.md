@@ -7,8 +7,38 @@ and whether it can change your records or move money.
 
 ## Accounting
 
+- **[FreshBooks](freshbooks/README.md)** — 0 options · nothing to recommend yet
+- **[MYOB](myob/README.md)** — 0 options · nothing to recommend yet
+- **[NetSuite](netsuite/README.md)** — 2 options · 2 from the vendor
 - **[QuickBooks](quickbooks/README.md)** — 35 options · 11 from the vendor
+- **[Sage](sage/README.md)** — 0 options · nothing to recommend yet
+- **[Wave](wave/README.md)** — 0 options · nothing to recommend yet
 - **[Xero](xero/README.md)** — 2 options · 2 from the vendor
+- **[Zoho Books](zoho-books/README.md)** — 1 option · 1 from the vendor
+
+## Payroll and HR
+
+- **[ADP](adp/README.md)** — 0 options · nothing to recommend yet
+- **[Deel](deel/README.md)** — 0 options · the vendor's hosted server
+- **[Gusto](gusto/README.md)** — 3 options · 3 from the vendor
+- **[Paychex](paychex/README.md)** — 0 options · nothing to recommend yet
+- **[Rippling](rippling/README.md)** — 0 options · nothing to recommend yet
+
+## Spend, expenses and bills
+
+- **[BILL](bill-com/README.md)** — 0 options · nothing to recommend yet
+- **[Brex](brex/README.md)** — 0 options · the vendor's hosted server
+- **[Expensify](expensify/README.md)** — 2 options · 2 from the vendor
+- **[Navan](navan/README.md)** — 0 options · nothing to recommend yet
+- **[Ramp](ramp/README.md)** — 5 options · 5 from the vendor
+
+## Banking and money movement
+
+- **[Airwallex](airwallex/README.md)** — 1 option · 1 from the vendor
+- **[Mercury](mercury/README.md)** — 4 options · 4 from the vendor
+- **[Plaid](plaid/README.md)** — 0 options · nothing to recommend yet
+- **[Relay](relay/README.md)** — 0 options · nothing to recommend yet
+- **[Wise](wise/README.md)** — 0 options · nothing to recommend yet
 
 ## Payments
 
@@ -20,7 +50,7 @@ and whether it can change your records or move money.
 
 - **[Amazon Seller Central](amazon-sp/README.md)** — 3 options · 3 from the vendor
 - **[BigCommerce](bigcommerce/README.md)** — 1 option · nothing from the vendor; other publishers only
-- **[eBay](ebay/README.md)** — 0 options · nothing to recommend yet
+- **[eBay](ebay/README.md)** — 1 option · 1 from the vendor
 - **[Ecwid](ecwid/README.md)** — 0 options · nothing to recommend yet
 - **[Etsy](etsy/README.md)** — 0 options · nothing to recommend yet
 - **[Lightspeed Retail (X-Series)](lightspeed-x/README.md)** — 0 options · nothing to recommend yet
@@ -31,7 +61,7 @@ and whether it can change your records or move money.
 ## Advertising
 
 - **[Google Ads](google-ads/README.md)** — 1 option · 1 from the vendor
-- **[Meta Ads](meta-ads/README.md)** — 0 options · nothing to recommend yet
+- **[Meta Ads](meta-ads/README.md)** — 0 options · the vendor's hosted server
 
 ## CRM
 
@@ -39,7 +69,7 @@ and whether it can change your records or move money.
 
 ## Marketing
 
-- **[Klaviyo](klaviyo/README.md)** — 0 options · nothing to recommend yet
+- **[Klaviyo](klaviyo/README.md)** — 0 options · the vendor's hosted server
 
 ## Email
 
@@ -54,13 +84,13 @@ and whether it can change your records or move money.
 ## Professional services
 
 - **[Clio](clio/README.md)** — 0 options · nothing to recommend yet
-- **[Harvest](harvest/README.md)** — 0 options · nothing to recommend yet
+- **[Harvest](harvest/README.md)** — 0 options · the vendor's hosted server
 
 ## Field service
 
 - **[Housecall Pro](housecallpro/README.md)** — 0 options · nothing to recommend yet
-- **[Jobber](jobber/README.md)** — 0 options · nothing to recommend yet
-- **[ServiceM8](servicem8/README.md)** — 0 options · nothing to recommend yet
+- **[Jobber](jobber/README.md)** — 0 options · the vendor's hosted server
+- **[ServiceM8](servicem8/README.md)** — 0 options · the vendor's hosted server
 - **[ServiceTitan](servicetitan/README.md)** — 0 options · nothing to recommend yet
 
 ## Retail point of sale
