@@ -8,6 +8,7 @@
 - Published there: 60 · indexed here: 7 · checked 2026-09-20
 - Repository licence: mit
 - Note: The repo ships the same 10 skills under six provider directories; 10 unique. Seven are payments, Connect, billing, tax or paying vendors (stripe-directory). The other three build Stripe apps, provision infrastructure or upgrade SDKs.
+- Vendor-hosted MCP server: https://mcp.stripe.com (run by Stripe, not on GitHub, so not tracked for changes). Stripe's hosted MCP server, named in the stripe/ai README.
 
 ## Indexed skills
 

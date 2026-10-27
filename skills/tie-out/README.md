@@ -6,13 +6,14 @@
 
 Ties every balance-sheet account to a source — subledger, statement, or schedule — and produces a green/red schedule. The close's backbone: red until tied.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/tie-out` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ Ties every balance-sheet account to a source — subledger, statement, or schedu
 - Eyeball a difference. Every comparison is scripted.
 - Post a correcting entry.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

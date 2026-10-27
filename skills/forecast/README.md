@@ -6,13 +6,14 @@
 
 A rolling forecast where actual months are locked and every forecast line names its driver — run-rate, growth, contract, seasonal, or manual with a stated reason. Assumption changes are logged as decision records.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 7 — Forward-looking |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/forecast` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ A rolling forecast where actual months are locked and every forecast line names 
 
 - Overwrite an actual month with a forecast.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

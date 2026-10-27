@@ -6,13 +6,14 @@
 
 Stripe's own skill for payment flows. The merchant-side counterpart to reconciling Stripe settlements and fees against the ledger.
 
+**What it can do:** Can move money.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Stripe — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | stripe |
+| Works with | [Stripe](../../connectors/stripe/README.md) |
 | Source | [`stripe/ai/providers/claude/plugin/skills/stripe-pay`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-pay) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
@@ -46,7 +47,9 @@ Stripe's own skill for payment flows. The merchant-side counterpart to reconcili
 - Print a full API key back to the user.
 - Retry a transfer whose recipient setup is incomplete.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

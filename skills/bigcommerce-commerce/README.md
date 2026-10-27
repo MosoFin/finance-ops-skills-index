@@ -6,13 +6,14 @@
 
 A community plugin of BigCommerce developer skills (REST and GraphQL APIs, orders, payments, catalog, checkout, Stencil, app development). Not published by BigCommerce, which publishes no agent skills; listed by owner decision with 39 stars.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | OrcaQubits — third party, not the platform's vendor |
 | Type | Plugin — skills bundled with a connection |
-| Authority | Community |
 | Stage | 0 — Setup |
-| Systems | bigcommerce |
+| Works with | [BigCommerce](../../connectors/bigcommerce/README.md) |
 | Source | [`OrcaQubits/agentic-commerce-skills-plugins/bigcommerce-commerce`](https://github.com/OrcaQubits/agentic-commerce-skills-plugins/tree/main/bigcommerce-commerce) |
 | License | `unclear` |
 | Mirrored here | no — pointer only |
@@ -34,7 +35,9 @@ A community plugin of BigCommerce developer skills (REST and GraphQL APIs, order
 |---|---|---|
 | code and guidance | files | the developer's project |
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -42,15 +45,9 @@ A community plugin of BigCommerce developer skills (REST and GraphQL APIs, order
 
 - `bigcommerce` — Survey priority 2 — cleanest registration found; mirrors the Shopify code.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+A Claude plugin: install it in Claude Code, or in Claude.ai and Cowork from Customize > Plugins.
 
 ---
 

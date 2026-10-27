@@ -6,13 +6,14 @@
 
 HubSpot's official Claude plugin on its hosted MCP server (mcp.hubspot.com): contact lookup, call prep, daily brief, follow-up drafting, call logging, contact import and pipeline overview.
 
+**What it can do:** Changes records without asking first.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | HubSpot — the platform vendor's own |
 | Type | Plugin — skills bundled with a connection |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | hubspot |
+| Works with | [HubSpot](../../connectors/hubspot/README.md) |
 | Source | [`HubSpot/hubspot-mcp-plugins/HubSpot-Sales`](https://github.com/HubSpot/hubspot-mcp-plugins/tree/main/HubSpot-Sales) |
 | License | `unclear` |
 | Mirrored here | no — pointer only |
@@ -38,7 +39,9 @@ HubSpot's official Claude plugin on its hosted MCP server (mcp.hubspot.com): con
 
 - Guess a deal stage when more than one could fit; it asks instead.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -46,15 +49,9 @@ HubSpot's official Claude plugin on its hosted MCP server (mcp.hubspot.com): con
 
 - `hubspot` — Legacy public app creation was disabled in 2026 — new public apps require the Projects-based platform via the HubSpot CLI. The only connector here needing a CLI workflow rather than a dashboard registration.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+A Claude plugin: install it in Claude Code, or in Claude.ai and Cowork from Customize > Plugins.
 
 ---
 

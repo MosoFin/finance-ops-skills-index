@@ -6,13 +6,14 @@
 
 Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Anthropic |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
-| Systems | any |
+| Works with | any |
 | Source | [`anthropics/skills/skills/skill-creator`](https://github.com/anthropics/skills/tree/main/skills/skill-creator) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
@@ -43,7 +44,9 @@ Guidance for authoring skills — structure, progressive disclosure, bundled res
 
 - Use jargon without reading the room — the skill notes plainly that its users range from computer-literate developers to people who have just googled how to install npm.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Constructs, formats, and validates journal entries against the real chart of accounts — checks accounts exist, signs match account types, the period is open, and no prior accrual already covers the item. Mosofin never posts.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`MosoFin/mosofin-finance-skills/skills/journal-entry-builder`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/journal-entry-builder) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -46,7 +47,9 @@ Constructs, formats, and validates journal entries against the real chart of acc
 - Post an entry, or imply anything has been recorded.
 - Omit the words 'proposed entry' from an output.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

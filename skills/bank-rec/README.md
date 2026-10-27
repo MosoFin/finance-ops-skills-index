@@ -6,13 +6,14 @@
 
 Reconciles one bank or credit-card account for one period. Matches statement lines against ledger transactions with a deterministic script; the script's leftovers are the work list. Done means the difference is zero, computed.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/bank-rec` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -48,7 +49,9 @@ Reconciles one bank or credit-card account for one period. Matches statement lin
 - Assert a zero difference. It is computed by the script or it is red.
 - Guess at an unmatched item — 'unknown' is a question, not a classification.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

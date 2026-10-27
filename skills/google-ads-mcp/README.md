@@ -6,13 +6,14 @@
 
 Google's official MCP server for the Google Ads API: query campaigns, spend and performance with Google Ads Query Language, read resource metadata, and list accessible accounts. Read-only; it changes no campaigns or budgets.
 
+**What it can do:** Only reads; changes nothing; sends usage data to its publisher.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Google — the platform vendor's own |
 | Type | MCP server — tools Claude can call |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | google-ads |
+| Works with | [Google Ads](../../connectors/google-ads/README.md) |
 | Source | [`googleads/google-ads-mcp`](https://github.com/googleads/google-ads-mcp/tree/main) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -39,7 +40,9 @@ Google's official MCP server for the Google Ads API: query campaigns, spend and 
 
 - Create, edit or delete a campaign, ad group, ad or budget.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -47,15 +50,9 @@ Google's official MCP server for the Google Ads API: query campaigns, spend and 
 
 - `google-ads` — Explorer tier covers production accounts with no review, so this need not block on approval. While the consent screen is in Testing, refresh tokens expire after 7 days — publish before debugging. Separate Cloud projects for dev and prod are Google policy, not preference.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+An MCP server, not a skill: any app that can connect to MCP servers can use it, including Claude Code, Claude.ai, Claude Desktop and Cursor.
 
 ---
 

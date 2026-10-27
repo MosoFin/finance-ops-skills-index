@@ -6,13 +6,14 @@
 
 WooCommerce's own plugin that turns a store into an MCP endpoint for Claude: revenue, orders, refunds, coupons, tax and product analytics from WooCommerce's analytics tables, plus workflow skills such as failed-order triage and payment-method review.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | WooCommerce — the platform vendor's own |
 | Type | Plugin — skills bundled with a connection |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | woocommerce |
+| Works with | [WooCommerce](../../connectors/woocommerce/README.md) |
 | Source | [`woocommerce/woocommerce-claude`](https://github.com/woocommerce/woocommerce-claude/tree/trunk) |
 | License | `gpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -40,7 +41,9 @@ WooCommerce's own plugin that turns a store into an MCP endpoint for Claude: rev
 
 - Surface individual customer names, emails or addresses in analytics answers.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -48,15 +51,9 @@ WooCommerce's own plugin that turns a store into an MCP endpoint for Claude: rev
 
 - `woocommerce` — No registration exists and no revocation signal. Per-merchant key entry.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+A Claude plugin: install it in Claude Code, or in Claude.ai and Cowork from Customize > Plugins.
 
 ---
 

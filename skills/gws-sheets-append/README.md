@@ -6,13 +6,14 @@
 
 Append rows to a sheet without rewriting it — the safe write for logging close artifacts, categorization decisions, or a running schedule.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Google — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | google-sheets |
+| Works with | [Google Sheets](../../connectors/google-sheets/README.md) |
 | Source | [`googleworkspace/cli/skills/gws-sheets-append`](https://github.com/googleworkspace/cli/tree/main/skills/gws-sheets-append) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -42,7 +43,9 @@ Append rows to a sheet without rewriting it — the safe write for logging close
 - Execute without confirming — the skill states this itself.
 - Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade covers this file only; the safety rules it defers to are unreviewed.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

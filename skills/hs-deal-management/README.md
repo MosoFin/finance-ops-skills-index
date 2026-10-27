@@ -6,13 +6,14 @@
 
 Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs into deals with associations, advance/reassign in bulk, hunt stalled deals, and close.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | HubSpot — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | hubspot |
+| Works with | [HubSpot](../../connectors/hubspot/README.md) |
 | Source | [`HubSpot/agent-cli-skills/deal-management`](https://github.com/HubSpot/agent-cli-skills/tree/main/deal-management) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -44,7 +45,9 @@ Run the full deal lifecycle from CLI — discover pipelines/stages, qualify MQLs
 - Hardcode a pipeline or stage ID.
 - Run a bulk write without the dry-run and confirm flow.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Amazon's own skill for FBA inventory health: days of cover from sales velocity, inbound-shipment gaps and restocking, with any price change drafted for the seller to approve.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Amazon — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 7 — Forward-looking |
-| Systems | amazon-sp |
+| Works with | [Amazon Seller Central](../../connectors/amazon-sp/README.md) |
 | Source | [`amzn/selling-partner-agentic-toolkit/skills/stockout-prevention`](https://github.com/amzn/selling-partner-agentic-toolkit/tree/main/skills/stockout-prevention) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -39,7 +40,9 @@ Amazon's own skill for FBA inventory health: days of cover from sales velocity, 
 
 - Apply a price change without the seller's approval.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

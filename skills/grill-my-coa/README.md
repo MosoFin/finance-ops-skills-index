@@ -6,13 +6,14 @@
 
 Relentless interview about your chart of accounts until every account has one clear purpose and every recurring transaction has exactly one home. Queries the ledger instead of asking whenever the ledger can answer.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/grill-my-coa` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -44,7 +45,9 @@ Relentless interview about your chart of accounts until every account has one cl
 
 - Rename, merge, or deactivate accounts in the accounting system.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

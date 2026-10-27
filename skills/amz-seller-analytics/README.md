@@ -6,13 +6,14 @@
 
 Amazon's own skill for a seller's sales, traffic and inventory-health questions, answered from the Selling Partner connector's analytics tools in plain language.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Amazon — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | amazon-sp |
+| Works with | [Amazon Seller Central](../../connectors/amazon-sp/README.md) |
 | Source | [`amzn/selling-partner-agentic-toolkit/skills/seller-analytics`](https://github.com/amzn/selling-partner-agentic-toolkit/tree/main/skills/seller-analytics) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -40,7 +41,9 @@ Amazon's own skill for a seller's sales, traffic and inventory-health questions,
 
 - Take a write action.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

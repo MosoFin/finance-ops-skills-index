@@ -6,13 +6,14 @@
 
 Builds Balance Sheet, Income Statement, and Statement of Cash Flows with comparatives from the live trial balance, reclassifies into framework presentation, and proves seven cross-statement tie-outs.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`MosoFin/mosofin-finance-skills/skills/financial-statement-builder`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/financial-statement-builder) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ Builds Balance Sheet, Income Statement, and Statement of Cash Flows with compara
 - Rely on the system's own balance sheet balancing as proof for reclassified statements.
 - Produce footnotes or a standalone cash-flow statement — those are separate skills.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

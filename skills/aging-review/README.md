@@ -6,13 +6,14 @@
 
 Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and credit-balance items, then drafts collections notes and a proposed payment run. Cross-foots the aging to the ledger before any of it is believed.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/aging-review` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -48,7 +49,9 @@ Walks A/R and A/P aging oldest-first — flags overdue, stale, duplicate, and cr
 - Send a collections note.
 - Guess at a dispute or a counterparty relationship.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

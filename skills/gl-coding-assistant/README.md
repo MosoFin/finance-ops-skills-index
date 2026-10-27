@@ -6,13 +6,14 @@
 
 Assigns GL accounts, expense categories, and tax codes against the real chart of accounts, grounding every suggestion in how this entity has actually coded the same vendor before. Outputs confidence ratings, reasoning, evidence.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`MosoFin/mosofin-finance-skills/skills/gl-coding-assistant`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/gl-coding-assistant) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -45,7 +46,9 @@ Assigns GL accounts, expense categories, and tax codes against the real chart of
 - Post the coding — that is journal-entry-builder, and a person posts it.
 - Design the chart of accounts — that is a separate skill.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

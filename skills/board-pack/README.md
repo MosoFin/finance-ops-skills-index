@@ -6,13 +6,14 @@
 
 Assembles the period's existing close artifacts into a board or management pack. Synthesis, not creation — missing artifacts are listed as gaps with the skill that produces each, never improvised around.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | quickbooks, csv |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md), csv |
 | Source | `~/.claude/skills/board-pack` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -49,7 +50,9 @@ Assembles the period's existing close artifacts into a board or management pack.
 - Invent a forward-looking statement — those are yours.
 - Retype a number into the deck.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

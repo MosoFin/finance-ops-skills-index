@@ -6,13 +6,14 @@
 
 Shopify's consolidated skill, replacing the 21 per-surface skills it deprecated on 2026-09-25. Routes any Shopify task — Admin GraphQL, ShopifyQL sales and analytics, Payments Apps, Customer Account API, Shopify CLI store reads and writes, merchant onboarding — to a topic reference, searches Shopify's docs and validates generated code before returning it.
 
+**What it can do:** Changes records only after you approve; sends usage data to its publisher.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Shopify — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | shopify |
+| Works with | [Shopify](../../connectors/shopify/README.md) |
 | Source | [`Shopify/Shopify-AI-Toolkit/skills/shopify`](https://github.com/Shopify/Shopify-AI-Toolkit/tree/main/skills/shopify) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
@@ -48,7 +49,9 @@ Shopify's consolidated skill, replacing the 21 per-surface skills it deprecated 
 - Run a mutating or transmitting CLI command without separate-turn confirmation.
 - Guess at valid values.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

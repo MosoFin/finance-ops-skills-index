@@ -6,13 +6,14 @@
 
 Resolves an external provider, merchant or nonprofit and its documented way to be engaged — pay, donate, subscribe, book or provision — through the Stripe CLI's Directory plugin. Pairs with stripe-pay when the engagement is a payment, such as paying a vendor's bill.
 
+**What it can do:** Can move money.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Stripe — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 7 — Forward-looking |
-| Systems | stripe |
+| Works with | [Stripe](../../connectors/stripe/README.md) |
 | Source | [`stripe/ai/providers/claude/plugin/skills/stripe-directory`](https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-directory) |
 | License | `mit` |
 | Mirrored here | no — pointer only |
@@ -45,7 +46,9 @@ Resolves an external provider, merchant or nonprofit and its documented way to b
 - Invent recipients, prices or endpoints.
 - Skip Directory and pick a provider from model memory.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

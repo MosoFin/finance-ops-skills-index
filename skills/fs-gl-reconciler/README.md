@@ -6,13 +6,14 @@
 
 Anthropic's GL-to-subledger reconciliation agent: finds breaks over threshold, traces each to its cause, re-verifies, and drafts an exception report for sign-off. Reads through GL and subledger MCP servers you connect.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Anthropic |
 | Type | Agent |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | any |
+| Works with | any |
 | Source | [`anthropics/financial-services/plugins/agent-plugins/gl-reconciler`](https://github.com/anthropics/financial-services/tree/main/plugins/agent-plugins/gl-reconciler) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -40,21 +41,17 @@ Anthropic's GL-to-subledger reconciliation agent: finds breaks over threshold, t
 
 - Post a ledger adjustment.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
 | `any` | **local** — Not a connector — files or destinations | `none` | n/a |
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+A Claude agent plugin: install it in Claude Code or Cowork, or run it through the Claude Managed Agents API.
 
 ---
 

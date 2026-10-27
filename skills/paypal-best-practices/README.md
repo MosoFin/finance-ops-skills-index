@@ -6,13 +6,14 @@
 
 PayPal integration guidance, code examples, and best practices. Use for checkout, card fields, BNPL, Pay Later, Venmo, subscriptions, invoicing, disputes, payouts, webhooks, APMs, JS SDK v5, JS SDK v6, createInstance, payment sessions, web components, Fastlane, payment links, donations, 3D Secure, vaulting, iDEAL, bank redirects, agentic commerce, or any PayPal architecture decision or code generation question.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | PayPal — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | paypal |
+| Works with | [PayPal](../../connectors/paypal/README.md) |
 | Source | [`paypal/AI-Toolkit/skills/paypal-best-practices`](https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-best-practices) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ PayPal integration guidance, code examples, and best practices. Use for checkout
 - Create orders client-side.
 - Execute API calls the MCP tools should handle.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

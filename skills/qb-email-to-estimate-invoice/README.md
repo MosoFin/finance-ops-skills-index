@@ -6,13 +6,14 @@
 
 Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice. Use when the user asks to "create an invoice from my email thread", "draft an estimate based on what I quoted this customer over email", "bill this customer for the work we discussed and send it to them", "turn this email into an invoice", "make an estimate from this thread", or wants to go from an email conversation to a QuickBooks sales document without re-keying line items.
 
+**What it can do:** Changes records only after you approve; Sends messages outside the business.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 2 — Data hygiene |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-claude-plugin/skills/email-to-estimate-invoice`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/email-to-estimate-invoice) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -50,7 +51,9 @@ Turn a customer email thread into a ready-to-send QuickBooks estimate or invoice
 - Set `taxable` unless the user or the thread stated it.
 - Give tax, legal or collections advice.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

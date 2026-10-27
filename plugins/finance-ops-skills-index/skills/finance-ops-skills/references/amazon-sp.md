@@ -8,6 +8,7 @@
 - Published there: 12 · indexed here: 3 · checked 2026-10-21
 - Repository licence: apache-2.0
 - Note: Amazon's official Selling Partner agentic toolkit: 12 skills on Amazon's hosted connector (sellingpartner-ai.amazon.com/mcp), with every write drafted for approval. The three finance and inventory skills are indexed (month-end close, seller analytics, stockout prevention); the rest cover listings, FBA inbound, user invites and support cases.
+- Vendor-hosted MCP server: https://sellingpartner-ai.amazon.com/mcp (run by Amazon, not on GitHub, so not tracked for changes). Amazon's Selling Partner connector, signed in through Seller Central; the toolkit's skills run on it.
 
 ## Indexed skills
 

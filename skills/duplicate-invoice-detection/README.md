@@ -6,13 +6,14 @@
 
 Ten detection rules for duplicate and fraudulent AP invoices run against live bills, payments, and the vendor master. Nine are pure queries; the bank-account rule cannot run because Mosofin deliberately does not expose vendor bank details.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 5 — Review |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`MosoFin/mosofin-finance-skills/skills/duplicate-invoice-detection`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/duplicate-invoice-detection) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -45,7 +46,9 @@ Ten detection rules for duplicate and fraudulent AP invoices run against live bi
 - Void or delete a suspected duplicate.
 - Serve as general fraud detection across all transaction types.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Google's official Drive skill. Relevant wherever the workpaper archive, client statements and PBC documents live outside the ledger.
 
+**What it can do:** Changes records without asking first.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Google — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
-| Systems | google-drive |
+| Works with | [Google Drive](../../connectors/google-drive/README.md) |
 | Source | [`googleworkspace/cli/skills/gws-drive`](https://github.com/googleworkspace/cli/tree/main/skills/gws-drive) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -40,7 +41,9 @@ Google's official Drive skill. Relevant wherever the workpaper archive, client s
 
 - Auth and security rules live in ../gws-shared/SKILL.md, which is not indexed here. The grade covers this file only; the safety rules it defers to are unreviewed.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Answer read-only QuickBooks Payroll lookup and setup questions using connected company payroll data. Use for employee roster or lookup, company payroll setup, last payroll run, payslips or paycheck details, pay types, deductions/contributions, and time-off policies. Do not use for payroll cost-driver, spend-reduction, or cost-change analysis; use analyze-payroll-cost when the question asks why payroll cost changed or how to reduce it, including questions involving benefits, employer taxes/SUI, overtime, headcount, pay rates, or pay items. Use only available payroll tools; do not provide unsupported procedural, tax, filing, payment, legal, or compliance guidance.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 4 — Adjust |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-claude-plugin/skills/payroll-help`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/payroll-help) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ Answer read-only QuickBooks Payroll lookup and setup questions using connected c
 - Give procedural, tax, filing, legal or compliance guidance not supported by current tool data.
 - Answer payroll cost-driver or spend-reduction questions — those belong to analyze-payroll-cost.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

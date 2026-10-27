@@ -6,13 +6,14 @@
 
 Send payment reminders for invoices with tone matched to aging. ALWAYS use this skill when the user asks to "send a reminder", "send reminder to invoice", "remind about invoice", "send a reminder to invoice 1234", "remind them about 4574", "send a firmer reminder for invoice 1042", "who owes me money", "show me overdue invoices", "chase down overdue invoices", "follow up on unpaid invoices", or "nudge customers who haven't paid". This skill MUST be loaded before calling qbo_sales_send_invoice_reminder to ensure confirmation and tone- matching.
 
+**What it can do:** Sends messages outside the business.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Intuit — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`intuit/quickbooks-claude-plugin/skills/chase-overdue-invoices`](https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/chase-overdue-invoices) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -49,7 +50,9 @@ Send payment reminders for invoices with tone matched to aging. ALWAYS use this 
 - Let a tone edit change an amount, balance, due date or terms.
 - Give legal or collections advice.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

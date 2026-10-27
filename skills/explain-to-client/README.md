@@ -6,13 +6,14 @@
 
 Translates a result, statement, or decision into plain language pitched at the client's sophistication level, in the client's own vocabulary. Translation, not simplification — accurate at every level.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | any |
+| Works with | any |
 | Source | `~/.claude/skills/explain-to-client` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -45,7 +46,9 @@ Translates a result, statement, or decision into plain language pitched at the c
 
 - Send anything to a client.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 Identify inactive/at-risk customers via CRM filters and create follow-up tasks at scale. Builds on `bulk-operations`; defers activity-creation specifics to `sales-execution`.
 
+**What it can do:** Changes records only after you approve.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | HubSpot — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 7 — Forward-looking |
-| Systems | hubspot |
+| Works with | [HubSpot](../../connectors/hubspot/README.md) |
 | Source | [`HubSpot/agent-cli-skills/customer-retention`](https://github.com/HubSpot/agent-cli-skills/tree/main/customer-retention) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -43,7 +44,9 @@ Identify inactive/at-risk customers via CRM filters and create follow-up tasks a
 - Filter on a property without verifying it exists in this portal.
 - Create tasks in bulk without the dry-run and confirm flow.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

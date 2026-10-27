@@ -6,13 +6,14 @@
 
 A stateful month-end checklist for one period. Generates tasks from the client's close calendar, tracks status across sessions, and names the skill that fits the next open task. Tracks and suggests — it runs nothing and posts nothing.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin workspace |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 1 — Orchestration |
-| Systems | any |
+| Works with | any |
 | Source | `~/.claude/skills/close` (local) |
 | License | `proprietary-mosofin` |
 | Mirrored here | no — pointer only |
@@ -47,7 +48,9 @@ A stateful month-end checklist for one period. Generates tasks from the client's
 - Run another skill.
 - Post an entry.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

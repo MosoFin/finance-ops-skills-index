@@ -6,13 +6,14 @@
 
 PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Venmo, SDK, v5, v6, Fastlane, Braintree Fastlane, braintree-web, accelerated guest checkout. Routes PayPal developer questions to the right command or reference file.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | PayPal — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | paypal |
+| Works with | [PayPal](../../connectors/paypal/README.md) |
 | Source | [`paypal/AI-Toolkit/skills/paypal-routing`](https://github.com/paypal/AI-Toolkit/tree/main/skills/paypal-routing) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -42,7 +43,9 @@ PayPal payments, subscriptions, checkout, invoices, disputes, webhooks, BNPL, Ve
 - Fall back to training knowledge for implementation patterns when a snippet was fetched.
 - Load both Fastlane variants — the v5 and v6 component APIs differ.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

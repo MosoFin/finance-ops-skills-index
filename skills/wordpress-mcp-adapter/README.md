@@ -6,13 +6,14 @@
 
 The official WordPress package that exposes a site's registered abilities as MCP tools. WooCommerce for Claude builds on the same layer; what it can do depends entirely on which abilities a site makes public.
 
+**What it can do:** Changes records without asking first.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | WordPress — the platform vendor's own |
 | Type | MCP server — tools Claude can call |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
-| Systems | woocommerce |
+| Works with | [WooCommerce](../../connectors/woocommerce/README.md) |
 | Source | [`WordPress/mcp-adapter`](https://github.com/WordPress/mcp-adapter/tree/trunk) |
 | License | `gpl-2.0` |
 | Mirrored here | no — pointer only |
@@ -38,7 +39,9 @@ The official WordPress package that exposes a site's registered abilities as MCP
 
 - Expose an ability the site has not marked public.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -46,15 +49,9 @@ The official WordPress package that exposes a site's registered abilities as MCP
 
 - `woocommerce` — No registration exists and no revocation signal. Per-merchant key entry.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+An MCP server, not a skill: any app that can connect to MCP servers can use it, including Claude Code, Claude.ai, Claude Desktop and Cursor.
 
 ---
 

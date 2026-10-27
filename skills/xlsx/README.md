@@ -6,13 +6,14 @@
 
 Spreadsheet creation and manipulation — formulas, charts, data transformations. The usual last mile when a close artifact has to leave as a workbook.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Anthropic |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | excel |
+| Works with | [Excel](../../connectors/excel/README.md) |
 | Source | [`anthropics/skills/skills/xlsx`](https://github.com/anthropics/skills/tree/main/skills/xlsx) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
@@ -49,7 +50,9 @@ Spreadsheet creation and manipulation — formulas, charts, data transformations
 - Save a workbook loaded with data_only=True — it replaces every formula with a literal, permanently.
 - Add an example row to a file you were asked to edit.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

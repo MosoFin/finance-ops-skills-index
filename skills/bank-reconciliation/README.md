@@ -6,13 +6,14 @@
 
 Reconciles a cash GL to bank statements for a period. Builds the complete book side from live ledger data and prepares the bridge, while stating plainly that the statement sits outside any accounting datasource and must be supplied.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Mosofin published |
+| Publisher | Mosofin — independent, not the platform's vendor |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | quickbooks |
+| Works with | [QuickBooks](../../connectors/quickbooks/README.md) |
 | Source | [`MosoFin/mosofin-finance-skills/skills/bank-reconciliation`](https://github.com/MosoFin/mosofin-finance-skills/tree/main/skills/bank-reconciliation) |
 | License | `agpl-3.0` |
 | Mirrored here | no — pointer only |
@@ -51,7 +52,9 @@ Reconciles a cash GL to bank statements for a period. Builds the complete book s
 - Disguise a missing statement with a book-side total.
 - Post an adjusting entry or mark an item cleared.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

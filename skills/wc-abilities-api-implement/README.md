@@ -6,13 +6,14 @@
 
 WooCommerce's developer skill for registering WordPress Abilities API capabilities in a WooCommerce extension. For developers building store integrations, not for running a store's books.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | WooCommerce — the platform vendor's own |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 0 — Setup |
-| Systems | woocommerce |
+| Works with | [WooCommerce](../../connectors/woocommerce/README.md) |
 | Source | [`woocommerce/agent-skills/skills/abilities-api-implement`](https://github.com/woocommerce/agent-skills/tree/trunk/skills/abilities-api-implement) |
 | License | `gpl-2.0` |
 | Mirrored here | no — pointer only |
@@ -34,7 +35,9 @@ WooCommerce's developer skill for registering WordPress Abilities API capabiliti
 |---|---|---|
 | extension code and contract tests | files | the extension repository |
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|

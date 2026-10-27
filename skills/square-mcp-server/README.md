@@ -6,13 +6,14 @@
 
 Square's official MCP server (beta), generated from Square's API: payments, refunds, orders, invoices, catalog, inventory, customers, disputes and more. Square recommends its hosted server at mcp.squareup.com/mcp with OAuth sign-in.
 
+**What it can do:** Can move money; Changes records without asking first.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Square — the platform vendor's own |
 | Type | MCP server — tools Claude can call |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 3 — Reconcile |
-| Systems | square |
+| Works with | [Square](../../connectors/square/README.md) |
 | Source | [`square/square-mcp-server`](https://github.com/square/square-mcp-server/tree/main) |
 | License | `apache-2.0` |
 | Mirrored here | no — pointer only |
@@ -35,7 +36,9 @@ Square's official MCP server (beta), generated from Square's API: payments, refu
 |---|---|---|
 | Square API results | chat | the MCP client; writes land in Square |
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
@@ -43,15 +46,9 @@ Square's official MCP server (beta), generated from Square's API: payments, refu
 
 - `square` — Entity is the merchant, never the location — locations are a reporting dimension, or every store burns a quota seat. One connector covers restaurants, retail and dry cleaning. Marketplace listing not required.
 
-## Host compatibility
+## Where it runs
 
-| Claude Code | Claude.ai | Codex | Cursor | Gemini CLI | Copilot |
-|---|---|---|---|---|---|
-| full | full | full | full | full | full |
-
-Requires from the host: nothing beyond reading instructions.
-
-*Inferred from the skill's grading, not from running it on each platform — see [Platform compatibility](../../docs/TRUST-TIERS.md#platform-compatibility).*
+An MCP server, not a skill: any app that can connect to MCP servers can use it, including Claude Code, Claude.ai, Claude Desktop and Cursor.
 
 ---
 

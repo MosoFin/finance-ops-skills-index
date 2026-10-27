@@ -6,13 +6,14 @@
 
 Read, generate, and adjust slides and layouts. Pairs with board-pack when report preferences call for a deck rather than a document.
 
+**What it can do:** Only reads; changes nothing.
+
 | | |
 |---|---|
-| Origin | Third party |
+| Publisher | Anthropic |
 | Type | Skill |
-| Authority | **First-party** — published by the organisation that owns the product |
 | Stage | 6 — Report |
-| Systems | powerpoint |
+| Works with | powerpoint |
 | Source | [`anthropics/skills/skills/pptx`](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | License | `proprietary-anthropic` |
 | Mirrored here | no — pointer only |
@@ -44,7 +45,9 @@ Read, generate, and adjust slides and layouts. Pairs with board-pack when report
 - Share one options object across two calls; pptxgenjs mutates them in place.
 - Fall back to a rendered image for a chart PowerPoint can draw natively.
 
-## Data reachability
+## Mosofin connection status
+
+How far Mosofin's own connector to each system has got. This is separate from the tool above.
 
 | System | Status | Auth | Settlement data |
 |---|---|---|---|
