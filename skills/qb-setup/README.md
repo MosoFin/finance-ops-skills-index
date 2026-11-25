@@ -40,7 +40,7 @@ Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks too
 
 ## What it will not do
 
-- Suggest `claude mcp add` for QuickBooks — a locally added server shadows the claude.ai connector and cannot authenticate, since Intuit rejects the localhost redirect.
+- Suggest adding QuickBooks as a locally configured MCP server — a local server shadows the claude.ai connector and cannot authenticate, since Intuit rejects the localhost redirect.
 
 ## Mosofin connection status
 

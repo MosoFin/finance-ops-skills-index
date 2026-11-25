@@ -528,7 +528,7 @@
 - Licence: apache-2.0
 - Upstream: https://github.com/intuit/quickbooks-claude-plugin/tree/main/skills/setup
 - Summary: Connect and troubleshoot QuickBooks for this plugin. Use when the QuickBooks tools are unavailable, unauthenticated, or failing, when the user has just installed the QuickBooks plugin, or when the user asks how to connect QuickBooks, sign in to QuickBooks, or fix a QuickBooks connection error.
-- Never: Suggest `claude mcp add` for QuickBooks — a locally added server shadows the claude.ai connector and cannot authenticate, since Intuit rejects the localhost redirect.
+- Never: Suggest adding QuickBooks as a locally configured MCP server — a local server shadows the claude.ai connector and cannot authenticate, since Intuit rejects the localhost redirect.
 
 ### qbo-mcp-server
 

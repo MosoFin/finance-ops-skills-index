@@ -101,8 +101,8 @@
   - READ-ONLY: Fetches and searches Stripe documentation through the CLI. It reads; nothing else.
 - Licence: mit
 - Upstream: https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs
-- Summary: Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
-- Never: Fetch docs.stripe.com with curl or WebFetch when the CLI is available.
+- Summary: Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over a plain web fetch for any docs.stripe.com content. Use to fetch gated documentation.
+- Never: Fetch docs.stripe.com with a plain web fetch when the CLI is available.
 
 ### stripe-pay
 

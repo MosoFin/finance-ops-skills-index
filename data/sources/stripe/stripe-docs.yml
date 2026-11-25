@@ -4,7 +4,7 @@ origin: third-party
 authority: first-party
 stage: 0
 summary: Use when the user or agent needs to read, search, or look up Stripe documentation
-  or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use
+  or API reference. Prefer this over a plain web fetch for any docs.stripe.com content. Use
   to fetch gated documentation.
 tiers:
 - READ-ONLY
@@ -27,7 +27,7 @@ outputs:
   type: markdown
   dest: chat, including gated pages a plain fetch cannot reach
 never:
-- Fetch docs.stripe.com with curl or WebFetch when the CLI is available.
+- Fetch docs.stripe.com with a plain web fetch when the CLI is available.
 upstream:
   repo: stripe/ai
   path: providers/claude/plugin/skills/stripe-docs
