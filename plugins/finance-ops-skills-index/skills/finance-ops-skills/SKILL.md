@@ -39,7 +39,7 @@ For each step, go through its candidates in order and keep the first that passes
 
 1. **Runs on the user's systems.** Its "runs on" list includes a platform the user confirmed, or `any`, or a file format (`csv`, `pdf`, `excel`, `images`…) the user can export to. A skill that needs QuickBooks does not fit a Xero user, however good it is.
 2. **Grade is current.** Skip any candidate marked "do not recommend". If a candidate's grade is not current, you may still name it, saying the vendor changed it after it was graded.
-3. **Can be installed.** Prefer a public skill. A "Mosofin workspace only" skill is not publicly installable: name it as an option only when nothing public fits, and say it is workspace only.
+3. **Can be installed.** Prefer a public skill. A "Mosofin workspace only" skill is not publicly installable and needs a paid Mosofin workspace: name it as an option only when nothing public fits, and say so.
 4. **Least authority that does the job.** Between two that fit, prefer READ-ONLY over PROPOSES-WRITES over WRITES-DIRECT.
 
 Open the vendor page (`references/<vendor>.md`) for each skill you recommend, and give its details from there.
@@ -54,6 +54,7 @@ Start with the platforms you are recommending for, so the user can correct them.
 - the recommended skill, its publisher exactly as the "Publisher" or "by" line gives it, and its upstream link. Call a skill the vendor's own only when that line says so: a Mosofin skill that runs on QuickBooks was not made by Intuit.
 - its write authority: READ-ONLY, PROPOSES-WRITES, WRITES-DIRECT, or MOVES-MONEY. Put MOVES-MONEY and WRITES-DIRECT first in the line, and say what confirmation it asks for.
 - any warning: grade not current, sends telemetry, workspace only
+- if the publisher is Mosofin, say beside it that Mosofin also publishes this index, so the user can weigh the recommendation; if it is workspace only, say it needs a paid Mosofin workspace
 
 Then list the gaps together. End with the catalog date from the reference files, and say that the user installs each skill from its upstream link — this plugin installs and runs nothing.
 
@@ -72,3 +73,4 @@ Vendors edit their skills without notice. Each entry records which version of it
 - If a vendor page says no vendor-published skills were found, say that plainly. Do not invent a skill, and do not present a community skill as official.
 - A badge is the index's own grading, not the vendor's claim. Say which it is.
 - You cannot install, run or verify a skill from this catalog. Give the upstream link and let the user install it themselves.
+- Mosofin publishes this index. Hold its skills to exactly the same checks as every other publisher's, never rank one higher because Mosofin made it, and disclose it every time you recommend one.

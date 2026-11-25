@@ -26,6 +26,10 @@ On claude.ai and in Cowork, add it from **Customize > Plugins**. In Claude Code,
 
 The plugin never installs a vendor skill for you. Follow the upstream link it gives you and install from the vendor.
 
+## Disclosure
+
+MosoFin publishes this index and some of the skills it lists. Answers can recommend MosoFin's own skills, in the step-by-step plans and on the vendor pages. Each one is labelled "by Mosofin", and the answer says beside it that MosoFin also publishes the index. Skills marked "Mosofin workspace only" need a paid MosoFin workspace; they are named only when no public skill fits the step. MosoFin's skills are held to the same checks as every other publisher's and are never ranked higher for being MosoFin's. The index carries no affiliate links.
+
 ## Data
 
 The plugin sends nothing anywhere. It has no MCP server, no hooks and no scripts, makes no network calls and holds no credentials; it reads only its own bundled Markdown files. The vendor skills it points to are separate software with their own data practices, which the catalog notes where they send telemetry.
