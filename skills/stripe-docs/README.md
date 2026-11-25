@@ -4,7 +4,7 @@
 
 `GRADED` `READ-ONLY`
 
-Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
+Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over a plain web fetch for any docs.stripe.com content. Use to fetch gated documentation.
 
 **What it can do:** Only reads; changes nothing.
 
@@ -38,7 +38,7 @@ Use when the user or agent needs to read, search, or look up Stripe documentatio
 
 ## What it will not do
 
-- Fetch docs.stripe.com with curl or WebFetch when the CLI is available.
+- Fetch docs.stripe.com with a plain web fetch when the CLI is available.
 
 ## Mosofin connection status
 

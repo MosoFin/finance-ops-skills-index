@@ -25,7 +25,7 @@ _Once per client, before any close_
 - `skill-creator` — runs on: any · by Anthropic · READ-ONLY · grade current · public — install from https://github.com/anthropics/skills/tree/main/skills/skill-creator
   Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
 - `stripe-docs` — runs on: stripe · by Stripe — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/stripe/ai/tree/main/providers/claude/plugin/skills/stripe-docs
-  Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
+  Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over a plain web fetch for any docs.stripe.com content. Use to fetch gated documentation.
 - `wc-abilities-api-implement` — runs on: woocommerce · by WooCommerce — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/woocommerce/agent-skills/tree/trunk/skills/abilities-api-implement
   WooCommerce's developer skill for registering WordPress Abilities API capabilities in a WooCommerce extension. For developers building store integrations, not for running a store's books.
 - `wc-stale-pr-audit` — runs on: woocommerce · by WooCommerce — the platform vendor's own · READ-ONLY · grade current · public — install from https://github.com/woocommerce/agent-skills/tree/trunk/skills/woocommerce-stale-pr-audit

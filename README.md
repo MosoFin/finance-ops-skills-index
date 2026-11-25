@@ -134,7 +134,7 @@ Ordered by when you need it, not alphabetically.
   Guidance for authoring skills — structure, progressive disclosure, bundled resources. Listed because contributors to this index need it.
 - **[stripe-docs](skills/stripe-docs/README.md)** — Third party  
   `GRADED` `READ-ONLY`  
-  Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over curl or WebFetch for any docs.stripe.com content. Use to fetch gated documentation.
+  Use when the user or agent needs to read, search, or look up Stripe documentation or API reference. Prefer this over a plain web fetch for any docs.stripe.com content. Use to fetch gated documentation.
 - **[WooCommerce Abilities API implement](skills/wc-abilities-api-implement/README.md)** — Third party  
   `GRADED` `READ-ONLY`  
   WooCommerce's developer skill for registering WordPress Abilities API capabilities in a WooCommerce extension. For developers building store integrations, not for running a store's books.

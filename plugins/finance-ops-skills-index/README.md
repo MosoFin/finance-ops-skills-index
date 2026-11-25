@@ -22,16 +22,7 @@ Install it, then ask in plain language:
 - "Is there a Stripe skill that moves money, and does it ask first?"
 - "What should I use to reconcile Shopify payouts?"
 
-In Claude Code:
-
-```
-/plugin marketplace add MosoFin/finance-ops-skills-index
-/plugin install finance-ops-skills-index@finance-ops-skills-index
-```
-
-On claude.ai and in Cowork, add it from **Customize > Plugins**.
-
-In Codex, Cursor, Gemini CLI and other agents, install it with `npx skills add MosoFin/finance-ops-skills-index`.
+On claude.ai and in Cowork, add it from **Customize > Plugins**. In Claude Code, follow [Install and manage plugins](https://code.claude.com/docs/en/plugins/install); the marketplace is this repository, [MosoFin/finance-ops-skills-index](https://github.com/MosoFin/finance-ops-skills-index). In other agents, follow that agent's own instructions for adding a skill.
 
 The plugin never installs a vendor skill for you. Follow the upstream link it gives you and install from the vendor.
 
