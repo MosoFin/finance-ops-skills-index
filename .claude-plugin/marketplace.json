@@ -9,7 +9,7 @@
     {
       "name": "finance-ops-skills-index",
       "source": "./plugins/finance-ops-skills-index",
-      "description": "Which agent skills should I use for QuickBooks, Xero, Stripe or Shopify finance work? Name a goal — month-end close, bank recs, collections — and get a step-by-step plan of skills that run on your platforms, with a warning wherever a skill can write to your books or move money.",
+      "description": "Which agent skills should I use for QuickBooks, Xero, Stripe or Shopify finance work? Name a goal — month-end close, bank recs, collections — and get a step-by-step plan of skills that run on your platforms, with a warning wherever a skill can write to your books or move money. Disclosure: MosoFin publishes this index and some of the skills it lists. Answers can recommend MosoFin's own skills; each is labelled \"by Mosofin\", and those marked \"Mosofin workspace only\" need a paid MosoFin workspace.",
       "category": "finance",
       "tags": [
         "finance",
